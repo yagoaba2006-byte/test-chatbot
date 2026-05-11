@@ -25,6 +25,7 @@
     transition: all 0.3s ease;
     box-shadow: 0 0 35px rgba(255,255,255,0.15);
     animation: floaty 3s ease-in-out infinite;
+            pointer-events: auto;
 }
 
 .toucan-button:hover {
@@ -34,7 +35,8 @@
 }
 
 #dify-chatbot-bubble-button {
-    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
         * {
             box-sizing: border-box;
@@ -285,10 +287,12 @@ iframe {
 </head>
 <script>
 function openChatbot() {
-    const chatbotButton = document.querySelector('#dify-chatbot-bubble-button');
 
-    if (chatbotButton) {
-        chatbotButton.click();
+    const iframeButton = document.querySelector('#dify-chatbot-bubble-button');
+
+    if (iframeButton) {
+        iframeButton.style.pointerEvents = "auto";
+        iframeButton.click();
     }
 }
 </script>
