@@ -390,10 +390,18 @@ window.difyChatbotConfig = {
 }
 </script>
 
-<script
-src="https://udify.app/embed.min.js"
-id="hQJFpb8aoAfzj5je"
-defer>
+<script>
+window.addEventListener("load", function () {
+
+    const script = document.createElement("script");
+
+    script.src = "https://udify.app/embed.min.js";
+
+    script.id = "hQJFpb8aoAfzj5je";
+
+    document.body.appendChild(script);
+
+});
 </script>
 
 </body>
