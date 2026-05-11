@@ -1,407 +1,108 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOUCAIN</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-<title>Toucan AI — Sup Formation</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-    background:#050505;
-    color:white;
-    min-height:100vh;
-    overflow-x:hidden;
-    padding:2rem 1rem;
-}
-
-/* Glow */
-
-body::before{
-    content:"";
-    position:fixed;
-    width:700px;
-    height:700px;
-    background:rgba(255,255,255,0.04);
-    border-radius:50%;
-    filter:blur(120px);
-    top:-200px;
-    right:-150px;
-    z-index:-1;
-}
-
-/* Container */
-
-.container{
-    max-width:920px;
-    margin:auto;
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.08);
-    backdrop-filter:blur(20px);
-    border-radius:32px;
-    overflow:hidden;
-    box-shadow:0 10px 40px rgba(0,0,0,0.45);
-}
-
-/* Header */
-
-header{
-    text-align:center;
-    padding:4rem 2rem 3rem;
-}
-
-.badge{
-    display:inline-block;
-    padding:0.45rem 1rem;
-    border-radius:999px;
-    background:rgba(255,255,255,0.06);
-    border:1px solid rgba(255,255,255,0.08);
-    font-size:0.75rem;
-    letter-spacing:1px;
-    margin-bottom:1.5rem;
-}
-
-header h1{
-    font-size:4rem;
-    font-weight:700;
-    letter-spacing:-3px;
-    margin-bottom:1rem;
-}
-
-header p{
-    color:rgba(255,255,255,0.7);
-    font-size:1.1rem;
-    max-width:650px;
-    margin:auto;
-}
-
-/* Content */
-
-.content{
-    padding:2rem;
-}
-
-section{
-    margin-bottom:2.5rem;
-}
-
-h2{
-    font-size:1.1rem;
-    margin-bottom:1rem;
-    padding-bottom:0.8rem;
-    border-bottom:1px solid rgba(255,255,255,0.08);
-}
-
-.info-box{
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.08);
-    border-radius:18px;
-    padding:1.2rem;
-    color:rgba(255,255,255,0.8);
-}
-
-.intro-text{
-    color:rgba(255,255,255,0.6);
-    margin-bottom:1rem;
-}
-
-.question-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:1rem;
-}
-
-.question-card{
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.06);
-    border-radius:18px;
-    padding:1rem;
-    transition:0.25s ease;
-}
-
-.question-card:hover{
-    transform:translateY(-4px);
-    background:rgba(255,255,255,0.05);
-}
-
-.category{
-    font-size:0.72rem;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    margin-bottom:0.4rem;
-    color:rgba(255,255,255,0.45);
-}
-
-.question-card p{
-    color:white;
-}
-
-.checklist{
-    list-style:none;
-}
-
-.checklist li{
-    padding:0.65rem 0 0.65rem 1.8rem;
-    position:relative;
-    color:rgba(255,255,255,0.85);
-}
-
-.checklist li::before{
-    content:"✓";
-    position:absolute;
-    left:0;
-    color:white;
-}
-
-footer{
-    text-align:center;
-    padding:1.5rem;
-    color:rgba(255,255,255,0.45);
-    border-top:1px solid rgba(255,255,255,0.08);
-    font-size:0.85rem;
-}
-
-/* Animation */
-
-@keyframes floaty{
-    0%{
-        transform:translateY(0px);
-    }
-    50%{
-        transform:translateY(-10px);
-    }
-    100%{
-        transform:translateY(0px);
-    }
-}
-
-/* CHATBOT TOUCAN */
-
-#dify-chatbot-bubble-button{
-
-    position:fixed !important;
-
-    bottom:25px !important;
-    right:25px !important;
-
-    width:95px !important;
-    height:95px !important;
-
-    border-radius:50% !important;
-
-    background:#111111 !important;
-
-    border:2px solid rgba(255,255,255,0.1) !important;
-
-    box-shadow:
-        0 0 30px rgba(255,255,255,0.08),
-        0 0 60px rgba(255,255,255,0.05) !important;
-
-    display:flex !important;
-    align-items:center !important;
-    justify-content:center !important;
-
-    z-index:999999999 !important;
-
-    animation:floaty 3s ease-in-out infinite !important;
-
-    transition:all 0.3s ease !important;
-}
-
-/* Cache l’ancienne icône */
-
-#dify-chatbot-bubble-button svg,
-#dify-chatbot-bubble-button img{
-    opacity:0 !important;
-}
-
-/* Toucan */
-
-#dify-chatbot-bubble-button::before{
-
-    content:"🦜";
-
-    position:absolute;
-
-    inset:0;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:3.4rem;
-}
-
-/* Hover */
-
-#dify-chatbot-bubble-button:hover{
-
-    transform:scale(1.08) !important;
-
-    box-shadow:
-        0 0 45px rgba(255,255,255,0.12),
-        0 0 80px rgba(255,255,255,0.06) !important;
-}
-
-/* Chat Window */
-
-#dify-chatbot-bubble-window{
-    width:24rem !important;
-    height:40rem !important;
-    border-radius:24px !important;
-    overflow:hidden !important;
-}
-
-/* Mobile */
-
-@media(max-width:600px){
-
-    header h1{
-        font-size:2.7rem;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #ffffff;
+      color: #1f2937;
+      min-height: 100vh;
+      line-height: 1.6;
     }
 
-    .content{
-        padding:1.3rem;
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 80px 24px;
     }
 
-    body{
-        padding:1rem 0.5rem;
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
     }
 
-    #dify-chatbot-bubble-button{
-        width:82px !important;
-        height:82px !important;
+    header img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
     }
 
-}
+    header .brand {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #111827;
+    }
 
-</style>
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #111827;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: #4b5563;
+      margin-bottom: 12px;
+    }
+
+    /* ===== Personnalisation du bouton Dify avec le toucan ===== */
+    #dify-chatbot-bubble-button {
+      background-color: #ffffff !important;
+      background-image: url('toucan.png') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      border: 2px solid #e5e7eb !important;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    /* On masque l'icône SVG par défaut de Dify pour ne laisser que le toucan */
+    #dify-chatbot-bubble-button svg,
+    #dify-chatbot-bubble-button img {
+      display: none !important;
+    }
+
+    #dify-chatbot-bubble-window {
+      width: 24rem !important;
+      height: 40rem !important;
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="container">
+  <div class="container">
+    <header>
+      <img src="toucan.png" alt="Logo TOUCAIN" />
+      <div class="brand">TOUCAIN</div>
+    </header>
+    <h1>Bienvenue chez TOUCAIN</h1>
+    <p>Clique sur le toucan en bas à droite pour discuter avec notre assistant.</p>
+  </div>
 
-<header>
-
-<span class="badge">
-AI Assistant
-</span>
-
-<h1>
-Toucan AI 🦜
-</h1>
-
-<p>
-Assistant conversationnel moderne pour tester
-l’expérience utilisateur du chatbot Sup Formation.
-</p>
-
-</header>
-
-<div class="content">
-
-<section>
-
-<div class="info-box">
-Bienvenue 👋 Cliquez sur le bouton toucan en bas à droite pour ouvrir le chatbot IA.
-</div>
-
-</section>
-
-<section>
-
-<h2>
-Questions à tester
-</h2>
-
-<p class="intro-text">
-Quelques exemples pour tester le comportement du chatbot.
-</p>
-
-<div class="question-grid">
-
-<div class="question-card">
-<div class="category">Inscriptions</div>
-<p>Comment puis-je m'inscrire à une formation ?</p>
-</div>
-
-<div class="question-card">
-<div class="category">Tarifs</div>
-<p>Quels sont les tarifs des formations ?</p>
-</div>
-
-<div class="question-card">
-<div class="category">Planning</div>
-<p>Quels sont les horaires des cours ?</p>
-</div>
-
-<div class="question-card">
-<div class="category">Programmes</div>
-<p>Quelles formations proposez-vous ?</p>
-</div>
-
-<div class="question-card">
-<div class="category">Contact</div>
-<p>Comment contacter le secrétariat ?</p>
-</div>
-
-<div class="question-card">
-<div class="category">Absences</div>
-<p>Comment justifier une absence ?</p>
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<h2>
-Points à vérifier
-</h2>
-
-<ul class="checklist">
-<li>Réponses professionnelles</li>
-<li>Conversation en français</li>
-<li>Gestion des sujets sensibles</li>
-<li>Réactivité du chatbot</li>
-<li>Bon affichage mobile</li>
-</ul>
-
-</section>
-
-</div>
-
-<footer>
-Sup Formation © 2026 — Interface de test IA
-</footer>
-
-</div>
-
-<!-- DIFY -->
-
-<script>
-window.difyChatbotConfig = {
-    token: 'hQJFpb8aoAfzj5je',
-    inputs: {},
-    systemVariables: {},
-    userVariables: {},
-}
-</script>
-
-<script
-src="https://udify.app/embed.min.js"
-id="hQJFpb8aoAfzj5je">
-</script>
+  <!-- ===== Chatbot Dify ===== -->
+  <script>
+    window.difyChatbotConfig = {
+      token: 'hQJFpb8aoAfzj5je',
+      inputs: {},
+      systemVariables: {},
+      userVariables: {},
+    }
+  </script>
+  <script
+    src="https://udify.app/embed.min.js"
+    id="hQJFpb8aoAfzj5je"
+    defer>
+  </script>
 
 </body>
 </html>
