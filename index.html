@@ -1,409 +1,400 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toucan AI — Sup Formation</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        .toucan-button {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 78px;
-    height: 78px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.7rem;
-    cursor: pointer;
-    z-index: 999999;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 35px rgba(255,255,255,0.15);
-    animation: floaty 3s ease-in-out infinite;
-            pointer-events: auto;
+<title>Toucan AI — Sup Formation</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.toucan-button:hover {
-    transform: scale(1.08);
-    background: rgba(255,255,255,0.12);
-    box-shadow: 0 0 45px rgba(255,255,255,0.25);
+body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    background:#050505;
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
+    padding:2rem 1rem;
 }
 
-#dify-chatbot-bubble-button {
-    opacity: 0 !important;
-    pointer-events: none !important;
-}
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-#dify-chatbot-bubble-button {
-    background: white !important;
-    box-shadow: 0 0 30px rgba(255,255,255,0.4) !important;
-    animation: floaty 3s ease-in-out infinite;
-    z-index: 999999 !important;
-    pointer-events: auto !important;
+/* Glow background */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:700px;
+    height:700px;
+    background:rgba(255,255,255,0.04);
+    border-radius:50%;
+    filter:blur(120px);
+    top:-200px;
+    right:-150px;
+    z-index:-1;
 }
 
-#dify-chatbot-bubble-window {
-    width: 24rem !important;
-    height: 40rem !important;
-    border-radius: 24px !important;
-    overflow: hidden !important;
-    z-index: 999999 !important;
+/* Container */
+
+.container{
+    max-width:920px;
+    margin:auto;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    border-radius:32px;
+    overflow:hidden;
+    box-shadow:0 10px 40px rgba(0,0,0,0.45);
 }
 
-iframe {
-    z-index: 999999 !important;
+/* Header */
+
+header{
+    text-align:center;
+    padding:4rem 2rem 3rem;
 }
 
-.arrow-hint {
-    pointer-events: none !important;
+.badge{
+    display:inline-block;
+    padding:0.45rem 1rem;
+    border-radius:999px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.08);
+    font-size:0.75rem;
+    letter-spacing:1px;
+    margin-bottom:1.5rem;
+    color:white;
 }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: white;
-            background: #050505;
-            min-height: 100vh;
-            padding: 2rem 1rem;
-            overflow-x: hidden;
-            position: relative;
-        }
 
-        body::before {
-            content: "";
-            position: fixed;
-            width: 700px;
-            height: 700px;
-            background: rgba(255,255,255,0.05);
-            filter: blur(120px);
-            border-radius: 50%;
-            top: -200px;
-            right: -150px;
-            z-index: -1;
-        }
+header h1{
+    font-size:4rem;
+    font-weight:700;
+    letter-spacing:-3px;
+    margin-bottom:1rem;
+}
 
-        .container {
-            max-width: 920px;
-            margin: 0 auto;
-            background: rgba(255,255,255,0.04);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 34px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.45);
-        }
+header p{
+    color:rgba(255,255,255,0.7);
+    font-size:1.1rem;
+    max-width:650px;
+    margin:auto;
+}
 
-        header {
-            text-align: center;
-            padding: 4rem 2rem 3rem;
-        }
+/* Content */
 
-        .badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.08);
-            color: white;
-            padding: 0.45rem 1rem;
-            border-radius: 999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            border: 1px solid rgba(255,255,255,0.08);
-        }
+.content{
+    padding:2rem;
+}
 
-        header h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            letter-spacing: -3px;
-            margin-bottom: 1rem;
-        }
+section{
+    margin-bottom:2.5rem;
+}
 
-        header p {
-            color: rgba(255,255,255,0.7);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+h2{
+    font-size:1.1rem;
+    margin-bottom:1rem;
+    padding-bottom:0.8rem;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
 
-        .content {
-            padding: 2rem;
-        }
+.info-box{
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:18px;
+    padding:1.2rem;
+    color:rgba(255,255,255,0.8);
+}
 
-        section {
-            margin-bottom: 2.5rem;
-        }
+.intro-text{
+    color:rgba(255,255,255,0.6);
+    margin-bottom:1rem;
+}
 
-        h2 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: white;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            padding-bottom: 0.8rem;
-        }
+.question-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:1rem;
+}
 
-        .info-box {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            padding: 1.2rem;
-            border-radius: 18px;
-            color: rgba(255,255,255,0.8);
-        }
+.question-card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:18px;
+    padding:1rem;
+    transition:0.25s ease;
+}
 
-        .intro-text {
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 1rem;
-        }
+.question-card:hover{
+    transform:translateY(-4px);
+    background:rgba(255,255,255,0.05);
+}
 
-        .question-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1rem;
-        }
+.category{
+    font-size:0.72rem;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:0.4rem;
+    color:rgba(255,255,255,0.45);
+}
 
-        .question-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            padding: 1rem;
-            border-radius: 18px;
-            transition: 0.25s ease;
-        }
+.question-card p{
+    color:white;
+}
 
-        .question-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255,255,255,0.06);
-        }
+.checklist{
+    list-style:none;
+}
 
-        .category {
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 0.4rem;
-            color: rgba(255,255,255,0.5);
-            text-transform: uppercase;
-        }
+.checklist li{
+    padding:0.65rem 0 0.65rem 1.8rem;
+    position:relative;
+    color:rgba(255,255,255,0.85);
+}
 
-        .question-card p {
-            color: rgba(255,255,255,0.9);
-        }
+.checklist li::before{
+    content:"✓";
+    position:absolute;
+    left:0;
+    color:white;
+}
 
-        .checklist {
-            list-style: none;
-        }
+/* Footer */
 
-        .checklist li {
-            padding: 0.6rem 0 0.6rem 1.7rem;
-            position: relative;
-            color: rgba(255,255,255,0.85);
-        }
+footer{
+    text-align:center;
+    padding:1.5rem;
+    color:rgba(255,255,255,0.45);
+    border-top:1px solid rgba(255,255,255,0.08);
+    font-size:0.85rem;
+}
 
-        .checklist li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: white;
-        }
+/* Floating animation */
 
-        footer {
-            padding: 1.5rem;
-            text-align: center;
-            color: rgba(255,255,255,0.45);
-            border-top: 1px solid rgba(255,255,255,0.08);
-            font-size: 0.85rem;
-        }
-
-        .arrow-hint {
-            position: fixed;
-            bottom: 100px;
-            right: 28px;
-            width: 58px;
-            height: 58px;
-            border-radius: 50%;
-            background: white;
-            color: black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 0 30px rgba(255,255,255,0.35);
-            animation: floaty 3s ease-in-out infinite;
-            z-index: 9998;
-            pointer-events: none;
-        }
-
-        @keyframes floaty {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        #dify-chatbot-bubble-button {
-            background: white !important;
-            box-shadow: 0 0 30px rgba(255,255,255,0.4) !important;
-            animation: floaty 3s ease-in-out infinite;
-        }
-
-        #dify-chatbot-bubble-window {
-            width: 24rem !important;
-            height: 40rem !important;
-            border-radius: 24px !important;
-            overflow: hidden !important;
-        }
-
-        @media (max-width: 600px) {
-
-            header h1 {
-                font-size: 2.7rem;
-            }
-
-            .content {
-                padding: 1.3rem;
-            }
-
-            .arrow-hint {
-                display: none;
-            }
-
-            body {
-                padding: 1rem 0.5rem;
-            }
-        }
-
-    </style>
-</head>
-<script>
-function openChatbot() {
-
-    const iframeButton = document.querySelector('#dify-chatbot-bubble-button');
-
-    if (iframeButton) {
-        iframeButton.style.pointerEvents = "auto";
-        iframeButton.click();
+@keyframes floaty{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+    100%{
+        transform:translateY(0px);
     }
 }
-</script>
+
+/* Dify Toucan Button */
+
+#dify-chatbot-bubble-button{
+
+    position:fixed !important;
+
+    bottom:25px !important;
+    right:25px !important;
+
+    width:95px !important;
+    height:95px !important;
+
+    border-radius:50% !important;
+
+    background:#111111 !important;
+
+    border:2px solid rgba(255,255,255,0.1) !important;
+
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+
+    z-index:999999999 !important;
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,0.08),
+        0 0 60px rgba(255,255,255,0.04) !important;
+
+    transition:all 0.3s ease !important;
+
+    animation:floaty 3s ease-in-out infinite !important;
+
+    color:transparent !important;
+}
+
+/* Replace monkey icon */
+
+#dify-chatbot-bubble-button *{
+    opacity:0 !important;
+}
+
+#dify-chatbot-bubble-button::before{
+    content:"🦜";
+    font-size:3.4rem;
+    opacity:1 !important;
+}
+
+/* Hover */
+
+#dify-chatbot-bubble-button:hover{
+    transform:scale(1.08) !important;
+    box-shadow:
+        0 0 45px rgba(255,255,255,0.12),
+        0 0 80px rgba(255,255,255,0.06) !important;
+}
+
+/* Chatbot Window */
+
+#dify-chatbot-bubble-window{
+    width:24rem !important;
+    height:40rem !important;
+    border-radius:24px !important;
+    overflow:hidden !important;
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    header h1{
+        font-size:2.7rem;
+    }
+
+    .content{
+        padding:1.3rem;
+    }
+
+    body{
+        padding:1rem 0.5rem;
+    }
+
+    #dify-chatbot-bubble-button{
+        width:82px !important;
+        height:82px !important;
+    }
+
+}
+
+</style>
+</head>
+
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <header>
-            <span class="badge">AI Assistant</span>
+<header>
 
-           <div class="toucan-button" onclick="openChatbot()">
-    🦜
+<span class="badge">
+AI Assistant
+</span>
+
+<h1>
+Toucan AI 🦜
+</h1>
+
+<p>
+Assistant conversationnel moderne pour tester
+l’expérience utilisateur du chatbot Sup Formation.
+</p>
+
+</header>
+
+<div class="content">
+
+<section>
+
+<div class="info-box">
+Bienvenue 👋 Cliquez sur le bouton toucan en bas à droite pour ouvrir le chatbot IA.
 </div>
 
-            <p>
-                Assistant conversationnel moderne pour tester
-                l’expérience utilisateur du chatbot Sup Formation.
-            </p>
-        </header>
+</section>
 
-        <div class="content">
+<section>
 
-            <section>
-                <div class="info-box">
-                    Bienvenue 👋 Le chatbot apparaît en bas à droite.
-                    Cliquez sur l’icône pour commencer une conversation.
-                </div>
-            </section>
+<h2>
+Questions à tester
+</h2>
 
-            <section>
+<p class="intro-text">
+Quelques exemples pour tester le comportement du chatbot.
+</p>
 
-                <h2>Questions à tester</h2>
+<div class="question-grid">
 
-                <p class="intro-text">
-                    Quelques exemples pour vérifier le comportement du chatbot.
-                </p>
+<div class="question-card">
+<div class="category">Inscriptions</div>
+<p>Comment puis-je m'inscrire à une formation ?</p>
+</div>
 
-                <div class="question-grid">
+<div class="question-card">
+<div class="category">Tarifs</div>
+<p>Quels sont les tarifs des formations ?</p>
+</div>
 
-                    <div class="question-card">
-                        <div class="category">Inscriptions</div>
-                        <p>Comment puis-je m'inscrire à une formation ?</p>
-                    </div>
+<div class="question-card">
+<div class="category">Planning</div>
+<p>Quels sont les horaires des cours ?</p>
+</div>
 
-                    <div class="question-card">
-                        <div class="category">Tarifs</div>
-                        <p>Quels sont les tarifs des formations ?</p>
-                    </div>
+<div class="question-card">
+<div class="category">Programmes</div>
+<p>Quelles formations proposez-vous ?</p>
+</div>
 
-                    <div class="question-card">
-                        <div class="category">Planning</div>
-                        <p>Quels sont les horaires des cours ?</p>
-                    </div>
+<div class="question-card">
+<div class="category">Contact</div>
+<p>Comment contacter le secrétariat ?</p>
+</div>
 
-                    <div class="question-card">
-                        <div class="category">Programmes</div>
-                        <p>Quelles formations proposez-vous ?</p>
-                    </div>
+<div class="question-card">
+<div class="category">Absences</div>
+<p>Comment justifier une absence ?</p>
+</div>
 
-                    <div class="question-card">
-                        <div class="category">Contact</div>
-                        <p>Comment contacter le secrétariat ?</p>
-                    </div>
+</div>
 
-                    <div class="question-card">
-                        <div class="category">Absences</div>
-                        <p>Comment justifier une absence ?</p>
-                    </div>
+</section>
 
-                </div>
+<section>
 
-            </section>
+<h2>
+Points à vérifier
+</h2>
 
-            <section>
+<ul class="checklist">
+<li>Réponses professionnelles</li>
+<li>Conversation en français</li>
+<li>Gestion des sujets sensibles</li>
+<li>Réactivité du chatbot</li>
+<li>Bon affichage mobile</li>
+</ul>
 
-                <h2>Points à vérifier</h2>
+</section>
 
-                <ul class="checklist">
-                    <li>Réponses professionnelles</li>
-                    <li>Conversation en français</li>
-                    <li>Gestion des sujets sensibles</li>
-                    <li>Réactivité du chatbot</li>
-                    <li>Bon affichage mobile</li>
-                </ul>
+</div>
 
-            </section>
+<footer>
+Sup Formation © 2026 — Interface de test IA
+</footer>
 
-        </div>
+</div>
 
-        <footer>
-            Sup Formation © 2026 — Interface de test IA
-        </footer>
+<!-- Dify -->
 
-    </div>
+<script>
+window.difyChatbotConfig = {
+    token: 'hQJFpb8aoAfzj5je',
+    inputs: {},
+    systemVariables: {},
+    userVariables: {},
+}
+</script>
 
-    <div class="arrow-hint">🐵</div>
-
-    <script>
-        window.difyChatbotConfig = {
-            token: 'hQJFpb8aoAfzj5je',
-            inputs: {},
-            systemVariables: {},
-            userVariables: {},
-        }
-    </script>
-
-    <script
-        src="https://udify.app/embed.min.js"
-        id="hQJFpb8aoAfzj5je"
-        defer>
-    </script>
+<script
+src="https://udify.app/embed.min.js"
+id="hQJFpb8aoAfzj5je"
+defer>
+</script>
 
 </body>
 </html>
