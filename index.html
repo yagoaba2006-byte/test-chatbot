@@ -189,67 +189,57 @@ footer{
 
 /* Dify Toucan Button */
 
-#dify-chatbot-bubble-button{
+#dify-chatbot-bubble-button {
 
-    position:fixed !important;
+    position: fixed !important;
 
-    bottom:25px !important;
-    right:25px !important;
+    bottom: 25px !important;
+    right: 25px !important;
 
-    width:95px !important;
-    height:95px !important;
+    width: 90px !important;
+    height: 90px !important;
 
-    border-radius:50% !important;
+    border-radius: 50% !important;
 
-    background:#111111 !important;
+    background: #111111 !important;
 
-    border:2px solid rgba(255,255,255,0.1) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 
-    display:flex !important;
-    align-items:center !important;
-    justify-content:center !important;
+    z-index: 999999999 !important;
 
-    z-index:999999999 !important;
+    border: 2px solid rgba(255,255,255,0.1) !important;
 
     box-shadow:
         0 0 30px rgba(255,255,255,0.08),
-        0 0 60px rgba(255,255,255,0.04) !important;
+        0 0 60px rgba(255,255,255,0.05) !important;
 
-    transition:all 0.3s ease !important;
-
-    animation:floaty 3s ease-in-out infinite !important;
-
-    color:transparent !important;
+    animation: floaty 3s ease-in-out infinite !important;
 }
 
-/* Replace monkey icon */
+/* Cache l’icône originale */
 
-#dify-chatbot-bubble-button *{
-    opacity:0 !important;
+#dify-chatbot-bubble-button svg,
+#dify-chatbot-bubble-button img {
+    opacity: 0 !important;
 }
 
-#dify-chatbot-bubble-button::before{
-    content:"🦜";
-    font-size:3.4rem;
-    opacity:1 !important;
-}
+/* Toucan */
 
-/* Hover */
+#dify-chatbot-bubble-button::before {
 
-#dify-chatbot-bubble-button:hover{
-    transform:scale(1.08) !important;
-    box-shadow:
-        0 0 45px rgba(255,255,255,0.12),
-        0 0 80px rgba(255,255,255,0.06) !important;
-}
+    content: "🦜";
 
-/* Chatbot Window */
+    position: absolute;
 
-#dify-chatbot-bubble-window{
-    width:24rem !important;
-    height:40rem !important;
-    border-radius:24px !important;
-    overflow:hidden !important;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 3.2rem;
 }
 
 /* Mobile */
@@ -379,16 +369,6 @@ Sup Formation © 2026 — Interface de test IA
 
 </div>
 
-<!-- Dify -->
-
-<script>
-window.difyChatbotConfig = {
-    token: 'hQJFpb8aoAfzj5je',
-    inputs: {},
-    systemVariables: {},
-    userVariables: {},
-}
-</script>
 
 <!-- Dify -->
 
@@ -401,22 +381,9 @@ window.difyChatbotConfig = {
 }
 </script>
 
-<script>
-window.addEventListener("load", function () {
-
-    setTimeout(() => {
-
-        const script = document.createElement("script");
-
-        script.src = "https://udify.app/embed.min.js";
-
-        script.id = "hQJFpb8aoAfzj5je";
-
-        document.body.appendChild(script);
-
-    }, 1000);
-
-});
+<script
+src="https://udify.app/embed.min.js"
+id="hQJFpb8aoAfzj5je">
 </script>
 
 </body>
