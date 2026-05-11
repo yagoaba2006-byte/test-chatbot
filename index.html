@@ -3,57 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Chatbot — Sup Formation</title>
+    <title>Monkey AI — Sup Formation</title>
+
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #1f2937;
-            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            color: white;
+            background: #050505;
             min-height: 100vh;
             padding: 2rem 1rem;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 700px;
+            height: 700px;
+            background: rgba(255,255,255,0.05);
+            filter: blur(120px);
+            border-radius: 50%;
+            top: -200px;
+            right: -150px;
+            z-index: -1;
         }
 
         .container {
-            max-width: 820px;
+            max-width: 920px;
             margin: 0 auto;
-            background: white;
-            border-radius: 14px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 10px 25px rgba(0,0,0,0.06);
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 34px;
             overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.45);
         }
 
         header {
-            background: linear-gradient(135deg, #1C64F2 0%, #1a4fc7 100%);
-            color: white;
-            padding: 2.5rem 2rem;
             text-align: center;
+            padding: 4rem 2rem 3rem;
         }
 
         .badge {
             display: inline-block;
-            background: rgba(255,255,255,0.22);
+            background: rgba(255,255,255,0.08);
             color: white;
-            padding: 0.3rem 0.85rem;
+            padding: 0.45rem 1rem;
             border-radius: 999px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
             text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.08);
         }
 
         header h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            font-size: 4rem;
             font-weight: 700;
+            letter-spacing: -3px;
+            margin-bottom: 1rem;
         }
 
         header p {
-            font-size: 1.05rem;
-            opacity: 0.95;
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .content {
@@ -64,65 +88,57 @@
             margin-bottom: 2.5rem;
         }
 
-        section:last-child {
-            margin-bottom: 0;
-        }
-
         h2 {
-            font-size: 1.2rem;
-            color: #1C64F2;
+            font-size: 1.1rem;
             margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #e5e7eb;
+            color: white;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 0.8rem;
         }
 
         .info-box {
-            background: #eff6ff;
-            border-left: 4px solid #1C64F2;
-            padding: 1rem 1.25rem;
-            border-radius: 6px;
-        }
-
-        .info-box strong {
-            color: #1C64F2;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 1.2rem;
+            border-radius: 18px;
+            color: rgba(255,255,255,0.8);
         }
 
         .intro-text {
+            color: rgba(255,255,255,0.6);
             margin-bottom: 1rem;
-            color: #6b7280;
         }
 
         .question-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 0.85rem;
+            gap: 1rem;
         }
 
         .question-card {
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
             padding: 1rem;
-            border-radius: 8px;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            border-radius: 18px;
+            transition: 0.25s ease;
         }
 
         .question-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.06);
         }
 
-        .question-card .category {
-            font-size: 0.72rem;
+        .category {
+            font-size: 0.7rem;
             font-weight: 700;
-            color: #1C64F2;
+            letter-spacing: 1px;
+            margin-bottom: 0.4rem;
+            color: rgba(255,255,255,0.5);
             text-transform: uppercase;
-            letter-spacing: 0.6px;
-            margin-bottom: 0.35rem;
         }
 
         .question-card p {
-            font-size: 0.95rem;
-            color: #374151;
+            color: rgba(255,255,255,0.9);
         }
 
         .checklist {
@@ -130,175 +146,198 @@
         }
 
         .checklist li {
-            padding: 0.5rem 0 0.5rem 1.85rem;
+            padding: 0.6rem 0 0.6rem 1.7rem;
             position: relative;
-            color: #374151;
+            color: rgba(255,255,255,0.85);
         }
 
         .checklist li::before {
-            content: "☐";
+            content: "✓";
             position: absolute;
             left: 0;
-            color: #1C64F2;
-            font-size: 1.25rem;
-            line-height: 1.6;
+            color: white;
+        }
+
+        footer {
+            padding: 1.5rem;
+            text-align: center;
+            color: rgba(255,255,255,0.45);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.85rem;
         }
 
         .arrow-hint {
             position: fixed;
             bottom: 100px;
-            right: 30px;
-            background: #1C64F2;
-            color: white;
-            width: 56px;
-            height: 56px;
+            right: 28px;
+            width: 58px;
+            height: 58px;
             border-radius: 50%;
-            line-height: 56px;
-            text-align: center;
-            font-size: 1.6rem;
-            box-shadow: 0 4px 14px rgba(28, 100, 242, 0.35);
-            animation: bounce 2.2s infinite;
+            background: white;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 0 30px rgba(255,255,255,0.35);
+            animation: floaty 3s ease-in-out infinite;
             z-index: 9998;
             pointer-events: none;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        @keyframes floaty {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
         }
 
-        footer {
-            background: #f9fafb;
-            padding: 1.25rem 2rem;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #6b7280;
-            border-top: 1px solid #e5e7eb;
-            line-height: 1.7;
+        #dify-chatbot-bubble-button {
+            background: white !important;
+            box-shadow: 0 0 30px rgba(255,255,255,0.4) !important;
+            animation: floaty 3s ease-in-out infinite;
+        }
+
+        #dify-chatbot-bubble-window {
+            width: 24rem !important;
+            height: 40rem !important;
+            border-radius: 24px !important;
+            overflow: hidden !important;
         }
 
         @media (max-width: 600px) {
-            .arrow-hint { display: none; }
-            header h1 { font-size: 1.5rem; }
-            .content { padding: 1.5rem; }
-            body { padding: 1rem 0.5rem; }
+
+            header h1 {
+                font-size: 2.7rem;
+            }
+
+            .content {
+                padding: 1.3rem;
+            }
+
+            .arrow-hint {
+                display: none;
+            }
+
+            body {
+                padding: 1rem 0.5rem;
+            }
         }
+
     </style>
 </head>
+
 <body>
+
     <div class="container">
+
         <header>
-            <span class="badge">Phase de test</span>
-            <h1>Chatbot Sup Formation</h1>
-            <p>Page de test interne pour valider le fonctionnement de l'assistant</p>
+            <span class="badge">AI Assistant</span>
+
+            <h1>Monkey AI 🐵</h1>
+
+            <p>
+                Assistant conversationnel moderne pour tester
+                l’expérience utilisateur du chatbot Sup Formation.
+            </p>
         </header>
 
         <div class="content">
+
             <section>
                 <div class="info-box">
-                    <strong>Bienvenue !</strong> Cette page sert à tester le chatbot avant sa mise en ligne sur le site officiel de Sup Formation. Le chatbot apparaît en bas à droite de votre écran (bulle bleue). Cliquez dessus pour démarrer une conversation.
+                    Bienvenue 👋 Le chatbot apparaît en bas à droite.
+                    Cliquez sur l’icône pour commencer une conversation.
                 </div>
             </section>
 
             <section>
-                <h2>📝 Questions à tester</h2>
-                <p class="intro-text">Voici quelques exemples de questions à poser au chatbot pour vérifier qu'il répond correctement :</p>
+
+                <h2>Questions à tester</h2>
+
+                <p class="intro-text">
+                    Quelques exemples pour vérifier le comportement du chatbot.
+                </p>
 
                 <div class="question-grid">
+
                     <div class="question-card">
                         <div class="category">Inscriptions</div>
                         <p>Comment puis-je m'inscrire à une formation ?</p>
                     </div>
+
                     <div class="question-card">
                         <div class="category">Tarifs</div>
                         <p>Quels sont les tarifs des formations ?</p>
                     </div>
+
                     <div class="question-card">
                         <div class="category">Planning</div>
                         <p>Quels sont les horaires des cours ?</p>
                     </div>
+
                     <div class="question-card">
                         <div class="category">Programmes</div>
                         <p>Quelles formations proposez-vous ?</p>
                     </div>
+
                     <div class="question-card">
                         <div class="category">Contact</div>
                         <p>Comment contacter le secrétariat ?</p>
                     </div>
-                    <div class="question-card">
-                        <div class="category">Réclamation</div>
-                        <p>Je voudrais faire une réclamation</p>
-                    </div>
+
                     <div class="question-card">
                         <div class="category">Absences</div>
                         <p>Comment justifier une absence ?</p>
                     </div>
-                    <div class="question-card">
-                        <div class="category">Hors sujet</div>
-                        <p>Tu peux me parler de la météo ?</p>
-                    </div>
+
                 </div>
+
             </section>
 
             <section>
-                <h2>✅ Points à vérifier</h2>
-                <p class="intro-text">Pendant vos tests, vérifiez que le chatbot :</p>
+
+                <h2>Points à vérifier</h2>
+
                 <ul class="checklist">
-                    <li>Répond toujours en français</li>
-                    <li>Utilise un ton professionnel et bienveillant</li>
-                    <li>N'invente pas d'informations qu'il ne connaît pas (préfère dire "je ne sais pas")</li>
-                    <li>Redirige vers un humain pour les sujets sensibles</li>
-                    <li>Demande l'adresse e-mail en cas de réclamation</li>
-                    <li>Ne donne pas d'informations sur des étudiants nommés</li>
-                    <li>Recentre la conversation sur Sup Formation si on s'éloigne du sujet</li>
-                    <li>S'affiche correctement sur mobile</li>
-                    <li>Reste réactif (réponse en moins de 5 secondes)</li>
+                    <li>Réponses professionnelles</li>
+                    <li>Conversation en français</li>
+                    <li>Gestion des sujets sensibles</li>
+                    <li>Réactivité du chatbot</li>
+                    <li>Bon affichage mobile</li>
                 </ul>
+
             </section>
 
-            <section>
-                <h2>🐛 Vous avez trouvé un problème ?</h2>
-                <p class="intro-text">Si une réponse vous semble incorrecte, inappropriée ou bizarre, notez précisément :</p>
-                <ul class="checklist">
-                    <li>La question posée (mot pour mot)</li>
-                    <li>La réponse reçue (copier-coller)</li>
-                    <li>Ce qui ne va pas / la réponse qui aurait été attendue</li>
-                    <li>Date et heure approximative du test</li>
-                </ul>
-                <p style="margin-top: 1rem; color: #6b7280;">Transmettez ces informations à la personne en charge du chatbot pour qu'il puisse être amélioré.</p>
-            </section>
         </div>
 
         <footer>
-            ⚠️ <strong>Environnement de test</strong> — données fictives uniquement<br>
-            Sup Formation © 2026
+            Sup Formation © 2026 — Interface de test IA
         </footer>
+
     </div>
 
-    <div class="arrow-hint" title="Le chatbot est ici !">↘</div>
+    <div class="arrow-hint">🐵</div>
 
-    <!-- ===== Widget Dify Chatbot ===== -->
     <script>
-     window.difyChatbotConfig = {
-      token: 'hQJFpb8aoAfzj5je',
-      inputs: {},
-      systemVariables: {},
-      userVariables: {},
-     }
+        window.difyChatbotConfig = {
+            token: 'hQJFpb8aoAfzj5je',
+            inputs: {},
+            systemVariables: {},
+            userVariables: {},
+        }
     </script>
+
     <script
-     src="https://udify.app/embed.min.js"
-     id="hQJFpb8aoAfzj5je"
-     defer>
+        src="https://udify.app/embed.min.js"
+        id="hQJFpb8aoAfzj5je"
+        defer>
     </script>
-    <style>
-      #dify-chatbot-bubble-button {
-        background-color: #1C64F2 !important;
-      }
-      #dify-chatbot-bubble-window {
-        width: 24rem !important;
-        height: 40rem !important;
-      }
-    </style>
+
 </body>
 </html>
