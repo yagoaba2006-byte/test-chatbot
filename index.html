@@ -390,16 +390,31 @@ window.difyChatbotConfig = {
 }
 </script>
 
+<!-- Dify -->
+
+<script>
+window.difyChatbotConfig = {
+    token: 'hQJFpb8aoAfzj5je',
+    inputs: {},
+    systemVariables: {},
+    userVariables: {},
+}
+</script>
+
 <script>
 window.addEventListener("load", function () {
 
-    const script = document.createElement("script");
+    setTimeout(() => {
 
-    script.src = "https://udify.app/embed.min.js";
+        const script = document.createElement("script");
 
-    script.id = "hQJFpb8aoAfzj5je";
+        script.src = "https://udify.app/embed.min.js";
 
-    document.body.appendChild(script);
+        script.id = "hQJFpb8aoAfzj5je";
+
+        document.body.appendChild(script);
+
+    }, 1000);
 
 });
 </script>
