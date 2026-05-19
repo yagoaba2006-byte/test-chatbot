@@ -110,7 +110,6 @@
       font-size: 1rem;
       line-height: 1.5;
     }
-
     /* ===== Boutons d'actions ===== */
     .action-buttons {
       display: flex;
@@ -146,7 +145,38 @@
       height: 22px;
       fill: currentColor;
     }
-
+    /* ===== Section Flyers ===== */
+    .flyers {
+      margin-top: 100px;
+      text-align: center;
+    }
+    .flyers h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+    .flyers .section-desc {
+      color: #9ca3af;
+      margin-bottom: 28px;
+    }
+    .flyers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .flyers-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      border: 1px solid #262626;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .flyers-grid img:hover {
+      transform: translateY(-4px);
+      border-color: #404040;
+    }
     /* ===== Modal WiFi ===== */
     .wifi-modal-overlay {
       display: none;
@@ -238,15 +268,14 @@
     .wifi-btn-fermer { background: rgba(255,255,255,0.08); color: #fff; }
     .wifi-btn-fermer:hover { background: rgba(255,255,255,0.14); }
     .wifi-print-only { display: none; }
-
     @media (max-width: 720px) {
       .brand h1 { font-size: 2.8rem; }
       .brand img { width: 100px; height: 100px; }
       .cards { grid-template-columns: 1fr; }
+      .flyers-grid { grid-template-columns: 1fr; }
       .page { padding: 60px 20px 100px; }
       .action-btn { width: 100%; justify-content: center; }
     }
-
     /* ===== Impression ===== */
     @media print {
       body * { visibility: hidden; }
@@ -280,7 +309,6 @@
       .qr-container img { width: 460px !important; max-width: 460px !important; margin: 20px auto; }
       .wifi-print-footer { margin-top: 40px; font-size: 15px; color: #555; }
     }
-
     /* ===== Bouton bulle Dify avec le toucan ===== */
     #dify-chatbot-bubble-button {
       background-color: #ffffff !important;
@@ -333,7 +361,6 @@
         <div class="q">Quels sont les horaires des cours ?</div>
       </div>
     </div>
-
     <!-- ===== BOUTONS D'ACTIONS ===== -->
     <div class="action-buttons">
       <a href="Proposition_TOUCAIN_SupFormation.pdf" target="_blank" class="action-btn">
@@ -346,8 +373,18 @@
         WiFi de l'école
       </button>
     </div>
+    <!-- ===== SECTION FLYERS ===== -->
+    <section class="flyers">
+      <h2 class="section-title">Nos campagnes Sup Formation</h2>
+      <hr class="divider" />
+      <p class="section-desc">Les flyers parodiques de nos communications.</p>
+      <div class="flyers-grid">
+        <img src="images/Flyers%20Pirate.png" alt="Les Pirates des Alternances">
+        <img src="images/Flyer%20Stars%20Wars.png" alt="Que la Formation soit avec toi">
+        <img src="images/Flyers%20Harry%20Potter.png" alt="Sup'pentard - École de Sup'cellerie">
+      </div>
+    </section>
   </div>
-
   <!-- ===== MODAL WIFI ===== -->
   <div class="wifi-modal-overlay" id="wifiModalEcole">
     <div class="wifi-modal">
@@ -365,7 +402,6 @@
       </div>
     </div>
   </div>
-
   <script>
     (function() {
       var modal = document.getElementById('wifiModalEcole');
@@ -378,7 +414,6 @@
       });
     })();
   </script>
-
   <!-- ===== Chatbot Dify ===== -->
   <script>
     window.difyChatbotConfig = {
@@ -391,35 +426,3 @@
   <script src="https://udify.app/embed.min.js" id="hQJFpb8aoAfzj5je" defer></script>
 </body>
 </html>
-<section class="flyers">
-  <h2>Nos campagnes Sup Formation</h2>
-  <div class="flyers-grid">
-    <img src="images/Flyers%20Pirate.png" alt="Les Pirates des Alternances">
-    <img src="images/Flyers%20Stars%20Wars.png" alt="Que la Formation soit avec toi">
-    <img src="images/Flyers%20Harry%20Potter.png" alt="Sup'pentard - École de Sup'cellerie">
-  </div>
-</section>
-
-<style>
-  .flyers {
-    padding: 40px 20px;
-    text-align: center;
-  }
-  .flyers h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-  }
-  .flyers-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  .flyers-grid img {
-    width: 100%;
-    max-width: 350px;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-</style>
