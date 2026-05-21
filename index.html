@@ -23,17 +23,17 @@
     }
     .brand { display: flex; flex-direction: column; align-items: center; gap: 24px; margin-bottom: 28px; }
     .brand img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; }
-    .brand h1 { font-size: 4rem; font-weight: 700; letter-spacing: -0.02em; color: #fff; line-height: 1; }
+    .brand h1 { font-size: 4rem; font-weight: 700; letter-spacing: -0.02em; color: #ffffff; line-height: 1; }
     .subtitle { font-size: 1.15rem; color: #9ca3af; max-width: 620px; margin: 0 auto 56px; text-align: center; }
     .welcome {
-      background: #111; border: 1px solid #262626; border-radius: 14px;
+      background: #111111; border: 1px solid #262626; border-radius: 14px;
       padding: 22px 26px; color: #d1d5db; font-size: 1.02rem; margin-bottom: 80px;
     }
-    .section-title { font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 14px; }
+    .section-title { font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 14px; }
     .divider { border: none; border-top: 1px solid #262626; margin-bottom: 18px; }
     .section-desc { color: #9ca3af; margin-bottom: 28px; }
     .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .card { background: #111; border: 1px solid #262626; border-radius: 14px; padding: 22px; transition: 0.2s; }
+    .card { background: #111111; border: 1px solid #262626; border-radius: 14px; padding: 22px; transition: border-color 0.2s, transform 0.2s; }
     .card:hover { border-color: #404040; transform: translateY(-2px); }
     .card .label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; color: #6b7280; margin-bottom: 14px; }
     .card .q { color: #e5e7eb; font-size: 1rem; line-height: 1.5; }
@@ -42,66 +42,62 @@
       display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px;
       background: #111; color: white; text-decoration: none; border: 1px solid #262626;
       border-radius: 16px; font-size: 18px; font-weight: 600;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.15); transition: 0.2s; cursor: pointer; font-family: inherit;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+      transition: transform 0.2s, border-color 0.2s, background 0.2s;
+      cursor: pointer; font-family: inherit;
     }
     .action-btn:hover { transform: translateY(-3px); border-color: #404040; background: #181818; }
     .action-btn svg { width: 22px; height: 22px; fill: currentColor; }
     .flyers { margin-top: 100px; text-align: center; }
-    .flyers h2 { font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 14px; }
+    .flyers h2 { font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 14px; }
     .flyers .section-desc { color: #9ca3af; margin-bottom: 28px; }
     .flyers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
     .flyers-grid img {
       width: 100%; height: auto; border-radius: 14px; border: 1px solid #262626;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3); transition: 0.2s; cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      transition: transform 0.2s, border-color 0.2s; cursor: pointer;
     }
     .flyers-grid img:hover { transform: translateY(-4px); border-color: #404040; }
     .image-modal-overlay {
-      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92);
+      display: none; position: fixed; inset: 0;
+      background: rgba(0, 0, 0, 0.92);
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       align-items: center; justify-content: center; z-index: 10000; padding: 40px; cursor: zoom-out;
     }
     .image-modal-overlay.active { display: flex; }
-    .image-modal-overlay img {
-      max-width: 95%; max-height: 95vh; border-radius: 12px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.7); cursor: default;
-    }
+    .image-modal-overlay img { max-width: 95%; max-height: 95vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.7); cursor: default; }
     .image-modal-close {
       position: absolute; top: 20px; right: 20px;
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-      color: white; font-size: 28px; cursor: pointer; width: 44px; height: 44px;
-      border-radius: 50%; line-height: 1; transition: 0.2s;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;
+      font-size: 28px; cursor: pointer; width: 44px; height: 44px;
+      border-radius: 50%; line-height: 1; transition: background 0.2s;
     }
     .image-modal-close:hover { background: rgba(255,255,255,0.2); }
     .wifi-modal-overlay {
-      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75);
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.75);
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       align-items: center; justify-content: center; z-index: 9999; padding: 20px;
     }
     .wifi-modal-overlay.active { display: flex; }
     .wifi-modal {
-      background: #111; border: 1px solid #262626; border-radius: 20px;
-      max-width: 440px; width: 100%; padding: 36px 32px 28px; text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6); position: relative; color: #fff;
+      background: #111111; border: 1px solid #262626; border-radius: 20px;
+      max-width: 440px; width: 100%; padding: 36px 32px 28px;
+      text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.6); position: relative; color: #fff;
     }
     .wifi-modal-close {
       position: absolute; top: 14px; right: 14px;
       background: rgba(255,255,255,0.06); border: none; font-size: 22px;
       cursor: pointer; color: #aaa; width: 34px; height: 34px;
-      border-radius: 50%; line-height: 1; transition: 0.2s;
+      border-radius: 50%; line-height: 1; transition: background 0.2s, color 0.2s;
     }
     .wifi-modal-close:hover { background: rgba(255,255,255,0.12); color: #fff; }
     .wifi-modal h2 { margin: 0 0 6px; font-size: 1.4rem; font-weight: 700; color: #fff; }
     .wifi-modal p { margin: 0 0 20px; color: #9ca3af; font-size: 0.95rem; line-height: 1.5; }
-    .qr-container {
-      display: flex; justify-content: center; margin: 16px 0 24px;
-      padding: 18px; background: #fff; border-radius: 14px;
-    }
+    .qr-container { display: flex; justify-content: center; margin: 16px 0 24px; padding: 18px; background: #fff; border-radius: 14px; }
     .qr-container img { width: 100%; max-width: 260px; height: auto; display: block; }
     .wifi-modal-actions { display: flex; gap: 10px; }
-    .wifi-btn-action {
-      flex: 1; padding: 13px; border: none; border-radius: 12px;
-      font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; transition: 0.2s;
-    }
+    .wifi-btn-action { flex: 1; padding: 13px; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; transition: background 0.2s; }
     .wifi-btn-print { background: #fff; color: #000; }
     .wifi-btn-print:hover { background: #e5e5e5; }
     .wifi-btn-fermer { background: rgba(255,255,255,0.08); color: #fff; }
@@ -110,7 +106,8 @@
     @media (max-width: 720px) {
       .brand h1 { font-size: 2.8rem; }
       .brand img { width: 100px; height: 100px; }
-      .cards, .flyers-grid { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }
+      .flyers-grid { grid-template-columns: 1fr; }
       .page { padding: 60px 20px 100px; }
       .action-btn { width: 100%; justify-content: center; }
     }
@@ -124,17 +121,50 @@
       .wifi-modal-close, .wifi-modal-actions { display: none !important; }
       .wifi-print-only { display: block; color: #000; }
       .wifi-print-only h1 { font-size: 42px; margin: 0 0 10px; color: #000; }
+      .wifi-print-only h3 { font-size: 22px; margin: 0 0 30px; font-weight: 400; color: #555; }
       .qr-container { border: none; padding: 0; background: #fff; }
       .qr-container img { width: 460px !important; max-width: 460px !important; margin: 20px auto; }
+      .wifi-print-footer { margin-top: 40px; font-size: 15px; color: #555; }
     }
     #dify-chatbot-bubble-button {
-      background-color: #fff !important; background-image: url('toucan.png') !important;
-      background-size: cover !important; background-position: center !important;
-      background-repeat: no-repeat !important; border: 2px solid #262626 !important;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5) !important;
+      background-color: #ffffff !important;
+      background-image: url('toucan.png') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      border: 2px solid #262626 !important;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5) !important;
     }
-    #dify-chatbot-bubble-button svg, #dify-chatbot-bubble-button img { display: none !important; }
+    #dify-chatbot-bubble-button svg,
+    #dify-chatbot-bubble-button img { display: none !important; }
     #dify-chatbot-bubble-window { width: 24rem !important; height: 40rem !important; }
+    .kakemono-section { margin-top: 100px; text-align: center; }
+    .kakemono-section img {
+      max-height: 500px; max-width: 100%; border-radius: 14px;
+      border: 1px solid #262626; box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      cursor: pointer; transition: transform 0.2s, border-color 0.2s; margin-top: 10px;
+    }
+    .kakemono-section img:hover { transform: scale(1.03); border-color: #404040; }
+    .three-d-modal {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.95);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      z-index: 10001; justify-content: center; align-items: center;
+    }
+    .three-d-modal.active { display: flex; }
+    .three-d-close-btn {
+      position: absolute; top: 20px; right: 20px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: white; font-size: 28px; cursor: pointer;
+      width: 44px; height: 44px; border-radius: 50%; line-height: 1; z-index: 10002;
+    }
+    .three-d-hint {
+      position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+      color: white; font-size: 14px; opacity: 0.75;
+      background: rgba(0,0,0,0.5); padding: 8px 16px; border-radius: 20px;
+      pointer-events: none; white-space: nowrap;
+    }
+    #threeDContainer { width: 100%; height: 100%; }
   </style>
 </head>
 <body>
@@ -175,6 +205,12 @@
         <img src="Flyersloto4.png" alt="Flyer Loto Sup Formation 4">
       </div>
     </section>
+    <section class="kakemono-section">
+      <h2 class="section-title">Notre kakemono Sup Formation en 3D</h2>
+      <hr class="divider" />
+      <p class="section-desc">Cliquez sur le kakemono pour le faire tourner en 3D.</p>
+      <img src="kakemono.png" alt="Kakemono Sup Formation" onclick="open3DViewer('kakemono.png')">
+    </section>
   </div>
   <div class="wifi-modal-overlay" id="wifiModalEcole">
     <div class="wifi-modal">
@@ -192,6 +228,11 @@
     <button class="image-modal-close" onclick="document.getElementById('imageModal').classList.remove('active')" aria-label="Fermer">&times;</button>
     <img id="imageModalContent" src="" alt="">
   </div>
+  <div id="threeDModal" class="three-d-modal">
+    <button class="three-d-close-btn" onclick="close3DModal()" aria-label="Fermer">&times;</button>
+    <div id="threeDContainer"></div>
+    <div class="three-d-hint">Glisse pour faire tourner • Molette pour zoomer • Échap pour fermer</div>
+  </div>
   <script>
     (function() {
       var modal = document.getElementById('wifiModalEcole');
@@ -199,6 +240,8 @@
       modal.addEventListener('click', function(e) { if (e.target === modal) modal.classList.remove('active'); });
       document.addEventListener('keydown', function(e) { if (e.key === 'Escape') modal.classList.remove('active'); });
     })();
+  </script>
+  <script>
     (function() {
       var modal = document.getElementById('imageModal');
       var modalImg = document.getElementById('imageModalContent');
@@ -214,8 +257,60 @@
       document.addEventListener('keydown', function(e) { if (e.key === 'Escape') modal.classList.remove('active'); });
     })();
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <script>
-    window.difyChatbotConfig = { token: 'hQJFpb8aoAfzj5je', inputs: {}, systemVariables: {}, userVariables: {} }
+    let scene3D, camera3D, renderer3D, controls3D, animationId3D;
+    function open3DViewer(imageSrc) {
+      document.getElementById('threeDModal').classList.add('active');
+      const container = document.getElementById('threeDContainer');
+      container.innerHTML = '';
+      scene3D = new THREE.Scene();
+      camera3D = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera3D.position.set(0, 0, 7);
+      renderer3D = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer3D.setSize(window.innerWidth, window.innerHeight);
+      container.appendChild(renderer3D.domElement);
+      new THREE.TextureLoader().load(imageSrc, function(texture) {
+        const geometry = new THREE.PlaneGeometry(2, 5);
+        const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
+        const plane = new THREE.Mesh(geometry, material);
+        scene3D.add(plane);
+      });
+      controls3D = new THREE.OrbitControls(camera3D, renderer3D.domElement);
+      controls3D.enableDamping = true;
+      controls3D.dampingFactor = 0.08;
+      function animate() {
+        if (!document.getElementById('threeDModal').classList.contains('active')) return;
+        animationId3D = requestAnimationFrame(animate);
+        controls3D.update();
+        renderer3D.render(scene3D, camera3D);
+      }
+      animate();
+    }
+    function close3DModal() {
+      document.getElementById('threeDModal').classList.remove('active');
+      if (animationId3D) cancelAnimationFrame(animationId3D);
+    }
+    window.addEventListener('resize', function() {
+      if (renderer3D && camera3D) {
+        camera3D.aspect = window.innerWidth / window.innerHeight;
+        camera3D.updateProjectionMatrix();
+        renderer3D.setSize(window.innerWidth, window.innerHeight);
+      }
+    });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close3DModal(); });
+    document.getElementById('threeDModal').addEventListener('click', function(e) {
+      if (e.target.id === 'threeDModal') close3DModal();
+    });
+  </script>
+  <script>
+    window.difyChatbotConfig = {
+      token: 'hQJFpb8aoAfzj5je',
+      inputs: {},
+      systemVariables: {},
+      userVariables: {},
+    }
   </script>
   <script src="https://udify.app/embed.min.js" id="hQJFpb8aoAfzj5je" defer></script>
 </body>
