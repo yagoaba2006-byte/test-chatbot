@@ -8,27 +8,17 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: #0a0a0a;
-      color: #e5e7eb;
-      min-height: 100vh;
-      line-height: 1.6;
+      background: #0a0a0a; color: #e5e7eb; min-height: 100vh; line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
     .page { max-width: 960px; margin: 0 auto; padding: 80px 32px 120px; }
     .top { text-align: center; }
-    .badge {
-      display: inline-block; padding: 8px 18px; border-radius: 999px;
-      background: #1a1a1a; border: 1px solid #262626; color: #e5e7eb;
-      font-size: 0.85rem; font-weight: 500; margin-bottom: 40px;
-    }
+    .badge { display: inline-block; padding: 8px 18px; border-radius: 999px; background: #1a1a1a; border: 1px solid #262626; color: #e5e7eb; font-size: 0.85rem; font-weight: 500; margin-bottom: 40px; }
     .brand { display: flex; flex-direction: column; align-items: center; gap: 24px; margin-bottom: 28px; }
     .brand img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; }
     .brand h1 { font-size: 4rem; font-weight: 700; letter-spacing: -0.02em; color: #ffffff; line-height: 1; }
     .subtitle { font-size: 1.15rem; color: #9ca3af; max-width: 620px; margin: 0 auto 56px; text-align: center; }
-    .welcome {
-      background: #111111; border: 1px solid #262626; border-radius: 14px;
-      padding: 22px 26px; color: #d1d5db; font-size: 1.02rem; margin-bottom: 80px;
-    }
+    .welcome { background: #111111; border: 1px solid #262626; border-radius: 14px; padding: 22px 26px; color: #d1d5db; font-size: 1.02rem; margin-bottom: 80px; }
     .section-title { font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 14px; }
     .divider { border: none; border-top: 1px solid #262626; margin-bottom: 18px; }
     .section-desc { color: #9ca3af; margin-bottom: 28px; }
@@ -38,59 +28,24 @@
     .card .label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; color: #6b7280; margin-bottom: 14px; }
     .card .q { color: #e5e7eb; font-size: 1rem; line-height: 1.5; }
     .action-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin: 60px 0 0; }
-    .action-btn {
-      display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px;
-      background: #111; color: white; text-decoration: none; border: 1px solid #262626;
-      border-radius: 16px; font-size: 18px; font-weight: 600;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-      transition: transform 0.2s, border-color 0.2s, background 0.2s;
-      cursor: pointer; font-family: inherit;
-    }
+    .action-btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; background: #111; color: white; text-decoration: none; border: 1px solid #262626; border-radius: 16px; font-size: 18px; font-weight: 600; box-shadow: 0 5px 20px rgba(0,0,0,0.15); transition: transform 0.2s, border-color 0.2s, background 0.2s; cursor: pointer; font-family: inherit; }
     .action-btn:hover { transform: translateY(-3px); border-color: #404040; background: #181818; }
     .action-btn svg { width: 22px; height: 22px; fill: currentColor; }
     .flyers { margin-top: 100px; text-align: center; }
     .flyers h2 { font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 14px; }
     .flyers .section-desc { color: #9ca3af; margin-bottom: 28px; }
     .flyers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .flyers-grid img {
-      width: 100%; height: auto; border-radius: 14px; border: 1px solid #262626;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-      transition: transform 0.2s, border-color 0.2s; cursor: pointer;
-    }
+    .flyers-grid img { width: 100%; height: auto; border-radius: 14px; border: 1px solid #262626; box-shadow: 0 6px 20px rgba(0,0,0,0.3); transition: transform 0.2s, border-color 0.2s; cursor: pointer; }
     .flyers-grid img:hover { transform: translateY(-4px); border-color: #404040; }
-    .image-modal-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(0, 0, 0, 0.92);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      align-items: center; justify-content: center; z-index: 10000; padding: 40px; cursor: zoom-out;
-    }
+    .image-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; z-index: 10000; padding: 40px; cursor: zoom-out; }
     .image-modal-overlay.active { display: flex; }
     .image-modal-overlay img { max-width: 95%; max-height: 95vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.7); cursor: default; }
-    .image-modal-close {
-      position: absolute; top: 20px; right: 20px;
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;
-      font-size: 28px; cursor: pointer; width: 44px; height: 44px;
-      border-radius: 50%; line-height: 1; transition: background 0.2s;
-    }
+    .image-modal-close { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; font-size: 28px; cursor: pointer; width: 44px; height: 44px; border-radius: 50%; line-height: 1; transition: background 0.2s; }
     .image-modal-close:hover { background: rgba(255,255,255,0.2); }
-    .wifi-modal-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.75);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      align-items: center; justify-content: center; z-index: 9999; padding: 20px;
-    }
+    .wifi-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; z-index: 9999; padding: 20px; }
     .wifi-modal-overlay.active { display: flex; }
-    .wifi-modal {
-      background: #111111; border: 1px solid #262626; border-radius: 20px;
-      max-width: 440px; width: 100%; padding: 36px 32px 28px;
-      text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.6); position: relative; color: #fff;
-    }
-    .wifi-modal-close {
-      position: absolute; top: 14px; right: 14px;
-      background: rgba(255,255,255,0.06); border: none; font-size: 22px;
-      cursor: pointer; color: #aaa; width: 34px; height: 34px;
-      border-radius: 50%; line-height: 1; transition: background 0.2s, color 0.2s;
-    }
+    .wifi-modal { background: #111111; border: 1px solid #262626; border-radius: 20px; max-width: 440px; width: 100%; padding: 36px 32px 28px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.6); position: relative; color: #fff; }
+    .wifi-modal-close { position: absolute; top: 14px; right: 14px; background: rgba(255,255,255,0.06); border: none; font-size: 22px; cursor: pointer; color: #aaa; width: 34px; height: 34px; border-radius: 50%; line-height: 1; transition: background 0.2s, color 0.2s; }
     .wifi-modal-close:hover { background: rgba(255,255,255,0.12); color: #fff; }
     .wifi-modal h2 { margin: 0 0 6px; font-size: 1.4rem; font-weight: 700; color: #fff; }
     .wifi-modal p { margin: 0 0 20px; color: #9ca3af; font-size: 0.95rem; line-height: 1.5; }
@@ -126,65 +81,34 @@
       .qr-container img { width: 460px !important; max-width: 460px !important; margin: 20px auto; }
       .wifi-print-footer { margin-top: 40px; font-size: 15px; color: #555; }
     }
-    #dify-chatbot-bubble-button {
-      background-color: #ffffff !important;
-      background-image: url('toucan.png') !important;
-      background-size: cover !important;
-      background-position: center !important;
-      background-repeat: no-repeat !important;
-      border: 2px solid #262626 !important;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5) !important;
-    }
-    #dify-chatbot-bubble-button svg,
-    #dify-chatbot-bubble-button img { display: none !important; }
+    #dify-chatbot-bubble-button { background-color: #ffffff !important; background-image: url('toucan.png') !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; border: 2px solid #262626 !important; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5) !important; }
+    #dify-chatbot-bubble-button svg, #dify-chatbot-bubble-button img { display: none !important; }
     #dify-chatbot-bubble-window { width: 24rem !important; height: 40rem !important; }
     .kakemono-section { margin-top: 100px; text-align: center; }
-    .kakemono-section img {
-      max-height: 500px; max-width: 100%; border-radius: 14px;
-      border: 1px solid #262626; box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-      cursor: pointer; transition: transform 0.2s, border-color 0.2s; margin-top: 10px;
-    }
+    .kakemono-section img { max-height: 500px; max-width: 100%; border-radius: 14px; border: 1px solid #262626; box-shadow: 0 6px 20px rgba(0,0,0,0.3); cursor: pointer; transition: transform 0.2s, border-color 0.2s; margin-top: 10px; }
     .kakemono-section img:hover { transform: scale(1.03); border-color: #404040; }
-    .three-d-modal {
-      display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.95);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      z-index: 10001; justify-content: center; align-items: center;
-    }
+    .three-d-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 10001; justify-content: center; align-items: center; }
     .three-d-modal.active { display: flex; }
-    .three-d-close-btn {
-      position: absolute; top: 20px; right: 20px;
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-      color: white; font-size: 28px; cursor: pointer;
-      width: 44px; height: 44px; border-radius: 50%; line-height: 1; z-index: 10002;
-    }
-    .three-d-hint {
-      position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
-      color: white; font-size: 14px; opacity: 0.75;
-      background: rgba(0,0,0,0.5); padding: 8px 16px; border-radius: 20px;
-      pointer-events: none; white-space: nowrap;
-    }
+    .three-d-close-btn { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; font-size: 28px; cursor: pointer; width: 44px; height: 44px; border-radius: 50%; line-height: 1; z-index: 10002; }
+    .three-d-hint { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: white; font-size: 14px; opacity: 0.75; background: rgba(0,0,0,0.5); padding: 8px 16px; border-radius: 20px; pointer-events: none; white-space: nowrap; }
     #threeDContainer { width: 100%; height: 100%; }
     .upload-kakemono-section { margin-top: 100px; text-align: center; }
-    .upload-zone {
-      display: inline-block; width: 220px; height: 500px;
-      background: #fff; border: 2px dashed #404040; border-radius: 14px;
-      cursor: pointer; position: relative; overflow: hidden;
-      transition: border-color 0.2s, transform 0.2s, background 0.2s;
-      margin-bottom: 8px;
-    }
+    .upload-zone { display: inline-block; width: 220px; height: 500px; background: #fff; border: 2px dashed #404040; border-radius: 14px; cursor: pointer; position: relative; overflow: hidden; transition: border-color 0.2s, transform 0.2s, background 0.2s; margin-bottom: 8px; }
     .upload-zone:hover { border-color: #888; transform: scale(1.02); }
     .upload-zone.dragover { border-color: #fff; background: #f5f5f5; }
-    .upload-placeholder {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      color: #666; gap: 14px; padding: 20px; text-align: center;
-    }
+    .upload-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #666; gap: 14px; padding: 20px; text-align: center; }
     .upload-icon { font-size: 52px; opacity: 0.6; }
     .upload-text { font-size: 14px; color: #555; line-height: 1.4; }
     .upload-zone img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .upload-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
     .upload-actions .action-btn { padding: 12px 24px; font-size: 15px; }
+    .scratch-section { margin-top: 100px; text-align: center; }
+    .scratch-container { position: relative; display: inline-block; max-width: 360px; width: 100%; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.4); user-select: none; -webkit-user-select: none; }
+    .scratch-revealed { display: block; width: 100%; height: auto; pointer-events: none; }
+    #scratchCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: grab; touch-action: none; }
+    #scratchCanvas:active { cursor: grabbing; }
+    .scratch-reset-btn { margin-top: 18px; padding: 10px 22px; background: #111; color: white; border: 1px solid #262626; border-radius: 12px; cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 600; transition: background 0.2s, border-color 0.2s; }
+    .scratch-reset-btn:hover { background: #181818; border-color: #404040; }
   </style>
 </head>
 <body>
@@ -248,6 +172,17 @@
         <button class="action-btn" onclick="resetUpload()">🗑 Effacer</button>
       </div>
     </section>
+    <section class="scratch-section">
+      <h2 class="section-title">Notre ticket à gratter Sup Formation</h2>
+      <hr class="divider" />
+      <p class="section-desc">Gratte avec la souris (ou ton doigt sur mobile) pour révéler le QR code.</p>
+      <div class="scratch-container" id="scratchContainer">
+        <img src="ticket-qr.png" class="scratch-revealed" id="scratchRevealed" alt="Ticket Sup Formation avec QR code">
+        <canvas id="scratchCanvas"></canvas>
+      </div>
+      <br>
+      <button class="scratch-reset-btn" onclick="resetScratch()">🔄 Recommencer</button>
+    </section>
   </div>
   <div class="wifi-modal-overlay" id="wifiModalEcole">
     <div class="wifi-modal">
@@ -285,9 +220,7 @@
       var images = document.querySelectorAll('.flyers-grid img');
       images.forEach(function(img) {
         img.addEventListener('click', function() {
-          modalImg.src = img.src;
-          modalImg.alt = img.alt;
-          modal.classList.add('active');
+          modalImg.src = img.src; modalImg.alt = img.alt; modal.classList.add('active');
         });
       });
       modal.addEventListener('click', function(e) { if (e.target === modal) modal.classList.remove('active'); });
@@ -353,16 +286,10 @@
       const file = e.target.files[0];
       if (file && file.type.startsWith('image/')) handleUploadedImage(file);
     });
-    uploadZone.addEventListener('dragover', function(e) {
-      e.preventDefault();
-      uploadZone.classList.add('dragover');
-    });
-    uploadZone.addEventListener('dragleave', function() {
-      uploadZone.classList.remove('dragover');
-    });
+    uploadZone.addEventListener('dragover', function(e) { e.preventDefault(); uploadZone.classList.add('dragover'); });
+    uploadZone.addEventListener('dragleave', function() { uploadZone.classList.remove('dragover'); });
     uploadZone.addEventListener('drop', function(e) {
-      e.preventDefault();
-      uploadZone.classList.remove('dragover');
+      e.preventDefault(); uploadZone.classList.remove('dragover');
       const file = e.dataTransfer.files[0];
       if (file && file.type.startsWith('image/')) handleUploadedImage(file);
     });
@@ -374,19 +301,80 @@
       placeholder.style.display = 'none';
       uploadActions.style.display = 'flex';
     }
-    function view3DUploaded() {
-      if (uploadedImageURL) open3DViewer(uploadedImageURL);
-    }
+    function view3DUploaded() { if (uploadedImageURL) open3DViewer(uploadedImageURL); }
     function resetUpload() {
-      if (uploadedImageURL) {
-        URL.revokeObjectURL(uploadedImageURL);
-        uploadedImageURL = null;
-      }
+      if (uploadedImageURL) { URL.revokeObjectURL(uploadedImageURL); uploadedImageURL = null; }
       preview.style.display = 'none';
       placeholder.style.display = 'flex';
       uploadActions.style.display = 'none';
       fileInput.value = '';
     }
+  </script>
+  <script>
+    (function() {
+      const canvas = document.getElementById('scratchCanvas');
+      const revealedImg = document.getElementById('scratchRevealed');
+      const ctx = canvas.getContext('2d');
+      const overlayImg = new Image();
+      overlayImg.crossOrigin = 'anonymous';
+      overlayImg.src = 'ticket-silver.png';
+      let isReady = false;
+      let isScratching = false;
+      let lastPos = null;
+      const brushRadius = 35;
+      function setupCanvas() {
+        if (!overlayImg.complete || !revealedImg.complete) return;
+        const w = revealedImg.naturalWidth || revealedImg.width;
+        const h = revealedImg.naturalHeight || revealedImg.height;
+        canvas.width = w; canvas.height = h;
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(overlayImg, 0, 0, w, h);
+        isReady = true;
+      }
+      overlayImg.onload = setupCanvas;
+      revealedImg.onload = setupCanvas;
+      if (revealedImg.complete) setupCanvas();
+      function getPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+        const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+        return {
+          x: (clientX - rect.left) * (canvas.width / rect.width),
+          y: (clientY - rect.top) * (canvas.height / rect.height)
+        };
+      }
+      function scratchAt(pos) {
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, brushRadius, 0, Math.PI * 2);
+        ctx.fill();
+        if (lastPos) {
+          ctx.lineWidth = brushRadius * 2;
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          ctx.moveTo(lastPos.x, lastPos.y);
+          ctx.lineTo(pos.x, pos.y);
+          ctx.stroke();
+        }
+        lastPos = pos;
+      }
+      function start(e) { if (!isReady) return; isScratching = true; lastPos = null; scratchAt(getPos(e)); e.preventDefault(); }
+      function move(e) { if (!isScratching) return; scratchAt(getPos(e)); e.preventDefault(); }
+      function end() { isScratching = false; lastPos = null; }
+      canvas.addEventListener('mousedown', start);
+      canvas.addEventListener('mousemove', move);
+      canvas.addEventListener('mouseup', end);
+      canvas.addEventListener('mouseleave', end);
+      canvas.addEventListener('touchstart', start, { passive: false });
+      canvas.addEventListener('touchmove', move, { passive: false });
+      canvas.addEventListener('touchend', end);
+      window.resetScratch = function() {
+        if (!isReady) return;
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(overlayImg, 0, 0, canvas.width, canvas.height);
+      };
+    })();
   </script>
   <script>
     window.difyChatbotConfig = {
