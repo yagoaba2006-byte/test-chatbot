@@ -375,7 +375,7 @@
     container.appendChild(inlineRenderer.domElement);addLights(inlineScene);
     inlineControls=new THREE.OrbitControls(inlineCamera,inlineRenderer.domElement);inlineControls.enableDamping=true;inlineControls.dampingFactor=0.06;inlineControls.target.set(0,1.4,0);inlineControls.minPolarAngle=Math.PI/6;inlineControls.maxPolarAngle=Math.PI/1.6;inlineControls.minDistance=2;inlineControls.maxDistance=9;inlineControls.autoRotate=true;inlineControls.autoRotateSpeed=1.2;
     function loadTex(src,cb){new THREE.TextureLoader().load(src,t=>{t.encoding=THREE.sRGBEncoding;cb(t);},undefined,()=>{const c=document.createElement('canvas');c.width=256;c.height=640;const cx=c.getContext('2d');const gr=cx.createLinearGradient(0,0,0,640);gr.addColorStop(0,'#ff6b1a');gr.addColorStop(1,'#0a0a0a');cx.fillStyle=gr;cx.fillRect(0,0,256,640);cx.fillStyle='rgba(255,255,255,0.9)';cx.font='bold 28px sans-serif';cx.textAlign='center';cx.fillText('TOUCAIN',128,200);cb(new THREE.CanvasTexture(c));});}
-    loadTex('kakemono.png',tex=>inlineScene.add(buildKakemonoGroup(tex,0.82)));
+    loadTex('kakemono-V2.png',tex=>inlineScene.add(buildKakemonoGroup(tex,0.82)));
     function loop(){inlineAnimId=requestAnimationFrame(loop);inlineControls.update();inlineRenderer.render(inlineScene,inlineCamera);}loop();
     window.addEventListener('resize',()=>{const W2=container.clientWidth,H2=container.clientHeight;inlineCamera.aspect=W2/H2;inlineCamera.updateProjectionMatrix();inlineRenderer.setSize(W2,H2);});
   }
