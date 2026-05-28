@@ -34,15 +34,30 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
       background-size: 256px 256px; opacity: 0.6;
     }
-    .scroll-progress { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--gold)); z-index: 9999; box-shadow: 0 0 12px var(--accent-glow); transition: width 0.05s linear; }
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--gold));
+      z-index: 9999; box-shadow: 0 0 12px var(--accent-glow);
+      transition: width 0.05s linear;
+    }
     .bg-orbs { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
     .bg-orb { position: absolute; border-radius: 50%; filter: blur(100px); }
     .bg-orb-1 { width: 700px; height: 700px; background: radial-gradient(circle, rgba(255,107,26,0.07), transparent 70%); top: -250px; left: -200px; animation: orbFloat 24s ease-in-out infinite; }
     .bg-orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(79,142,255,0.05), transparent 70%); bottom: -200px; right: -200px; animation: orbFloat 32s ease-in-out infinite reverse; }
     .bg-orb-3 { width: 450px; height: 450px; background: radial-gradient(circle, rgba(6,214,160,0.04), transparent 70%); top: 50%; left: 25%; animation: orbFloat 28s ease-in-out infinite 5s; }
     @keyframes orbFloat { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(60px,-50px) scale(1.08)} 66%{transform:translate(-50px,40px) scale(0.94)} }
-    .grid-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0; background-image: linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px); background-size: 55px 55px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%); }
-    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); background: rgba(7,7,9,0.65); border-bottom: 1px solid rgba(255,255,255,0.05); transition: all 0.4s; }
+    .grid-bg {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px);
+      background-size: 55px 55px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+    }
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);
+      background: rgba(7,7,9,0.65); border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.4s;
+    }
     .nav.scrolled { background: rgba(7,7,9,0.88); border-bottom-color: rgba(255,255,255,0.07); }
     .nav-inner { max-width: 1200px; margin: 0 auto; padding: 13px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; }
@@ -63,7 +78,14 @@
     #heroCanvas { position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.55; }
     .page { position: relative; z-index: 1; max-width: 1140px; margin: 0 auto; padding: 130px 32px 60px; }
     .hero { text-align: center; padding: 30px 0 100px; position: relative; overflow: hidden; }
-    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 999px; background: rgba(255,107,26,0.07); border: 1px solid rgba(255,107,26,0.25); color: var(--accent-2); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 44px; animation: fadeUp 0.8s ease-out; backdrop-filter: blur(8px); }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: 999px;
+      background: rgba(255,107,26,0.07); border: 1px solid rgba(255,107,26,0.25);
+      color: var(--accent-2); font-size: 0.76rem; font-weight: 700;
+      letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 44px;
+      animation: fadeUp 0.8s ease-out; backdrop-filter: blur(8px);
+    }
     .badge .dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 12px var(--accent), 0 0 6px var(--accent); animation: pulseDot 2.5s ease-in-out infinite; }
     @keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
     .hero-logo-wrap { position: relative; width: 190px; height: 190px; margin: 0 auto 36px; animation: fadeUp 0.9s ease-out 0.1s both; }
@@ -186,7 +208,16 @@
     .footer-copy { color: var(--text-mute); font-size: 0.8rem; }
     @media (max-width: 720px) { .page { padding: 110px 18px 40px; } .cards { grid-template-columns: 1fr; } .flyers-grid { grid-template-columns: 1fr; } .btn { width: 100%; justify-content: center; } .section { margin-top: 90px; } .hero { padding-bottom: 50px; } }
     @media print { body * { visibility: hidden; } .wifi-modal-overlay { position: static !important; background: #fff !important; backdrop-filter: none !important; padding: 0; display: flex; height: 100vh; } .wifi-modal { box-shadow: none; border: none; background: #fff !important; color: #000 !important; max-width: 100%; padding: 50px; } .wifi-modal h2 { color: #000 !important; } .wifi-modal-overlay, .wifi-modal-overlay * { visibility: visible; } .wifi-modal-close, .wifi-modal-actions { display: none !important; } .wifi-print-only { display: block; color: #000; } .wifi-print-only h1 { font-size: 42px; margin: 0 0 10px; color: #000; } .qr-container { border: none; padding: 0; background: #fff; } .qr-container img { width: 460px !important; max-width: 460px !important; margin: 20px auto; } }
-    :root { --purple: #8b5cf6; --purple-soft: rgba(139,92,246,0.1); --igreen: #10b981; --igreen-soft: rgba(16,185,129,0.1); --ired: #ef4444; --iblue: #4f8eff; --iblue-soft: rgba(79,142,255,0.1); --igold: #f59e0b; --igold-soft: rgba(245,158,11,0.1); }
+
+    /* ══════════════════════════════════════════
+       INFRASTRUCTURE SOLUTIONS — CSS
+    ══════════════════════════════════════════ */
+    :root {
+      --purple: #8b5cf6; --purple-soft: rgba(139,92,246,0.1);
+      --igreen: #10b981; --igreen-soft: rgba(16,185,129,0.1);
+      --ired: #ef4444;   --iblue: #4f8eff; --iblue-soft: rgba(79,142,255,0.1);
+      --igold: #f59e0b;  --igold-soft: rgba(245,158,11,0.1);
+    }
     .infra-sep { margin-top: 130px; text-align: center; position: relative; }
     .infra-sep-inner { display: flex; align-items: center; gap: 20px; justify-content: center; }
     .infra-sep-line { flex: 1; max-width: 200px; height: 1px; background: linear-gradient(90deg, transparent, rgba(79,142,255,0.4), transparent); }
@@ -363,12 +394,19 @@
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
-  <div class="bg-orbs"><div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div><div class="bg-orb bg-orb-3"></div></div>
+  <div class="bg-orbs">
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+  </div>
   <div class="grid-bg"></div>
+
   <nav class="nav" id="mainNav">
     <div class="nav-inner">
       <a href="#hero" class="nav-brand">
-        <div class="nav-brand-img-wrap"><img src="toucan.png" alt="TOUCAIN Logo"></div>
+        <div class="nav-brand-img-wrap">
+          <img src="toucan.png" alt="TOUCAIN Logo">
+        </div>
         <span class="brand-name">TOUCAIN<span style="-webkit-text-fill-color:var(--accent)">.</span></span>
       </a>
       <div class="nav-links">
@@ -381,21 +419,34 @@
       </div>
     </div>
   </nav>
+
   <div class="page">
     <section class="hero" id="hero">
       <canvas id="heroCanvas"></canvas>
       <div class="badge"><div class="dot"></div>AI Assistant · Sup Formation · v2.0</div>
       <div class="hero-logo-wrap">
-        <div class="glow"></div><div class="ring1"></div><div class="ring2"></div>
+        <div class="glow"></div>
+        <div class="ring1"></div>
+        <div class="ring2"></div>
         <img src="toucan.png" alt="Logo TOUCAIN" />
       </div>
-      <h1><span class="line-1">L'assistant IA</span><span class="line-2">qui te répond</span></h1>
+      <h1>
+        <span class="line-1">L'assistant IA</span>
+        <span class="line-2">qui te répond</span>
+      </h1>
       <p class="hero-subtitle">TOUCAIN est l'assistant conversationnel intelligent de Sup Formation. Pose-lui n'importe quelle question sur les formations en alternance — réponse en quelques secondes.</p>
       <div class="hero-ctas">
-        <a href="#questions" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Tester le chatbot</a>
-        <a href="Proposition_TOUCAIN_SupFormation.pdf" target="_blank" class="btn btn-secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Voir le devis</a>
+        <a href="#questions" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Tester le chatbot
+        </a>
+        <a href="Proposition_TOUCAIN_SupFormation.pdf" target="_blank" class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Voir le devis
+        </a>
       </div>
     </section>
+
     <section class="section">
       <div class="stats">
         <div class="stat"><div class="stat-icon">🕐</div><div class="stat-value">24/7</div><div class="stat-label">Disponible</div></div>
@@ -404,6 +455,7 @@
         <div class="stat"><div class="stat-icon">∞</div><div class="stat-value">∞</div><div class="stat-label">Questions</div></div>
       </div>
     </section>
+
     <section class="section" id="questions">
       <div class="section-header">
         <div class="section-label">Démo</div>
@@ -411,14 +463,30 @@
         <p class="section-desc">Quelques exemples concrets pour découvrir TOUCAIN. Clique sur la bulle du toucan en bas à droite pour discuter.</p>
       </div>
       <div class="cards">
-        <div class="card"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="label">INSCRIPTIONS</div><div class="q">Comment puis-je m'inscrire à une formation ?</div></div>
-        <div class="card"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="label">TARIFS</div><div class="q">Quels sont les tarifs des formations ?</div></div>
-        <div class="card"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="label">PLANNING</div><div class="q">Quels sont les horaires des cours ?</div></div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <div class="label">INSCRIPTIONS</div>
+          <div class="q">Comment puis-je m'inscrire à une formation ?</div>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="label">TARIFS</div>
+          <div class="q">Quels sont les tarifs des formations ?</div>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="label">PLANNING</div>
+          <div class="q">Quels sont les horaires des cours ?</div>
+        </div>
       </div>
       <div class="action-buttons">
-        <button class="btn btn-secondary" onclick="document.getElementById('wifiModalEcole').classList.add('active')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1.41 8.5a14.83 14.83 0 0 1 21.18 0"/><path d="M5.29 12.18a9.86 9.86 0 0 1 13.42 0"/><path d="M9.17 16.05a5 5 0 0 1 5.66 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>WiFi de l'école</button>
+        <button class="btn btn-secondary" onclick="document.getElementById('wifiModalEcole').classList.add('active')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1.41 8.5a14.83 14.83 0 0 1 21.18 0"/><path d="M5.29 12.18a9.86 9.86 0 0 1 13.42 0"/><path d="M9.17 16.05a5 5 0 0 1 5.66 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
+          WiFi de l'école
+        </button>
       </div>
     </section>
+
     <section class="section" id="flyers">
       <div class="section-header">
         <div class="section-label">Marketing</div>
@@ -426,15 +494,44 @@
         <p class="section-desc">Flyers parodiques et créatifs pour communiquer autrement. Clique pour agrandir.</p>
       </div>
       <div class="flyers-grid">
-        <div class="flyer-item"><img src="Flyers%20Pirate.png" alt="Les Pirates des Alternances"><div class="flyer-overlay"><span>🏴‍☠️ Les Pirates des Alternances</span></div><div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
-        <div class="flyer-item"><img src="Flyer%20Stars%20Wars.png" alt="Que la Formation soit avec toi"><div class="flyer-overlay"><span>⚔️ Que la Formation soit avec toi</span></div><div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
-        <div class="flyer-item"><img src="Flyers%20Harry%20Potter.png" alt="Sup'pentard"><div class="flyer-overlay"><span>🧙 École de Sup'celerie</span></div><div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
-        <div class="flyer-item"><img src="Flyersloto1.png" alt="Flyer Loto 1"><div class="flyer-overlay"><span>🎰 Loto Sup Formation</span></div><div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
-        <div class="flyer-item"><img src="Flyersloto2.png" alt="Flyer Loto 2"><div class="flyer-overlay"><span>🎰 Loto Sup Formation</span></div><div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
-        <div class="flyer-item"><img src="Flyersloto3.png" alt="Flyer Loto 3"><div class="flyer-overlay"><span>🎰 Loto Sup Formation</span></div><div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
-        <div class="flyer-item"><img src="Flyersloto4.png" alt="Flyer Loto 4"><div class="flyer-overlay"><span>🎰 Loto Sup Formation</span></div><div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+        <div class="flyer-item">
+          <img src="Flyers%20Pirate.png" alt="Les Pirates des Alternances">
+          <div class="flyer-overlay"><span>🏴‍☠️ Les Pirates des Alternances</span></div>
+          <div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        </div>
+        <div class="flyer-item">
+          <img src="Flyer%20Stars%20Wars.png" alt="Que la Formation soit avec toi">
+          <div class="flyer-overlay"><span>⚔️ Que la Formation soit avec toi</span></div>
+          <div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        </div>
+        <div class="flyer-item">
+          <img src="Flyers%20Harry%20Potter.png" alt="Sup'pentard">
+          <div class="flyer-overlay"><span>🧙 École de Sup'celerie</span></div>
+          <div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        </div>
+        <div class="flyer-item">
+          <img src="Flyersloto1.png" alt="Flyer Loto 1">
+          <div class="flyer-overlay"><span>🎰 Loto Sup Formation</span></div>
+          <div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        </div>
+        <div class="flyer-item">
+          <img src="Flyersloto2.png" alt="Flyer Loto 2">
+          <div class="flyer-overlay"><span>🎰 Loto Sup Formation</span></div>
+          <div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        </div>
+        <div class="flyer-item">
+          <img src="Flyersloto3.png" alt="Flyer Loto 3">
+          <div class="flyer-overlay"><span>🎰 Loto Sup Formation</span></div>
+          <div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        </div>
+        <div class="flyer-item">
+          <img src="Flyersloto4.png" alt="Flyer Loto 4">
+          <div class="flyer-overlay"><span>🎰 Loto Sup Formation</span></div>
+          <div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+        </div>
       </div>
     </section>
+
     <section class="section" id="kakemono" style="text-align:center;">
       <div class="section-header">
         <div class="section-label">Expérience 3D</div>
@@ -445,10 +542,14 @@
         <div id="inlineKakemono3D"></div>
         <p class="kakemono-3d-hint">Glisse pour pivoter · Molette pour zoomer · <span>Clic pour plein écran</span></p>
         <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
-          <button class="btn btn-primary" onclick="open3DViewerModal('kakemono.png')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Voir en plein écran</button>
+          <button class="btn btn-primary" onclick="open3DViewerModal('kakemono.png')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Voir en plein écran
+          </button>
         </div>
       </div>
     </section>
+
     <section class="section" style="text-align:center;">
       <div class="section-header">
         <div class="section-label">Interactif</div>
@@ -456,15 +557,25 @@
         <p class="section-desc">Uploadez n'importe quelle image et visualisez-la en 3D sur un vrai stand.</p>
       </div>
       <div class="upload-zone" id="uploadZone">
-        <div class="upload-placeholder" id="uploadPlaceholder"><div class="upload-icon-wrap">📤</div><div class="upload-text">Clique ou glisse<br>une image ici</div></div>
+        <div class="upload-placeholder" id="uploadPlaceholder">
+          <div class="upload-icon-wrap">📤</div>
+          <div class="upload-text">Clique ou glisse<br>une image ici</div>
+        </div>
         <img id="uploadedPreview" alt="Aperçu" style="display:none;">
       </div>
       <input type="file" id="kakemonoFileInput" accept="image/*" style="display:none;">
       <div class="upload-actions" id="uploadActions" style="display:none;">
-        <button class="btn btn-primary" onclick="view3DUploaded()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Voir en 3D</button>
-        <button class="btn btn-secondary" onclick="resetUpload()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>Effacer</button>
+        <button class="btn btn-primary" onclick="view3DUploaded()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Voir en 3D
+        </button>
+        <button class="btn btn-secondary" onclick="resetUpload()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+          Effacer
+        </button>
       </div>
     </section>
+
     <section class="section" id="scratch" style="text-align:center;">
       <div class="section-header">
         <div class="section-label">Jeu</div>
@@ -476,21 +587,35 @@
         <canvas id="scratchCanvas"></canvas>
       </div>
       <br><br>
-      <button class="btn btn-secondary" onclick="resetScratch()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>Recommencer</button>
-    </section>     <div class="infra-sep" id="infra">
+      <button class="btn btn-secondary" onclick="resetScratch()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        Recommencer
+      </button>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         INFRASTRUCTURE SOLUTIONS
+    ══════════════════════════════════════════ -->
+    <div class="infra-sep" id="infra">
       <div class="infra-sep-inner">
         <div class="infra-sep-line"></div>
         <div class="infra-sep-badge">🖥️ Solutions Infrastructure · Chatbot IA</div>
         <div class="infra-sep-line"></div>
       </div>
     </div>
+
     <section class="section infra-hero" id="infra-hub">
       <div class="infra-hero-badge">🤖 Chatbot IA · Dify · Déjà opérationnel ✓</div>
       <h2><span class="l1">Votre chatbot est prêt.</span><span class="l2">Choisissez où il vit.</span></h2>
       <p class="infra-hero-sub">Comparez les solutions d'hébergement et de modèle IA disponibles pour SUP Formation.<br>Tout est déjà configuré — il vous reste uniquement à choisir votre infrastructure.</p>
-      <div class="infra-indicators"><span class="infra-ind">✓ Chatbot Dify livré</span><span class="infra-ind">✓ Conforme RGPD</span><span class="infra-ind">✓ Autonomie totale</span></div>
+      <div class="infra-indicators">
+        <span class="infra-ind">✓ Chatbot Dify livré</span>
+        <span class="infra-ind">✓ Conforme RGPD</span>
+        <span class="infra-ind">✓ Autonomie totale</span>
+      </div>
       <a href="#infra-hebergement" class="btn btn-primary" style="position:relative;z-index:1">→ Voir les solutions</a>
     </section>
+
     <section class="section" id="infra-comment">
       <div class="section-header">
         <div class="section-label">Architecture</div>
@@ -498,17 +623,36 @@
         <p class="section-desc">3 briques indépendantes — une seule déjà livrée.</p>
       </div>
       <div class="how-grid">
-        <div class="how-card"><div class="how-icon">🧠</div><h3>Le cerveau : Dify</h3><p>Votre chatbot tourne sur Dify, un orchestrateur open-source. Il gère les conversations, la base de connaissance et les workflows. Il est déjà configuré et prêt.</p><span class="how-badge green">Déjà livré ✓</span></div>
-        <div class="how-card"><div class="how-icon">🖥️</div><h3>Le corps : le serveur</h3><p>Dify a besoin d'un serveur pour tourner. Vous choisissez où ce serveur est hébergé : dans le cloud managé ou sur un VPS que vous contrôlez.</p><span class="how-badge orange">À choisir →</span></div>
-        <div class="how-card"><div class="how-icon">⚡</div><h3>L'intelligence : le LLM</h3><p>Le chatbot utilise un modèle de langage (GPT, Mistral, Claude...) via une clé API. Vous payez à l'usage selon le volume de conversations.</p><span class="how-badge orange">À choisir →</span></div>
+        <div class="how-card">
+          <div class="how-icon">🧠</div>
+          <h3>Le cerveau : Dify</h3>
+          <p>Votre chatbot tourne sur Dify, un orchestrateur open-source. Il gère les conversations, la base de connaissance et les workflows. Il est déjà configuré et prêt.</p>
+          <span class="how-badge green">Déjà livré ✓</span>
+        </div>
+        <div class="how-card">
+          <div class="how-icon">🖥️</div>
+          <h3>Le corps : le serveur</h3>
+          <p>Dify a besoin d'un serveur pour tourner. Vous choisissez où ce serveur est hébergé : dans le cloud managé ou sur un VPS que vous contrôlez.</p>
+          <span class="how-badge orange">À choisir →</span>
+        </div>
+        <div class="how-card">
+          <div class="how-icon">⚡</div>
+          <h3>L'intelligence : le LLM</h3>
+          <p>Le chatbot utilise un modèle de langage (GPT, Mistral, Claude...) via une clé API. Vous payez à l'usage selon le volume de conversations.</p>
+          <span class="how-badge orange">À choisir →</span>
+        </div>
       </div>
       <div class="how-flow">
-        <div class="how-flow-node">👤 Utilisateur</div><div class="how-flow-arrow">→</div>
-        <div class="how-flow-node">🧠 Dify (chatbot)</div><div class="how-flow-arrow">→</div>
-        <div class="how-flow-node">🖥️ Serveur</div><div class="how-flow-arrow">+</div>
+        <div class="how-flow-node">👤 Utilisateur</div>
+        <div class="how-flow-arrow">→</div>
+        <div class="how-flow-node">🧠 Dify (chatbot)</div>
+        <div class="how-flow-arrow">→</div>
+        <div class="how-flow-node">🖥️ Serveur</div>
+        <div class="how-flow-arrow">+</div>
         <div class="how-flow-node">⚡ API LLM</div>
       </div>
     </section>
+
     <section class="section" id="infra-hebergement">
       <div class="section-header">
         <div class="section-label">Hébergement</div>
@@ -517,7 +661,10 @@
       </div>
       <div class="hgrid">
         <div class="hcard hcard-blue">
-          <div class="hcard-head hcard-head-blue"><div class="hcard-name">☁️ Dify Cloud</div><span class="hcard-badge">Recommandé pour démarrer</span></div>
+          <div class="hcard-head hcard-head-blue">
+            <div class="hcard-name">☁️ Dify Cloud</div>
+            <span class="hcard-badge">Recommandé pour démarrer</span>
+          </div>
           <div class="hcard-body">
             <div class="hcard-price">29 €<span style="font-size:1rem;font-weight:400;color:var(--text-dim)">/mois</span></div>
             <div class="hcard-price-sub">À partir de — tarif Starter</div>
@@ -529,9 +676,13 @@
               <li><span class="warn">⚠</span> Données hébergées hors EU (à vérifier)</li>
               <li><span class="warn">⚠</span> Dépendance au fournisseur</li>
             </ul>
-            <div class="rgpd-row"><span class="rgpd-label">RGPD</span><div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star">★</span></div><span class="rgpd-note">Moyen — DPA à signer</span></div>
+            <div class="rgpd-row">
+              <span class="rgpd-label">RGPD</span>
+              <div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star">★</span></div>
+              <span class="rgpd-note">Moyen — DPA à signer</span>
+            </div>
             <div class="hcard-actions">
-              <a href="https://dify.ai/pricing" target="_blank" rel="noopener noreferrer" class="btn-provider btn-blue">Voir les offres Dify Cloud →</a>
+              <a href="https://dify.ai/pricing" target="_blank" rel="noopener noreferrer" class="btn-provider btn-blue" aria-label="Voir les offres Dify Cloud">Voir les offres Dify Cloud →</a>
               <button class="btn-provider btn-acc" onclick="toggleAcc(this)" aria-expanded="false"><span>En savoir plus</span><span class="chevron">▾</span></button>
               <div class="acc-body"><div class="acc-inner"><ul>
                 <li>Plans : Starter (29$/mois), Pro (59$/mois), Team (199$/mois)</li>
@@ -543,7 +694,10 @@
           </div>
         </div>
         <div class="hcard hcard-fr">
-          <div class="hcard-head hcard-head-fr"><div class="hcard-name">🇫🇷 OVHcloud VPS</div><span class="hcard-badge">🇫🇷 Hébergement France · RGPD Optimal</span></div>
+          <div class="hcard-head hcard-head-fr">
+            <div class="hcard-name">🇫🇷 OVHcloud VPS</div>
+            <span class="hcard-badge">🇫🇷 Hébergement France · RGPD Optimal</span>
+          </div>
           <div class="hcard-body">
             <div class="hcard-price">7 €<span style="font-size:1rem;font-weight:400;color:var(--text-dim)">/mois</span></div>
             <div class="hcard-price-sub">À partir de — VPS Essential</div>
@@ -555,9 +709,13 @@
               <li><span class="ok">✓</span> Certifications ISO 27001 / HDS disponibles</li>
               <li><span class="warn">⚠</span> Nécessite une configuration initiale (Docker)</li>
             </ul>
-            <div class="rgpd-row"><span class="rgpd-label">RGPD</span><div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span class="rgpd-note">Maximal — données France</span></div>
+            <div class="rgpd-row">
+              <span class="rgpd-label">RGPD</span>
+              <div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div>
+              <span class="rgpd-note">Maximal — données France</span>
+            </div>
             <div class="hcard-actions">
-              <a href="https://www.ovhcloud.com/fr/vps/" target="_blank" rel="noopener noreferrer" class="btn-provider btn-fr">Voir les VPS OVHcloud →</a>
+              <a href="https://www.ovhcloud.com/fr/vps/" target="_blank" rel="noopener noreferrer" class="btn-provider btn-fr" aria-label="Voir les VPS OVHcloud">Voir les VPS OVHcloud →</a>
               <button class="btn-provider btn-acc" onclick="toggleAcc(this)" aria-expanded="false"><span>En savoir plus</span><span class="chevron">▾</span></button>
               <div class="acc-body"><div class="acc-inner"><ul>
                 <li>Config recommandée : VPS Value (4 vCPU, 8 Go RAM) → ~25–30 €/mois</li>
@@ -571,7 +729,10 @@
           </div>
         </div>
         <div class="hcard hcard-purple">
-          <div class="hcard-head hcard-head-purple"><div class="hcard-name">🌍 Scaleway</div><span class="hcard-badge">Alternative européenne</span></div>
+          <div class="hcard-head hcard-head-purple">
+            <div class="hcard-name">🌍 Scaleway</div>
+            <span class="hcard-badge">Alternative européenne</span>
+          </div>
           <div class="hcard-body">
             <div class="hcard-price">9,99 €<span style="font-size:1rem;font-weight:400;color:var(--text-dim)">/mois</span></div>
             <div class="hcard-price-sub">À partir de — DEV1-S</div>
@@ -583,9 +744,13 @@
               <li><span class="ok">✓</span> Snapshots et sauvegardes automatiques</li>
               <li><span class="warn">⚠</span> Offre moins large qu'OVH</li>
             </ul>
-            <div class="rgpd-row"><span class="rgpd-label">RGPD</span><div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span class="rgpd-note">Maximal — Paris</span></div>
+            <div class="rgpd-row">
+              <span class="rgpd-label">RGPD</span>
+              <div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div>
+              <span class="rgpd-note">Maximal — Paris</span>
+            </div>
             <div class="hcard-actions">
-              <a href="https://www.scaleway.com/fr/tarifs/" target="_blank" rel="noopener noreferrer" class="btn-provider btn-purple">Voir les offres Scaleway →</a>
+              <a href="https://www.scaleway.com/fr/tarifs/" target="_blank" rel="noopener noreferrer" class="btn-provider btn-purple" aria-label="Voir les offres Scaleway">Voir les offres Scaleway →</a>
               <button class="btn-provider btn-acc" onclick="toggleAcc(this)" aria-expanded="false"><span>En savoir plus</span><span class="chevron">▾</span></button>
               <div class="acc-body"><div class="acc-inner"><ul>
                 <li>Config recommandée : DEV1-M (3 vCPU, 4 Go RAM) ou GP1-XS</li>
@@ -598,6 +763,7 @@
         </div>
       </div>
     </section>
+
     <section class="section" id="infra-llm">
       <div class="section-header">
         <div class="section-label">Modèle IA</div>
@@ -611,12 +777,15 @@
           <div class="llm-name">Mistral AI</div>
           <div class="llm-price">~20–60 €<span style="font-size:0.9rem;font-weight:400;color:var(--text-dim)">/mois</span></div>
           <ul class="llm-feats">
-            <li><span class="ok">✓</span> Société française (Paris)</li><li><span class="ok">✓</span> Données traitées en Europe</li>
-            <li><span class="ok">✓</span> RGPD natif — DPA disponible</li><li><span class="ok">✓</span> Excellentes performances (Mistral Large, 7B…)</li>
-            <li><span class="ok">✓</span> Option modèle local gratuit (Ollama)</li><li><span class="ok">✓</span> Tarifs compétitifs</li>
+            <li><span class="ok">✓</span> Société française (Paris)</li>
+            <li><span class="ok">✓</span> Données traitées en Europe</li>
+            <li><span class="ok">✓</span> RGPD natif — DPA disponible</li>
+            <li><span class="ok">✓</span> Excellentes performances (Mistral Large, 7B…)</li>
+            <li><span class="ok">✓</span> Option modèle local gratuit (Ollama)</li>
+            <li><span class="ok">✓</span> Tarifs compétitifs</li>
           </ul>
           <div class="rgpd-row"><span class="rgpd-label">RGPD</span><div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span class="rgpd-note">Maximal — France</span></div>
-          <a href="https://console.mistral.ai/" target="_blank" rel="noopener noreferrer" class="btn-provider btn-gold">Créer une clé API Mistral →</a>
+          <a href="https://console.mistral.ai/" target="_blank" rel="noopener noreferrer" class="btn-provider btn-gold" aria-label="Créer une clé API Mistral">Créer une clé API Mistral →</a>
           <div class="llm-doc-link"><a href="https://docs.mistral.ai/" target="_blank" rel="noopener noreferrer">📖 Documentation Mistral</a></div>
         </div>
         <div class="llm-card llm-green">
@@ -624,12 +793,15 @@
           <div class="llm-name">OpenAI GPT-4o</div>
           <div class="llm-price">~30–80 €<span style="font-size:0.9rem;font-weight:400;color:var(--text-dim)">/mois</span></div>
           <ul class="llm-feats">
-            <li><span class="ok">✓</span> GPT-4o : modèle très performant</li><li><span class="ok">✓</span> Documentation abondante</li>
-            <li><span class="ok">✓</span> Intégration Dify native</li><li><span class="warn">⚠</span> Société américaine (CLOUD ACT)</li>
-            <li><span class="warn">⚠</span> Données hors EU par défaut</li><li><span class="warn">⚠</span> DPA obligatoire (disponible)</li>
+            <li><span class="ok">✓</span> GPT-4o : modèle très performant</li>
+            <li><span class="ok">✓</span> Documentation abondante</li>
+            <li><span class="ok">✓</span> Intégration Dify native</li>
+            <li><span class="warn">⚠</span> Société américaine (CLOUD ACT)</li>
+            <li><span class="warn">⚠</span> Données hors EU par défaut</li>
+            <li><span class="warn">⚠</span> DPA obligatoire (disponible)</li>
           </ul>
           <div class="rgpd-row"><span class="rgpd-label">RGPD</span><div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star">★</span></div><span class="rgpd-note">Moyen — DPA requis</span></div>
-          <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" class="btn-provider btn-green">Créer une clé API OpenAI →</a>
+          <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" class="btn-provider btn-green" aria-label="Créer une clé API OpenAI">Créer une clé API OpenAI →</a>
           <div class="llm-doc-link"><a href="https://openai.com/api/pricing/" target="_blank" rel="noopener noreferrer">💰 Voir les tarifs OpenAI</a></div>
         </div>
         <div class="llm-card llm-azure">
@@ -637,12 +809,15 @@
           <div class="llm-name">Azure OpenAI 🌍</div>
           <div class="llm-price">~35–90 €<span style="font-size:0.9rem;font-weight:400;color:var(--text-dim)">/mois</span></div>
           <ul class="llm-feats">
-            <li><span class="ok">✓</span> GPT-4 hébergé en Europe (France Central)</li><li><span class="ok">✓</span> Données ne quittent pas l'UE</li>
-            <li><span class="ok">✓</span> SLA entreprise + conformité ISO</li><li><span class="ok">✓</span> Idéal pour usage institutionnel</li>
-            <li><span class="warn">⚠</span> Configuration plus complexe</li><li><span class="warn">⚠</span> Nécessite un abonnement Azure</li>
+            <li><span class="ok">✓</span> GPT-4 hébergé en Europe (France Central)</li>
+            <li><span class="ok">✓</span> Données ne quittent pas l'UE</li>
+            <li><span class="ok">✓</span> SLA entreprise + conformité ISO</li>
+            <li><span class="ok">✓</span> Idéal pour usage institutionnel</li>
+            <li><span class="warn">⚠</span> Configuration plus complexe</li>
+            <li><span class="warn">⚠</span> Nécessite un abonnement Azure</li>
           </ul>
           <div class="rgpd-row"><span class="rgpd-label">RGPD</span><div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span class="rgpd-note">Maximal — EU</span></div>
-          <a href="https://azure.microsoft.com/fr-fr/products/ai-services/openai-service" target="_blank" rel="noopener noreferrer" class="btn-provider btn-azure">Voir Azure OpenAI →</a>
+          <a href="https://azure.microsoft.com/fr-fr/products/ai-services/openai-service" target="_blank" rel="noopener noreferrer" class="btn-provider btn-azure" aria-label="Voir Azure OpenAI">Voir Azure OpenAI →</a>
           <div class="llm-doc-link"><a href="https://azure.microsoft.com/fr-fr/pricing/details/cognitive-services/openai-service/" target="_blank" rel="noopener noreferrer">💰 Tarifs Azure OpenAI</a></div>
         </div>
         <div class="llm-card llm-dark">
@@ -650,16 +825,20 @@
           <div class="llm-name">Ollama (Local)</div>
           <div class="llm-price" style="color:var(--igreen)">0 €<span style="font-size:0.9rem;font-weight:400;color:var(--text-dim)">/mois</span></div>
           <ul class="llm-feats">
-            <li><span class="ok">✓</span> Modèle tournant sur votre serveur</li><li><span class="ok">✓</span> Aucune clé API, aucun coût variable</li>
-            <li><span class="ok">✓</span> Données ne quittent jamais le serveur</li><li><span class="ok">✓</span> Compatible Mistral 7B, LLaMA 3, Phi-3…</li>
-            <li><span class="ok">✓</span> RGPD parfait : zéro transfert de données</li><li><span class="warn">⚠</span> Nécessite un CPU/GPU puissant</li>
+            <li><span class="ok">✓</span> Modèle tournant sur votre serveur</li>
+            <li><span class="ok">✓</span> Aucune clé API, aucun coût variable</li>
+            <li><span class="ok">✓</span> Données ne quittent jamais le serveur</li>
+            <li><span class="ok">✓</span> Compatible Mistral 7B, LLaMA 3, Phi-3…</li>
+            <li><span class="ok">✓</span> RGPD parfait : zéro transfert de données</li>
+            <li><span class="warn">⚠</span> Nécessite un CPU/GPU puissant</li>
           </ul>
           <div class="rgpd-row"><span class="rgpd-label">RGPD</span><div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span class="rgpd-note">Maximal absolu</span></div>
-          <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" class="btn-provider btn-free">Découvrir Ollama →</a>
+          <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" class="btn-provider btn-free" aria-label="Découvrir Ollama">Découvrir Ollama →</a>
           <div class="llm-doc-link"><a href="https://ollama.com/library" target="_blank" rel="noopener noreferrer">📚 Voir les modèles disponibles</a></div>
         </div>
       </div>
     </section>
+
     <section class="section" id="infra-compare">
       <div class="section-header">
         <div class="section-label">Comparatif</div>
@@ -667,9 +846,9 @@
         <p class="section-desc">Filtrez et triez selon vos critères. Cliquez sur une ligne pour accéder au site.</p>
       </div>
       <div class="cmp-filters">
-        <button class="cmp-filter active" onclick="cmpFilter('all',this)">Tout</button>
-        <button class="cmp-filter" onclick="cmpFilter('hebergement',this)">🖥️ Hébergement</button>
-        <button class="cmp-filter" onclick="cmpFilter('llm',this)">⚡ Modèle IA</button>
+        <button class="cmp-filter active" data-f="all" onclick="cmpFilter('all',this)">Tout</button>
+        <button class="cmp-filter" data-f="hebergement" onclick="cmpFilter('hebergement',this)">🖥️ Hébergement</button>
+        <button class="cmp-filter" data-f="llm" onclick="cmpFilter('llm',this)">⚡ Modèle IA</button>
       </div>
       <div class="cmp-wrap">
         <table class="cmp-table" id="cmpTable">
@@ -678,7 +857,8 @@
             <th onclick="cmpSort(1)">Type <span class="sort-arr">↕</span></th>
             <th onclick="cmpSort(2)">Prix min. <span class="sort-arr">↕</span></th>
             <th onclick="cmpSort(3)">RGPD <span class="sort-arr">↕</span></th>
-            <th>Localisation</th><th>Lien</th>
+            <th>Localisation</th>
+            <th>Lien</th>
           </tr></thead>
           <tbody>
             <tr data-type="hebergement" onclick="window.open('https://dify.ai/pricing','_blank')"><td class="cmp-name">☁️ Dify Cloud</td><td><span class="cmp-type-badge cmp-type-h">Hébergement</span></td><td data-value="29">29–59 €/mois</td><td data-value="2"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star">★</span></span></td><td>🌐 USA/Asie</td><td><a href="https://dify.ai/pricing" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
@@ -687,4 +867,570 @@
             <tr data-type="llm" onclick="window.open('https://console.mistral.ai/','_blank')"><td class="cmp-name">🇫🇷 Mistral AI API</td><td><span class="cmp-type-badge cmp-type-l">Modèle IA</span></td><td data-value="20">20–60 €/mois</td><td data-value="3"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></span></td><td>🇫🇷 France</td><td><a href="https://console.mistral.ai/" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
             <tr data-type="llm" onclick="window.open('https://platform.openai.com/api-keys','_blank')"><td class="cmp-name">🌐 OpenAI API</td><td><span class="cmp-type-badge cmp-type-l">Modèle IA</span></td><td data-value="30">30–80 €/mois</td><td data-value="2"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star">★</span></span></td><td>🌐 USA</td><td><a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
             <tr data-type="llm" onclick="window.open('https://azure.microsoft.com/fr-fr/products/ai-services/openai-service','_blank')"><td class="cmp-name">🇪🇺 Azure OpenAI</td><td><span class="cmp-type-badge cmp-type-l">Modèle IA</span></td><td data-value="35">35–90 €/mois</td><td data-value="3"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></span></td><td>🇪🇺 EU</td><td><a href="https://azure.microsoft.com/fr-fr/products/ai-services/openai-service" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
-            <tr data-type="llm" onclick="window.open('https://ollama.com/','_blank')"><td class="cmp-name">🆓 Ollama (local)</td><td><span class="cmp-type-badge cmp-type-l">Modèle IA</span></td><td data-value="0">0 €/mois</td><td data-value="3"><span class="rgpd-stars" style="display:inline-flex;gap:3px
+            <tr data-type="llm" onclick="window.open('https://ollama.com/','_blank')"><td class="cmp-name">🆓 Ollama (local)</td><td><span class="cmp-type-badge cmp-type-l">Modèle IA</span></td><td data-value="0">0 €/mois</td><td data-value="3"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></span></td><td>🖥️ On-site</td><td><a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="infra-bundles">
+      <div class="section-header">
+        <div class="section-label">Combinaisons</div>
+        <h2 class="section-title">Nos combinaisons conseillées</h2>
+        <p class="section-desc">Associez un hébergement + un modèle IA selon votre profil.</p>
+      </div>
+      <div class="bund-grid">
+        <div class="bund-card bund-blue">
+          <div class="bund-num">01</div>
+          <div class="bund-icon">🚀</div>
+          <div class="bund-title">Démarrage Rapide</div>
+          <div class="bund-combo">Dify Cloud + Mistral AI API</div>
+          <div class="bund-budget">~50–120 €/mois</div>
+          <p class="bund-desc">Idéal pour démarrer en moins de 24h, sans configuration technique. 100% managé.</p>
+          <div class="bund-rgpd"><span style="font-size:0.72rem;color:var(--text-mute);text-transform:uppercase;letter-spacing:0.08em">RGPD</span><div class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star">★</span></div><span style="font-size:0.75rem;color:var(--text-mute)">DPA à signer avec Dify</span></div>
+        </div>
+        <div class="bund-card bund-fr" style="position:relative">
+          <div class="bund-num">02</div>
+          <div class="bund-reco">⭐ Recommandé</div>
+          <div class="bund-icon">🇫🇷</div>
+          <div class="bund-title">Souveraineté Française</div>
+          <div class="bund-combo" style="color:var(--igreen);background:var(--igreen-soft)">OVHcloud VPS + Mistral AI API</div>
+          <div class="bund-budget">~45–90 €/mois</div>
+          <p class="bund-desc">La combinaison optimale : données 100% françaises, modèle IA français, conformité RGPD maximale.</p>
+          <div class="bund-rgpd"><span style="font-size:0.72rem;color:var(--text-mute);text-transform:uppercase;letter-spacing:0.08em">RGPD</span><div class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span style="font-size:0.75rem;color:var(--text-mute)">Maximal</span></div>
+        </div>
+        <div class="bund-card bund-dark">
+          <div class="bund-num">03</div>
+          <div class="bund-icon">🔒</div>
+          <div class="bund-title">Autonomie Totale</div>
+          <div class="bund-combo" style="color:var(--purple);background:var(--purple-soft)">OVHcloud VPS + Ollama (local)</div>
+          <div class="bund-budget">~25–50 €/mois</div>
+          <p class="bund-desc">Zéro dépendance externe. Le modèle IA tourne sur votre propre serveur. Aucun token envoyé à l'extérieur.</p>
+          <div class="bund-rgpd"><span style="font-size:0.72rem;color:var(--text-mute);text-transform:uppercase;letter-spacing:0.08em">RGPD</span><div class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span style="font-size:0.75rem;color:var(--text-mute)">Maximal absolu</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="infra-calc">
+      <div class="section-header">
+        <div class="section-label">Simulateur</div>
+        <h2 class="section-title">Estimez votre budget mensuel</h2>
+        <p class="section-desc">Ajustez les paramètres — l'estimation se met à jour en temps réel.</p>
+      </div>
+      <div class="calc-layout">
+        <div class="calc-form">
+          <h3>⚙️ Vos paramètres</h3>
+          <div class="calc-group">
+            <div class="calc-group-label">Utilisateurs actifs / jour <span id="cUsersDisplay">50</span></div>
+            <input type="range" class="calc-slider" id="cUsers" min="5" max="200" value="50" oninput="calcUpdate()">
+            <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--text-mute);margin-top:4px"><span>5</span><span>200</span></div>
+          </div>
+          <div class="calc-group">
+            <div class="calc-group-label">Longueur des conversations <span id="cLenDisplay">Moyenne</span></div>
+            <input type="range" class="calc-slider" id="cLen" min="1" max="3" value="2" step="1" oninput="calcUpdate()">
+            <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--text-mute);margin-top:4px"><span>Courte</span><span>Moyenne</span><span>Longue</span></div>
+          </div>
+          <div class="calc-group">
+            <div class="calc-group-label" style="margin-bottom:10px">Type d'hébergement</div>
+            <div class="calc-radio-group">
+              <label class="calc-radio-label"><input type="radio" name="cHost" value="cloud" checked onchange="calcUpdate()"><span class="calc-radio-btn">☁️ Cloud managé</span></label>
+              <label class="calc-radio-label"><input type="radio" name="cHost" value="vps" onchange="calcUpdate()"><span class="calc-radio-btn">🖥️ Serveur VPS</span></label>
+            </div>
+          </div>
+          <div class="calc-group" style="margin-bottom:0">
+            <div class="calc-group-label" style="margin-bottom:10px">Modèle LLM</div>
+            <div class="calc-radio-group">
+              <label class="calc-radio-label"><input type="radio" name="cLLM" value="api" checked onchange="calcUpdate()"><span class="calc-radio-btn">⚡ API (payant)</span></label>
+              <label class="calc-radio-label"><input type="radio" name="cLLM" value="local" onchange="calcUpdate()"><span class="calc-radio-btn">🆓 Local (Ollama)</span></label>
+            </div>
+          </div>
+        </div>
+        <div class="calc-result">
+          <h3>Estimation mensuelle</h3>
+          <div class="calc-total" id="cTotal">49 – 90 €/mois</div>
+          <div class="calc-line"><span class="calc-line-label">🖥️ Hébergement</span><span class="calc-line-val" id="cHostVal">29 – 59 €/mois</span></div>
+          <div class="calc-line"><span class="calc-line-label">⚡ API LLM estimée</span><span class="calc-line-val" id="cLLMVal">19 – 30 €/mois</span></div>
+          <div class="calc-line"><span class="calc-line-label">🌐 Nom de domaine</span><span class="calc-line-val">~1 €/mois</span></div>
+          <div class="calc-note"><strong>Estimation indicative</strong> basée sur ~2 000 tokens/conversation. Les coûts LLM varient selon le modèle choisi (Mistral Small → GPT-4o). Usage scolaire = ~100K tokens/jour.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="infra-rgpd">
+      <div class="section-header">
+        <div class="section-label">Conformité</div>
+        <h2 class="section-title">Ce que dit le RGPD</h2>
+        <p class="section-desc">Points de vigilance pour une école traitant des données d'étudiants.</p>
+      </div>
+      <div class="rgpd-grid">
+        <div class="rgpd-item"><div class="rgpd-item-icon">📋</div><div class="rgpd-item-title">Registre de traitement</div><p class="rgpd-item-text">Inscrire le chatbot dans le registre RGPD de l'école avec la finalité et les données traitées.</p><span class="status-badge status-obl">Obligatoire</span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">📝</div><div class="rgpd-item-title">Information des utilisateurs</div><p class="rgpd-item-text">Afficher une notice d'information claire avant utilisation du chatbot.</p><span class="status-badge status-obl">Obligatoire</span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">🤝</div><div class="rgpd-item-title">DPA fournisseurs</div><p class="rgpd-item-text">Signer un accord de traitement des données avec chaque fournisseur de service API externe.</p><span class="status-badge status-api">Si API externe</span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">🗑️</div><div class="rgpd-item-title">Durée de conservation</div><p class="rgpd-item-text">Définir et appliquer une durée de rétention des conversations (ex : 6 mois).</p><span class="status-badge status-rec">Recommandé</span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">🔐</div><div class="rgpd-item-title">Sécurisation des accès</div><p class="rgpd-item-text">Accès admin Dify protégé par double authentification (2FA) et mots de passe forts.</p><span class="status-badge status-rec">Recommandé</span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">🌍</div><div class="rgpd-item-title">Transferts hors UE</div><p class="rgpd-item-text">Privilégier les hébergeurs et LLM européens pour éviter les transferts de données hors UE.</p><span class="status-badge status-att">Attention</span></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-brand">TOUCAIN<span class="accent">.</span></div>
+      <div class="footer-tagline">L'assistant IA conversationnel de Sup Formation · Avancer, se former</div>
+      <div class="footer-divider"></div>
+      <div class="footer-links">
+        <a href="#hero">Accueil</a>
+        <a href="#questions">Tester</a>
+        <a href="#flyers">Campagnes</a>
+        <a href="#kakemono">3D</a>
+        <a href="#infra">Solutions IA</a>
+        <a href="#" onclick="document.getElementById('wifiModalEcole').classList.add('active'); return false;">WiFi école</a>
+        <a href="Proposition_TOUCAIN_SupFormation.pdf" target="_blank">Devis</a>
+      </div>
+      <div style="margin:8px 0 4px;font-size:0.75rem;color:var(--text-mute);text-transform:uppercase;letter-spacing:0.1em">Fournisseurs infrastructure</div>
+      <div class="infra-footer-links">
+        <a href="https://dify.ai" target="_blank" rel="noopener noreferrer">Dify</a>
+        <a href="https://www.ovhcloud.com/fr/vps/" target="_blank" rel="noopener noreferrer">OVHcloud</a>
+        <a href="https://www.scaleway.com/fr/" target="_blank" rel="noopener noreferrer">Scaleway</a>
+        <a href="https://console.mistral.ai/" target="_blank" rel="noopener noreferrer">Mistral AI</a>
+        <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer">OpenAI</a>
+        <a href="https://azure.microsoft.com/fr-fr/products/ai-services/openai-service" target="_blank" rel="noopener noreferrer">Azure</a>
+        <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer">Ollama</a>
+      </div>
+      <div class="footer-copy">© Mai 2026 · SUP Formation · TOUCAIN AI · Document confidentiel d'aide à la décision</div>
+    </footer>
+  </div>
+
+  <!-- WIFI MODAL -->
+  <div class="wifi-modal-overlay" id="wifiModalEcole">
+    <div class="wifi-modal">
+      <button class="wifi-modal-close" onclick="document.getElementById('wifiModalEcole').classList.remove('active')">✕</button>
+      <div class="wifi-print-only"><h1>WiFi Sup-Formation</h1></div>
+      <h2>📶 Scanne-moi</h2>
+      <div class="qr-container"><img src="Livebox-2F50-qrcode.png" alt="QR code WiFi"></div>
+      <div class="wifi-modal-actions">
+        <button class="wifi-btn-action wifi-btn-fermer" onclick="document.getElementById('wifiModalEcole').classList.remove('active')">Fermer</button>
+        <button class="wifi-btn-action wifi-btn-print" onclick="window.print()">🖨 Imprimer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMAGE MODAL -->
+  <div class="image-modal-overlay" id="imageModal">
+    <button class="modal-close-btn" onclick="document.getElementById('imageModal').classList.remove('active')">✕</button>
+    <img id="imageModalContent" src="" alt="">
+  </div>
+
+  <!-- 3D MODAL -->
+  <div id="threeDModal" class="three-d-modal">
+    <button class="modal-close-btn" onclick="close3DModal()">✕</button>
+    <div id="threeDContainer"></div>
+    <div class="three-d-hint">🖱 Glisse pour pivoter · Molette pour zoomer · Échap pour fermer</div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+  <script>
+  // ── SCROLL PROGRESS ──
+  const scrollEl = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    scrollEl.style.width = ((h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100) + '%';
+  }, { passive: true });
+
+  // ── NAV SCROLL ──
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+
+  // ── SECTION REVEAL ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.section').forEach(s => observer.observe(s));
+
+  // ── COUNTER ANIMATION ──
+  function animateCounter(el, target, duration) {
+    const start = performance.now();
+    function update(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * ease);
+      if (p < 1) requestAnimationFrame(update);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(update);
+  }
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target, target = parseInt(el.dataset.target);
+        if (!isNaN(target) && !el.dataset.counted) { el.dataset.counted = '1'; animateCounter(el, target, 1600); }
+        counterObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-value[data-target]').forEach(el => counterObs.observe(el));
+
+  // ── HERO PARTICLES ──
+  (function() {
+    const canvas = document.getElementById('heroCanvas');
+    const ctx = canvas.getContext('2d');
+    const particles = [];
+    function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+    window.addEventListener('resize', resize); resize();
+    for (let i = 0; i < 60; i++) particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.45, vy: (Math.random() - 0.5) * 0.45, r: Math.random() * 2 + 0.5, o: Math.random() * 0.4 + 0.1 });
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,107,26,${p.o})`; ctx.fill();
+      });
+      for (let i = 0; i < particles.length; i++) for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 110) { ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.strokeStyle = `rgba(255,107,26,${0.12 * (1 - dist / 110)})`; ctx.lineWidth = 0.5; ctx.stroke(); }
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  // ── CARDS TILT ──
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect(), cx = r.width / 2, cy = r.height / 2;
+      const x = e.clientX - r.left, y = e.clientY - r.top;
+      card.style.transform = `translateY(-7px) rotateX(${((y - cy) / cy) * -5}deg) rotateY(${((x - cx) / cx) * 5}deg)`;
+      card.style.setProperty('--mx', (x / r.width * 100) + '%');
+      card.style.setProperty('--my', (y / r.height * 100) + '%');
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+
+  // ── FLYERS MODAL ──
+  (function() {
+    const modal = document.getElementById('imageModal'), modalImg = document.getElementById('imageModalContent');
+    document.querySelectorAll('.flyer-item').forEach(item => {
+      item.addEventListener('click', () => { const img = item.querySelector('img'); modalImg.src = img.src; modalImg.alt = img.alt; modal.classList.add('active'); });
+    });
+    modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('active'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { modal.classList.remove('active'); document.getElementById('wifiModalEcole').classList.remove('active'); } });
+  })();
+
+  // ── WIFI MODAL ──
+  document.getElementById('wifiModalEcole').addEventListener('click', function(e) { if (e.target === this) this.classList.remove('active'); });
+  </script>
+
+  <script>
+  // ══════════════════════════════════════════
+  // 3D KAKEMONO — STAND COMPLET RÉALISTE
+  // ══════════════════════════════════════════
+  let inlineScene, inlineCamera, inlineRenderer, inlineControls, inlineAnimId;
+  let modalScene, modalCamera, modalRenderer, modalControls, modalAnimId;
+
+  function makeMetal(color, metalness, roughness) {
+    return new THREE.MeshStandardMaterial({ color, metalness, roughness });
+  }
+
+  function buildKakemonoGroup(texture, scale) {
+    scale = scale || 1;
+    const g = new THREE.Group();
+    const bW = 1.0 * scale, bH = 2.6 * scale;
+    const silverMat = makeMetal(0xaaaabc, 0.88, 0.18);
+    const darkMat   = makeMetal(0x1a1a22, 0.92, 0.12);
+    const chromeMat = makeMetal(0xccccdd, 0.95, 0.08);
+    const bannerMat = new THREE.MeshStandardMaterial({ map: texture, side: THREE.FrontSide, roughness: 0.6, metalness: 0.05 });
+    const backMat   = new THREE.MeshStandardMaterial({ color: 0xf0f0f0, roughness: 0.8, metalness: 0 });
+
+    // Base
+    const baseBody = new THREE.Mesh(new THREE.BoxGeometry(bW * 0.9, 0.055 * scale, 0.14 * scale), silverMat);
+    baseBody.position.y = 0.027 * scale;
+    const baseEnd1 = new THREE.Mesh(new THREE.CylinderGeometry(0.07 * scale, 0.07 * scale, 0.055 * scale, 20), silverMat);
+    baseEnd1.position.set(-bW * 0.45, 0.027 * scale, 0);
+    const baseEnd2 = baseEnd1.clone(); baseEnd2.position.x = bW * 0.45;
+    g.add(baseBody, baseEnd1, baseEnd2);
+
+    // Pieds
+    const footGeo = new THREE.CylinderGeometry(0.03 * scale, 0.038 * scale, 0.022 * scale, 16);
+    [-bW * 0.36, -bW * 0.12, bW * 0.12, bW * 0.36].forEach(x => {
+      const foot = new THREE.Mesh(footGeo, chromeMat);
+      foot.position.set(x, 0.011 * scale, 0); g.add(foot);
+    });
+
+    // Mât
+    const poleH = bH + 0.22 * scale;
+    const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.014 * scale, 0.018 * scale, poleH, 18), darkMat);
+    pole.position.y = poleH / 2 + 0.055 * scale;
+    g.add(pole);
+
+    // Rouleau bas
+    const rollGeo = new THREE.CylinderGeometry(0.028 * scale, 0.028 * scale, bW * 1.02, 20);
+    const roll = new THREE.Mesh(rollGeo, darkMat); roll.rotation.z = Math.PI / 2;
+    roll.position.set(0, 0.06 * scale, 0.005 * scale); g.add(roll);
+    [-bW * 0.51, bW * 0.51].forEach(x => {
+      const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.032 * scale, 0.032 * scale, 0.018 * scale, 16), chromeMat);
+      cap.rotation.z = Math.PI / 2; cap.position.set(x, 0.06 * scale, 0.005 * scale); g.add(cap);
+    });
+
+    // Bannière (légèrement courbée)
+    const bannerGeo = new THREE.PlaneGeometry(bW, bH, 8, 40);
+    const pos = bannerGeo.attributes.position;
+    for (let i = 0; i < pos.count; i++) {
+      const nx = pos.getX(i) / (bW / 2);
+      pos.setZ(i, 0.012 * scale * (1 - nx * nx));
+    }
+    bannerGeo.computeVertexNormals();
+    const banner = new THREE.Mesh(bannerGeo, bannerMat);
+    banner.position.set(0, bH / 2 + 0.095 * scale, 0.016 * scale); g.add(banner);
+    const bannerBack = new THREE.Mesh(bannerGeo.clone(), backMat);
+    bannerBack.rotation.y = Math.PI; bannerBack.position.set(0, bH / 2 + 0.095 * scale, -0.012 * scale); g.add(bannerBack);
+
+    // Rail supérieur
+    const topBar = new THREE.Mesh(new THREE.CylinderGeometry(0.012 * scale, 0.012 * scale, bW * 1.04, 16), darkMat);
+    topBar.rotation.z = Math.PI / 2; topBar.position.set(0, bH + 0.115 * scale, 0.016 * scale); g.add(topBar);
+    [-bW * 0.52, bW * 0.52].forEach(x => {
+      const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.018 * scale, 0.018 * scale, 0.02 * scale, 14), chromeMat);
+      cap.rotation.z = Math.PI / 2; cap.position.set(x, bH + 0.115 * scale, 0.016 * scale); g.add(cap);
+    });
+
+    // Raccords
+    const jTop = new THREE.Mesh(new THREE.SphereGeometry(0.022 * scale, 14, 14), chromeMat);
+    jTop.position.set(0, bH + 0.115 * scale, 0.016 * scale); g.add(jTop);
+    const jBot = new THREE.Mesh(new THREE.SphereGeometry(0.024 * scale, 14, 14), chromeMat);
+    jBot.position.set(0, 0.055 * scale, 0); g.add(jBot);
+
+    // Sol
+    const ground = new THREE.Mesh(new THREE.CircleGeometry(1.2 * scale, 48), new THREE.MeshStandardMaterial({ color: 0x0d0d12, roughness: 0.3, metalness: 0.5, transparent: true, opacity: 0.75 }));
+    ground.rotation.x = -Math.PI / 2; ground.position.y = 0.001; g.add(ground);
+
+    // Ombre
+    const shadow = new THREE.Mesh(new THREE.CircleGeometry(0.55 * scale, 32), new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.5 }));
+    shadow.rotation.x = -Math.PI / 2; shadow.position.y = 0.002; g.add(shadow);
+
+    return g;
+  }
+
+  function addLights(scene) {
+    scene.add(new THREE.AmbientLight(0x1a1a2a, 3.5));
+    scene.add(new THREE.HemisphereLight(0x2a2040, 0x050508, 1.2));
+    const key = new THREE.DirectionalLight(0xfff5ee, 2.2); key.position.set(2.5, 5, 3.5); scene.add(key);
+    const fill = new THREE.DirectionalLight(0x4466bb, 0.6); fill.position.set(-3, 2, -1); scene.add(fill);
+    const rim = new THREE.DirectionalLight(0xff6b1a, 0.55); rim.position.set(0, 3, -4.5); scene.add(rim);
+    const spot = new THREE.SpotLight(0xffffff, 1.2, 12, Math.PI / 6, 0.5, 1.5);
+    spot.position.set(0, 6, 4); spot.target.position.set(0, 1.5, 0); scene.add(spot); scene.add(spot.target);
+  }
+
+  function initInlineKakemono() {
+    const container = document.getElementById('inlineKakemono3D');
+    const W = container.clientWidth, H = container.clientHeight;
+    inlineScene = new THREE.Scene();
+    inlineCamera = new THREE.PerspectiveCamera(38, W / H, 0.1, 100);
+    inlineCamera.position.set(0, 2, 5.5); inlineCamera.lookAt(0, 1.4, 0);
+    inlineRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    inlineRenderer.setSize(W, H); inlineRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    inlineRenderer.toneMapping = THREE.ACESFilmicToneMapping; inlineRenderer.toneMappingExposure = 1.1;
+    container.appendChild(inlineRenderer.domElement);
+    addLights(inlineScene);
+    inlineControls = new THREE.OrbitControls(inlineCamera, inlineRenderer.domElement);
+    inlineControls.enableDamping = true; inlineControls.dampingFactor = 0.06;
+    inlineControls.target.set(0, 1.4, 0);
+    inlineControls.minPolarAngle = Math.PI / 6; inlineControls.maxPolarAngle = Math.PI / 1.6;
+    inlineControls.minDistance = 2; inlineControls.maxDistance = 9;
+    inlineControls.autoRotate = true; inlineControls.autoRotateSpeed = 1.2;
+
+    function loadTex(src, cb) {
+      new THREE.TextureLoader().load(src, t => { t.encoding = THREE.sRGBEncoding; cb(t); }, undefined, () => {
+        const c = document.createElement('canvas'); c.width = 256; c.height = 640;
+        const cx = c.getContext('2d');
+        const gr = cx.createLinearGradient(0, 0, 0, 640); gr.addColorStop(0, '#ff6b1a'); gr.addColorStop(1, '#0a0a0a');
+        cx.fillStyle = gr; cx.fillRect(0, 0, 256, 640);
+        cx.fillStyle = 'rgba(255,255,255,0.9)'; cx.font = 'bold 28px sans-serif'; cx.textAlign = 'center'; cx.fillText('TOUCAIN', 128, 200);
+        cb(new THREE.CanvasTexture(c));
+      });
+    }
+    loadTex('kakemono.png', tex => inlineScene.add(buildKakemonoGroup(tex, 0.82)));
+
+    function loop() { inlineAnimId = requestAnimationFrame(loop); inlineControls.update(); inlineRenderer.render(inlineScene, inlineCamera); }
+    loop();
+    window.addEventListener('resize', () => {
+      const W2 = container.clientWidth, H2 = container.clientHeight;
+      inlineCamera.aspect = W2 / H2; inlineCamera.updateProjectionMatrix(); inlineRenderer.setSize(W2, H2);
+    });
+  }
+
+  function open3DViewerModal(src) {
+    document.getElementById('threeDModal').classList.add('active');
+    const container = document.getElementById('threeDContainer'); container.innerHTML = '';
+    if (modalAnimId) cancelAnimationFrame(modalAnimId);
+    if (modalRenderer) modalRenderer.dispose();
+    modalScene = new THREE.Scene();
+    modalCamera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 100);
+    modalCamera.position.set(0, 2.2, 6.5); modalCamera.lookAt(0, 1.6, 0);
+    modalRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    modalRenderer.setSize(window.innerWidth, window.innerHeight); modalRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    modalRenderer.toneMapping = THREE.ACESFilmicToneMapping; modalRenderer.toneMappingExposure = 1.15;
+    container.appendChild(modalRenderer.domElement);
+    addLights(modalScene);
+    modalControls = new THREE.OrbitControls(modalCamera, modalRenderer.domElement);
+    modalControls.enableDamping = true; modalControls.dampingFactor = 0.07;
+    modalControls.target.set(0, 1.6, 0);
+    modalControls.minPolarAngle = Math.PI / 8; modalControls.maxPolarAngle = Math.PI / 1.5;
+    modalControls.minDistance = 2; modalControls.maxDistance = 12;
+    new THREE.TextureLoader().load(src, tex => { tex.encoding = THREE.sRGBEncoding; modalScene.add(buildKakemonoGroup(tex, 1)); }, undefined, () => modalScene.add(buildKakemonoGroup(new THREE.Texture(), 1)));
+    function loop() { if (!document.getElementById('threeDModal').classList.contains('active')) return; modalAnimId = requestAnimationFrame(loop); modalControls.update(); modalRenderer.render(modalScene, modalCamera); }
+    loop();
+  }
+
+  function close3DModal() {
+    document.getElementById('threeDModal').classList.remove('active');
+    if (modalAnimId) cancelAnimationFrame(modalAnimId);
+    if (modalRenderer) { modalRenderer.dispose(); modalRenderer = null; }
+  }
+
+  window.addEventListener('resize', () => {
+    if (modalRenderer && modalCamera) { modalCamera.aspect = window.innerWidth / window.innerHeight; modalCamera.updateProjectionMatrix(); modalRenderer.setSize(window.innerWidth, window.innerHeight); }
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close3DModal(); });
+  document.getElementById('threeDModal').addEventListener('click', e => { if (e.target.id === 'threeDModal') close3DModal(); });
+  window.addEventListener('load', initInlineKakemono);
+  </script>
+
+  <script>
+  // ── UPLOAD ──
+  let uploadedImageURL = null;
+  const uploadZone = document.getElementById('uploadZone');
+  const fileInput = document.getElementById('kakemonoFileInput');
+  const preview = document.getElementById('uploadedPreview');
+  const placeholder = document.getElementById('uploadPlaceholder');
+  const uploadActions = document.getElementById('uploadActions');
+  uploadZone.addEventListener('click', () => fileInput.click());
+  fileInput.addEventListener('change', e => { const f = e.target.files[0]; if (f && f.type.startsWith('image/')) handleUploadedImage(f); });
+  uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragover'); });
+  uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
+  uploadZone.addEventListener('drop', e => { e.preventDefault(); uploadZone.classList.remove('dragover'); const f = e.dataTransfer.files[0]; if (f && f.type.startsWith('image/')) handleUploadedImage(f); });
+  function handleUploadedImage(file) {
+    if (uploadedImageURL) URL.revokeObjectURL(uploadedImageURL);
+    uploadedImageURL = URL.createObjectURL(file);
+    preview.src = uploadedImageURL; preview.style.display = 'block';
+    placeholder.style.display = 'none'; uploadActions.style.display = 'flex';
+  }
+  function view3DUploaded() { if (uploadedImageURL) open3DViewerModal(uploadedImageURL); }
+  function resetUpload() {
+    if (uploadedImageURL) { URL.revokeObjectURL(uploadedImageURL); uploadedImageURL = null; }
+    preview.style.display = 'none'; placeholder.style.display = 'flex'; uploadActions.style.display = 'none'; fileInput.value = '';
+  }
+  </script>
+
+  <script>
+  // ── SCRATCH TICKET ──
+  (function() {
+    const canvas = document.getElementById('scratchCanvas');
+    const revealedImg = document.getElementById('scratchRevealed');
+    const ctx = canvas.getContext('2d');
+    const overlayImg = new Image(); overlayImg.crossOrigin = 'anonymous'; overlayImg.src = 'ticket-silver.png';
+    let isReady = false, isScratching = false, lastPos = null;
+    const brushRadius = 38;
+    function setupCanvas() {
+      if (!overlayImg.complete || !revealedImg.complete) return;
+      canvas.width = revealedImg.naturalWidth || revealedImg.width;
+      canvas.height = revealedImg.naturalHeight || revealedImg.height;
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.drawImage(overlayImg, 0, 0, canvas.width, canvas.height);
+      isReady = true;
+    }
+    overlayImg.onload = setupCanvas; revealedImg.onload = setupCanvas;
+    if (revealedImg.complete) setupCanvas();
+    function getPos(e) {
+      const r = canvas.getBoundingClientRect();
+      const cx = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+      const cy = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+      return { x: (cx - r.left) * (canvas.width / r.width), y: (cy - r.top) * (canvas.height / r.height) };
+    }
+    function scratchAt(pos) {
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.beginPath(); ctx.arc(pos.x, pos.y, brushRadius, 0, Math.PI * 2); ctx.fill();
+      if (lastPos) { ctx.lineWidth = brushRadius * 2; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(lastPos.x, lastPos.y); ctx.lineTo(pos.x, pos.y); ctx.stroke(); }
+      lastPos = pos;
+    }
+    function start(e) { if (!isReady) return; isScratching = true; lastPos = null; scratchAt(getPos(e)); e.preventDefault(); }
+    function move(e) { if (!isScratching) return; scratchAt(getPos(e)); e.preventDefault(); }
+    function end() { isScratching = false; lastPos = null; }
+    canvas.addEventListener('mousedown', start); canvas.addEventListener('mousemove', move);
+    canvas.addEventListener('mouseup', end); canvas.addEventListener('mouseleave', end);
+    canvas.addEventListener('touchstart', start, { passive: false });
+    canvas.addEventListener('touchmove', move, { passive: false });
+    canvas.addEventListener('touchend', end);
+    window.resetScratch = function() {
+      if (!isReady) return;
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(overlayImg, 0, 0, canvas.width, canvas.height);
+    };
+  })();
+  </script>
+
+  <script>
+  // ── ACCORDION ──
+  function toggleAcc(btn) {
+    const body = btn.nextElementSibling;
+    const isOpen = body.classList.contains('open');
+    document.querySelectorAll('.acc-body.open').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.btn-acc.open').forEach(b => { b.classList.remove('open'); b.setAttribute('aria-expanded','false'); });
+    if (!isOpen) { body.classList.add('open'); btn.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  }
+  // ── TABLE FILTER ──
+  function cmpFilter(type, btn) {
+    document.querySelectorAll('.cmp-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#cmpTable tbody tr').forEach(row => {
+      row.style.display = (type === 'all' || row.dataset.type === type) ? '' : 'none';
+    });
+  }
+  // ── TABLE SORT ──
+  let _cmpSort = { col: -1, asc: true };
+  function cmpSort(col) {
+    const tbody = document.querySelector('#cmpTable tbody');
+    const rows = [...tbody.querySelectorAll('tr')];
+    _cmpSort.asc = _cmpSort.col === col ? !_cmpSort.asc : true;
+    _cmpSort.col = col;
+    document.querySelectorAll('.sort-arr').forEach((a, i) => { a.textContent = i === col ? (_cmpSort.asc ? ' ↑' : ' ↓') : ' ↕'; });
+    rows.sort((a, b) => {
+      const av = a.cells[col]?.dataset.value ?? a.cells[col]?.textContent.trim() ?? '';
+      const bv = b.cells[col]?.dataset.value ?? b.cells[col]?.textContent.trim() ?? '';
+      const an = parseFloat(av), bn = parseFloat(bv);
+      if (!isNaN(an) && !isNaN(bn)) return _cmpSort.asc ? an - bn : bn - an;
+      return _cmpSort.asc ? String(av).localeCompare(String(bv)) : String(bv).localeCompare(String(av));
+    });
+    rows.forEach(r => tbody.appendChild(r));
+  }
+  // ── CALCULATOR ──
+  function calcUpdate() {
+    const users = parseInt(document.getElementById('cUsers').value);
+    const len   = parseInt(document.getElementById('cLen').value);
+    const isCloud = document.querySelector('input[name="cHost"]:checked').value === 'cloud';
+    const isApi   = document.querySelector('input[name="cLLM"]:checked').value === 'api';
+    document.getElementById('cUsersDisplay').textContent = users;
+    document.getElementById('cLenDisplay').textContent   = ['Courte','Moyenne','Longue'][len-1];
+    const tokens = [800,2000,4000][len-1];
+    const hMin = isCloud ? 29 : 7, hMax = isCloud ? 59 : 30;
+    let lMin = 0, lMax = 0;
+    if (isApi) { const tk = users*30*tokens/1000; lMin = Math.max(1,Math.round(tk*0.001)); lMax = Math.round(tk*0.006); }
+    animCalcVal('cTotal',   `${hMin+lMin+1} – ${hMax+lMax+1} €/mois`);
+    animCalcVal('cHostVal', `${hMin} – ${hMax} €/mois`);
+    animCalcVal('cLLMVal',  isApi ? `${lMin} – ${lMax} €/mois` : '0 €/mois (local)');
+  }
+  function animCalcVal(id, val) {
+    const el = document.getElementById(id);
+    el.classList.add('anim');
+    setTimeout(() => { el.textContent = val; el.classList.remove('anim'); }, 200);
+  }
+  calcUpdate();
+  </script>
+  <script>
+    window.difyChatbotConfig = { token: 'hQJFpb8aoAfzj5je', inputs: {}, systemVariables: {}, userVariables: {} }
+  </script>
+  <script src="https://udify.app/embed.min.js" id="hQJFpb8aoAfzj5je" defer></script>
+</body>
+</html>
