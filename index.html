@@ -1250,7 +1250,7 @@
         cb(new THREE.CanvasTexture(c));
       });
     }
-    loadTex('kakemono.png', tex => inlineScene.add(buildKakemonoGroup(tex, 0.82)));
+    loadTex('kakemono-V2.png', tex => inlineScene.add(buildKakemonoGroup(tex, 0.82)));
 
     function loop() { inlineAnimId = requestAnimationFrame(loop); inlineControls.update(); inlineRenderer.render(inlineScene, inlineCamera); }
     loop();
