@@ -76,7 +76,11 @@
     .nav-cta { padding: 8px 18px; border-radius: 9px; background: var(--accent); color: #fff !important; font-weight: 600; font-size: 0.87rem; border: 1px solid var(--accent); transition: all 0.25s; box-shadow: 0 4px 16px rgba(255,107,26,0.3); }
     .nav-cta::after { display: none !important; }
     .nav-cta:hover { background: var(--accent-2); transform: translateY(-1px); box-shadow: 0 6px 22px rgba(255,107,26,0.45); }
-    @media (max-width: 720px) { .nav-links .nav-link:not(.nav-cta) { display: none; } .nav-inner { padding: 12px 18px; } }
+    .lang-toggle { display: flex; align-items: center; gap: 2px; margin-left: 10px; padding: 3px; border-radius: 20px; background: var(--surface-2); border: 1px solid var(--border); cursor: pointer; flex-shrink: 0; }
+    .lang-toggle:hover { border-color: var(--accent); }
+    .lang-toggle .lang-opt { padding: 5px 11px; border-radius: 16px; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.02em; color: var(--text-dim); transition: all 0.2s; pointer-events: none; }
+    .lang-toggle .lang-opt.active { background: var(--accent); color: #fff; box-shadow: 0 2px 10px rgba(255,107,26,0.35); }
+    @media (max-width: 720px) { .nav-links .nav-link:not(.nav-cta) { display: none; } .nav-inner { padding: 12px 18px; } .lang-toggle { margin-left: 6px; } }
     #heroCanvas { position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.55; }
     .page { position: relative; z-index: 1; max-width: 1140px; margin: 0 auto; padding: 130px 32px 60px; }
     .hero { text-align: center; padding: 30px 0 100px; position: relative; overflow: hidden; }
@@ -499,11 +503,11 @@
 <div id="entry-gate" style="position:fixed;inset:0;z-index:99999;background:#070709;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;">
     <img src="toucan.png" style="width:110px;height:110px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.1);animation:entryFloat 5s ease-in-out infinite;">
     <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,7vw,4rem);font-weight:800;letter-spacing:-0.04em;text-align:center;background:linear-gradient(135deg,#ff6b1a,#ff9243,#ffc857);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">TOUCAIN</div>
-    <p style="color:#9898aa;font-size:1rem;text-align:center;max-width:380px;line-height:1.6;margin:0;">Découvrez l'assistant conversationnel intelligent de Sup Formation</p>
+    <p style="color:#9898aa;font-size:1rem;text-align:center;max-width:380px;line-height:1.6;margin:0;"><span class="i18n" data-en="Discover Sup Formation’s smart conversational assistant">Découvrez l'assistant conversationnel intelligent de Sup Formation</span></p>
     <button onclick="entrerSite()" style="display:inline-flex;align-items:center;gap:12px;padding:16px 40px;border-radius:999px;background:linear-gradient(135deg,#ff6b1a,#ff9243);color:#fff;border:none;font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;cursor:pointer;box-shadow:0 8px 32px rgba(255,107,26,0.45);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-      ▶ Entrer sur le site
+      <span class="i18n" data-en="▶ Enter the site">▶ Entrer sur le site</span>
     </button>
-    <p style="color:#5a5a6e;font-size:0.78rem;margin:0;">Cliquez pour accéder au contenu complet</p>
+    <p style="color:#5a5a6e;font-size:0.78rem;margin:0;"><span class="i18n" data-en="Click to access the full site">Cliquez pour accéder au contenu complet</span></p>
   </div>
   <style>
     @keyframes entryFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
@@ -519,16 +523,48 @@
         <span class="brand-name">TOUCAIN<span style="-webkit-text-fill-color:var(--accent)">.</span></span>
       </a>
       <div class="nav-links">
-        <a href="#questions" class="nav-link">Tester</a>
-        <a href="#flyers" class="nav-link">Campagnes</a>
+        <a href="#questions" class="nav-link"><span class="i18n" data-en="Try it">Tester</span></a>
+        <a href="#flyers" class="nav-link"><span class="i18n" data-en="Campaigns">Campagnes</span></a>
         <a href="#kakemono" class="nav-link">3D</a>
-        <a href="#scratch" class="nav-link">Ticket</a>
+        <a href="#scratch" class="nav-link"><span class="i18n" data-en="Ticket">Ticket</span></a>
         <a href="#kmeans" class="nav-link">K-means</a>
-        <a href="#infra" class="nav-link">Solutions IA</a>
-        <a href="Proposition_TOUCAIN_SupFormation.pdf" target="_blank" class="nav-link nav-cta">Devis PDF</a>
+        <a href="#infra" class="nav-link"><span class="i18n" data-en="AI Solutions">Solutions IA</span></a>
+        <a href="Proposition_TOUCAIN_SupFormation.pdf" target="_blank" class="nav-link nav-cta"><span class="i18n" data-en="PDF Quote">Devis PDF</span></a>
+        <button type="button" id="langToggle" class="lang-toggle" aria-label="Choisir la langue / Choose language">
+          <span class="lang-opt lang-fr active" data-lang="fr">FR</span><span class="lang-opt lang-en" data-lang="en">EN</span>
+        </button>
       </div>
     </div>
   </nav>
+  <script>
+    window.SITE_LANG = 'fr';
+    function applyLang(lang) {
+      lang = lang === 'en' ? 'en' : 'fr';
+      window.SITE_LANG = lang;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('.i18n[data-en]').forEach(function (el) {
+        if (!el.dataset.fr) el.dataset.fr = el.textContent;
+        el.textContent = lang === 'en' ? el.dataset.en : el.dataset.fr;
+      });
+      document.querySelectorAll('[data-en-alt]').forEach(function (el) {
+        if (!el.dataset.frAlt) el.dataset.frAlt = el.getAttribute('alt') || '';
+        el.setAttribute('alt', lang === 'en' ? el.getAttribute('data-en-alt') : el.dataset.frAlt);
+      });
+      var btn = document.getElementById('langToggle');
+      if (btn) {
+        var frOpt = btn.querySelector('.lang-fr'), enOpt = btn.querySelector('.lang-en');
+        if (frOpt) frOpt.classList.toggle('active', lang === 'fr');
+        if (enOpt) enOpt.classList.toggle('active', lang === 'en');
+      }
+      if (typeof window.__kmSetLang === 'function') window.__kmSetLang(lang);
+      if (typeof window.calcUpdate === 'function') window.calcUpdate();
+    }
+    window.applyLang = applyLang;
+    document.addEventListener('DOMContentLoaded', function () {
+      var btn = document.getElementById('langToggle');
+      if (btn) btn.addEventListener('click', function () { applyLang(window.SITE_LANG === 'fr' ? 'en' : 'fr'); });
+    });
+  </script>
 
   <div class="page">
     <section class="hero" id="hero">
@@ -541,102 +577,102 @@
         <img src="toucan.png" alt="Logo TOUCAIN" />
       </div>
       <h1>
-        <span class="line-1">L'assistant IA</span>
-        <span class="line-2">qui te répond</span>
+        <span class="line-1"><span class="i18n" data-en="The AI assistant">L'assistant IA</span></span>
+        <span class="line-2"><span class="i18n" data-en="that talks back">qui te répond</span></span>
       </h1>
-      <p class="hero-subtitle">TOUCAIN est l'assistant conversationnel intelligent de Sup Formation. Pose-lui n'importe quelle question sur les formations en alternance — réponse en quelques secondes.</p>
+      <p class="hero-subtitle"><span class="i18n" data-en="TOUCAIN is Sup Formation’s smart conversational assistant. Ask it anything about our work-study programs — get an answer in seconds.">TOUCAIN est l'assistant conversationnel intelligent de Sup Formation. Pose-lui n'importe quelle question sur les formations en alternance — réponse en quelques secondes.</span></p>
       <div class="hero-ctas">
         <a href="#questions" class="btn btn-primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          Tester le chatbot
+          <span class="i18n" data-en="Try the chatbot">Tester le chatbot</span>
         </a>
         <a href="Proposition_TOUCAIN_SupFormation.pdf" target="_blank" class="btn btn-secondary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          Voir le devis
+          <span class="i18n" data-en="View the quote">Voir le devis</span>
         </a>
       </div>
     </section>
 
     <section class="section">
       <div class="stats">
-        <div class="stat"><div class="stat-icon">🕐</div><div class="stat-value">24/7</div><div class="stat-label">Disponible</div></div>
-        <div class="stat"><div class="stat-icon">⚡</div><div class="stat-value">&lt;2s</div><div class="stat-label">Temps réponse</div></div>
-        <div class="stat"><div class="stat-icon">🇫🇷</div><div class="stat-value" data-target="100">0</div><div class="stat-label">% Français</div></div>
+        <div class="stat"><div class="stat-icon">🕐</div><div class="stat-value">24/7</div><div class="stat-label"><span class="i18n" data-en="Available">Disponible</span></div></div>
+        <div class="stat"><div class="stat-icon">⚡</div><div class="stat-value">&lt;2s</div><div class="stat-label"><span class="i18n" data-en="Response time">Temps réponse</span></div></div>
+        <div class="stat"><div class="stat-icon">🇫🇷</div><div class="stat-value" data-target="100">0</div><div class="stat-label"><span class="i18n" data-en="% French">% Français</span></div></div>
         <div class="stat"><div class="stat-icon">∞</div><div class="stat-value">∞</div><div class="stat-label">Questions</div></div>
       </div>
     </section>
 
     <section class="section" id="questions">
       <div class="section-header">
-        <div class="section-label">Démo</div>
-        <h2 class="section-title">Questions à tester</h2>
-        <p class="section-desc">Quelques exemples concrets pour découvrir TOUCAIN. Clique sur la bulle du toucan en bas à droite pour discuter.</p>
+        <div class="section-label"><span class="i18n" data-en="Demo">Démo</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="Questions to try">Questions à tester</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="A few concrete examples to explore TOUCAIN. Click the toucan bubble in the bottom right to chat.">Quelques exemples concrets pour découvrir TOUCAIN. Clique sur la bulle du toucan en bas à droite pour discuter.</span></p>
       </div>
       <div class="cards">
         <div class="card">
           <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-          <div class="label">INSCRIPTIONS</div>
-          <div class="q">Comment puis-je m'inscrire à une formation ?</div>
+          <div class="label"><span class="i18n" data-en="ENROLLMENT">INSCRIPTIONS</span></div>
+          <div class="q"><span class="i18n" data-en="How do I enroll in a program?">Comment puis-je m'inscrire à une formation ?</span></div>
         </div>
         <div class="card">
           <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-          <div class="label">TARIFS</div>
-          <div class="q">Quels sont les tarifs des formations ?</div>
+          <div class="label"><span class="i18n" data-en="PRICING">TARIFS</span></div>
+          <div class="q"><span class="i18n" data-en="What are the program fees?">Quels sont les tarifs des formations ?</span></div>
         </div>
         <div class="card">
           <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <div class="label">PLANNING</div>
-          <div class="q">Quels sont les horaires des cours ?</div>
+          <div class="label"><span class="i18n" data-en="SCHEDULE">PLANNING</span></div>
+          <div class="q"><span class="i18n" data-en="What are the class times?">Quels sont les horaires des cours ?</span></div>
         </div>
       </div>
       <div class="action-buttons">
         <button class="btn btn-secondary" onclick="document.getElementById('wifiModalEcole').classList.add('active')">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1.41 8.5a14.83 14.83 0 0 1 21.18 0"/><path d="M5.29 12.18a9.86 9.86 0 0 1 13.42 0"/><path d="M9.17 16.05a5 5 0 0 1 5.66 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
-          WiFi de l'école
+          <span class="i18n" data-en="School WiFi">WiFi de l'école</span>
         </button>
       </div>
     </section>
 
     <section class="section" id="flyers">
       <div class="section-header">
-        <div class="section-label">Marketing</div>
-        <h2 class="section-title">Nos campagnes Sup Formation</h2>
-        <p class="section-desc">Flyers parodiques et créatifs pour communiquer autrement. Clique pour agrandir.</p>
+        <div class="section-label"><span class="i18n" data-en="Marketing">Marketing</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="Our Sup Formation campaigns">Nos campagnes Sup Formation</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="Parody, creative flyers — a different way to communicate. Click to enlarge.">Flyers parodiques et créatifs pour communiquer autrement. Clique pour agrandir.</span></p>
       </div>
       <div class="flyers-grid">
         <div class="flyer-item">
-          <img src="Flyers%20Pirate.png" alt="Les Pirates des Alternances">
-          <div class="flyer-overlay"><span>🏴‍☠️ Les Pirates des Alternances</span></div>
+          <img src="Flyers%20Pirate.png" alt="Les Pirates des Alternances" data-en-alt="Pirates of the Work-Study Program">
+          <div class="flyer-overlay"><span><span class="i18n" data-en="🏴‍☠️ Pirates of the Work-Study Program">🏴‍☠️ Les Pirates des Alternances</span></span></div>
           <div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
         </div>
         <div class="flyer-item">
-          <img src="Flyer%20Stars%20Wars.png" alt="Que la Formation soit avec toi">
-          <div class="flyer-overlay"><span>⚔️ Que la Formation soit avec toi</span></div>
+          <img src="Flyer%20Stars%20Wars.png" alt="Que la Formation soit avec toi" data-en-alt="May the Training be with you">
+          <div class="flyer-overlay"><span><span class="i18n" data-en="⚔️ May the Training be with you">⚔️ Que la Formation soit avec toi</span></span></div>
           <div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
         </div>
         <div class="flyer-item">
-          <img src="Flyers%20Harry%20Potter.png" alt="Sup'pentard">
-          <div class="flyer-overlay"><span>🧙 École de Sup'celerie</span></div>
+          <img src="Flyers%20Harry%20Potter.png" alt="Sup'pentard" data-en-alt="Sup&#x27;s School of Sorcery">
+          <div class="flyer-overlay"><span><span class="i18n" data-en="🧙 Sup’s School of Sorcery">🧙 École de Sup'celerie</span></span></div>
           <div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
         </div>
         <div class="flyer-item">
-          <img src="Flyersloto1.png" alt="Flyer Loto 1">
-          <div class="flyer-overlay"><span>🎰 Loto Sup Formation</span></div>
+          <img src="Flyersloto1.png" alt="Flyer Loto 1" data-en-alt="Lottery flyer 1">
+          <div class="flyer-overlay"><span><span class="i18n" data-en="🎰 Sup Formation Lottery">🎰 Loto Sup Formation</span></span></div>
           <div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
         </div>
         <div class="flyer-item">
-          <img src="Flyersloto2.png" alt="Flyer Loto 2">
-          <div class="flyer-overlay"><span>🎰 Loto Sup Formation</span></div>
+          <img src="Flyersloto2.png" alt="Flyer Loto 2" data-en-alt="Lottery flyer 2">
+          <div class="flyer-overlay"><span><span class="i18n" data-en="🎰 Sup Formation Lottery">🎰 Loto Sup Formation</span></span></div>
           <div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
         </div>
         <div class="flyer-item">
-          <img src="Flyersloto3.png" alt="Flyer Loto 3">
-          <div class="flyer-overlay"><span>🎰 Loto Sup Formation</span></div>
+          <img src="Flyersloto3.png" alt="Flyer Loto 3" data-en-alt="Lottery flyer 3">
+          <div class="flyer-overlay"><span><span class="i18n" data-en="🎰 Sup Formation Lottery">🎰 Loto Sup Formation</span></span></div>
           <div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
         </div>
         <div class="flyer-item">
-          <img src="Flyersloto4.png" alt="Flyer Loto 4">
-          <div class="flyer-overlay"><span>🎰 Loto Sup Formation</span></div>
+          <img src="Flyersloto4.png" alt="Flyer Loto 4" data-en-alt="Lottery flyer 4">
+          <div class="flyer-overlay"><span><span class="i18n" data-en="🎰 Sup Formation Lottery">🎰 Loto Sup Formation</span></span></div>
           <div class="flyer-zoom-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
         </div>
       </div>
@@ -644,17 +680,17 @@
 
     <section class="section" id="kakemono" style="text-align:center;">
       <div class="section-header">
-        <div class="section-label">Expérience 3D</div>
-        <h2 class="section-title">Notre kakemono en 3D</h2>
-        <p class="section-desc">Visualisez le kakemono sur son stand complet. Drag pour faire pivoter, molette pour zoomer.</p>
+        <div class="section-label"><span class="i18n" data-en="3D Experience">Expérience 3D</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="Our kakemono in 3D">Notre kakemono en 3D</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="View the kakemono on its full stand. Drag to rotate, scroll to zoom.">Visualisez le kakemono sur son stand complet. Drag pour faire pivoter, molette pour zoomer.</span></p>
       </div>
       <div class="kakemono-preview-wrap">
         <div id="inlineKakemono3D"></div>
-        <p class="kakemono-3d-hint">Glisse pour pivoter · Molette pour zoomer · <span>Clic pour plein écran</span></p>
+        <p class="kakemono-3d-hint"><span class="i18n" data-en="Drag to rotate · Scroll to zoom ·">Glisse pour pivoter · Molette pour zoomer ·</span> <span><span class="i18n" data-en="Click for full screen">Clic pour plein écran</span></span></p>
         <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
           <button class="btn btn-primary" onclick="open3DViewerModal('kakemono-V2.png')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            Voir en plein écran
+            <span class="i18n" data-en="View full screen">Voir en plein écran</span>
           </button>
         </div>
       </div>
@@ -662,44 +698,44 @@
 
     <section class="section" style="text-align:center;">
       <div class="section-header">
-        <div class="section-label">Interactif</div>
-        <h2 class="section-title">Testez votre propre kakemono</h2>
-        <p class="section-desc">Uploadez n'importe quelle image et visualisez-la en 3D sur un vrai stand.</p>
+        <div class="section-label"><span class="i18n" data-en="Interactive">Interactif</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="Try your own kakemono">Testez votre propre kakemono</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="Upload any image and view it in 3D on a real stand.">Uploadez n'importe quelle image et visualisez-la en 3D sur un vrai stand.</span></p>
       </div>
       <div class="upload-zone" id="uploadZone">
         <div class="upload-placeholder" id="uploadPlaceholder">
           <div class="upload-icon-wrap">📤</div>
-          <div class="upload-text">Clique ou glisse<br>une image ici</div>
+          <div class="upload-text"><span class="i18n" data-en="Click or drag">Clique ou glisse</span><br><span class="i18n" data-en="an image here">une image ici</span></div>
         </div>
-        <img id="uploadedPreview" alt="Aperçu" style="display:none;">
+        <img id="uploadedPreview" alt="Aperçu" data-en-alt="Preview" style="display:none;">
       </div>
       <input type="file" id="kakemonoFileInput" accept="image/*" style="display:none;">
       <div class="upload-actions" id="uploadActions" style="display:none;">
         <button class="btn btn-primary" onclick="view3DUploaded()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Voir en 3D
+          <span class="i18n" data-en="View in 3D">Voir en 3D</span>
         </button>
         <button class="btn btn-secondary" onclick="resetUpload()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
-          Effacer
+          <span class="i18n" data-en="Clear">Effacer</span>
         </button>
       </div>
     </section>
 
     <section class="section" id="scratch" style="text-align:center;">
       <div class="section-header">
-        <div class="section-label">Jeu</div>
-        <h2 class="section-title">Notre ticket à gratter</h2>
-        <p class="section-desc">Gratte avec ta souris (ou ton doigt sur mobile) pour révéler le QR code.</p>
+        <div class="section-label"><span class="i18n" data-en="Game">Jeu</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="Our scratch card">Notre ticket à gratter</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="Scratch with your mouse (or your finger on mobile) to reveal the QR code.">Gratte avec ta souris (ou ton doigt sur mobile) pour révéler le QR code.</span></p>
       </div>
       <div class="scratch-container" id="scratchContainer">
-        <img src="ticket-qr.png" class="scratch-revealed" id="scratchRevealed" alt="Ticket Sup Formation">
+        <img src="ticket-qr.png" class="scratch-revealed" id="scratchRevealed" alt="Ticket Sup Formation" data-en-alt="Sup Formation scratch card">
         <canvas id="scratchCanvas"></canvas>
       </div>
       <br><br>
       <button class="btn btn-secondary" onclick="resetScratch()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-        Recommencer
+        <span class="i18n" data-en="Start over">Recommencer</span>
       </button>
     </section>
 
@@ -708,44 +744,44 @@
     ══════════════════════════════════════════ -->
     <section class="section km" id="kmeans">
       <div class="section-header">
-        <div class="section-label">Data · Cas fictif</div>
-        <h2 class="section-title">Repérer tôt les étudiants à accompagner</h2>
-        <p class="section-desc">Un K-means sur 600 étudiants fictifs de Sup Formation : quels profils d'engagement existent, et que proposer à chacun ?</p>
+        <div class="section-label"><span class="i18n" data-en="Data · Fictional case">Data · Cas fictif</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="Spotting students who need support, early">Repérer tôt les étudiants à accompagner</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="A K-means study on 600 fictional Sup Formation students: what engagement profiles exist, and what should be offered to each one?">Un K-means sur 600 étudiants fictifs de Sup Formation : quels profils d'engagement existent, et que proposer à chacun ?</span></p>
       </div>
-      <div class="km-note" role="note"><b>Données entièrement fictives.</b> Les 600 étudiants sont générés par un script (graine 2026) : aucune donnée réelle d'étudiant, aucune information de l'école. C'est une démonstration de méthode, réalisée à titre personnel par Yago Aba-Perea : elle ne décrit pas les vrais étudiants de Sup Formation.</div>
+      <div class="km-note" role="note"><b><span class="i18n" data-en="Entirely fictional data.">Données entièrement fictives.</span></b> <span class="i18n" data-en="The 600 students are generated by a script (seed 2026): no real student data, no information from the school. This is a methodology demo, built as a personal project by Yago Aba-Perea: it does not describe Sup Formation’s real students.">Les 600 étudiants sont générés par un script (graine 2026) : aucune donnée réelle d'étudiant, aucune information de l'école. C'est une démonstration de méthode, réalisée à titre personnel par Yago Aba-Perea : elle ne décrit pas les vrais étudiants de Sup Formation.</span></div>
       <div class="stats" id="tiles"></div>
       <p class="km-caption" id="tiles-note"></p>
     </section>
 
     <section class="section km" id="km-donnees">
       <div class="section-header">
-        <div class="section-label">Méthode</div>
-        <h2 class="section-title">La question</h2>
-        <p class="section-desc">Dans une école, il est difficile de suivre chaque étudiant de près. La bonne question n'est pas « qui a de mauvaises notes ? » mais « quels profils d'engagement existent, et que proposer à chacun ? »</p>
+        <div class="section-label"><span class="i18n" data-en="Method">Méthode</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="The question">La question</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="In a school, it’s hard to track every student closely. The right question isn’t “who has bad grades?” but “what engagement profiles exist, and what should be offered to each one?”">Dans une école, il est difficile de suivre chaque étudiant de près. La bonne question n'est pas « qui a de mauvaises notes ? » mais « quels profils d'engagement existent, et que proposer à chacun ? »</span></p>
       </div>
       <div class="how-grid km-steps">
-        <div class="how-card"><div class="how-icon">🧾</div><h3>1 · Données</h3><p>600 étudiants fictifs, six signaux : présence, moyenne, connexions à la plateforme, questions au chatbot, événements suivis, travaux rendus à temps.</p></div>
-        <div class="how-card"><div class="how-icon">🧮</div><h3>2 · Préparation</h3><p>Les comptages asymétriques passent au logarithme, puis tout est standardisé pour que la présence (0 à 100) n'écrase pas les événements (0 à 10).</p></div>
-        <div class="how-card"><div class="how-icon">🎯</div><h3>3 · Choix de k</h3><p>K-means pour k = 2 à 8, comparé par l'inertie, la silhouette et Davies–Bouldin, puis contrôle de stabilité.</p></div>
-        <div class="how-card"><div class="how-icon">🔎</div><h3>4 · Lecture des groupes</h3><p>Chaque groupe est décrit, nommé et associé à une action à tester. Le niveau d'études reste hors du calcul et sert seulement à décrire.</p></div>
+        <div class="how-card"><div class="how-icon">🧾</div><h3><span class="i18n" data-en="1 · Data">1 · Données</span></h3><p><span class="i18n" data-en="600 fictional students, six signals: attendance, average grade, platform logins, chatbot questions, events attended, on-time submissions.">600 étudiants fictifs, six signaux : présence, moyenne, connexions à la plateforme, questions au chatbot, événements suivis, travaux rendus à temps.</span></p></div>
+        <div class="how-card"><div class="how-icon">🧮</div><h3><span class="i18n" data-en="2 · Preparation">2 · Préparation</span></h3><p><span class="i18n" data-en="Skewed counts are log-transformed, then everything is standardised so attendance (0 to 100) doesn’t drown out events (0 to 10).">Les comptages asymétriques passent au logarithme, puis tout est standardisé pour que la présence (0 à 100) n'écrase pas les événements (0 à 10).</span></p></div>
+        <div class="how-card"><div class="how-icon">🎯</div><h3><span class="i18n" data-en="3 · Choosing k">3 · Choix de k</span></h3><p><span class="i18n" data-en="K-means for k = 2 to 8, compared by inertia, silhouette and Davies–Bouldin, then a stability check.">K-means pour k = 2 à 8, comparé par l'inertie, la silhouette et Davies–Bouldin, puis contrôle de stabilité.</span></p></div>
+        <div class="how-card"><div class="how-icon">🔎</div><h3><span class="i18n" data-en="4 · Reading the groups">4 · Lecture des groupes</span></h3><p><span class="i18n" data-en="Each group is described, named and paired with an action to test. Level of study stays out of the calculation and is used only to describe.">Chaque groupe est décrit, nommé et associé à une action à tester. Le niveau d'études reste hors du calcul et sert seulement à décrire.</span></p></div>
       </div>
       <div id="peek"></div>
     </section>
 
     <section class="section km" id="km-direct">
       <div class="section-header">
-        <div class="section-label">Interactif</div>
-        <h2 class="section-title">Le K-means en direct</h2>
-        <p class="section-desc">Les mêmes 600 étudiants, regroupés dans votre navigateur par un K-means écrit de zéro en JavaScript. Changez k, désactivez la standardisation, relancez d'autres départs.</p>
+        <div class="section-label"><span class="i18n" data-en="Interactive">Interactif</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="K-means, live">Le K-means en direct</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="The same 600 students, clustered in your browser by a K-means written from scratch in JavaScript. Change k, turn off standardisation, try other starts.">Les mêmes 600 étudiants, regroupés dans votre navigateur par un K-means écrit de zéro en JavaScript. Changez k, désactivez la standardisation, relancez d'autres départs.</span></p>
       </div>
       <div id="fig-live"></div>
     </section>
 
     <section class="section km" id="km-groupes">
       <div class="section-header">
-        <div class="section-label">Résultats</div>
-        <h2 class="section-title">Ce qui définit chaque groupe</h2>
-        <p class="section-desc">Analyse de référence en Python (scikit-learn), k = 4. Chiffre = médiane du groupe dans l'unité d'origine. Couleur = écart à l'étudiant moyen, en écarts-types (ET).</p>
+        <div class="section-label"><span class="i18n" data-en="Results">Résultats</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="What defines each group">Ce qui définit chaque groupe</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="Reference analysis in Python (scikit-learn), k = 4. Number = the group’s median in original units. Colour = distance from the average student, in standard deviations (SD).">Analyse de référence en Python (scikit-learn), k = 4. Chiffre = médiane du groupe dans l'unité d'origine. Couleur = écart à l'étudiant moyen, en écarts-types (ET).</span></p>
       </div>
       <div class="tw hm" id="hm-profile"></div>
       <div class="tw hm" id="hm-level" style="margin-top:28px"></div>
@@ -754,21 +790,21 @@
 
     <section class="section km" id="km-actions">
       <div class="section-header">
-        <div class="section-label">Actions</div>
-        <h2 class="section-title">Des groupes aux actions</h2>
-        <p class="section-desc">Un groupe n'a de valeur que s'il change une décision. Noms et actions sont mon interprétation des profils : des hypothèses à tester (test A/B ou suivi des résultats), pas des résultats.</p>
+        <div class="section-label"><span class="i18n" data-en="Actions">Actions</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="From groups to actions">Des groupes aux actions</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="A group is only worth something if it changes a decision. Names and actions are my own reading of the profiles: hypotheses to test (an A/B test or outcome tracking), not results.">Un groupe n'a de valeur que s'il change une décision. Noms et actions sont mon interprétation des profils : des hypothèses à tester (test A/B ou suivi des résultats), pas des résultats.</span></p>
       </div>
       <div class="km-cards" id="cards"></div>
     </section>
 
     <section class="section km" id="km-choix">
       <div class="section-header">
-        <div class="section-label">Choix de k</div>
-        <h2 class="section-title">Comment k a été choisi</h2>
-        <p class="section-desc">Les critères ne concordent pas tout à fait, et je le dis.</p>
+        <div class="section-label"><span class="i18n" data-en="Choosing k">Choix de k</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="How k was chosen">Comment k a été choisi</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="The criteria don’t quite agree, and I say so.">Les critères ne concordent pas tout à fait, et je le dis.</span></p>
       </div>
       <figure class="fig">
-        <div class="fig-head"><div><div class="t">Trois critères pour k = 2 à 8</div><div class="s">Le point blanc et la ligne verticale marquent le k retenu</div></div></div>
+        <div class="fig-head"><div><div class="t"><span class="i18n" data-en="Three criteria for k = 2 to 8">Trois critères pour k = 2 à 8</span></div><div class="s"><span class="i18n" data-en="The white dot and vertical line mark the chosen k">Le point blanc et la ligne verticale marquent le k retenu</span></div></div></div>
         <div class="grid3" id="k-charts"></div>
         <p class="msg" id="k-reading" style="margin-top:16px"></p>
       </figure>
@@ -778,30 +814,30 @@
 
     <section class="section km" id="km-limites">
       <div class="section-header">
-        <div class="section-label">Limites</div>
-        <h2 class="section-title">Limites et usage responsable</h2>
-        <p class="section-desc">Ce que cette démonstration prouve, et ce qu'elle ne prouve pas.</p>
+        <div class="section-label"><span class="i18n" data-en="Limits">Limites</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="Limits and responsible use">Limites et usage responsable</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="What this demo proves, and what it doesn’t.">Ce que cette démonstration prouve, et ce qu'elle ne prouve pas.</span></p>
       </div>
       <div class="rgpd-grid">
-        <div class="rgpd-item"><div class="rgpd-item-icon">🧪</div><div class="rgpd-item-title">Données fictives</div><p class="rgpd-item-text">La structure est construite dans le générateur : retrouver quatre groupes teste la méthode, pas de vrais étudiants.</p><span class="status-badge status-att">Fictif</span></div>
-        <div class="rgpd-item"><div class="rgpd-item-icon">📐</div><div class="rgpd-item-title">Limites du K-means</div><p class="rgpd-item-text">Il préfère des groupes compacts et de taille proche, et il est sensible aux échelles et aux valeurs extrêmes. Avec de vraies données, j'essaierais aussi un modèle de mélange gaussien ou une classification hiérarchique.</p><span class="status-badge status-rec">Méthode</span></div>
-        <div class="rgpd-item"><div class="rgpd-item-icon">🤝</div><div class="rgpd-item-title">Un groupe n'est pas un jugement</div><p class="rgpd-item-text">« À accompagner » est un signal pour ouvrir une conversation, pas une étiquette sur une personne. Toute décision reste humaine.</p><span class="status-badge status-att">Éthique</span></div>
-        <div class="rgpd-item"><div class="rgpd-item-icon">🔐</div><div class="rgpd-item-title">Vraies données d'étudiants</div><p class="rgpd-item-text">Il faudrait respecter le RGPD (finalité claire, minimisation, information des étudiants, accès limité, durée de conservation), écarter les variables sensibles et vérifier que les groupes ne désavantagent personne.</p><span class="status-badge status-obl">RGPD</span></div>
-        <div class="rgpd-item"><div class="rgpd-item-icon">✅</div><div class="rgpd-item-title">Validation</div><p class="rgpd-item-text">Confronter les groupes aux résultats réels (assiduité, réussite, abandons) et tester chaque action avant de la généraliser.</p><span class="status-badge status-rec">Recommandé</span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">🧪</div><div class="rgpd-item-title"><span class="i18n" data-en="Fictional data">Données fictives</span></div><p class="rgpd-item-text"><span class="i18n" data-en="The structure is built into the generator: finding four groups tests the method, not real students.">La structure est construite dans le générateur : retrouver quatre groupes teste la méthode, pas de vrais étudiants.</span></p><span class="status-badge status-att"><span class="i18n" data-en="Fictional">Fictif</span></span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">📐</div><div class="rgpd-item-title"><span class="i18n" data-en="Limits of K-means">Limites du K-means</span></div><p class="rgpd-item-text"><span class="i18n" data-en="It favours compact, similar-sized groups and is sensitive to scale and outliers. With real data I’d also try a Gaussian mixture model or hierarchical clustering.">Il préfère des groupes compacts et de taille proche, et il est sensible aux échelles et aux valeurs extrêmes. Avec de vraies données, j'essaierais aussi un modèle de mélange gaussien ou une classification hiérarchique.</span></p><span class="status-badge status-rec"><span class="i18n" data-en="Method">Méthode</span></span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">🤝</div><div class="rgpd-item-title"><span class="i18n" data-en="A group is not a judgement">Un groupe n'est pas un jugement</span></div><p class="rgpd-item-text"><span class="i18n" data-en="“Needs support” is a signal to start a conversation, not a label on a person. Every decision stays human.">« À accompagner » est un signal pour ouvrir une conversation, pas une étiquette sur une personne. Toute décision reste humaine.</span></p><span class="status-badge status-att"><span class="i18n" data-en="Ethics">Éthique</span></span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">🔐</div><div class="rgpd-item-title"><span class="i18n" data-en="Real student data">Vraies données d'étudiants</span></div><p class="rgpd-item-text"><span class="i18n" data-en="It would need to respect GDPR (clear purpose, data minimisation, informing students, limited access, retention period), rule out sensitive variables, and check that the groups don’t disadvantage anyone.">Il faudrait respecter le RGPD (finalité claire, minimisation, information des étudiants, accès limité, durée de conservation), écarter les variables sensibles et vérifier que les groupes ne désavantagent personne.</span></p><span class="status-badge status-obl"><span class="i18n" data-en="GDPR">RGPD</span></span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">✅</div><div class="rgpd-item-title"><span class="i18n" data-en="Validation">Validation</span></div><p class="rgpd-item-text"><span class="i18n" data-en="Check the groups against real outcomes (attendance, results, drop-outs) and test each action before rolling it out.">Confronter les groupes aux résultats réels (assiduité, réussite, abandons) et tester chaque action avant de la généraliser.</span></p><span class="status-badge status-rec"><span class="i18n" data-en="Recommended">Recommandé</span></span></div>
       </div>
     </section>
 
     <section class="section km" id="km-repro">
       <div class="section-header">
-        <div class="section-label">Reproduire</div>
-        <h2 class="section-title">Le code et les données</h2>
-        <p class="section-desc">Le script Python génère les données, mène l'analyse et écrit les résultats affichés ici. Le K-means de cette section est réécrit de zéro en JavaScript : à k = 4, avec la standardisation, il retrouve la partition de scikit-learn.</p>
+        <div class="section-label"><span class="i18n" data-en="Reproduce">Reproduire</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="The code and the data">Le code et les données</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="The Python script generates the data, runs the analysis and writes the results shown here. The K-means in this section is rewritten from scratch in JavaScript: at k = 4, with standardisation, it matches scikit-learn’s partition.">Le script Python génère les données, mène l'analyse et écrit les résultats affichés ici. Le K-means de cette section est réécrit de zéro en JavaScript : à k = 4, avec la standardisation, il retrouve la partition de scikit-learn.</span></p>
       </div>
       <div class="action-buttons" style="margin-top:0">
         <a class="btn btn-secondary" href="kmeans_supformation.py" target="_blank" rel="noopener noreferrer">kmeans_supformation.py</a>
         <a class="btn btn-secondary" href="students_simulated.csv" target="_blank" rel="noopener noreferrer">students_simulated.csv</a>
-        <a class="btn btn-secondary" href="https://yagoaba2006-byte.github.io/kmeans-prospects/index_fr.html" target="_blank" rel="noopener noreferrer">Le même travail sur des prospects</a>
-        <a class="btn btn-secondary" href="https://yagoaba2006-byte.github.io/kmeans-prospects/cours_kmeans.html" target="_blank" rel="noopener noreferrer">Mini-cours K-means</a>
+        <a class="btn btn-secondary" href="https://yagoaba2006-byte.github.io/kmeans-prospects/index_fr.html" target="_blank" rel="noopener noreferrer"><span class="i18n" data-en="The same work on prospects">Le même travail sur des prospects</span></a>
+        <a class="btn btn-secondary" href="https://yagoaba2006-byte.github.io/kmeans-prospects/cours_kmeans.html" target="_blank" rel="noopener noreferrer"><span class="i18n" data-en="K-means mini-course">Mini-cours K-means</span></a>
       </div>
     </section>
 
@@ -811,96 +847,96 @@
     <div class="infra-sep" id="infra">
       <div class="infra-sep-inner">
         <div class="infra-sep-line"></div>
-        <div class="infra-sep-badge">🖥️ Solutions Infrastructure · Chatbot IA</div>
+        <div class="infra-sep-badge"><span class="i18n" data-en="🖥️ Infrastructure Solutions · AI Chatbot">🖥️ Solutions Infrastructure · Chatbot IA</span></div>
         <div class="infra-sep-line"></div>
       </div>
     </div>
 
     <section class="section infra-hero" id="infra-hub">
-      <div class="infra-hero-badge">🤖 Chatbot IA · Dify · Déjà opérationnel ✓</div>
-      <h2><span class="l1">Votre chatbot est prêt.</span><span class="l2">Choisissez où il vit.</span></h2>
-      <p class="infra-hero-sub">Comparez les solutions d'hébergement et de modèle IA disponibles pour SUP Formation.<br>Tout est déjà configuré — il vous reste uniquement à choisir votre infrastructure.</p>
+      <div class="infra-hero-badge"><span class="i18n" data-en="🤖 AI Chatbot · Dify · Already live ✓">🤖 Chatbot IA · Dify · Déjà opérationnel ✓</span></div>
+      <h2><span class="l1"><span class="i18n" data-en="Your chatbot is ready.">Votre chatbot est prêt.</span></span><span class="l2"><span class="i18n" data-en="Choose where it lives.">Choisissez où il vit.</span></span></h2>
+      <p class="infra-hero-sub"><span class="i18n" data-en="Compare hosting and AI model options available for SUP Formation.">Comparez les solutions d'hébergement et de modèle IA disponibles pour SUP Formation.</span><br><span class="i18n" data-en="Everything is already configured — all that’s left is choosing your infrastructure.">Tout est déjà configuré — il vous reste uniquement à choisir votre infrastructure.</span></p>
       <div class="infra-indicators">
-        <span class="infra-ind">✓ Chatbot Dify livré</span>
-        <span class="infra-ind">✓ Conforme RGPD</span>
-        <span class="infra-ind">✓ Autonomie totale</span>
+        <span class="infra-ind"><span class="i18n" data-en="✓ Dify chatbot delivered">✓ Chatbot Dify livré</span></span>
+        <span class="infra-ind"><span class="i18n" data-en="✓ GDPR compliant">✓ Conforme RGPD</span></span>
+        <span class="infra-ind"><span class="i18n" data-en="✓ Full autonomy">✓ Autonomie totale</span></span>
       </div>
-      <a href="#infra-hebergement" class="btn btn-primary" style="position:relative;z-index:1">→ Voir les solutions</a>
+      <a href="#infra-hebergement" class="btn btn-primary" style="position:relative;z-index:1"><span class="i18n" data-en="→ See the solutions">→ Voir les solutions</span></a>
     </section>
 
     <section class="section" id="infra-comment">
       <div class="section-header">
-        <div class="section-label">Architecture</div>
-        <h2 class="section-title">Comment fonctionne l'infrastructure ?</h2>
-        <p class="section-desc">3 briques indépendantes — une seule déjà livrée.</p>
+        <div class="section-label"><span class="i18n" data-en="Architecture">Architecture</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="How does the infrastructure work?">Comment fonctionne l'infrastructure ?</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="3 independent building blocks — only one already delivered.">3 briques indépendantes — une seule déjà livrée.</span></p>
       </div>
       <div class="how-grid">
         <div class="how-card">
           <div class="how-icon">🧠</div>
-          <h3>Le cerveau : Dify</h3>
-          <p>Votre chatbot tourne sur Dify, un orchestrateur open-source. Il gère les conversations, la base de connaissance et les workflows. Il est déjà configuré et prêt.</p>
-          <span class="how-badge green">Déjà livré ✓</span>
+          <h3><span class="i18n" data-en="The brain: Dify">Le cerveau : Dify</span></h3>
+          <p><span class="i18n" data-en="Your chatbot runs on Dify, an open-source orchestrator. It handles conversations, the knowledge base and the workflows. It’s already configured and ready.">Votre chatbot tourne sur Dify, un orchestrateur open-source. Il gère les conversations, la base de connaissance et les workflows. Il est déjà configuré et prêt.</span></p>
+          <span class="how-badge green"><span class="i18n" data-en="Already delivered ✓">Déjà livré ✓</span></span>
         </div>
         <div class="how-card">
           <div class="how-icon">🖥️</div>
-          <h3>Le corps : le serveur</h3>
-          <p>Dify a besoin d'un serveur pour tourner. Vous choisissez où ce serveur est hébergé : dans le cloud managé ou sur un VPS que vous contrôlez.</p>
-          <span class="how-badge orange">À choisir →</span>
+          <h3><span class="i18n" data-en="The body: the server">Le corps : le serveur</span></h3>
+          <p><span class="i18n" data-en="Dify needs a server to run on. You choose where that server is hosted: on a managed cloud or on a VPS you control.">Dify a besoin d'un serveur pour tourner. Vous choisissez où ce serveur est hébergé : dans le cloud managé ou sur un VPS que vous contrôlez.</span></p>
+          <span class="how-badge orange"><span class="i18n" data-en="To choose →">À choisir →</span></span>
         </div>
         <div class="how-card">
           <div class="how-icon">⚡</div>
-          <h3>L'intelligence : le LLM</h3>
-          <p>Le chatbot utilise un modèle de langage (GPT, Mistral, Claude...) via une clé API. Vous payez à l'usage selon le volume de conversations.</p>
-          <span class="how-badge orange">À choisir →</span>
+          <h3><span class="i18n" data-en="The intelligence: the LLM">L'intelligence : le LLM</span></h3>
+          <p><span class="i18n" data-en="The chatbot uses a language model (GPT, Mistral, Claude...) via an API key. You pay per use, based on conversation volume.">Le chatbot utilise un modèle de langage (GPT, Mistral, Claude...) via une clé API. Vous payez à l'usage selon le volume de conversations.</span></p>
+          <span class="how-badge orange"><span class="i18n" data-en="To choose →">À choisir →</span></span>
         </div>
       </div>
       <div class="how-flow">
-        <div class="how-flow-node">👤 Utilisateur</div>
+        <div class="how-flow-node"><span class="i18n" data-en="👤 User">👤 Utilisateur</span></div>
         <div class="how-flow-arrow">→</div>
-        <div class="how-flow-node">🧠 Dify (chatbot)</div>
+        <div class="how-flow-node"><span class="i18n" data-en="🧠 Dify (chatbot)">🧠 Dify (chatbot)</span></div>
         <div class="how-flow-arrow">→</div>
-        <div class="how-flow-node">🖥️ Serveur</div>
+        <div class="how-flow-node"><span class="i18n" data-en="🖥️ Server">🖥️ Serveur</span></div>
         <div class="how-flow-arrow">+</div>
-        <div class="how-flow-node">⚡ API LLM</div>
+        <div class="how-flow-node"><span class="i18n" data-en="⚡ LLM API">⚡ API LLM</span></div>
       </div>
     </section>
 
     <section class="section" id="infra-hebergement">
       <div class="section-header">
-        <div class="section-label">Hébergement</div>
-        <h2 class="section-title">Où héberger votre chatbot ?</h2>
-        <p class="section-desc">Choisissez la solution d'hébergement qui correspond à vos besoins.</p>
+        <div class="section-label"><span class="i18n" data-en="Hosting">Hébergement</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="Where should your chatbot be hosted?">Où héberger votre chatbot ?</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="Choose the hosting solution that fits your needs.">Choisissez la solution d'hébergement qui correspond à vos besoins.</span></p>
       </div>
       <div class="hgrid">
         <div class="hcard hcard-blue">
           <div class="hcard-head hcard-head-blue">
             <div class="hcard-name">☁️ Dify Cloud</div>
-            <span class="hcard-badge">Recommandé pour démarrer</span>
+            <span class="hcard-badge"><span class="i18n" data-en="Recommended to get started">Recommandé pour démarrer</span></span>
           </div>
           <div class="hcard-body">
-            <div class="hcard-price">29 €<span style="font-size:1rem;font-weight:400;color:var(--text-dim)">/mois</span></div>
-            <div class="hcard-price-sub">À partir de — tarif Starter</div>
+            <div class="hcard-price">29 €<span style="font-size:1rem;font-weight:400;color:var(--text-dim)"><span class="i18n" data-en="/month">/mois</span></span></div>
+            <div class="hcard-price-sub"><span class="i18n" data-en="Starting at — Starter plan">À partir de — tarif Starter</span></div>
             <ul class="hcard-feats">
-              <li><span class="ok">✓</span> Aucune installation requise</li>
-              <li><span class="ok">✓</span> Mises à jour automatiques</li>
-              <li><span class="ok">✓</span> Interface d'administration incluse</li>
-              <li><span class="ok">✓</span> Prêt en moins de 24h</li>
-              <li><span class="warn">⚠</span> Données hébergées hors EU (à vérifier)</li>
-              <li><span class="warn">⚠</span> Dépendance au fournisseur</li>
+              <li><span class="ok">✓</span> <span class="i18n" data-en="No installation required">Aucune installation requise</span></li>
+              <li><span class="ok">✓</span> <span class="i18n" data-en="Automatic updates">Mises à jour automatiques</span></li>
+              <li><span class="ok">✓</span> <span class="i18n" data-en="Admin interface included">Interface d'administration incluse</span></li>
+              <li><span class="ok">✓</span> <span class="i18n" data-en="Ready in under 24h">Prêt en moins de 24h</span></li>
+              <li><span class="warn">⚠</span> <span class="i18n" data-en="Data hosted outside the EU (to confirm)">Données hébergées hors EU (à vérifier)</span></li>
+              <li><span class="warn">⚠</span> <span class="i18n" data-en="Dependent on the provider">Dépendance au fournisseur</span></li>
             </ul>
             <div class="rgpd-row">
-              <span class="rgpd-label">RGPD</span>
+              <span class="rgpd-label"><span class="i18n" data-en="GDPR">RGPD</span></span>
               <div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star">★</span></div>
-              <span class="rgpd-note">Moyen — DPA à signer</span>
+              <span class="rgpd-note"><span class="i18n" data-en="Medium — DPA to sign">Moyen — DPA à signer</span></span>
             </div>
             <div class="hcard-actions">
-              <a href="https://dify.ai/pricing" target="_blank" rel="noopener noreferrer" class="btn-provider btn-blue" aria-label="Voir les offres Dify Cloud">Voir les offres Dify Cloud →</a>
-              <button class="btn-provider btn-acc" onclick="toggleAcc(this)" aria-expanded="false"><span>En savoir plus</span><span class="chevron">▾</span></button>
+              <a href="https://dify.ai/pricing" target="_blank" rel="noopener noreferrer" class="btn-provider btn-blue" aria-label="Voir les offres Dify Cloud"><span class="i18n" data-en="See Dify Cloud plans →">Voir les offres Dify Cloud →</span></a>
+              <button class="btn-provider btn-acc" onclick="toggleAcc(this)" aria-expanded="false"><span><span class="i18n" data-en="Learn more">En savoir plus</span></span><span class="chevron">▾</span></button>
               <div class="acc-body"><div class="acc-inner"><ul>
                 <li>Plans : Starter (29$/mois), Pro (59$/mois), Team (199$/mois)</li>
                 <li>Inclus : 200 messages/jour (Starter), puis tarif à l'usage</li>
                 <li>Hébergement : USA/Asie (AWS) → DPA obligatoire</li>
-                <li>Documentation : <a href="https://docs.dify.ai" target="_blank" rel="noopener noreferrer">docs.dify.ai</a></li>
+                <li><span class="i18n" data-en="Documentation:">Documentation :</span> <a href="https://docs.dify.ai" target="_blank" rel="noopener noreferrer">docs.dify.ai</a></li>
               </ul></div></div>
             </div>
           </div>
@@ -908,34 +944,34 @@
         <div class="hcard hcard-fr">
           <div class="hcard-head hcard-head-fr">
             <div class="hcard-name">🇫🇷 OVHcloud VPS</div>
-            <span class="hcard-badge">🇫🇷 Hébergement France · RGPD Optimal</span>
+            <span class="hcard-badge"><span class="i18n" data-en="🇫🇷 Hosted in France · Optimal GDPR">🇫🇷 Hébergement France · RGPD Optimal</span></span>
           </div>
           <div class="hcard-body">
-            <div class="hcard-price">7 €<span style="font-size:1rem;font-weight:400;color:var(--text-dim)">/mois</span></div>
-            <div class="hcard-price-sub">À partir de — VPS Essential</div>
+            <div class="hcard-price">7 €<span style="font-size:1rem;font-weight:400;color:var(--text-dim)"><span class="i18n" data-en="/month">/mois</span></span></div>
+            <div class="hcard-price-sub"><span class="i18n" data-en="Starting at — VPS Essential">À partir de — VPS Essential</span></div>
             <ul class="hcard-feats">
-              <li><span class="ok">✓</span> Données hébergées en France</li>
-              <li><span class="ok">✓</span> Conformité RGPD maximale</li>
-              <li><span class="ok">✓</span> Coût fixe et prévisible</li>
-              <li><span class="ok">✓</span> Contrôle total de l'infrastructure</li>
-              <li><span class="ok">✓</span> Certifications ISO 27001 / HDS disponibles</li>
-              <li><span class="warn">⚠</span> Nécessite une configuration initiale (Docker)</li>
+              <li><span class="ok">✓</span> <span class="i18n" data-en="Data hosted in France">Données hébergées en France</span></li>
+              <li><span class="ok">✓</span> <span class="i18n" data-en="Maximum GDPR compliance">Conformité RGPD maximale</span></li>
+              <li><span class="ok">✓</span> <span class="i18n" data-en="Fixed, predictable cost">Coût fixe et prévisible</span></li>
+              <li><span class="ok">✓</span> <span class="i18n" data-en="Full control of the infrastructure">Contrôle total de l'infrastructure</span></li>
+              <li><span class="ok">✓</span> <span class="i18n" data-en="ISO 27001 / HDS certifications available">Certifications ISO 27001 / HDS disponibles</span></li>
+              <li><span class="warn">⚠</span> <span class="i18n" data-en="Requires initial setup (Docker)">Nécessite une configuration initiale (Docker)</span></li>
             </ul>
             <div class="rgpd-row">
-              <span class="rgpd-label">RGPD</span>
+              <span class="rgpd-label"><span class="i18n" data-en="GDPR">RGPD</span></span>
               <div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div>
-              <span class="rgpd-note">Maximal — données France</span>
+              <span class="rgpd-note"><span class="i18n" data-en="Maximum — data in France">Maximal — données France</span></span>
             </div>
             <div class="hcard-actions">
-              <a href="https://www.ovhcloud.com/fr/vps/" target="_blank" rel="noopener noreferrer" class="btn-provider btn-fr" aria-label="Voir les VPS OVHcloud">Voir les VPS OVHcloud →</a>
-              <button class="btn-provider btn-acc" onclick="toggleAcc(this)" aria-expanded="false"><span>En savoir plus</span><span class="chevron">▾</span></button>
+              <a href="https://www.ovhcloud.com/fr/vps/" target="_blank" rel="noopener noreferrer" class="btn-provider btn-fr" aria-label="Voir les VPS OVHcloud"><span class="i18n" data-en="See OVHcloud VPS plans →">Voir les VPS OVHcloud →</span></a>
+              <button class="btn-provider btn-acc" onclick="toggleAcc(this)" aria-expanded="false"><span><span class="i18n" data-en="Learn more">En savoir plus</span></span><span class="chevron">▾</span></button>
               <div class="acc-body"><div class="acc-inner"><ul>
-                <li>Config recommandée : VPS Value (4 vCPU, 8 Go RAM) → ~25–30 €/mois</li>
-                <li>OS recommandé : Ubuntu 22.04 LTS</li>
-                <li>Installation : Dify via <a href="https://docs.docker.com/compose/" target="_blank" rel="noopener noreferrer">Docker Compose</a></li>
-                <li>Datacenter : Roubaix / Gravelines / Strasbourg (France)</li>
-                <li>Alternative : <a href="https://www.scaleway.com/fr/" target="_blank" rel="noopener noreferrer">Scaleway (Paris)</a></li>
-                <li>Comparer : <a href="https://www.ovhcloud.com/fr/vps/compare/" target="_blank" rel="noopener noreferrer">ovhcloud.com/fr/vps/compare</a></li>
+                <li><span class="i18n" data-en="Recommended config: VPS Value (4 vCPU, 8 GB RAM) → ~€25–30/month">Config recommandée : VPS Value (4 vCPU, 8 Go RAM) → ~25–30 €/mois</span></li>
+                <li><span class="i18n" data-en="Recommended OS: Ubuntu 22.04 LTS">OS recommandé : Ubuntu 22.04 LTS</span></li>
+                <li><span class="i18n" data-en="Install: Dify via">Installation : Dify via</span> <a href="https://docs.docker.com/compose/" target="_blank" rel="noopener noreferrer">Docker Compose</a></li>
+                <li><span class="i18n" data-en="Datacenter: Roubaix / Gravelines / Strasbourg (France)">Datacenter : Roubaix / Gravelines / Strasbourg (France)</span></li>
+                <li><span class="i18n" data-en="Alternative:">Alternative :</span> <a href="https://www.scaleway.com/fr/" target="_blank" rel="noopener noreferrer">Scaleway (Paris)</a></li>
+                <li><span class="i18n" data-en="Compare:">Comparer :</span> <a href="https://www.ovhcloud.com/fr/vps/compare/" target="_blank" rel="noopener noreferrer">ovhcloud.com/fr/vps/compare</a></li>
               </ul></div></div>
             </div>
           </div>
@@ -943,32 +979,32 @@
         <div class="hcard hcard-purple">
           <div class="hcard-head hcard-head-purple">
             <div class="hcard-name">🌍 Scaleway</div>
-            <span class="hcard-badge">Alternative européenne</span>
+            <span class="hcard-badge"><span class="i18n" data-en="European alternative">Alternative européenne</span></span>
           </div>
           <div class="hcard-body">
-            <div class="hcard-price">9,99 €<span style="font-size:1rem;font-weight:400;color:var(--text-dim)">/mois</span></div>
-            <div class="hcard-price-sub">À partir de — DEV1-S</div>
+            <div class="hcard-price">9,99 €<span style="font-size:1rem;font-weight:400;color:var(--text-dim)"><span class="i18n" data-en="/month">/mois</span></span></div>
+            <div class="hcard-price-sub"><span class="i18n" data-en="Starting at — DEV1-S">À partir de — DEV1-S</span></div>
             <ul class="hcard-feats">
-              <li><span class="ok">✓</span> Hébergement Paris (France)</li>
-              <li><span class="ok">✓</span> RGPD natif, société française</li>
-              <li><span class="ok">✓</span> Interface moderne et intuitive</li>
-              <li><span class="ok">✓</span> Facturation à la seconde</li>
-              <li><span class="ok">✓</span> Snapshots et sauvegardes automatiques</li>
-              <li><span class="warn">⚠</span> Offre moins large qu'OVH</li>
+              <li><span class="ok">✓</span> <span class="i18n" data-en="Hosted in Paris (France)">Hébergement Paris (France)</span></li>
+              <li><span class="ok">✓</span> <span class="i18n" data-en="Native GDPR, French company">RGPD natif, société française</span></li>
+              <li><span class="ok">✓</span> <span class="i18n" data-en="Modern, intuitive interface">Interface moderne et intuitive</span></li>
+              <li><span class="ok">✓</span> <span class="i18n" data-en="Billed by the second">Facturation à la seconde</span></li>
+              <li><span class="ok">✓</span> <span class="i18n" data-en="Automatic snapshots and backups">Snapshots et sauvegardes automatiques</span></li>
+              <li><span class="warn">⚠</span> <span class="i18n" data-en="Smaller range than OVH">Offre moins large qu'OVH</span></li>
             </ul>
             <div class="rgpd-row">
-              <span class="rgpd-label">RGPD</span>
+              <span class="rgpd-label"><span class="i18n" data-en="GDPR">RGPD</span></span>
               <div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div>
-              <span class="rgpd-note">Maximal — Paris</span>
+              <span class="rgpd-note"><span class="i18n" data-en="Maximum — Paris">Maximal — Paris</span></span>
             </div>
             <div class="hcard-actions">
-              <a href="https://www.scaleway.com/fr/tarifs/" target="_blank" rel="noopener noreferrer" class="btn-provider btn-purple" aria-label="Voir les offres Scaleway">Voir les offres Scaleway →</a>
-              <button class="btn-provider btn-acc" onclick="toggleAcc(this)" aria-expanded="false"><span>En savoir plus</span><span class="chevron">▾</span></button>
+              <a href="https://www.scaleway.com/fr/tarifs/" target="_blank" rel="noopener noreferrer" class="btn-provider btn-purple" aria-label="Voir les offres Scaleway"><span class="i18n" data-en="See Scaleway plans →">Voir les offres Scaleway →</span></a>
+              <button class="btn-provider btn-acc" onclick="toggleAcc(this)" aria-expanded="false"><span><span class="i18n" data-en="Learn more">En savoir plus</span></span><span class="chevron">▾</span></button>
               <div class="acc-body"><div class="acc-inner"><ul>
-                <li>Config recommandée : DEV1-M (3 vCPU, 4 Go RAM) ou GP1-XS</li>
-                <li>Avantage : Object Storage S3 compatible pour les fichiers du chatbot</li>
-                <li>Datacenter : Paris (PAR1, PAR2, PAR3)</li>
-                <li>Tarifs : <a href="https://www.scaleway.com/fr/tarifs/" target="_blank" rel="noopener noreferrer">scaleway.com/fr/tarifs</a></li>
+                <li><span class="i18n" data-en="Recommended config: DEV1-M (3 vCPU, 4 GB RAM) or GP1-XS">Config recommandée : DEV1-M (3 vCPU, 4 Go RAM) ou GP1-XS</span></li>
+                <li><span class="i18n" data-en="Advantage: S3-compatible Object Storage for the chatbot’s files">Avantage : Object Storage S3 compatible pour les fichiers du chatbot</span></li>
+                <li><span class="i18n" data-en="Datacenter: Paris (PAR1, PAR2, PAR3)">Datacenter : Paris (PAR1, PAR2, PAR3)</span></li>
+                <li><span class="i18n" data-en="Pricing:">Tarifs :</span> <a href="https://www.scaleway.com/fr/tarifs/" target="_blank" rel="noopener noreferrer">scaleway.com/fr/tarifs</a></li>
               </ul></div></div>
             </div>
           </div>
@@ -978,108 +1014,108 @@
 
     <section class="section" id="infra-llm">
       <div class="section-header">
-        <div class="section-label">Modèle IA</div>
-        <h2 class="section-title">Quelle intelligence pour votre chatbot ?</h2>
-        <p class="section-desc">Le modèle LLM est le moteur du chatbot. Vous payez uniquement ce que vous consommez.</p>
+        <div class="section-label"><span class="i18n" data-en="AI Model">Modèle IA</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="What intelligence should power your chatbot?">Quelle intelligence pour votre chatbot ?</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="The LLM is the chatbot’s engine. You only pay for what you use.">Le modèle LLM est le moteur du chatbot. Vous payez uniquement ce que vous consommez.</span></p>
       </div>
-      <div class="llm-info-banner">💡 <strong>Comment ça fonctionne :</strong> Chaque conversation consomme des <strong>tokens</strong> (unités de texte). Vous achetez une clé API auprès d'un fournisseur et êtes facturé selon votre usage réel. Estimez ~100 000 tokens/jour pour un usage scolaire actif.</div>
+      <div class="llm-info-banner">💡 <strong><span class="i18n" data-en="How it works:">Comment ça fonctionne :</span></strong> <span class="i18n" data-en="Each conversation uses">Chaque conversation consomme des</span> <strong><span class="i18n" data-en="tokens">tokens</span></strong> <span class="i18n" data-en="(units of text). You buy an API key from a provider and are billed on actual usage. Estimate ~100,000 tokens/day for active school use.">(unités de texte). Vous achetez une clé API auprès d'un fournisseur et êtes facturé selon votre usage réel. Estimez ~100 000 tokens/jour pour un usage scolaire actif.</span></div>
       <div class="llm-grid">
         <div class="llm-card llm-gold">
-          <span class="llm-badge gold">🇫🇷 Souverain · Recommandé</span>
+          <span class="llm-badge gold"><span class="i18n" data-en="🇫🇷 Sovereign · Recommended">🇫🇷 Souverain · Recommandé</span></span>
           <div class="llm-name">Mistral AI</div>
-          <div class="llm-price">~20–60 €<span style="font-size:0.9rem;font-weight:400;color:var(--text-dim)">/mois</span></div>
+          <div class="llm-price">~20–60 €<span style="font-size:0.9rem;font-weight:400;color:var(--text-dim)"><span class="i18n" data-en="/month">/mois</span></span></div>
           <ul class="llm-feats">
-            <li><span class="ok">✓</span> Société française (Paris)</li>
-            <li><span class="ok">✓</span> Données traitées en Europe</li>
-            <li><span class="ok">✓</span> RGPD natif — DPA disponible</li>
-            <li><span class="ok">✓</span> Excellentes performances (Mistral Large, 7B…)</li>
-            <li><span class="ok">✓</span> Option modèle local gratuit (Ollama)</li>
-            <li><span class="ok">✓</span> Tarifs compétitifs</li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="French company (Paris)">Société française (Paris)</span></li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="Data processed in Europe">Données traitées en Europe</span></li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="Native GDPR — DPA available">RGPD natif — DPA disponible</span></li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="Excellent performance (Mistral Large, 7B…)">Excellentes performances (Mistral Large, 7B…)</span></li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="Free local model option (Ollama)">Option modèle local gratuit (Ollama)</span></li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="Competitive pricing">Tarifs compétitifs</span></li>
           </ul>
-          <div class="rgpd-row"><span class="rgpd-label">RGPD</span><div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span class="rgpd-note">Maximal — France</span></div>
-          <a href="https://console.mistral.ai/" target="_blank" rel="noopener noreferrer" class="btn-provider btn-gold" aria-label="Créer une clé API Mistral">Créer une clé API Mistral →</a>
-          <div class="llm-doc-link"><a href="https://docs.mistral.ai/" target="_blank" rel="noopener noreferrer">📖 Documentation Mistral</a></div>
+          <div class="rgpd-row"><span class="rgpd-label"><span class="i18n" data-en="GDPR">RGPD</span></span><div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span class="rgpd-note"><span class="i18n" data-en="Maximum — France">Maximal — France</span></span></div>
+          <a href="https://console.mistral.ai/" target="_blank" rel="noopener noreferrer" class="btn-provider btn-gold" aria-label="Créer une clé API Mistral"><span class="i18n" data-en="Create a Mistral API key →">Créer une clé API Mistral →</span></a>
+          <div class="llm-doc-link"><a href="https://docs.mistral.ai/" target="_blank" rel="noopener noreferrer"><span class="i18n" data-en="📖 Mistral documentation">📖 Documentation Mistral</span></a></div>
         </div>
         <div class="llm-card llm-green">
-          <span class="llm-badge green">Le plus connu</span>
+          <span class="llm-badge green"><span class="i18n" data-en="The best known">Le plus connu</span></span>
           <div class="llm-name">OpenAI GPT-4o</div>
-          <div class="llm-price">~30–80 €<span style="font-size:0.9rem;font-weight:400;color:var(--text-dim)">/mois</span></div>
+          <div class="llm-price">~30–80 €<span style="font-size:0.9rem;font-weight:400;color:var(--text-dim)"><span class="i18n" data-en="/month">/mois</span></span></div>
           <ul class="llm-feats">
-            <li><span class="ok">✓</span> GPT-4o : modèle très performant</li>
-            <li><span class="ok">✓</span> Documentation abondante</li>
-            <li><span class="ok">✓</span> Intégration Dify native</li>
-            <li><span class="warn">⚠</span> Société américaine (CLOUD ACT)</li>
-            <li><span class="warn">⚠</span> Données hors EU par défaut</li>
-            <li><span class="warn">⚠</span> DPA obligatoire (disponible)</li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="GPT-4o: a very capable model">GPT-4o : modèle très performant</span></li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="Extensive documentation">Documentation abondante</span></li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="Native Dify integration">Intégration Dify native</span></li>
+            <li><span class="warn">⚠</span> <span class="i18n" data-en="US company (CLOUD Act)">Société américaine (CLOUD ACT)</span></li>
+            <li><span class="warn">⚠</span> <span class="i18n" data-en="Data outside the EU by default">Données hors EU par défaut</span></li>
+            <li><span class="warn">⚠</span> <span class="i18n" data-en="DPA required (available)">DPA obligatoire (disponible)</span></li>
           </ul>
-          <div class="rgpd-row"><span class="rgpd-label">RGPD</span><div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star">★</span></div><span class="rgpd-note">Moyen — DPA requis</span></div>
-          <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" class="btn-provider btn-green" aria-label="Créer une clé API OpenAI">Créer une clé API OpenAI →</a>
-          <div class="llm-doc-link"><a href="https://openai.com/api/pricing/" target="_blank" rel="noopener noreferrer">💰 Voir les tarifs OpenAI</a></div>
+          <div class="rgpd-row"><span class="rgpd-label"><span class="i18n" data-en="GDPR">RGPD</span></span><div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star">★</span></div><span class="rgpd-note"><span class="i18n" data-en="Medium — DPA required">Moyen — DPA requis</span></span></div>
+          <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" class="btn-provider btn-green" aria-label="Créer une clé API OpenAI"><span class="i18n" data-en="Create an OpenAI API key →">Créer une clé API OpenAI →</span></a>
+          <div class="llm-doc-link"><a href="https://openai.com/api/pricing/" target="_blank" rel="noopener noreferrer"><span class="i18n" data-en="💰 See OpenAI pricing">💰 Voir les tarifs OpenAI</span></a></div>
         </div>
         <div class="llm-card llm-azure">
-          <span class="llm-badge blue">Option Enterprise RGPD</span>
+          <span class="llm-badge blue"><span class="i18n" data-en="Enterprise GDPR option">Option Enterprise RGPD</span></span>
           <div class="llm-name">Azure OpenAI 🌍</div>
-          <div class="llm-price">~35–90 €<span style="font-size:0.9rem;font-weight:400;color:var(--text-dim)">/mois</span></div>
+          <div class="llm-price">~35–90 €<span style="font-size:0.9rem;font-weight:400;color:var(--text-dim)"><span class="i18n" data-en="/month">/mois</span></span></div>
           <ul class="llm-feats">
-            <li><span class="ok">✓</span> GPT-4 hébergé en Europe (France Central)</li>
-            <li><span class="ok">✓</span> Données ne quittent pas l'UE</li>
-            <li><span class="ok">✓</span> SLA entreprise + conformité ISO</li>
-            <li><span class="ok">✓</span> Idéal pour usage institutionnel</li>
-            <li><span class="warn">⚠</span> Configuration plus complexe</li>
-            <li><span class="warn">⚠</span> Nécessite un abonnement Azure</li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="GPT-4 hosted in Europe (France Central)">GPT-4 hébergé en Europe (France Central)</span></li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="Data never leaves the EU">Données ne quittent pas l'UE</span></li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="Enterprise SLA + ISO compliance">SLA entreprise + conformité ISO</span></li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="Ideal for institutional use">Idéal pour usage institutionnel</span></li>
+            <li><span class="warn">⚠</span> <span class="i18n" data-en="More complex setup">Configuration plus complexe</span></li>
+            <li><span class="warn">⚠</span> <span class="i18n" data-en="Requires an Azure subscription">Nécessite un abonnement Azure</span></li>
           </ul>
-          <div class="rgpd-row"><span class="rgpd-label">RGPD</span><div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span class="rgpd-note">Maximal — EU</span></div>
-          <a href="https://azure.microsoft.com/fr-fr/products/ai-services/openai-service" target="_blank" rel="noopener noreferrer" class="btn-provider btn-azure" aria-label="Voir Azure OpenAI">Voir Azure OpenAI →</a>
-          <div class="llm-doc-link"><a href="https://azure.microsoft.com/fr-fr/pricing/details/cognitive-services/openai-service/" target="_blank" rel="noopener noreferrer">💰 Tarifs Azure OpenAI</a></div>
+          <div class="rgpd-row"><span class="rgpd-label"><span class="i18n" data-en="GDPR">RGPD</span></span><div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span class="rgpd-note"><span class="i18n" data-en="Maximum — EU">Maximal — EU</span></span></div>
+          <a href="https://azure.microsoft.com/fr-fr/products/ai-services/openai-service" target="_blank" rel="noopener noreferrer" class="btn-provider btn-azure" aria-label="Voir Azure OpenAI"><span class="i18n" data-en="See Azure OpenAI →">Voir Azure OpenAI →</span></a>
+          <div class="llm-doc-link"><a href="https://azure.microsoft.com/fr-fr/pricing/details/cognitive-services/openai-service/" target="_blank" rel="noopener noreferrer"><span class="i18n" data-en="💰 Azure OpenAI pricing">💰 Tarifs Azure OpenAI</span></a></div>
         </div>
         <div class="llm-card llm-dark">
-          <span class="llm-badge free">🆓 100% Gratuit · Souveraineté totale</span>
+          <span class="llm-badge free"><span class="i18n" data-en="🆓 100% Free · Full sovereignty">🆓 100% Gratuit · Souveraineté totale</span></span>
           <div class="llm-name">Ollama (Local)</div>
-          <div class="llm-price" style="color:var(--igreen)">0 €<span style="font-size:0.9rem;font-weight:400;color:var(--text-dim)">/mois</span></div>
+          <div class="llm-price" style="color:var(--igreen)">0 €<span style="font-size:0.9rem;font-weight:400;color:var(--text-dim)"><span class="i18n" data-en="/month">/mois</span></span></div>
           <ul class="llm-feats">
-            <li><span class="ok">✓</span> Modèle tournant sur votre serveur</li>
-            <li><span class="ok">✓</span> Aucune clé API, aucun coût variable</li>
-            <li><span class="ok">✓</span> Données ne quittent jamais le serveur</li>
-            <li><span class="ok">✓</span> Compatible Mistral 7B, LLaMA 3, Phi-3…</li>
-            <li><span class="ok">✓</span> RGPD parfait : zéro transfert de données</li>
-            <li><span class="warn">⚠</span> Nécessite un CPU/GPU puissant</li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="Runs on your own server">Modèle tournant sur votre serveur</span></li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="No API key, no variable cost">Aucune clé API, aucun coût variable</span></li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="Data never leaves the server">Données ne quittent jamais le serveur</span></li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="Compatible with Mistral 7B, LLaMA 3, Phi-3…">Compatible Mistral 7B, LLaMA 3, Phi-3…</span></li>
+            <li><span class="ok">✓</span> <span class="i18n" data-en="Perfect GDPR compliance: zero data transfer">RGPD parfait : zéro transfert de données</span></li>
+            <li><span class="warn">⚠</span> <span class="i18n" data-en="Requires a powerful CPU/GPU">Nécessite un CPU/GPU puissant</span></li>
           </ul>
-          <div class="rgpd-row"><span class="rgpd-label">RGPD</span><div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span class="rgpd-note">Maximal absolu</span></div>
-          <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" class="btn-provider btn-free" aria-label="Découvrir Ollama">Découvrir Ollama →</a>
-          <div class="llm-doc-link"><a href="https://ollama.com/library" target="_blank" rel="noopener noreferrer">📚 Voir les modèles disponibles</a></div>
+          <div class="rgpd-row"><span class="rgpd-label"><span class="i18n" data-en="GDPR">RGPD</span></span><div class="rgpd-stars"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span class="rgpd-note"><span class="i18n" data-en="Absolute maximum">Maximal absolu</span></span></div>
+          <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" class="btn-provider btn-free" aria-label="Découvrir Ollama"><span class="i18n" data-en="Discover Ollama →">Découvrir Ollama →</span></a>
+          <div class="llm-doc-link"><a href="https://ollama.com/library" target="_blank" rel="noopener noreferrer"><span class="i18n" data-en="📚 See available models">📚 Voir les modèles disponibles</span></a></div>
         </div>
       </div>
     </section>
 
     <section class="section" id="infra-compare">
       <div class="section-header">
-        <div class="section-label">Comparatif</div>
-        <h2 class="section-title">Comparez toutes les options</h2>
-        <p class="section-desc">Filtrez et triez selon vos critères. Cliquez sur une ligne pour accéder au site.</p>
+        <div class="section-label"><span class="i18n" data-en="Comparison">Comparatif</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="Compare all the options">Comparez toutes les options</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="Filter and sort by your criteria. Click a row to visit the site.">Filtrez et triez selon vos critères. Cliquez sur une ligne pour accéder au site.</span></p>
       </div>
       <div class="cmp-filters">
-        <button class="cmp-filter active" data-f="all" onclick="cmpFilter('all',this)">Tout</button>
-        <button class="cmp-filter" data-f="hebergement" onclick="cmpFilter('hebergement',this)">🖥️ Hébergement</button>
-        <button class="cmp-filter" data-f="llm" onclick="cmpFilter('llm',this)">⚡ Modèle IA</button>
+        <button class="cmp-filter active" data-f="all" onclick="cmpFilter('all',this)"><span class="i18n" data-en="All">Tout</span></button>
+        <button class="cmp-filter" data-f="hebergement" onclick="cmpFilter('hebergement',this)"><span class="i18n" data-en="🖥️ Hosting">🖥️ Hébergement</span></button>
+        <button class="cmp-filter" data-f="llm" onclick="cmpFilter('llm',this)"><span class="i18n" data-en="⚡ AI Model">⚡ Modèle IA</span></button>
       </div>
       <div class="cmp-wrap">
         <table class="cmp-table" id="cmpTable">
           <thead><tr>
-            <th onclick="cmpSort(0)">Solution <span class="sort-arr">↕</span></th>
-            <th onclick="cmpSort(1)">Type <span class="sort-arr">↕</span></th>
-            <th onclick="cmpSort(2)">Prix min. <span class="sort-arr">↕</span></th>
-            <th onclick="cmpSort(3)">RGPD <span class="sort-arr">↕</span></th>
-            <th>Localisation</th>
-            <th>Lien</th>
+            <th onclick="cmpSort(0)"><span class="i18n" data-en="Solution">Solution</span> <span class="sort-arr">↕</span></th>
+            <th onclick="cmpSort(1)"><span class="i18n" data-en="Type">Type</span> <span class="sort-arr">↕</span></th>
+            <th onclick="cmpSort(2)"><span class="i18n" data-en="Min. price">Prix min.</span> <span class="sort-arr">↕</span></th>
+            <th onclick="cmpSort(3)"><span class="i18n" data-en="GDPR">RGPD</span> <span class="sort-arr">↕</span></th>
+            <th><span class="i18n" data-en="Location">Localisation</span></th>
+            <th><span class="i18n" data-en="Link">Lien</span></th>
           </tr></thead>
           <tbody>
-            <tr data-type="hebergement" onclick="window.open('https://dify.ai/pricing','_blank')"><td class="cmp-name">☁️ Dify Cloud</td><td><span class="cmp-type-badge cmp-type-h">Hébergement</span></td><td data-value="29">29–59 €/mois</td><td data-value="2"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star">★</span></span></td><td>🌐 USA/Asie</td><td><a href="https://dify.ai/pricing" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
-            <tr data-type="hebergement" onclick="window.open('https://www.ovhcloud.com/fr/vps/','_blank')"><td class="cmp-name">🇫🇷 OVHcloud VPS</td><td><span class="cmp-type-badge cmp-type-h">Hébergement</span></td><td data-value="7">7–30 €/mois</td><td data-value="3"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></span></td><td>🇫🇷 France</td><td><a href="https://www.ovhcloud.com/fr/vps/" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
-            <tr data-type="hebergement" onclick="window.open('https://www.scaleway.com/fr/tarifs/','_blank')"><td class="cmp-name">🌍 Scaleway</td><td><span class="cmp-type-badge cmp-type-h">Hébergement</span></td><td data-value="10">9–25 €/mois</td><td data-value="3"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></span></td><td>🇫🇷 France</td><td><a href="https://www.scaleway.com/fr/tarifs/" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
-            <tr data-type="llm" onclick="window.open('https://console.mistral.ai/','_blank')"><td class="cmp-name">🇫🇷 Mistral AI API</td><td><span class="cmp-type-badge cmp-type-l">Modèle IA</span></td><td data-value="20">20–60 €/mois</td><td data-value="3"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></span></td><td>🇫🇷 France</td><td><a href="https://console.mistral.ai/" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
-            <tr data-type="llm" onclick="window.open('https://platform.openai.com/api-keys','_blank')"><td class="cmp-name">🌐 OpenAI API</td><td><span class="cmp-type-badge cmp-type-l">Modèle IA</span></td><td data-value="30">30–80 €/mois</td><td data-value="2"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star">★</span></span></td><td>🌐 USA</td><td><a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
-            <tr data-type="llm" onclick="window.open('https://azure.microsoft.com/fr-fr/products/ai-services/openai-service','_blank')"><td class="cmp-name">🇪🇺 Azure OpenAI</td><td><span class="cmp-type-badge cmp-type-l">Modèle IA</span></td><td data-value="35">35–90 €/mois</td><td data-value="3"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></span></td><td>🇪🇺 EU</td><td><a href="https://azure.microsoft.com/fr-fr/products/ai-services/openai-service" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
-            <tr data-type="llm" onclick="window.open('https://ollama.com/','_blank')"><td class="cmp-name">🆓 Ollama (local)</td><td><span class="cmp-type-badge cmp-type-l">Modèle IA</span></td><td data-value="0">0 €/mois</td><td data-value="3"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></span></td><td>🖥️ On-site</td><td><a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
+            <tr data-type="hebergement" onclick="window.open('https://dify.ai/pricing','_blank')"><td class="cmp-name">☁️ Dify Cloud</td><td><span class="cmp-type-badge cmp-type-h"><span class="i18n" data-en="Hosting">Hébergement</span></span></td><td data-value="29">29–59 €/mois</td><td data-value="2"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star">★</span></span></td><td><span class="i18n" data-en="🌐 USA/Asia">🌐 USA/Asie</span></td><td><a href="https://dify.ai/pricing" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
+            <tr data-type="hebergement" onclick="window.open('https://www.ovhcloud.com/fr/vps/','_blank')"><td class="cmp-name">🇫🇷 OVHcloud VPS</td><td><span class="cmp-type-badge cmp-type-h"><span class="i18n" data-en="Hosting">Hébergement</span></span></td><td data-value="7">7–30 €/mois</td><td data-value="3"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></span></td><td><span class="i18n" data-en="🇫🇷 France">🇫🇷 France</span></td><td><a href="https://www.ovhcloud.com/fr/vps/" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
+            <tr data-type="hebergement" onclick="window.open('https://www.scaleway.com/fr/tarifs/','_blank')"><td class="cmp-name">🌍 Scaleway</td><td><span class="cmp-type-badge cmp-type-h"><span class="i18n" data-en="Hosting">Hébergement</span></span></td><td data-value="10">9–25 €/mois</td><td data-value="3"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></span></td><td><span class="i18n" data-en="🇫🇷 France">🇫🇷 France</span></td><td><a href="https://www.scaleway.com/fr/tarifs/" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
+            <tr data-type="llm" onclick="window.open('https://console.mistral.ai/','_blank')"><td class="cmp-name">🇫🇷 Mistral AI API</td><td><span class="cmp-type-badge cmp-type-l"><span class="i18n" data-en="AI Model">Modèle IA</span></span></td><td data-value="20">20–60 €/mois</td><td data-value="3"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></span></td><td><span class="i18n" data-en="🇫🇷 France">🇫🇷 France</span></td><td><a href="https://console.mistral.ai/" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
+            <tr data-type="llm" onclick="window.open('https://platform.openai.com/api-keys','_blank')"><td class="cmp-name">🌐 OpenAI API</td><td><span class="cmp-type-badge cmp-type-l"><span class="i18n" data-en="AI Model">Modèle IA</span></span></td><td data-value="30">30–80 €/mois</td><td data-value="2"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star">★</span></span></td><td><span class="i18n" data-en="🌐 USA">🌐 USA</span></td><td><a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
+            <tr data-type="llm" onclick="window.open('https://azure.microsoft.com/fr-fr/products/ai-services/openai-service','_blank')"><td class="cmp-name">🇪🇺 Azure OpenAI</td><td><span class="cmp-type-badge cmp-type-l"><span class="i18n" data-en="AI Model">Modèle IA</span></span></td><td data-value="35">35–90 €/mois</td><td data-value="3"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></span></td><td><span class="i18n" data-en="🇪🇺 EU">🇪🇺 EU</span></td><td><a href="https://azure.microsoft.com/fr-fr/products/ai-services/openai-service" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
+            <tr data-type="llm" onclick="window.open('https://ollama.com/','_blank')"><td class="cmp-name">🆓 Ollama (local)</td><td><span class="cmp-type-badge cmp-type-l"><span class="i18n" data-en="AI Model">Modèle IA</span></span></td><td data-value="0">0 €/mois</td><td data-value="3"><span class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></span></td><td><span class="i18n" data-en="🖥️ On-site">🖥️ On-site</span></td><td><a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" class="cmp-link" onclick="event.stopPropagation()">→</a></td></tr>
           </tbody>
         </table>
       </div>
@@ -1087,118 +1123,118 @@
 
     <section class="section" id="infra-bundles">
       <div class="section-header">
-        <div class="section-label">Combinaisons</div>
-        <h2 class="section-title">Nos combinaisons conseillées</h2>
-        <p class="section-desc">Associez un hébergement + un modèle IA selon votre profil.</p>
+        <div class="section-label"><span class="i18n" data-en="Combinations">Combinaisons</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="Our recommended combinations">Nos combinaisons conseillées</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="Pair a hosting option with an AI model to fit your profile.">Associez un hébergement + un modèle IA selon votre profil.</span></p>
       </div>
       <div class="bund-grid">
         <div class="bund-card bund-blue">
           <div class="bund-num">01</div>
           <div class="bund-icon">🚀</div>
-          <div class="bund-title">Démarrage Rapide</div>
+          <div class="bund-title"><span class="i18n" data-en="Quick Start">Démarrage Rapide</span></div>
           <div class="bund-combo">Dify Cloud + Mistral AI API</div>
           <div class="bund-budget">~50–120 €/mois</div>
-          <p class="bund-desc">Idéal pour démarrer en moins de 24h, sans configuration technique. 100% managé.</p>
-          <div class="bund-rgpd"><span style="font-size:0.72rem;color:var(--text-mute);text-transform:uppercase;letter-spacing:0.08em">RGPD</span><div class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star">★</span></div><span style="font-size:0.75rem;color:var(--text-mute)">DPA à signer avec Dify</span></div>
+          <p class="bund-desc"><span class="i18n" data-en="Ideal to get started in under 24h, no technical setup. 100% managed.">Idéal pour démarrer en moins de 24h, sans configuration technique. 100% managé.</span></p>
+          <div class="bund-rgpd"><span style="font-size:0.72rem;color:var(--text-mute);text-transform:uppercase;letter-spacing:0.08em"><span class="i18n" data-en="GDPR">RGPD</span></span><div class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star">★</span></div><span style="font-size:0.75rem;color:var(--text-mute)"><span class="i18n" data-en="DPA to sign with Dify">DPA à signer avec Dify</span></span></div>
         </div>
         <div class="bund-card bund-fr" style="position:relative">
           <div class="bund-num">02</div>
-          <div class="bund-reco">⭐ Recommandé</div>
+          <div class="bund-reco"><span class="i18n" data-en="⭐ Recommended">⭐ Recommandé</span></div>
           <div class="bund-icon">🇫🇷</div>
-          <div class="bund-title">Souveraineté Française</div>
+          <div class="bund-title"><span class="i18n" data-en="French Sovereignty">Souveraineté Française</span></div>
           <div class="bund-combo" style="color:var(--igreen);background:var(--igreen-soft)">OVHcloud VPS + Mistral AI API</div>
           <div class="bund-budget">~45–90 €/mois</div>
-          <p class="bund-desc">La combinaison optimale : données 100% françaises, modèle IA français, conformité RGPD maximale.</p>
-          <div class="bund-rgpd"><span style="font-size:0.72rem;color:var(--text-mute);text-transform:uppercase;letter-spacing:0.08em">RGPD</span><div class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span style="font-size:0.75rem;color:var(--text-mute)">Maximal</span></div>
+          <p class="bund-desc"><span class="i18n" data-en="The optimal combination: 100% French data, French AI model, maximum GDPR compliance.">La combinaison optimale : données 100% françaises, modèle IA français, conformité RGPD maximale.</span></p>
+          <div class="bund-rgpd"><span style="font-size:0.72rem;color:var(--text-mute);text-transform:uppercase;letter-spacing:0.08em"><span class="i18n" data-en="GDPR">RGPD</span></span><div class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span style="font-size:0.75rem;color:var(--text-mute)"><span class="i18n" data-en="Maximum">Maximal</span></span></div>
         </div>
         <div class="bund-card bund-dark">
           <div class="bund-num">03</div>
           <div class="bund-icon">🔒</div>
-          <div class="bund-title">Autonomie Totale</div>
+          <div class="bund-title"><span class="i18n" data-en="Full Autonomy">Autonomie Totale</span></div>
           <div class="bund-combo" style="color:var(--purple);background:var(--purple-soft)">OVHcloud VPS + Ollama (local)</div>
           <div class="bund-budget">~25–50 €/mois</div>
-          <p class="bund-desc">Zéro dépendance externe. Le modèle IA tourne sur votre propre serveur. Aucun token envoyé à l'extérieur.</p>
-          <div class="bund-rgpd"><span style="font-size:0.72rem;color:var(--text-mute);text-transform:uppercase;letter-spacing:0.08em">RGPD</span><div class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span style="font-size:0.75rem;color:var(--text-mute)">Maximal absolu</span></div>
+          <p class="bund-desc"><span class="i18n" data-en="Zero external dependency. The AI model runs on your own server. No token ever sent outside.">Zéro dépendance externe. Le modèle IA tourne sur votre propre serveur. Aucun token envoyé à l'extérieur.</span></p>
+          <div class="bund-rgpd"><span style="font-size:0.72rem;color:var(--text-mute);text-transform:uppercase;letter-spacing:0.08em"><span class="i18n" data-en="GDPR">RGPD</span></span><div class="rgpd-stars" style="display:inline-flex;gap:3px"><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span><span class="rgpd-star on">★</span></div><span style="font-size:0.75rem;color:var(--text-mute)"><span class="i18n" data-en="Absolute maximum">Maximal absolu</span></span></div>
         </div>
       </div>
     </section>
 
     <section class="section" id="infra-calc">
       <div class="section-header">
-        <div class="section-label">Simulateur</div>
-        <h2 class="section-title">Estimez votre budget mensuel</h2>
-        <p class="section-desc">Ajustez les paramètres — l'estimation se met à jour en temps réel.</p>
+        <div class="section-label"><span class="i18n" data-en="Simulator">Simulateur</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="Estimate your monthly budget">Estimez votre budget mensuel</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="Adjust the settings — the estimate updates in real time.">Ajustez les paramètres — l'estimation se met à jour en temps réel.</span></p>
       </div>
       <div class="calc-layout">
         <div class="calc-form">
-          <h3>⚙️ Vos paramètres</h3>
+          <h3><span class="i18n" data-en="⚙️ Your settings">⚙️ Vos paramètres</span></h3>
           <div class="calc-group">
-            <div class="calc-group-label">Utilisateurs actifs / jour <span id="cUsersDisplay">50</span></div>
+            <div class="calc-group-label"><span class="i18n" data-en="Active users / day">Utilisateurs actifs / jour</span> <span id="cUsersDisplay">50</span></div>
             <input type="range" class="calc-slider" id="cUsers" min="5" max="200" value="50" oninput="calcUpdate()">
             <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--text-mute);margin-top:4px"><span>5</span><span>200</span></div>
           </div>
           <div class="calc-group">
-            <div class="calc-group-label">Longueur des conversations <span id="cLenDisplay">Moyenne</span></div>
+            <div class="calc-group-label"><span class="i18n" data-en="Conversation length">Longueur des conversations</span> <span id="cLenDisplay"><span class="i18n" data-en="Medium">Moyenne</span></span></div>
             <input type="range" class="calc-slider" id="cLen" min="1" max="3" value="2" step="1" oninput="calcUpdate()">
-            <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--text-mute);margin-top:4px"><span>Courte</span><span>Moyenne</span><span>Longue</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--text-mute);margin-top:4px"><span><span class="i18n" data-en="Short">Courte</span></span><span><span class="i18n" data-en="Medium">Moyenne</span></span><span><span class="i18n" data-en="Long">Longue</span></span></div>
           </div>
           <div class="calc-group">
-            <div class="calc-group-label" style="margin-bottom:10px">Type d'hébergement</div>
+            <div class="calc-group-label" style="margin-bottom:10px"><span class="i18n" data-en="Hosting type">Type d'hébergement</span></div>
             <div class="calc-radio-group">
-              <label class="calc-radio-label"><input type="radio" name="cHost" value="cloud" checked onchange="calcUpdate()"><span class="calc-radio-btn">☁️ Cloud managé</span></label>
-              <label class="calc-radio-label"><input type="radio" name="cHost" value="vps" onchange="calcUpdate()"><span class="calc-radio-btn">🖥️ Serveur VPS</span></label>
+              <label class="calc-radio-label"><input type="radio" name="cHost" value="cloud" checked onchange="calcUpdate()"><span class="calc-radio-btn"><span class="i18n" data-en="☁️ Managed cloud">☁️ Cloud managé</span></span></label>
+              <label class="calc-radio-label"><input type="radio" name="cHost" value="vps" onchange="calcUpdate()"><span class="calc-radio-btn"><span class="i18n" data-en="🖥️ VPS server">🖥️ Serveur VPS</span></span></label>
             </div>
           </div>
           <div class="calc-group" style="margin-bottom:0">
-            <div class="calc-group-label" style="margin-bottom:10px">Modèle LLM</div>
+            <div class="calc-group-label" style="margin-bottom:10px"><span class="i18n" data-en="LLM model">Modèle LLM</span></div>
             <div class="calc-radio-group">
-              <label class="calc-radio-label"><input type="radio" name="cLLM" value="api" checked onchange="calcUpdate()"><span class="calc-radio-btn">⚡ API (payant)</span></label>
-              <label class="calc-radio-label"><input type="radio" name="cLLM" value="local" onchange="calcUpdate()"><span class="calc-radio-btn">🆓 Local (Ollama)</span></label>
+              <label class="calc-radio-label"><input type="radio" name="cLLM" value="api" checked onchange="calcUpdate()"><span class="calc-radio-btn"><span class="i18n" data-en="⚡ API (paid)">⚡ API (payant)</span></span></label>
+              <label class="calc-radio-label"><input type="radio" name="cLLM" value="local" onchange="calcUpdate()"><span class="calc-radio-btn"><span class="i18n" data-en="🆓 Local (Ollama)">🆓 Local (Ollama)</span></span></label>
             </div>
           </div>
         </div>
         <div class="calc-result">
-          <h3>Estimation mensuelle</h3>
+          <h3><span class="i18n" data-en="Monthly estimate">Estimation mensuelle</span></h3>
           <div class="calc-total" id="cTotal">49 – 90 €/mois</div>
-          <div class="calc-line"><span class="calc-line-label">🖥️ Hébergement</span><span class="calc-line-val" id="cHostVal">29 – 59 €/mois</span></div>
-          <div class="calc-line"><span class="calc-line-label">⚡ API LLM estimée</span><span class="calc-line-val" id="cLLMVal">19 – 30 €/mois</span></div>
-          <div class="calc-line"><span class="calc-line-label">🌐 Nom de domaine</span><span class="calc-line-val">~1 €/mois</span></div>
-          <div class="calc-note"><strong>Estimation indicative</strong> basée sur ~2 000 tokens/conversation. Les coûts LLM varient selon le modèle choisi (Mistral Small → GPT-4o). Usage scolaire = ~100K tokens/jour.</div>
+          <div class="calc-line"><span class="calc-line-label"><span class="i18n" data-en="🖥️ Hosting">🖥️ Hébergement</span></span><span class="calc-line-val" id="cHostVal">29 – 59 €/mois</span></div>
+          <div class="calc-line"><span class="calc-line-label"><span class="i18n" data-en="⚡ Estimated LLM API">⚡ API LLM estimée</span></span><span class="calc-line-val" id="cLLMVal">19 – 30 €/mois</span></div>
+          <div class="calc-line"><span class="calc-line-label"><span class="i18n" data-en="🌐 Domain name">🌐 Nom de domaine</span></span><span class="calc-line-val"><span class="i18n" data-en="~€1/month">~1 €/mois</span></span></div>
+          <div class="calc-note"><strong><span class="i18n" data-en="Rough estimate">Estimation indicative</span></strong> <span class="i18n" data-en="based on ~2,000 tokens/conversation. LLM costs vary by model (Mistral Small → GPT-4o). School usage = ~100K tokens/day.">basée sur ~2 000 tokens/conversation. Les coûts LLM varient selon le modèle choisi (Mistral Small → GPT-4o). Usage scolaire = ~100K tokens/jour.</span></div>
         </div>
       </div>
     </section>
 
     <section class="section" id="infra-rgpd">
       <div class="section-header">
-        <div class="section-label">Conformité</div>
-        <h2 class="section-title">Ce que dit le RGPD</h2>
-        <p class="section-desc">Points de vigilance pour une école traitant des données d'étudiants.</p>
+        <div class="section-label"><span class="i18n" data-en="Compliance">Conformité</span></div>
+        <h2 class="section-title"><span class="i18n" data-en="What GDPR requires">Ce que dit le RGPD</span></h2>
+        <p class="section-desc"><span class="i18n" data-en="Points of attention for a school handling student data.">Points de vigilance pour une école traitant des données d'étudiants.</span></p>
       </div>
       <div class="rgpd-grid">
-        <div class="rgpd-item"><div class="rgpd-item-icon">📋</div><div class="rgpd-item-title">Registre de traitement</div><p class="rgpd-item-text">Inscrire le chatbot dans le registre RGPD de l'école avec la finalité et les données traitées.</p><span class="status-badge status-obl">Obligatoire</span></div>
-        <div class="rgpd-item"><div class="rgpd-item-icon">📝</div><div class="rgpd-item-title">Information des utilisateurs</div><p class="rgpd-item-text">Afficher une notice d'information claire avant utilisation du chatbot.</p><span class="status-badge status-obl">Obligatoire</span></div>
-        <div class="rgpd-item"><div class="rgpd-item-icon">🤝</div><div class="rgpd-item-title">DPA fournisseurs</div><p class="rgpd-item-text">Signer un accord de traitement des données avec chaque fournisseur de service API externe.</p><span class="status-badge status-api">Si API externe</span></div>
-        <div class="rgpd-item"><div class="rgpd-item-icon">🗑️</div><div class="rgpd-item-title">Durée de conservation</div><p class="rgpd-item-text">Définir et appliquer une durée de rétention des conversations (ex : 6 mois).</p><span class="status-badge status-rec">Recommandé</span></div>
-        <div class="rgpd-item"><div class="rgpd-item-icon">🔐</div><div class="rgpd-item-title">Sécurisation des accès</div><p class="rgpd-item-text">Accès admin Dify protégé par double authentification (2FA) et mots de passe forts.</p><span class="status-badge status-rec">Recommandé</span></div>
-        <div class="rgpd-item"><div class="rgpd-item-icon">🌍</div><div class="rgpd-item-title">Transferts hors UE</div><p class="rgpd-item-text">Privilégier les hébergeurs et LLM européens pour éviter les transferts de données hors UE.</p><span class="status-badge status-att">Attention</span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">📋</div><div class="rgpd-item-title"><span class="i18n" data-en="Processing record">Registre de traitement</span></div><p class="rgpd-item-text"><span class="i18n" data-en="Add the chatbot to the school’s GDPR processing record, with its purpose and the data it handles.">Inscrire le chatbot dans le registre RGPD de l'école avec la finalité et les données traitées.</span></p><span class="status-badge status-obl"><span class="i18n" data-en="Mandatory">Obligatoire</span></span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">📝</div><div class="rgpd-item-title"><span class="i18n" data-en="Informing users">Information des utilisateurs</span></div><p class="rgpd-item-text"><span class="i18n" data-en="Display a clear information notice before the chatbot is used.">Afficher une notice d'information claire avant utilisation du chatbot.</span></p><span class="status-badge status-obl"><span class="i18n" data-en="Mandatory">Obligatoire</span></span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">🤝</div><div class="rgpd-item-title"><span class="i18n" data-en="Provider DPAs">DPA fournisseurs</span></div><p class="rgpd-item-text"><span class="i18n" data-en="Sign a data processing agreement with each external API provider.">Signer un accord de traitement des données avec chaque fournisseur de service API externe.</span></p><span class="status-badge status-api"><span class="i18n" data-en="If using an external API">Si API externe</span></span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">🗑️</div><div class="rgpd-item-title"><span class="i18n" data-en="Retention period">Durée de conservation</span></div><p class="rgpd-item-text"><span class="i18n" data-en="Define and apply a retention period for conversations (e.g. 6 months).">Définir et appliquer une durée de rétention des conversations (ex : 6 mois).</span></p><span class="status-badge status-rec"><span class="i18n" data-en="Recommended">Recommandé</span></span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">🔐</div><div class="rgpd-item-title"><span class="i18n" data-en="Securing access">Sécurisation des accès</span></div><p class="rgpd-item-text"><span class="i18n" data-en="Protect Dify admin access with two-factor authentication (2FA) and strong passwords.">Accès admin Dify protégé par double authentification (2FA) et mots de passe forts.</span></p><span class="status-badge status-rec"><span class="i18n" data-en="Recommended">Recommandé</span></span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">🌍</div><div class="rgpd-item-title"><span class="i18n" data-en="Transfers outside the EU">Transferts hors UE</span></div><p class="rgpd-item-text"><span class="i18n" data-en="Favour European hosts and LLMs to avoid transferring data outside the EU.">Privilégier les hébergeurs et LLM européens pour éviter les transferts de données hors UE.</span></p><span class="status-badge status-att"><span class="i18n" data-en="Caution">Attention</span></span></div>
       </div>
     </section>
 
     <footer class="footer">
       <div class="footer-brand">TOUCAIN<span class="accent">.</span></div>
-      <div class="footer-tagline">L'assistant IA conversationnel de Sup Formation · Avancer, se former</div>
+      <div class="footer-tagline"><span class="i18n" data-en="Sup Formation’s AI conversational assistant · Advance, learn">L'assistant IA conversationnel de Sup Formation · Avancer, se former</span></div>
       <div class="footer-divider"></div>
       <div class="footer-links">
-        <a href="#hero">Accueil</a>
-        <a href="#questions">Tester</a>
-        <a href="#flyers">Campagnes</a>
+        <a href="#hero"><span class="i18n" data-en="Home">Accueil</span></a>
+        <a href="#questions"><span class="i18n" data-en="Try it">Tester</span></a>
+        <a href="#flyers"><span class="i18n" data-en="Campaigns">Campagnes</span></a>
         <a href="#kakemono">3D</a>
-        <a href="#kmeans">K-means</a>
-        <a href="#infra">Solutions IA</a>
-        <a href="#" onclick="document.getElementById('wifiModalEcole').classList.add('active'); return false;">WiFi école</a>
-        <a href="Proposition_TOUCAIN_SupFormation.pdf" target="_blank">Devis</a>
+        <a href="#kmeans"><span class="i18n" data-en="K-means">K-means</span></a>
+        <a href="#infra"><span class="i18n" data-en="AI Solutions">Solutions IA</span></a>
+        <a href="#" onclick="document.getElementById('wifiModalEcole').classList.add('active'); return false;"><span class="i18n" data-en="School WiFi">WiFi école</span></a>
+        <a href="Proposition_TOUCAIN_SupFormation.pdf" target="_blank"><span class="i18n" data-en="Quote">Devis</span></a>
       </div>
-      <div style="margin:8px 0 4px;font-size:0.75rem;color:var(--text-mute);text-transform:uppercase;letter-spacing:0.1em">Fournisseurs infrastructure</div>
+      <div style="margin:8px 0 4px;font-size:0.75rem;color:var(--text-mute);text-transform:uppercase;letter-spacing:0.1em"><span class="i18n" data-en="Infrastructure providers">Fournisseurs infrastructure</span></div>
       <div class="infra-footer-links">
         <a href="https://dify.ai" target="_blank" rel="noopener noreferrer">Dify</a>
         <a href="https://www.ovhcloud.com/fr/vps/" target="_blank" rel="noopener noreferrer">OVHcloud</a>
@@ -1208,7 +1244,7 @@
         <a href="https://azure.microsoft.com/fr-fr/products/ai-services/openai-service" target="_blank" rel="noopener noreferrer">Azure</a>
         <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer">Ollama</a>
       </div>
-      <div class="footer-copy">© Mai 2026 · SUP Formation · TOUCAIN AI · Document confidentiel d'aide à la décision</div>
+      <div class="footer-copy"><span class="i18n" data-en="© May 2026 · SUP Formation · TOUCAIN AI · Confidential decision-support document">© Mai 2026 · SUP Formation · TOUCAIN AI · Document confidentiel d'aide à la décision</span></div>
     </footer>
   </div>
 
@@ -1216,12 +1252,12 @@
   <div class="wifi-modal-overlay" id="wifiModalEcole">
     <div class="wifi-modal">
       <button class="wifi-modal-close" onclick="document.getElementById('wifiModalEcole').classList.remove('active')">✕</button>
-      <div class="wifi-print-only"><h1>WiFi Sup-Formation</h1></div>
-      <h2>📶 Scanne-moi</h2>
-      <div class="qr-container"><img src="Livebox-2F50-qrcode.png" alt="QR code WiFi"></div>
+      <div class="wifi-print-only"><h1><span class="i18n" data-en="Sup-Formation WiFi">WiFi Sup-Formation</span></h1></div>
+      <h2><span class="i18n" data-en="📶 Scan me">📶 Scanne-moi</span></h2>
+      <div class="qr-container"><img src="Livebox-2F50-qrcode.png" alt="QR code WiFi" data-en-alt="WiFi QR code"></div>
       <div class="wifi-modal-actions">
-        <button class="wifi-btn-action wifi-btn-fermer" onclick="document.getElementById('wifiModalEcole').classList.remove('active')">Fermer</button>
-        <button class="wifi-btn-action wifi-btn-print" onclick="window.print()">🖨 Imprimer</button>
+        <button class="wifi-btn-action wifi-btn-fermer" onclick="document.getElementById('wifiModalEcole').classList.remove('active')"><span class="i18n" data-en="Close">Fermer</span></button>
+        <button class="wifi-btn-action wifi-btn-print" onclick="window.print()"><span class="i18n" data-en="🖨 Print">🖨 Imprimer</span></button>
       </div>
     </div>
   </div>
@@ -1236,7 +1272,7 @@
   <div id="threeDModal" class="three-d-modal">
     <button class="modal-close-btn" onclick="close3DModal()">✕</button>
     <div id="threeDContainer"></div>
-    <div class="three-d-hint">🖱 Glisse pour pivoter · Molette pour zoomer · Échap pour fermer</div>
+    <div class="three-d-hint"><span class="i18n" data-en="🖱 Drag to rotate · Scroll to zoom · Esc to close">🖱 Glisse pour pivoter · Molette pour zoomer · Échap pour fermer</span></div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -1624,15 +1660,17 @@
     const len   = parseInt(document.getElementById('cLen').value);
     const isCloud = document.querySelector('input[name="cHost"]:checked').value === 'cloud';
     const isApi   = document.querySelector('input[name="cLLM"]:checked').value === 'api';
+    const isEn = window.SITE_LANG === 'en';
     document.getElementById('cUsersDisplay').textContent = users;
-    document.getElementById('cLenDisplay').textContent   = ['Courte','Moyenne','Longue'][len-1];
+    document.getElementById('cLenDisplay').textContent   = (isEn ? ['Short','Medium','Long'] : ['Courte','Moyenne','Longue'])[len-1];
     const tokens = [800,2000,4000][len-1];
     const hMin = isCloud ? 29 : 7, hMax = isCloud ? 59 : 30;
     let lMin = 0, lMax = 0;
     if (isApi) { const tk = users*30*tokens/1000; lMin = Math.max(1,Math.round(tk*0.001)); lMax = Math.round(tk*0.006); }
-    animCalcVal('cTotal',   `${hMin+lMin+1} – ${hMax+lMax+1} €/mois`);
-    animCalcVal('cHostVal', `${hMin} – ${hMax} €/mois`);
-    animCalcVal('cLLMVal',  isApi ? `${lMin} – ${lMax} €/mois` : '0 €/mois (local)');
+    const range = (a, b) => isEn ? `€${a} – €${b}/month` : `${a} – ${b} €/mois`;
+    animCalcVal('cTotal',   range(hMin+lMin+1, hMax+lMax+1));
+    animCalcVal('cHostVal', range(hMin, hMax));
+    animCalcVal('cLLMVal',  isApi ? range(lMin, lMax) : (isEn ? '€0/month (local)' : '0 €/mois (local)'));
   }
   function animCalcVal(id, val) {
     const el = document.getElementById(id);
@@ -1664,7 +1702,9 @@ function s(tag, attrs, ...kids) {
   for (const c of kids.flat()) if (c != null) e.append(c);
   return e;
 }
-const fr = (n, d = 0) => Number(n).toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d });
+let LANG = 'fr';
+const t = (frTxt, enTxt) => (LANG === 'en' ? enTxt : frTxt);
+const fr = (n, d = 0) => Number(n).toLocaleString(LANG === 'en' ? 'en-US' : 'fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d });
 const sgn = (n, d = 1) => (n >= 0 ? '+' : '−') + fr(Math.abs(n), d);
 const rd = v => Math.round(v * 10) / 10;
 const cssv = n => getComputedStyle(document.querySelector('.km')).getPropertyValue(n).trim();
@@ -1761,7 +1801,7 @@ const RAW = P.map(p => p.slice(4, 4 + F.length));
 const PY = P.map(p => p[2]);
 const LEVELS = DATA.meta.levels;
 const SEG = DATA.segments;                          // Python k = 4, ordered by decreasing attendance
-const FEAT = {
+const FEAT_FR = {
   attendance_pct: { short: 'Présence', unit: '%', long: 'Présence aux cours (%)', tipU: '% des cours suivis', d: 0 },
   grade_avg: { short: 'Moyenne', unit: '/20', long: 'Moyenne générale (/20)', tipU: '/20 de moyenne', d: 1 },
   logins_per_month: { short: 'Connexions', unit: '/mois', long: 'Connexions à la plateforme (par mois)', tipU: 'connexions / mois', d: 0 },
@@ -1769,35 +1809,56 @@ const FEAT = {
   events_per_semester: { short: 'Événements', unit: '/sem.', long: 'Événements suivis (par semestre)', tipU: 'événements / semestre', d: 0 },
   on_time_pct: { short: 'Rendus à temps', unit: '%', long: 'Travaux rendus à temps (%)', tipU: '% rendus à temps', d: 0 }
 };
+const FEAT_EN = {
+  attendance_pct: { short: 'Attendance', unit: '%', long: 'Class attendance (%)', tipU: '% of classes attended', d: 0 },
+  grade_avg: { short: 'Grade', unit: '/20', long: 'Overall average (/20)', tipU: '/20 average', d: 1 },
+  logins_per_month: { short: 'Logins', unit: '/mo', long: 'Platform logins (per month)', tipU: 'logins / month', d: 0 },
+  chatbot_per_month: { short: 'Chatbot', unit: '/mo', long: 'Chatbot questions (per month)', tipU: 'chatbot questions / month', d: 0 },
+  events_per_semester: { short: 'Events', unit: '/sem.', long: 'Events attended (per semester)', tipU: 'events / semester', d: 0 },
+  on_time_pct: { short: 'On-time', unit: '%', long: 'On-time submissions (%)', tipU: '% on time', d: 0 }
+};
+let FEAT = FEAT_FR;
+const SEG_EN = {
+  0: { name: 'Drivers', trait: 'Present, on time, and highly active on the platform and at events.', action: "Give them a role: mentoring a new student, open-day ambassador, cross-team project." },
+  1: { name: 'Quietly diligent', trait: 'Present and on time, but little contact with the chatbot and events.', action: "Don't over-solicit them. A short individual check-in mid-semester and a targeted invitation to events." },
+  2: { name: 'Highly connected', trait: 'Lots of logins and chatbot questions, but less regular attendance and submissions.', action: 'Reach them through the platform and chatbot, with class and deadline reminders; check in-person attendance.' },
+  3: { name: 'Needs support', trait: 'Low attendance, few on-time submissions, little digital footprint.', action: 'A call from the academic advisor within 7 days, a check-in with the workplace mentor, a catch-up plan. A human decision, never automatic.' }
+};
+const segName = sg => (LANG === 'en' ? SEG_EN[sg.id].name : sg.name);
+const segTrait = sg => (LANG === 'en' ? SEG_EN[sg.id].trait : sg.trait);
+const segAction = sg => (LANG === 'en' ? SEG_EN[sg.id].action : sg.action);
 const legendIcon = (c, size) => { const ic = s('svg', { viewBox: '0 0 16 16', 'aria-hidden': 'true' }); ic.append(s('path', { d: shapePath(SHAPES[c % 6], 8, 8, size || 5.5), fill: `var(--seg-${c % 6})` })); return ic; };
 
 /* ---------- tiles ---------- */
-(function tiles() {
-  const box = $('tiles'), sil = DATA.chosen.silhouette;
-  [['🎓', fr(N), 'Étudiants fictifs'], ['📊', String(F.length), 'Signaux d’engagement'], ['🧩', String(DATA.meta.k), 'Groupes (k)'], ['📐', fr(sil, 2), 'Silhouette']]
+function tiles() {
+  const box = $('tiles'); box.replaceChildren();
+  const sil = DATA.chosen.silhouette;
+  [['🎓', fr(N), t('Étudiants fictifs', 'Fictional students')], ['📊', String(F.length), t('Signaux d’engagement', 'Engagement signals')], ['🧩', String(DATA.meta.k), t('Groupes (k)', 'Groups (k)')], ['📐', fr(sil, 2), 'Silhouette']]
     .forEach(([ic, v, l]) => box.append(h('div', { class: 'stat' }, h('div', { class: 'stat-icon', text: ic }), h('div', { class: 'stat-value', text: v }), h('div', { class: 'stat-label', text: l }))));
-  $('tiles-note').textContent = `Silhouette ${fr(sil, 2)} : séparation modérée, les groupes se chevauchent. Six signaux, niveau d’études mis de côté ; k = 4 est un choix de jugement, détaillé plus bas.`;
-})();
+  $('tiles-note').textContent = t(`Silhouette ${fr(sil, 2)} : séparation modérée, les groupes se chevauchent. Six signaux, niveau d’études mis de côté ; k = 4 est un choix de jugement, détaillé plus bas.`,
+    `Silhouette ${fr(sil, 2)}: moderate separation, the groups overlap. Six signals, level of study set aside; k = 4 is a judgment call, detailed further down.`);
+}
 
 /* ---------- data peek ---------- */
-(function peek() {
+function peek() {
   const rows = P.slice(0, 6);
-  const head = h('tr', {}, h('th', { text: 'Étudiant' }), ...F.map(f => h('th', { class: 'n', text: FEAT[f].short + ' ' + FEAT[f].unit })), h('th', { text: 'Niveau' }));
+  const head = h('tr', {}, h('th', { text: t('Étudiant', 'Student') }), ...F.map(f => h('th', { class: 'n', text: FEAT[f].short + ' ' + FEAT[f].unit })), h('th', { text: t('Niveau', 'Level') }));
   const body = rows.map(p => h('tr', {}, h('th', { text: p[3] }), ...F.map((f, j) => h('td', { class: 'n', text: fr(p[4 + j], FEAT[f].d) })), h('td', { text: LEVELS[p[4 + F.length]] })));
-  const t = h('table', {}, h('thead', {}, head), h('tbody', {}, body));
-  const fig = h('figure', { class: 'fig' }, h('div', { class: 'fig-head' }, h('div', {}, h('div', { class: 't', text: 'Six étudiants fictifs sur ' + N }), h('div', { class: 's', text: 'Une ligne par étudiant ; le niveau n’entre pas dans le calcul' }))), h('div', { class: 'tw' }, t));
-  $('peek').append(fig);
-})();
+  const tbl = h('table', {}, h('thead', {}, head), h('tbody', {}, body));
+  const fig = h('figure', { class: 'fig' }, h('div', { class: 'fig-head' }, h('div', {}, h('div', { class: 't', text: t('Six étudiants fictifs sur ' + N, 'Six fictional students out of ' + N) }), h('div', { class: 's', text: t('Une ligne par étudiant ; le niveau n’entre pas dans le calcul', 'One row per student; level is not part of the calculation') }))), h('div', { class: 'tw' }, tbl));
+  $('peek').replaceChildren(fig);
+}
 
-/* ---------- live K-means ---------- */
-(function live() {
-  const LOG = new Set(DATA.meta.log_features.map(f => F.indexOf(f)));
-  const prep = on => (on ? zscore(RAW.map(r => r.map((v, j) => (LOG.has(j) ? Math.log1p(v) : v)))) : RAW.map(r => r.slice()));
-  const Z_ON = prep(true), Z_OFF = prep(false);
-  const S = { k: 4, prep: true, seed: 1 };
+/* ---------- live K-means (module state survives a language toggle) ---------- */
+const LOG_IDX = new Set(DATA.meta.log_features.map(f => F.indexOf(f)));
+const prepData = on => (on ? zscore(RAW.map(r => r.map((v, j) => (LOG_IDX.has(j) ? Math.log1p(v) : v)))) : RAW.map(r => r.slice()));
+const Z_ON = prepData(true), Z_OFF = prepData(false);
+const S = { k: 4, prep: true, seed: 1 };
+
+function live() {
   function compute() {
     const X = S.prep ? Z_ON : Z_OFF, runs = [];
-    for (let t = 0; t < 10; t++) runs.push(runKM(X, randInit(X, S.k, mulberry32(S.seed * 1000 + t * 31 + S.k))));
+    for (let t2 = 0; t2 < 10; t2++) runs.push(runKM(X, randInit(X, S.k, mulberry32(S.seed * 1000 + t2 * 31 + S.k))));
     const best = runs.reduce((a, b) => (b.inertia < a.inertia ? b : a));
     const same = runs.filter(r => r.inertia <= best.inertia * 1.01).length;
     const lab = canon(best.lab);
@@ -1809,19 +1870,19 @@ const legendIcon = (c, size) => { const ic = s('svg', { viewBox: '0 0 16 16', 'a
   const W = 640, H = 420, Lm = 46, Rm = 14, Tm = 12, Bm = 46;
   const X = v => Lm + (v - xr[0]) / (xr[1] - xr[0]) * (W - Lm - Rm), Y = v => H - Bm - (v - yr[0]) / (yr[1] - yr[0]) * (H - Bm - Tm);
   const ex = DATA.pca.explained;
-  const svg = s('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Nuage de 600 étudiants fictifs projetés sur deux axes, colorés par groupe.' });
+  const svg = s('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': t('Nuage de 600 étudiants fictifs projetés sur deux axes, colorés par groupe.', 'Scatter plot of 600 fictional students projected onto two axes, colored by group.') });
   niceTicks(xr[0], xr[1], 8).forEach(v => { svg.append(s('line', { class: 'gl', x1: X(v), x2: X(v), y1: Tm, y2: H - Bm }), s('text', { class: 'tick', x: X(v), y: H - Bm + 15, 'text-anchor': 'middle', text: fr(v) })); });
   niceTicks(yr[0], yr[1], 6).forEach(v => { svg.append(s('line', { class: 'gl', x1: Lm, x2: W - Rm, y1: Y(v), y2: Y(v) }), s('text', { class: 'tick', x: Lm - 7, y: Y(v) + 3.5, 'text-anchor': 'end', text: fr(v) })); });
   svg.append(s('line', { class: 'ax', x1: Lm, x2: W - Rm, y1: H - Bm, y2: H - Bm }), s('line', { class: 'ax', x1: Lm, x2: Lm, y1: Tm, y2: H - Bm }));
-  svg.append(s('text', { class: 'axt', x: (Lm + W - Rm) / 2, y: H - 8, 'text-anchor': 'middle', text: `CP1 (${fr(ex[0] * 100)} % de la variance)` }));
-  svg.append(s('text', { class: 'axt', transform: `translate(12 ${(Tm + H - Bm) / 2}) rotate(-90)`, 'text-anchor': 'middle', text: `CP2 (${fr(ex[1] * 100)} %)` }));
+  svg.append(s('text', { class: 'axt', x: (Lm + W - Rm) / 2, y: H - 8, 'text-anchor': 'middle', text: t(`CP1 (${fr(ex[0] * 100)} % de la variance)`, `PC1 (${fr(ex[0] * 100)}% of variance)`) }));
+  svg.append(s('text', { class: 'axt', transform: `translate(12 ${(Tm + H - Bm) / 2}) rotate(-90)`, 'text-anchor': 'middle', text: t(`CP2 (${fr(ex[1] * 100)} %)`, `PC2 (${fr(ex[1] * 100)}%)`) }));
   const ptsG = s('g', { stroke: 'var(--surface)', 'stroke-width': '0.6' }), over = s('g');
   svg.append(ptsG, over);
   const ring = s('circle', { r: 8, fill: 'none', stroke: 'var(--ink)', 'stroke-width': '2', visibility: 'hidden', 'pointer-events': 'none' });
   over.append(ring);
   const els = P.map(() => { const e = s('path', {}); ptsG.append(e); return e; });
   let cur = null, names = null;
-  const grpName = c => (names ? names[c] : 'Groupe ' + (c + 1));
+  const grpName = c => (names ? names[c] : t('Groupe ', 'Group ') + (c + 1));
   svg.addEventListener('pointermove', e => {
     const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(svg.getScreenCTM().inverse());
     let best = -1, bd = 1e9;
@@ -1829,55 +1890,61 @@ const legendIcon = (c, size) => { const ic = s('svg', { viewBox: '0 0 16 16', 'a
     if (best >= 0 && bd <= 12 * 12 && cur) {
       const q = P[best], c = cur.lab[best];
       ring.setAttribute('cx', X(q[0])); ring.setAttribute('cy', Y(q[1])); ring.setAttribute('visibility', 'visible');
-      showTip([tipHead(`${q[3]} · ${grpName(c)}`, `var(--seg-${c % 6})`), ...F.map((f, j) => tipRow(fr(q[4 + j], FEAT[f].d), FEAT[f].tipU)), tipRow(LEVELS[q[4 + F.length]], 'niveau (hors calcul)')], e.clientX, e.clientY);
+      showTip([tipHead(`${q[3]} · ${grpName(c)}`, `var(--seg-${c % 6})`), ...F.map((f, j) => tipRow(fr(q[4 + j], FEAT[f].d), FEAT[f].tipU)), tipRow(LEVELS[q[4 + F.length]], t('niveau (hors calcul)', 'level (excluded from clustering)'))], e.clientX, e.clientY);
     } else { ring.setAttribute('visibility', 'hidden'); hideTip(); }
   });
   svg.addEventListener('pointerleave', () => { ring.setAttribute('visibility', 'hidden'); hideTip(); });
 
   // controls
   const status = h('div', { class: 's', id: 'st-live', 'aria-live': 'polite' });
-  const kIn = h('input', { type: 'range', min: '2', max: '6', step: '1', value: '4', id: 'k-live' }), kVal = h('b', { text: '4' });
-  const chk = h('input', { type: 'checkbox', id: 'prep-live', checked: 'checked' });
-  const bMore = h('button', { class: 'btn btn-primary', type: 'button', text: 'Autres départs' }), bReset = h('button', { class: 'btn btn-secondary', type: 'button', text: 'Réinitialiser' });
-  const controls = h('div', { class: 'controls' }, h('div', { class: 'ctl' }, h('label', { for: 'k-live', text: 'Nombre de groupes (k)' }), kIn, kVal),
-    h('div', { class: 'ctl' }, chk, h('label', { for: 'prep-live', text: 'Passer au logarithme et standardiser' })), h('div', { class: 'ctl btns' }, bMore, bReset));
+  const kInAttrs = { type: 'range', min: '2', max: '6', step: '1', value: String(S.k), id: 'k-live' };
+  const kIn = h('input', kInAttrs), kVal = h('b', { text: String(S.k) });
+  const chkAttrs = { type: 'checkbox', id: 'prep-live' }; if (S.prep) chkAttrs.checked = 'checked';
+  const chk = h('input', chkAttrs);
+  const bMore = h('button', { class: 'btn btn-primary', type: 'button', text: t('Autres départs', 'More restarts') }), bReset = h('button', { class: 'btn btn-secondary', type: 'button', text: t('Réinitialiser', 'Reset') });
+  const controls = h('div', { class: 'controls' }, h('div', { class: 'ctl' }, h('label', { for: 'k-live', text: t('Nombre de groupes (k)', 'Number of groups (k)') }), kIn, kVal),
+    h('div', { class: 'ctl' }, chk, h('label', { for: 'prep-live', text: t('Passer au logarithme et standardiser', 'Apply log transform and standardize') })), h('div', { class: 'ctl btns' }, bMore, bReset));
   const vIn = h('b'), vSame = h('b'), vAri = h('b'), msg = h('p', { class: 'msg' }), elbowBox = h('div');
   const stat = (l, n) => h('div', { class: 'kv' }, h('div', { class: 'kl', text: l }), h('div', { class: 'kb' }, n));
-  const side = h('div', {}, h('div', { class: 'km-stats' }, stat('Inertie', vIn), stat('Départs au même score', vSame)), h('div', { class: 'km-stats' }, stat('Accord avec Python (ARI)', vAri)), msg,
-    h('div', { class: 'ctitle', style: 'margin-top:14px', text: 'Inertie selon k (analyse Python)' }), h('div', { class: 'csub', text: 'Le point blanc est le k choisi.' }), elbowBox);
+  const side = h('div', {}, h('div', { class: 'km-stats' }, stat(t('Inertie', 'Inertia'), vIn), stat(t('Départs au même score', 'Restarts at same score'), vSame)), h('div', { class: 'km-stats' }, stat(t('Accord avec Python (ARI)', 'Agreement with Python (ARI)'), vAri)), msg,
+    h('div', { class: 'ctitle', style: 'margin-top:14px', text: t('Inertie selon k (analyse Python)', 'Inertia by k (Python analysis)') }), h('div', { class: 'csub', text: t('Le point blanc est le k choisi.', 'The white dot marks the chosen k.') }), elbowBox);
   const legend = h('div', { class: 'legend' });
-  $('fig-live').append(h('figure', { class: 'fig' }, h('div', { class: 'fig-head' }, h('div', {}, h('div', { class: 't', text: 'K-means sur 600 étudiants fictifs' }), status)), controls,
+  $('fig-live').replaceChildren(h('figure', { class: 'fig' }, h('div', { class: 'fig-head' }, h('div', {}, h('div', { class: 't', text: t('K-means sur 600 étudiants fictifs', 'K-means on 600 fictional students') }), status)), controls,
     h('div', { class: 'grid2' }, h('div', {}, svg, legend), side),
-    h('figcaption', { text: `Axe horizontal : CP1, l’engagement général (présence, notes, rendus, connexions et événements vont dans le même sens). Axe vertical : CP2, l’usage du numérique (chatbot, connexions) en haut contre la présence en bas. Ensemble, ${fr((ex[0] + ex[1]) * 100)} % de l’information.` })));
+    h('figcaption', { text: t(`Axe horizontal : CP1, l’engagement général (présence, notes, rendus, connexions et événements vont dans le même sens). Axe vertical : CP2, l’usage du numérique (chatbot, connexions) en haut contre la présence en bas. Ensemble, ${fr((ex[0] + ex[1]) * 100)} % de l’information.`,
+      `Horizontal axis: PC1, overall engagement (attendance, grades, submissions, logins and events all point the same way). Vertical axis: PC2, digital usage (chatbot, logins) at the top versus attendance at the bottom. Together, ${fr((ex[0] + ex[1]) * 100)}% of the information.`) })));
 
   function elbow(k) {
-    const sc = DATA.scan, w = 290, ht = 190, l = 54, r = 12, t = 14, b = 34, top = Math.max(...sc.map(q => q.inertia)) * 1.05, kmin = sc[0].k, kmax = sc[sc.length - 1].k;
-    const XX = q => l + (q - kmin) / (kmax - kmin) * (w - l - r), YY = q => ht - b - q / top * (ht - b - t);
-    const g = s('svg', { viewBox: `0 0 ${w} ${ht}`, role: 'img', 'aria-label': 'Inertie selon k : ' + sc.map(q => `k=${q.k} : ${fr(q.inertia)}`).join(' ; ') });
+    const sc = DATA.scan, w = 290, ht = 190, l = 54, r = 12, top0 = 14, b = 34, top = Math.max(...sc.map(q => q.inertia)) * 1.05, kmin = sc[0].k, kmax = sc[sc.length - 1].k;
+    const XX = q => l + (q - kmin) / (kmax - kmin) * (w - l - r), YY = q => ht - b - q / top * (ht - b - top0);
+    const g = s('svg', { viewBox: `0 0 ${w} ${ht}`, role: 'img', 'aria-label': t('Inertie selon k : ', 'Inertia by k: ') + sc.map(q => `k=${q.k} : ${fr(q.inertia)}`).join(' ; ') });
     niceTicks(0, top, 4).forEach(q => g.append(s('line', { class: 'gl', x1: l, x2: w - r, y1: YY(q), y2: YY(q) }), s('text', { class: 'tick', x: l - 6, y: YY(q) + 3.5, 'text-anchor': 'end', text: fr(q) })));
     g.append(s('line', { class: 'ax', x1: l, x2: w - r, y1: ht - b, y2: ht - b }));
     sc.forEach(q => g.append(s('text', { class: 'tick', x: XX(q.k), y: ht - b + 14, 'text-anchor': 'middle', text: q.k })));
-    g.append(s('text', { class: 'axt', x: (l + w - r) / 2, y: ht - 4, 'text-anchor': 'middle', text: 'k (nombre de groupes)' }));
+    g.append(s('text', { class: 'axt', x: (l + w - r) / 2, y: ht - 4, 'text-anchor': 'middle', text: t('k (nombre de groupes)', 'k (number of groups)') }));
     g.append(s('path', { d: sc.map((q, i) => (i ? 'L' : 'M') + rd(XX(q.k)) + ' ' + rd(YY(q.inertia))).join(''), fill: 'none', stroke: 'var(--ink-2)', 'stroke-width': '2', 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
     sc.forEach(q => g.append(s('circle', { cx: XX(q.k), cy: YY(q.inertia), r: q.k === k ? 6 : 4, fill: q.k === k ? 'var(--ink)' : 'var(--ink-2)', stroke: 'var(--surface)', 'stroke-width': '2' })));
     return g;
   }
   function render() {
     cur = compute();
-    names = S.k === 4 && cur.ari > 0.999 ? SEG.map(q => q.name) : null;
+    names = S.k === 4 && cur.ari > 0.999 ? SEG.map(q => segName(q)) : null;
     els.forEach((e, i) => { const c = cur.lab[i] % 6; e.setAttribute('d', shapePath(SHAPES[c], X(P[i][0]), Y(P[i][1]), 3.6)); e.setAttribute('fill', `var(--seg-${c})`); e.setAttribute('fill-opacity', '0.88'); });
     const counts = new Array(S.k).fill(0); cur.lab.forEach(c => { counts[c]++; });
-    legend.replaceChildren(...counts.map((n, c) => h('div', { class: 'li' }, legendIcon(c), h('span', {}, h('b', { text: grpName(c) }), ` · ${fr(n)} étudiants`))));
+    legend.replaceChildren(...counts.map((n, c) => h('div', { class: 'li' }, legendIcon(c), h('span', {}, h('b', { text: grpName(c) }), t(` · ${fr(n)} étudiants`, ` · ${fr(n)} students`)))));
     kVal.textContent = String(S.k);
-    vIn.textContent = fr(cur.inertia); vSame.textContent = `${cur.same} sur 10`; vAri.textContent = cur.ari == null ? '–' : fr(cur.ari, 2);
+    vIn.textContent = fr(cur.inertia); vSame.textContent = t(`${cur.same} sur 10`, `${cur.same} of 10`); vAri.textContent = cur.ari == null ? '–' : fr(cur.ari, 2);
     elbowBox.replaceChildren(elbow(S.k));
-    status.textContent = `k = ${S.k} : meilleur de 10 départs, inertie ${fr(cur.inertia)}. ${cur.same} départs sur 10 ont atteint ce score.`;
+    status.textContent = t(`k = ${S.k} : meilleur de 10 départs, inertie ${fr(cur.inertia)}. ${cur.same} départs sur 10 ont atteint ce score.`,
+      `k = ${S.k}: best of 10 restarts, inertia ${fr(cur.inertia)}. ${cur.same} of 10 restarts reached this score.`);
     let m = '';
-    if (!S.prep) m = 'Sans standardisation, la présence, les rendus et les connexions (grands nombres) dominent les distances : les événements et le chatbot comptent presque pour rien.';
-    else if (S.k === 4) m = cur.ari > 0.999 ? 'À k = 4, le K-means de cette page retrouve exactement la partition de l’analyse Python.' : 'Ce départ n’a pas retrouvé la partition de référence : essayez d’autres départs.';
-    else m = 'L’accord avec Python n’est calculé qu’à k = 4, le k de l’analyse de référence.';
-    if (!S.prep && S.k === 4) m += ' L’accord avec la partition de référence chute.';
-    if (S.prep && cur.same < 10) { const u = 10 - cur.same, pl = u > 1; m += ` ${u} départ${pl ? 's' : ''} sur 10 ${pl ? 'sont restés coincés' : 'est resté coincé'} dans un optimum local.`; }
+    if (!S.prep) m = t('Sans standardisation, la présence, les rendus et les connexions (grands nombres) dominent les distances : les événements et le chatbot comptent presque pour rien.',
+      'Without standardization, attendance, submissions and logins (large numbers) dominate the distances: events and chatbot use count for almost nothing.');
+    else if (S.k === 4) m = cur.ari > 0.999 ? t('À k = 4, le K-means de cette page retrouve exactement la partition de l’analyse Python.', 'At k = 4, the K-means on this page recovers exactly the same partition as the Python analysis.')
+      : t('Ce départ n’a pas retrouvé la partition de référence : essayez d’autres départs.', 'This restart did not recover the reference partition: try more restarts.');
+    else m = t('L’accord avec Python n’est calculé qu’à k = 4, le k de l’analyse de référence.', 'Agreement with Python is only computed at k = 4, the k used in the reference analysis.');
+    if (!S.prep && S.k === 4) m += t(' L’accord avec la partition de référence chute.', ' Agreement with the reference partition drops.');
+    if (S.prep && cur.same < 10) { const u = 10 - cur.same, pl = u > 1; m += t(` ${u} départ${pl ? 's' : ''} sur 10 ${pl ? 'sont restés coincés' : 'est resté coincé'} dans un optimum local.`, ` ${u} out of 10 restart${pl ? 's' : ''} got stuck in a local optimum.`); }
     msg.textContent = m;
   }
   kIn.addEventListener('input', () => { S.k = Number(kIn.value); render(); });
@@ -1886,43 +1953,44 @@ const legendIcon = (c, size) => { const ic = s('svg', { viewBox: '0 0 16 16', 'a
   bReset.addEventListener('click', () => { S.k = 4; S.prep = true; S.seed = 1; kIn.value = '4'; chk.checked = true; render(); });
   window.__live = { S, render, get cur() { return cur; }, PY };
   render();
-})();
+}
 
 /* ---------- reference profile heatmaps (Python, k = 4) ---------- */
-(function profile() {
+function profile() {
   const mid = cssv('--div-mid'), pos = cssv('--div-pos'), neg = cssv('--div-neg');
-  const col = z => { const t = Math.max(-1, Math.min(1, z / 1.5)); return t >= 0 ? mix(mid, pos, t) : mix(mid, neg, -t); };
-  const head = h('tr', {}, h('th', { text: 'Groupe' }), h('th', { class: 'n', text: 'Étudiants' }), ...F.map(f => h('th', { style: 'text-align:center', text: FEAT[f].short + ' ' + FEAT[f].unit })));
+  const col = z => { const tt = Math.max(-1, Math.min(1, z / 1.5)); return tt >= 0 ? mix(mid, pos, tt) : mix(mid, neg, -tt); };
+  const head = h('tr', {}, h('th', { text: t('Groupe', 'Group') }), h('th', { class: 'n', text: t('Étudiants', 'Students') }), ...F.map(f => h('th', { style: 'text-align:center', text: FEAT[f].short + ' ' + FEAT[f].unit })));
   const rows = SEG.map(sg => {
     const cells = F.map(f => {
       const z = sg.z[f], bg = col(z), med = Math.round(sg.median[f] * 10 ** FEAT[f].d) / 10 ** FEAT[f].d;
-      const td = h('td', { class: 'c', style: `background:${bg};color:${textOn(bg)}`, title: `${sg.name} : médiane ${fr(sg.median[f], FEAT[f].d)} ${FEAT[f].unit}, moyenne ${fr(sg.mean[f], 1)}` }, h('b', { text: fr(med, FEAT[f].d) }), h('small', { text: sgn(z) + ' ET' }));
+      const td = h('td', { class: 'c', style: `background:${bg};color:${textOn(bg)}`, title: t(`${sg.name} : médiane ${fr(sg.median[f], FEAT[f].d)} ${FEAT[f].unit}, moyenne ${fr(sg.mean[f], 1)}`, `${segName(sg)}: median ${fr(sg.median[f], FEAT[f].d)} ${FEAT[f].unit}, mean ${fr(sg.mean[f], 1)}`) }, h('b', { text: fr(med, FEAT[f].d) }), h('small', { text: sgn(z) + t(' ET', ' SD') }));
       return td;
     });
     const sw = s('svg', { viewBox: '0 0 16 16', class: 'sw', 'aria-hidden': 'true', style: 'width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:8px' }); sw.append(s('path', { d: shapePath(SHAPES[sg.id], 8, 8, 5.5), fill: `var(--seg-${sg.id})` }));
-    return h('tr', {}, h('th', { class: 'rowh' }, sw, sg.name), h('td', { class: 'n', text: fr(sg.n) }), ...cells);
+    return h('tr', {}, h('th', { class: 'rowh' }, sw, segName(sg)), h('td', { class: 'n', text: fr(sg.n) }), ...cells);
   });
-  $('hm-profile').append(h('table', {}, h('thead', {}, head), h('tbody', {}, rows)),
-    h('div', { class: 'scale' }, h('span', { text: 'sous la moyenne' }), h('span', { class: 'bar', style: `background:linear-gradient(90deg,${neg},${mid},${pos})` }), h('span', { text: 'au-dessus de la moyenne (±1,5 ET ou plus aux extrémités)' })));
+  const hmProfile = $('hm-profile'); hmProfile.replaceChildren();
+  hmProfile.append(h('table', {}, h('thead', {}, head), h('tbody', {}, rows)),
+    h('div', { class: 'scale' }, h('span', { text: t('sous la moyenne', 'below average') }), h('span', { class: 'bar', style: `background:linear-gradient(90deg,${neg},${mid},${pos})` }), h('span', { text: t('au-dessus de la moyenne (±1,5 ET ou plus aux extrémités)', 'above average (±1.5 SD or more at the extremes)') })));
   // level (kept out of the clustering)
   const lo = cssv('--seq-lo'), hi = cssv('--seq-hi'), seq = v => mix(lo, hi, Math.min(1, v / 0.6));
-  const head2 = h('tr', {}, h('th', { text: 'Niveau d’études (hors calcul)' }), ...LEVELS.map(x => h('th', { style: 'text-align:center', text: x })));
-  const rows2 = SEG.map(sg => h('tr', {}, h('th', { class: 'rowh', text: sg.name }), ...LEVELS.map(x => { const v = sg.level[x], bg = seq(v); return h('td', { class: 'c', style: `background:${bg};color:${textOn(bg)}` }, h('b', { text: fr(v * 100) + ' %' })); })));
-  $('hm-level').append(h('table', {}, h('thead', {}, head2), h('tbody', {}, rows2)));
-  $('hm-profile').append(h('p', { class: 'scroll-hint', text: 'Le tableau défile horizontalement.' }));
-  const nAcc = SEG.find(q => q.name === 'À accompagner');
-  $('level-note').innerHTML = '';
-  $('level-note').append(h('b', { text: 'À retenir. ' }), `Dans ces données fictives, le niveau d’études ne distingue pas les groupes (par construction du générateur) : c’est le comportement qui les sépare. Le groupe « À accompagner » compte ${fr(nAcc.n)} étudiants (${fr(nAcc.share * 100)} %).`);
-})();
+  const head2 = h('tr', {}, h('th', { text: t('Niveau d’études (hors calcul)', 'Level of study (excluded from clustering)') }), ...LEVELS.map(x => h('th', { style: 'text-align:center', text: x })));
+  const rows2 = SEG.map(sg => h('tr', {}, h('th', { class: 'rowh', text: segName(sg) }), ...LEVELS.map(x => { const v = sg.level[x], bg = seq(v); return h('td', { class: 'c', style: `background:${bg};color:${textOn(bg)}` }, h('b', { text: t(fr(v * 100) + ' %', fr(v * 100) + '%') })); })));
+  const hmLevel = $('hm-level'); hmLevel.replaceChildren(h('table', {}, h('thead', {}, head2), h('tbody', {}, rows2)));
+  hmProfile.append(h('p', { class: 'scroll-hint', text: t('Le tableau défile horizontalement.', 'The table scrolls horizontally.') }));
+  const nAcc = SEG.find(q => q.id === 3);
+  $('level-note').replaceChildren(h('b', { text: t('À retenir. ', 'Key point. ') }), t(`Dans ces données fictives, le niveau d’études ne distingue pas les groupes (par construction du générateur) : c’est le comportement qui les sépare. Le groupe « À accompagner » compte ${fr(nAcc.n)} étudiants (${fr(nAcc.share * 100)} %).`,
+    `In this fictional data, level of study does not distinguish the groups (by construction of the generator): it is behavior that separates them. The “Needs support” group has ${fr(nAcc.n)} students (${fr(nAcc.share * 100)}%).`));
+}
 
 /* ---------- cards ---------- */
-(function cards() {
-  const box = $('cards');
+function cards() {
+  const box = $('cards'); box.replaceChildren();
   SEG.forEach(sg => {
     const ic = s('svg', { viewBox: '0 0 16 16', 'aria-hidden': 'true' }); ic.append(s('path', { d: shapePath(SHAPES[sg.id], 8, 8, 5.5), fill: `var(--seg-${sg.id})` }));
-    const card = h('div', { class: 'card km-gcard' }, h('div', { class: 'card-icon' }, ic), h('div', { class: 'label', text: `${fr(sg.n)} étudiants · ${fr(sg.share * 100)} %` }),
-      h('div', { class: 'km-gname', text: sg.name }), h('div', { class: 'km-meta', text: `silhouette moyenne ${fr(sg.mean_silhouette, 2)}` }),
-      h('div', { class: 'km-gl', text: 'Profil' }), h('p', { text: sg.trait }), h('div', { class: 'km-gl', text: 'Action suggérée' }), h('p', { text: sg.action }));
+    const card = h('div', { class: 'card km-gcard' }, h('div', { class: 'card-icon' }, ic), h('div', { class: 'label', text: t(`${fr(sg.n)} étudiants · ${fr(sg.share * 100)} %`, `${fr(sg.n)} students · ${fr(sg.share * 100)}%`) }),
+      h('div', { class: 'km-gname', text: segName(sg) }), h('div', { class: 'km-meta', text: t(`silhouette moyenne ${fr(sg.mean_silhouette, 2)}`, `average silhouette ${fr(sg.mean_silhouette, 2)}`) }),
+      h('div', { class: 'km-gl', text: t('Profil', 'Profile') }), h('p', { text: segTrait(sg) }), h('div', { class: 'km-gl', text: t('Action suggérée', 'Suggested action') }), h('p', { text: segAction(sg) }));
     card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect(), cx = r.width / 2, cy = r.height / 2, x = e.clientX - r.left, y = e.clientY - r.top;
       card.style.transform = `translateY(-7px) rotateX(${((y - cy) / cy) * -5}deg) rotateY(${((x - cx) / cx) * 5}deg)`;
@@ -1931,24 +1999,28 @@ const legendIcon = (c, size) => { const ic = s('svg', { viewBox: '0 0 16 16', 'a
     card.addEventListener('mouseleave', () => { card.style.transform = ''; });
     box.append(card);
   });
-})();
+}
 
 /* ---------- choice of k ---------- */
-(function chooseK() {
+function chooseK() {
   const sc = DATA.scan, K = DATA.meta.k, by = k => sc.find(q => q.k === k);
-  const defs = [['inertia', 'Inertie (méthode du coude)', 'Plus bas = mieux ; on cherche le coude', v => fr(v)], ['silhouette', 'Silhouette', 'Plus haut = mieux', v => fr(v, 2)], ['davies_bouldin', 'Davies–Bouldin', 'Plus bas = mieux', v => fr(v, 2)]];
-  const bestHigh = k => sc.reduce((a, b) => (b[k] > a[k] ? b : a)).k, bestLow = k => sc.reduce((a, b) => (b[k] < a[k] ? b : a)).k;
-  const box = $('k-charts');
+  const defs = [
+    ['inertia', t('Inertie (méthode du coude)', 'Inertia (elbow method)'), t('Plus bas = mieux ; on cherche le coude', 'Lower = better; looking for the elbow'), v => fr(v)],
+    ['silhouette', 'Silhouette', t('Plus haut = mieux', 'Higher = better'), v => fr(v, 2)],
+    ['davies_bouldin', 'Davies–Bouldin', t('Plus bas = mieux', 'Lower = better'), v => fr(v, 2)]
+  ];
+  const bestHigh = k => sc.reduce((a, b) => (b[k] > a[k] ? b : a)).k;
+  const box = $('k-charts'); box.replaceChildren();
   defs.forEach(([key, title, sub, fmt]) => {
-    const w = 290, ht = 190, l = 46, r = 12, t = 26, b = 34, vals = sc.map(q => q[key]), lo = Math.min(...vals), hi = Math.max(...vals), pad = (hi - lo) * 0.15, a = lo - pad, z = hi + pad;
-    const XX = k => l + (k - sc[0].k) / (sc[sc.length - 1].k - sc[0].k) * (w - l - r), YY = v => ht - b - (v - a) / (z - a) * (ht - b - t);
-    const g = s('svg', { viewBox: `0 0 ${w} ${ht}`, role: 'img', 'aria-label': title + ' : ' + sc.map(q => `k=${q.k} : ${fmt(q[key])}`).join(' ; ') });
+    const w = 290, ht = 190, l = 46, r = 12, top0 = 26, b = 34, vals = sc.map(q => q[key]), lo = Math.min(...vals), hi = Math.max(...vals), pad = (hi - lo) * 0.15, a = lo - pad, z = hi + pad;
+    const XX = k => l + (k - sc[0].k) / (sc[sc.length - 1].k - sc[0].k) * (w - l - r), YY = v => ht - b - (v - a) / (z - a) * (ht - b - top0);
+    const g = s('svg', { viewBox: `0 0 ${w} ${ht}`, role: 'img', 'aria-label': title + t(' : ', ': ') + sc.map(q => `k=${q.k} : ${fmt(q[key])}`).join(' ; ') });
     niceTicks(a, z, 3).forEach(v => g.append(s('line', { class: 'gl', x1: l, x2: w - r, y1: YY(v), y2: YY(v) }), s('text', { class: 'tick', x: l - 6, y: YY(v) + 3.5, 'text-anchor': 'end', text: key === 'inertia' ? fr(v) : fr(v, 2) })));
     g.append(s('line', { class: 'ax', x1: l, x2: w - r, y1: ht - b, y2: ht - b }));
     sc.forEach(q => g.append(s('text', { class: 'tick', x: XX(q.k), y: ht - b + 14, 'text-anchor': 'middle', text: q.k })));
-    g.append(s('text', { class: 'axt', x: (l + w - r) / 2, y: ht - 4, 'text-anchor': 'middle', text: 'k (nombre de groupes)' }));
-    g.append(s('line', { x1: XX(K), x2: XX(K), y1: t - 8, y2: ht - b, stroke: 'var(--ink-2)', 'stroke-width': '1', 'stroke-dasharray': '3 3' }));
-    g.append(s('text', { x: XX(K), y: t - 12, 'text-anchor': 'middle', style: 'font-size:10px;font-weight:650;fill:var(--ink)', text: `k=${K} retenu` }));
+    g.append(s('text', { class: 'axt', x: (l + w - r) / 2, y: ht - 4, 'text-anchor': 'middle', text: t('k (nombre de groupes)', 'k (number of groups)') }));
+    g.append(s('line', { x1: XX(K), x2: XX(K), y1: top0 - 8, y2: ht - b, stroke: 'var(--ink-2)', 'stroke-width': '1', 'stroke-dasharray': '3 3' }));
+    g.append(s('text', { x: XX(K), y: top0 - 12, 'text-anchor': 'middle', style: 'font-size:10px;font-weight:650;fill:var(--ink)', text: t(`k=${K} retenu`, `k=${K} chosen`) }));
     g.append(s('path', { d: sc.map((q, i) => (i ? 'L' : 'M') + rd(XX(q.k)) + ' ' + rd(YY(q[key]))).join(''), fill: 'none', stroke: 'var(--ink-2)', 'stroke-width': '2', 'stroke-linejoin': 'round' }));
     sc.forEach(q => g.append(s('circle', { cx: XX(q.k), cy: YY(q[key]), r: q.k === K ? 5.5 : 3.6, fill: q.k === K ? 'var(--ink)' : 'var(--ink-2)', stroke: 'var(--surface)', 'stroke-width': '2' })));
     box.append(h('div', {}, h('div', { class: 'ctitle', text: title }), h('div', { class: 'csub', text: sub }), g));
@@ -1956,17 +2028,37 @@ const legendIcon = (c, size) => { const ic = s('svg', { viewBox: '0 0 16 16', 'a
   const st = DATA.stability, s3 = st['3'], s4 = st['4'], s5 = st['5'];
   const d34 = 1 - by(4).inertia / by(3).inertia, d45 = 1 - by(5).inertia / by(4).inertia;
   const kSil = bestHigh('silhouette');
-  let reading = `Lecture : l’inertie baisse de ${fr(d34 * 100)} % de k = 3 à k = 4, puis de ${fr(d45 * 100)} % seulement de k = 4 à k = 5 : le coude est à 4. `;
-  reading += kSil === 2 ? `La silhouette est la plus haute à k = 2 (${fr(by(2).silhouette, 2)}), mais deux groupes ne permettent pas de distinguer des actions différentes ; parmi les k à partir de 3, k = 4 est le meilleur (${fr(by(4).silhouette, 2)}, contre ${fr(by(3).silhouette, 2)} à k = 3 et ${fr(by(5).silhouette, 2)} à k = 5). ` : `La silhouette est maximale à k = ${kSil} (${fr(by(kSil).silhouette, 2)}) ; k = 4 fait ${fr(by(4).silhouette, 2)}. `;
+  let reading = t(`Lecture : l’inertie baisse de ${fr(d34 * 100)} % de k = 3 à k = 4, puis de ${fr(d45 * 100)} % seulement de k = 4 à k = 5 : le coude est à 4. `,
+    `Reading: inertia drops ${fr(d34 * 100)}% from k = 3 to k = 4, then only ${fr(d45 * 100)}% from k = 4 to k = 5: the elbow is at 4. `);
+  reading += kSil === 2
+    ? t(`La silhouette est la plus haute à k = 2 (${fr(by(2).silhouette, 2)}), mais deux groupes ne permettent pas de distinguer des actions différentes ; parmi les k à partir de 3, k = 4 est le meilleur (${fr(by(4).silhouette, 2)}, contre ${fr(by(3).silhouette, 2)} à k = 3 et ${fr(by(5).silhouette, 2)} à k = 5). `,
+      `Silhouette is highest at k = 2 (${fr(by(2).silhouette, 2)}), but two groups don't allow for distinct actions; among k ≥ 3, k = 4 is the best (${fr(by(4).silhouette, 2)}, versus ${fr(by(3).silhouette, 2)} at k = 3 and ${fr(by(5).silhouette, 2)} at k = 5). `)
+    : t(`La silhouette est maximale à k = ${kSil} (${fr(by(kSil).silhouette, 2)}) ; k = 4 fait ${fr(by(4).silhouette, 2)}. `,
+      `Silhouette peaks at k = ${kSil} (${fr(by(kSil).silhouette, 2)}); k = 4 scores ${fr(by(4).silhouette, 2)}. `);
   const dbTwo = [...sc].sort((a, b) => a.davies_bouldin - b.davies_bouldin).slice(0, 2).map(q => q.k).sort((a, b) => a - b);
-  if (dbTwo.join() === '2,4') reading += 'Davies–Bouldin va dans le même sens : k = 2, puis k = 4. ';
-  reading += `Enfin, k = 4 est le plus stable : ${s4.init_runs_near_reference} départs aléatoires sur ${s4.runs} aboutissent à une partition quasi identique à la référence (ARI > 0,9), contre ${s3.init_runs_near_reference} à k = 3 et ${s5.init_runs_near_reference} à k = 5. J’ai retenu k = 4 ; c’est un choix de jugement.`;
+  if (dbTwo.join() === '2,4') reading += t('Davies–Bouldin va dans le même sens : k = 2, puis k = 4. ', 'Davies–Bouldin agrees: k = 2, then k = 4. ');
+  reading += t(`Enfin, k = 4 est le plus stable : ${s4.init_runs_near_reference} départs aléatoires sur ${s4.runs} aboutissent à une partition quasi identique à la référence (ARI > 0,9), contre ${s3.init_runs_near_reference} à k = 3 et ${s5.init_runs_near_reference} à k = 5. J’ai retenu k = 4 ; c’est un choix de jugement.`,
+    `Finally, k = 4 is the most stable: ${s4.init_runs_near_reference} random restarts out of ${s4.runs} land on a partition nearly identical to the reference (ARI > 0.9), versus ${s3.init_runs_near_reference} at k = 3 and ${s5.init_runs_near_reference} at k = 5. I kept k = 4; it's a judgment call.`);
   $('k-reading').textContent = reading;
-  const head = h('tr', {}, h('th', { text: 'Groupes' }), h('th', { class: 'n', text: 'Départs proches de la référence (ARI > 0,9)' }), h('th', { class: 'n', text: 'Pire départ (ARI)' }), h('th', { class: 'n', text: 'Sur 80 % des données : médiane (ARI)' }), h('th', { class: 'n', text: 'Sur 80 % des données : pire (ARI)' }));
-  const row = (k, q) => h('tr', { class: k === K ? 'pick' : '' }, h('th', { text: 'k = ' + k }), h('td', { class: 'n', text: `${q.init_runs_near_reference} sur ${q.runs}` }), h('td', { class: 'n', text: fr(q.init_ari_min_med_max[0], 2) }), h('td', { class: 'n', text: fr(q.bootstrap_ari_min_med_max[1], 2) }), h('td', { class: 'n', text: fr(q.bootstrap_ari_min_med_max[0], 2) }));
-  $('stab').append(h('table', {}, h('thead', {}, head), h('tbody', {}, row(3, s3), row(4, s4), row(5, s5))));
-  $('stab-note').append(h('b', { text: 'À lire. ' }), `ARI = indice de Rand ajusté (1 = partition identique, 0 = hasard). Trente départs aléatoires et trente sous-échantillons de 80 % sont comparés à la référence (meilleur de 20 départs).`);
-})();
+  const head = h('tr', {}, h('th', { text: t('Groupes', 'Groups') }), h('th', { class: 'n', text: t('Départs proches de la référence (ARI > 0,9)', 'Restarts close to reference (ARI > 0.9)') }), h('th', { class: 'n', text: t('Pire départ (ARI)', 'Worst restart (ARI)') }), h('th', { class: 'n', text: t('Sur 80 % des données : médiane (ARI)', 'On 80% of the data: median (ARI)') }), h('th', { class: 'n', text: t('Sur 80 % des données : pire (ARI)', 'On 80% of the data: worst (ARI)') }));
+  const row = (k, q) => h('tr', { class: k === K ? 'pick' : '' }, h('th', { text: 'k = ' + k }), h('td', { class: 'n', text: t(`${q.init_runs_near_reference} sur ${q.runs}`, `${q.init_runs_near_reference} of ${q.runs}`) }), h('td', { class: 'n', text: fr(q.init_ari_min_med_max[0], 2) }), h('td', { class: 'n', text: fr(q.bootstrap_ari_min_med_max[1], 2) }), h('td', { class: 'n', text: fr(q.bootstrap_ari_min_med_max[0], 2) }));
+  $('stab').replaceChildren(h('table', {}, h('thead', {}, head), h('tbody', {}, row(3, s3), row(4, s4), row(5, s5))));
+  $('stab-note').replaceChildren(h('b', { text: t('À lire. ', 'How to read this. ') }), t('ARI = indice de Rand ajusté (1 = partition identique, 0 = hasard). Trente départs aléatoires et trente sous-échantillons de 80 % sont comparés à la référence (meilleur de 20 départs).',
+    'ARI = Adjusted Rand Index (1 = identical partition, 0 = random chance). Thirty random restarts and thirty 80% subsamples are compared to the reference (best of 20 restarts).'));
+}
+
+/* ---------- orchestrator: (re)draw the whole K-means section for the current LANG ---------- */
+function renderKM() {
+  FEAT = LANG === 'en' ? FEAT_EN : FEAT_FR;
+  tiles();
+  peek();
+  live();
+  profile();
+  cards();
+  chooseK();
+}
+renderKM();
+window.__kmSetLang = function (lang) { LANG = lang === 'en' ? 'en' : 'fr'; renderKM(); };
 
 })();
 </script>
