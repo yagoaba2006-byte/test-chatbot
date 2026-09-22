@@ -392,6 +392,100 @@
     @media (max-width: 900px) { .hgrid { grid-template-columns: 1fr; } .bund-grid { grid-template-columns: 1fr; } .calc-layout { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .how-grid { grid-template-columns: 1fr; } .llm-grid { grid-template-columns: 1fr; } .rgpd-grid { grid-template-columns: repeat(2,1fr); } .infra-hero h2 { font-size: 2rem; } }
     @media (max-width: 480px) { .rgpd-grid { grid-template-columns: 1fr; } }
+  
+    /* ══════════════════════════════════════════
+       K-MEANS FICTIF · SUP FORMATION — CSS (scopé sur .km)
+    ══════════════════════════════════════════ */
+    .km, #km-tip {
+      --page: #070709; --ink: #f0f0f4; --ink-2: #9898aa; --muted: #7c7c92;
+      --grid: #17171f; --axis: #2e2e42; --border-2: #32324a;
+      --seg-0: #4f8eff; --seg-1: #ff6b1a; --seg-2: #06d6a0; --seg-3: #ffc857; --seg-4: #8b5cf6; --seg-5: #f472b6;
+      --seq-lo: #10182b; --seq-hi: #4f8eff;
+      --div-mid: #2a2a38; --div-pos: #4f8eff; --div-neg: #ff5c5c;
+      --font: 'Inter', -apple-system, sans-serif; --font-d: 'Space Grotesk', sans-serif;
+    }
+    .km.section { scroll-margin-top: 96px; }
+    .km.section + .km.section { margin-top: 96px; }
+    .km svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .km svg text { font-family: var(--font); }
+    .km button:focus-visible, .km svg:focus-visible, .km a:focus-visible, .km input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .km-note { max-width: 760px; margin: 0 auto 48px; border-left: 2px solid var(--accent); padding: 4px 0 4px 18px; font-size: 0.92rem; color: var(--text-dim); text-align: left; }
+    .km-note b { color: var(--text); font-weight: 600; }
+    .km-caption { text-align: center; color: var(--muted); font-size: 0.85rem; margin: 18px auto 0; max-width: 620px; }
+    .km .km-steps { grid-template-columns: repeat(2, 1fr); margin-bottom: 40px; }
+    .km .how-card h3 { margin-bottom: 8px; }
+
+    .km .fig { margin: 0; background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 26px; }
+    .km .fig-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+    .km .fig-head .t { font-size: 0.98rem; font-weight: 600; color: #fff; }
+    .km .fig-head .s { font-size: 0.84rem; color: var(--ink-2); margin-top: 1px; min-height: 1.4em; }
+    .km figcaption { font-size: 0.82rem; color: var(--muted); margin-top: 12px; }
+    .km .ctitle { font-size: 0.84rem; font-weight: 600; color: #fff; }
+    .km .csub { font-size: 0.76rem; color: var(--ink-2); margin-bottom: 2px; }
+    .km .tick { fill: var(--muted); font-size: 10.5px; }
+    .km .axt { fill: var(--ink-2); font-size: 11.5px; }
+    .km .gl { stroke: var(--grid); stroke-width: 1; }
+    .km .ax { stroke: var(--axis); stroke-width: 1; }
+    .km .controls { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin: 4px 0 18px; }
+    .km .ctl { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; }
+    .km .ctl label { color: var(--ink-2); font-size: 0.85rem; }
+    .km .ctl input[type=range] { width: 150px; accent-color: var(--accent); }
+    .km .ctl input[type=checkbox] { accent-color: var(--accent); }
+    .km .ctl.btns { gap: 10px; flex-wrap: wrap; }
+    .km .ctl .btn { padding: 9px 20px; font-size: 0.86rem; }
+    .km .grid2 { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+    .km .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 28px; }
+    .km .km-stats { display: flex; flex-wrap: wrap; gap: 6px 26px; margin-bottom: 10px; }
+    .km .kv .kl { font-size: 0.76rem; color: var(--ink-2); }
+    .km .kv .kb { font-family: var(--font-d); font-size: 1.4rem; font-weight: 700; line-height: 1.2; font-variant-numeric: tabular-nums; color: #fff; }
+    .km .msg { font-size: 0.88rem; margin: 8px 0 0; color: var(--ink-2); }
+    .km .msg:empty { display: none; }
+    .km .legend { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 14px; font-size: 0.85rem; color: var(--ink-2); }
+    .km .legend .li { display: flex; align-items: center; gap: 8px; }
+    .km .legend .li b { color: #fff; font-weight: 600; }
+    .km .legend svg { width: 14px; height: 14px; flex: none; }
+
+    .km .tw { overflow-x: auto; border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 8px 14px; }
+    .km .fig .tw { border: 0; border-radius: 0; padding: 0; margin-top: 14px; }
+    .km table { border-collapse: separate; border-spacing: 0; width: 100%; font-size: 0.88rem; color: var(--text); }
+    .km th, .km td { padding: 7px 10px; text-align: left; }
+    .km thead th { font-size: 0.75rem; font-weight: 600; color: var(--ink-2); vertical-align: bottom; border-bottom: 1px solid var(--axis); }
+    .km tbody th { font-weight: 600; white-space: nowrap; color: #fff; }
+    .km tbody td, .km tbody th { border-bottom: 1px solid var(--border); }
+    .km tbody tr:last-child td, .km tbody tr:last-child th { border-bottom: 0; }
+    .km td.n, .km th.n { text-align: right; font-variant-numeric: tabular-nums; }
+    .km .hm td.c { text-align: center; font-variant-numeric: tabular-nums; border-bottom: 2px solid var(--bg); border-right: 2px solid var(--bg); min-width: 84px; cursor: default; padding: 10px 6px; border-radius: 4px; }
+    .km .hm td.c small { display: block; font-size: 0.66rem; opacity: 0.85; }
+    .km #stab td.n { white-space: nowrap; }
+    .km .scroll-hint { display: none; font-size: 0.76rem; color: var(--muted); margin: 6px 0 0; }
+    .km .scale { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 0.76rem; color: var(--ink-2); margin-top: 10px; }
+    .km .scale .bar { height: 10px; width: 180px; border-radius: 3px; }
+    .km tr.pick td, .km tr.pick th { font-weight: 700; color: #fff; }
+    .km .take { margin: 26px auto 0; max-width: 68ch; text-align: center; font-size: 0.92rem; color: var(--ink-2); }
+    .km .take b { font-weight: 600; color: var(--accent); }
+
+    .km .km-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .km .km-gcard .label { text-transform: uppercase; }
+    .km .km-gname { font-family: var(--font-d); font-size: 1.2rem; font-weight: 700; color: #fff; }
+    .km .km-meta { font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+    .km .km-gl { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-top: 14px; }
+    .km .km-gcard p { margin: 3px 0 0; font-size: 0.9rem; color: var(--text-dim); line-height: 1.55; }
+    .km .rgpd-grid { grid-template-columns: repeat(6, 1fr); }
+    .km .rgpd-grid .rgpd-item { grid-column: span 2; }
+    .km .rgpd-grid .rgpd-item:nth-child(n+4) { grid-column: span 3; }
+
+    #km-tip { position: fixed; z-index: 1500; pointer-events: none; opacity: 0; transition: opacity 0.08s; background: #111115; color: var(--ink); border: 1px solid var(--border-2); border-radius: 8px; padding: 8px 10px; font: 12.5px/1.4 var(--font); box-shadow: 0 8px 24px rgba(0,0,0,0.5); max-width: 260px; }
+    #km-tip.on { opacity: 1; }
+    #km-tip .th { display: flex; align-items: center; gap: 7px; font-weight: 600; margin-bottom: 3px; }
+    #km-tip .key { width: 12px; height: 3px; border-radius: 2px; flex: none; }
+    #km-tip .r { display: flex; gap: 6px; }
+    #km-tip .r b { font-weight: 600; min-width: 34px; text-align: right; font-variant-numeric: tabular-nums; }
+    #km-tip .r span { color: var(--ink-2); }
+
+    @media (max-width: 760px) { .km .grid2 { grid-template-columns: minmax(0, 1fr); gap: 20px; } .km .ctl input[type=range] { width: 120px; } }
+    @media (max-width: 720px) { .km .rgpd-grid { grid-template-columns: repeat(2, 1fr); } .km .rgpd-grid .rgpd-item, .km .rgpd-grid .rgpd-item:nth-child(n+4) { grid-column: span 1; } .km .rgpd-grid .rgpd-item:nth-child(5) { grid-column: span 2; } .km .fig { padding: 16px; } .km .km-cards { grid-template-columns: 1fr; } .km .km-steps { grid-template-columns: 1fr; } .km.section + .km.section { margin-top: 72px; } .km .tw { padding: 4px 8px; } }
+    @media (max-width: 480px) { .km .rgpd-grid { grid-template-columns: 1fr; } .km .rgpd-grid .rgpd-item, .km .rgpd-grid .rgpd-item:nth-child(5) { grid-column: span 1; } }
+    @media (max-width: 560px) { .km .hm td.c { min-width: 62px; } .km .hm .rowh { position: sticky; left: 0; background: var(--page); z-index: 1; white-space: nowrap; } .km .scroll-hint { display: block; } .km #stab th, .km #stab td { padding-left: 5px; padding-right: 5px; font-size: 0.78rem; } }
   </style>
 </head>
 <body>
@@ -429,6 +523,7 @@
         <a href="#flyers" class="nav-link">Campagnes</a>
         <a href="#kakemono" class="nav-link">3D</a>
         <a href="#scratch" class="nav-link">Ticket</a>
+        <a href="#kmeans" class="nav-link">K-means</a>
         <a href="#infra" class="nav-link">Solutions IA</a>
         <a href="Proposition_TOUCAIN_SupFormation.pdf" target="_blank" class="nav-link nav-cta">Devis PDF</a>
       </div>
@@ -606,6 +701,108 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
         Recommencer
       </button>
+    </section>
+
+        <!-- ══════════════════════════════════════════
+         K-MEANS FICTIF · SUP FORMATION (données simulées)
+    ══════════════════════════════════════════ -->
+    <section class="section km" id="kmeans">
+      <div class="section-header">
+        <div class="section-label">Data · Cas fictif</div>
+        <h2 class="section-title">Repérer tôt les étudiants à accompagner</h2>
+        <p class="section-desc">Un K-means sur 600 étudiants fictifs de Sup Formation : quels profils d'engagement existent, et que proposer à chacun ?</p>
+      </div>
+      <div class="km-note" role="note"><b>Données entièrement fictives.</b> Les 600 étudiants sont générés par un script (graine 2026) : aucune donnée réelle d'étudiant, aucune information de l'école. C'est une démonstration de méthode, réalisée à titre personnel par Yago Aba-Perea : elle ne décrit pas les vrais étudiants de Sup Formation.</div>
+      <div class="stats" id="tiles"></div>
+      <p class="km-caption" id="tiles-note"></p>
+    </section>
+
+    <section class="section km" id="km-donnees">
+      <div class="section-header">
+        <div class="section-label">Méthode</div>
+        <h2 class="section-title">La question</h2>
+        <p class="section-desc">Dans une école, il est difficile de suivre chaque étudiant de près. La bonne question n'est pas « qui a de mauvaises notes ? » mais « quels profils d'engagement existent, et que proposer à chacun ? »</p>
+      </div>
+      <div class="how-grid km-steps">
+        <div class="how-card"><div class="how-icon">🧾</div><h3>1 · Données</h3><p>600 étudiants fictifs, six signaux : présence, moyenne, connexions à la plateforme, questions au chatbot, événements suivis, travaux rendus à temps.</p></div>
+        <div class="how-card"><div class="how-icon">🧮</div><h3>2 · Préparation</h3><p>Les comptages asymétriques passent au logarithme, puis tout est standardisé pour que la présence (0 à 100) n'écrase pas les événements (0 à 10).</p></div>
+        <div class="how-card"><div class="how-icon">🎯</div><h3>3 · Choix de k</h3><p>K-means pour k = 2 à 8, comparé par l'inertie, la silhouette et Davies–Bouldin, puis contrôle de stabilité.</p></div>
+        <div class="how-card"><div class="how-icon">🔎</div><h3>4 · Lecture des groupes</h3><p>Chaque groupe est décrit, nommé et associé à une action à tester. Le niveau d'études reste hors du calcul et sert seulement à décrire.</p></div>
+      </div>
+      <div id="peek"></div>
+    </section>
+
+    <section class="section km" id="km-direct">
+      <div class="section-header">
+        <div class="section-label">Interactif</div>
+        <h2 class="section-title">Le K-means en direct</h2>
+        <p class="section-desc">Les mêmes 600 étudiants, regroupés dans votre navigateur par un K-means écrit de zéro en JavaScript. Changez k, désactivez la standardisation, relancez d'autres départs.</p>
+      </div>
+      <div id="fig-live"></div>
+    </section>
+
+    <section class="section km" id="km-groupes">
+      <div class="section-header">
+        <div class="section-label">Résultats</div>
+        <h2 class="section-title">Ce qui définit chaque groupe</h2>
+        <p class="section-desc">Analyse de référence en Python (scikit-learn), k = 4. Chiffre = médiane du groupe dans l'unité d'origine. Couleur = écart à l'étudiant moyen, en écarts-types (ET).</p>
+      </div>
+      <div class="tw hm" id="hm-profile"></div>
+      <div class="tw hm" id="hm-level" style="margin-top:28px"></div>
+      <p class="take" id="level-note"></p>
+    </section>
+
+    <section class="section km" id="km-actions">
+      <div class="section-header">
+        <div class="section-label">Actions</div>
+        <h2 class="section-title">Des groupes aux actions</h2>
+        <p class="section-desc">Un groupe n'a de valeur que s'il change une décision. Noms et actions sont mon interprétation des profils : des hypothèses à tester (test A/B ou suivi des résultats), pas des résultats.</p>
+      </div>
+      <div class="km-cards" id="cards"></div>
+    </section>
+
+    <section class="section km" id="km-choix">
+      <div class="section-header">
+        <div class="section-label">Choix de k</div>
+        <h2 class="section-title">Comment k a été choisi</h2>
+        <p class="section-desc">Les critères ne concordent pas tout à fait, et je le dis.</p>
+      </div>
+      <figure class="fig">
+        <div class="fig-head"><div><div class="t">Trois critères pour k = 2 à 8</div><div class="s">Le point blanc et la ligne verticale marquent le k retenu</div></div></div>
+        <div class="grid3" id="k-charts"></div>
+        <p class="msg" id="k-reading" style="margin-top:16px"></p>
+      </figure>
+      <div class="tw" id="stab" style="margin-top:28px"></div>
+      <p class="take" id="stab-note"></p>
+    </section>
+
+    <section class="section km" id="km-limites">
+      <div class="section-header">
+        <div class="section-label">Limites</div>
+        <h2 class="section-title">Limites et usage responsable</h2>
+        <p class="section-desc">Ce que cette démonstration prouve, et ce qu'elle ne prouve pas.</p>
+      </div>
+      <div class="rgpd-grid">
+        <div class="rgpd-item"><div class="rgpd-item-icon">🧪</div><div class="rgpd-item-title">Données fictives</div><p class="rgpd-item-text">La structure est construite dans le générateur : retrouver quatre groupes teste la méthode, pas de vrais étudiants.</p><span class="status-badge status-att">Fictif</span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">📐</div><div class="rgpd-item-title">Limites du K-means</div><p class="rgpd-item-text">Il préfère des groupes compacts et de taille proche, et il est sensible aux échelles et aux valeurs extrêmes. Avec de vraies données, j'essaierais aussi un modèle de mélange gaussien ou une classification hiérarchique.</p><span class="status-badge status-rec">Méthode</span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">🤝</div><div class="rgpd-item-title">Un groupe n'est pas un jugement</div><p class="rgpd-item-text">« À accompagner » est un signal pour ouvrir une conversation, pas une étiquette sur une personne. Toute décision reste humaine.</p><span class="status-badge status-att">Éthique</span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">🔐</div><div class="rgpd-item-title">Vraies données d'étudiants</div><p class="rgpd-item-text">Il faudrait respecter le RGPD (finalité claire, minimisation, information des étudiants, accès limité, durée de conservation), écarter les variables sensibles et vérifier que les groupes ne désavantagent personne.</p><span class="status-badge status-obl">RGPD</span></div>
+        <div class="rgpd-item"><div class="rgpd-item-icon">✅</div><div class="rgpd-item-title">Validation</div><p class="rgpd-item-text">Confronter les groupes aux résultats réels (assiduité, réussite, abandons) et tester chaque action avant de la généraliser.</p><span class="status-badge status-rec">Recommandé</span></div>
+      </div>
+    </section>
+
+    <section class="section km" id="km-repro">
+      <div class="section-header">
+        <div class="section-label">Reproduire</div>
+        <h2 class="section-title">Le code et les données</h2>
+        <p class="section-desc">Le script Python génère les données, mène l'analyse et écrit les résultats affichés ici. Le K-means de cette section est réécrit de zéro en JavaScript : à k = 4, avec la standardisation, il retrouve la partition de scikit-learn.</p>
+      </div>
+      <div class="action-buttons" style="margin-top:0">
+        <a class="btn btn-secondary" href="kmeans_supformation.py" target="_blank" rel="noopener noreferrer">kmeans_supformation.py</a>
+        <a class="btn btn-secondary" href="students_simulated.csv" target="_blank" rel="noopener noreferrer">students_simulated.csv</a>
+        <a class="btn btn-secondary" href="https://yagoaba2006-byte.github.io/kmeans-prospects/index_fr.html" target="_blank" rel="noopener noreferrer">Le même travail sur des prospects</a>
+        <a class="btn btn-secondary" href="https://yagoaba2006-byte.github.io/kmeans-prospects/cours_kmeans.html" target="_blank" rel="noopener noreferrer">Mini-cours K-means</a>
+      </div>
     </section>
 
     <!-- ══════════════════════════════════════════
@@ -996,6 +1193,7 @@
         <a href="#questions">Tester</a>
         <a href="#flyers">Campagnes</a>
         <a href="#kakemono">3D</a>
+        <a href="#kmeans">K-means</a>
         <a href="#infra">Solutions IA</a>
         <a href="#" onclick="document.getElementById('wifiModalEcole').classList.add('active'); return false;">WiFi école</a>
         <a href="Proposition_TOUCAIN_SupFormation.pdf" target="_blank">Devis</a>
@@ -1443,6 +1641,335 @@
   }
   calcUpdate();
   </script>
+  <div id="km-tip" role="status" aria-live="polite"></div>
+
+  <script>
+(function () {
+'use strict';
+const DATA = {"meta":{"n":600,"seed":2026,"k":4,"features":["attendance_pct","grade_avg","logins_per_month","chatbot_per_month","events_per_semester","on_time_pct"],"log_features":["logins_per_month","chatbot_per_month","events_per_semester"],"levels":["Bac+2","Bac+3","Bac+5"],"sklearn":"1.8.0","numpy":"2.4.4"},"scan":[{"k":2,"inertia":2221.987822236283,"silhouette":0.4090558877742433,"davies_bouldin":0.9508597985463612},{"k":3,"inertia":1715.9166866036328,"silhouette":0.2903436282697824,"davies_bouldin":1.2641518142647419},{"k":4,"inertia":1310.2388843782624,"silhouette":0.33429762459065554,"davies_bouldin":1.0835858228277635},{"k":5,"inertia":1220.9625415046671,"silhouette":0.2909718990803501,"davies_bouldin":1.3200557333113103},{"k":6,"inertia":1141.2375195877576,"silhouette":0.27574544587654626,"davies_bouldin":1.4977868887973147},{"k":7,"inertia":1088.470118294143,"silhouette":0.22819426766586048,"davies_bouldin":1.7853023228160312},{"k":8,"inertia":1040.4883551088933,"silhouette":0.1916452273268459,"davies_bouldin":1.8067934176856388}],"chosen":{"k":4,"inertia":1310.2388843782624,"silhouette":0.33429762459065554,"davies_bouldin":1.0835858228277635},"stability":{"3":{"init_ari_min_med_max":[0.38070458209069397,0.4396296848367178,1.0],"init_runs_near_reference":10,"bootstrap_ari_min_med_max":[0.37737803845155976,0.9767322023585085,1.0],"runs":30},"4":{"init_ari_min_med_max":[0.5453075629600466,0.9963162539576084,1.0],"init_runs_near_reference":27,"bootstrap_ari_min_med_max":[0.9615060812184388,0.9887558162019856,1.0],"runs":30},"5":{"init_ari_min_med_max":[0.7212147466291294,0.8842953181351325,1.0],"init_runs_near_reference":15,"bootstrap_ari_min_med_max":[0.7360188739123568,0.9848299399465847,1.0],"runs":30}},"pca":{"explained":[0.5202112927773663,0.19317495922472433],"loadings":{"attendance_pct":[0.44301157196611174,-0.38533918288610935],"grade_avg":[0.42591712570527196,-0.2537296642964957],"logins_per_month":[0.41121041661872987,0.4268180835842662],"chatbot_per_month":[0.29674847904390594,0.7040825518572545],"events_per_semester":[0.3918007159945541,0.10014543918013151],"on_time_pct":[0.46008029900291203,-0.3149602297048031]}},"segments":[{"id":0,"name":"Moteurs","n":165,"share":0.275,"mean_silhouette":0.4269672988869886,"median":{"attendance_pct":92.5,"grade_avg":14.7,"logins_per_month":23.0,"chatbot_per_month":6.0,"events_per_semester":4.0,"on_time_pct":93.0},"mean":{"attendance_pct":92.51212121212122,"grade_avg":14.589696969696972,"logins_per_month":26.8,"chatbot_per_month":6.03030303030303,"events_per_semester":3.9515151515151516,"on_time_pct":92.0969696969697},"z":{"attendance_pct":0.7205760564055478,"grade_avg":0.8311569195152817,"logins_per_month":0.6514859300927934,"chatbot_per_month":0.48263096618913776,"events_per_semester":1.1552788036160266,"on_time_pct":0.7634317177779273},"level":{"Bac+2":0.3696969696969697,"Bac+3":0.42424242424242425,"Bac+5":0.20606060606060606},"trait":"Pr\u00e9sents, ponctuels, tr\u00e8s actifs sur la plateforme et aux \u00e9v\u00e9nements.","action":"Leur confier un r\u00f4le : parrainage d'un nouvel \u00e9tudiant, ambassadeur aux portes ouvertes, projet transverse."},{"id":1,"name":"Assidus discrets","n":182,"share":0.30333333333333334,"mean_silhouette":0.28150051008633,"median":{"attendance_pct":90.95,"grade_avg":13.1,"logins_per_month":10.0,"chatbot_per_month":1.0,"events_per_semester":1.0,"on_time_pct":88.0},"mean":{"attendance_pct":90.41868131868131,"grade_avg":13.085714285714287,"logins_per_month":11.340659340659341,"chatbot_per_month":1.521978021978022,"events_per_semester":0.8461538461538461,"on_time_pct":87.2032967032967},"z":{"attendance_pct":0.5920664578751752,"grade_avg":0.23867994940273216,"logins_per_month":-0.31176859437968013,"chatbot_per_month":-0.7287717716956134,"events_per_semester":-0.40560330352974727,"on_time_pct":0.5216251219800486},"level":{"Bac+2":0.3131868131868132,"Bac+3":0.3901098901098901,"Bac+5":0.2967032967032967},"trait":"Pr\u00e9sents et ponctuels, mais peu de contacts avec le chatbot et les \u00e9v\u00e9nements.","action":"Ne pas les sur-solliciter. Un point individuel court \u00e0 mi-semestre et une invitation cibl\u00e9e aux \u00e9v\u00e9nements."},{"id":2,"name":"Tr\u00e8s connect\u00e9s","n":136,"share":0.22666666666666666,"mean_silhouette":0.22897505200361473,"median":{"attendance_pct":76.0,"grade_avg":11.95,"logins_per_month":27.0,"chatbot_per_month":13.0,"events_per_semester":1.0,"on_time_pct":72.0},"mean":{"attendance_pct":74.65073529411765,"grade_avg":11.828676470588235,"logins_per_month":30.485294117647058,"chatbot_per_month":12.419117647058824,"events_per_semester":1.1764705882352942,"on_time_pct":71.0220588235294},"z":{"attendance_pct":-0.37587746046471987,"grade_avg":-0.2565158822743805,"logins_per_month":0.7000990156285667,"chatbot_per_month":1.1901440258741107,"events_per_semester":-0.13874314464674492,"on_time_pct":-0.277923612183628},"level":{"Bac+2":0.34558823529411764,"Bac+3":0.36764705882352944,"Bac+5":0.2867647058823529},"trait":"Beaucoup de connexions et de questions au chatbot, mais pr\u00e9sence et rendus plus irr\u00e9guliers.","action":"Passer par la plateforme et le chatbot, avec des rappels de cours et de dates de rendu ; v\u00e9rifier la pr\u00e9sence en classe."},{"id":3,"name":"\u00c0 accompagner","n":117,"share":0.195,"mean_silhouette":0.4081647053832182,"median":{"attendance_pct":56.3,"grade_avg":9.3,"logins_per_month":4.0,"chatbot_per_month":1.0,"events_per_semester":0.0,"on_time_pct":46.0},"mean":{"attendance_pct":56.334188034188045,"grade_avg":9.318803418803418,"logins_per_month":4.435897435897436,"chatbot_per_month":1.0512820512820513,"events_per_semester":0.3418803418803419,"on_time_pct":44.97435897435897},"z":{"attendance_pct":-1.5002718804871424,"grade_avg":-1.2452519873675472,"logins_per_month":-1.247579148834994,"chatbot_per_month":-0.9304037136024369,"events_per_semester":-0.837026783609172,"on_time_pct":-1.564994823732934},"level":{"Bac+2":0.3504273504273504,"Bac+3":0.42735042735042733,"Bac+5":0.2222222222222222},"trait":"Peu de pr\u00e9sence, peu de rendus \u00e0 temps, peu de traces num\u00e9riques.","action":"Appel du r\u00e9f\u00e9rent p\u00e9dagogique sous 7 jours, point avec le tuteur en entreprise, plan de rattrapage. D\u00e9cision humaine, jamais automatique."}],"recovery":{"ari":0.8857963306801734,"groups":["at_risk","connected","engaged","noise","quiet_regulars"],"rows":{"Moteurs":{"at_risk":0,"connected":7,"engaged":153,"noise":0,"quiet_regulars":5},"Assidus discrets":{"at_risk":3,"connected":0,"engaged":7,"noise":5,"quiet_regulars":167},"Tr\u00e8s connect\u00e9s":{"at_risk":0,"connected":120,"engaged":1,"noise":14,"quiet_regulars":1},"\u00c0 accompagner":{"at_risk":112,"connected":0,"engaged":0,"noise":5,"quiet_regulars":0}}},"point_fields":["pc1","pc2","segment","id","attendance_pct","grade_avg","logins_per_month","chatbot_per_month","events_per_semester","on_time_pct","level"],"points":[[-2.603,0.233,3,"E0001",38.8,11.2,3,1,1,59,0],[0.598,1.207,2,"E0002",86.2,12.9,14,16,2,63,1],[2.152,0.385,0,"E0003",99.3,12.9,20,10,6,93,2],[0.359,1.324,2,"E0004",87.4,13.4,21,14,1,52,2],[-2.323,-0.0,3,"E0005",58.1,11.2,6,1,0,55,2],[2.071,0.183,0,"E0006",90.3,15.1,21,6,7,86,0],[1.835,-0.401,0,"E0007",98.5,16.0,21,4,3,82,1],[-3.437,-0.112,3,"E0008",67.1,9.6,5,0,0,20,1],[-0.072,-1.385,1,"E0009",90.2,13.7,9,1,0,90,1],[0.776,-1.229,1,"E0010",91.3,13.9,27,0,2,85,1],[2.687,0.567,0,"E0011",95.3,15.1,65,9,3,98,0],[-2.619,1.011,3,"E0012",76.1,7.9,5,3,1,20,0],[0.029,-2.229,1,"E0013",87.8,14.1,3,0,2,94,2],[-0.194,-0.541,1,"E0014",80.3,13.1,14,2,0,87,2],[-2.429,-1.718,3,"E0015",81.6,11.1,1,0,0,58,0],[1.807,-0.237,0,"E0016",91.6,14.6,25,4,3,96,1],[-2.835,0.14,3,"E0017",66.8,6.7,8,0,1,42,1],[1.609,0.286,0,"E0018",85.0,14.2,22,6,4,90,2],[0.903,0.8,2,"E0019",83.1,13.7,24,8,2,73,2],[0.436,-0.395,1,"E0020",83.3,14.3,7,5,1,87,2],[-0.035,-0.791,1,"E0021",86.7,13.4,12,2,0,87,1],[0.978,-1.924,1,"E0022",100.0,15.1,18,0,1,93,1],[0.29,-1.79,1,"E0023",91.5,15.5,18,0,0,88,0],[0.704,-0.567,1,"E0024",98.0,12.5,21,2,1,84,2],[1.981,-0.386,0,"E0025",94.0,15.4,16,5,4,95,1],[0.59,-0.697,1,"E0026",89.6,13.3,10,3,1,93,1],[0.279,1.656,2,"E0027",86.9,10.3,42,17,0,74,1],[2.009,0.342,0,"E0028",91.7,12.6,20,7,8,96,2],[1.713,0.358,0,"E0029",90.1,13.1,38,4,5,86,1],[1.984,-0.041,0,"E0030",95.5,16.3,34,7,1,92,2],[-0.331,1.731,2,"E0031",68.1,11.9,56,8,0,62,2],[-3.931,-0.214,3,"E0032",50.5,11.1,2,0,0,21,1],[1.308,-0.567,0,"E0033",88.1,13.4,10,3,5,97,1],[0.798,2.069,2,"E0034",75.5,12.2,46,17,2,66,1],[2.682,-0.025,0,"E0035",98.5,16.4,24,7,7,89,0],[-1.341,-0.315,3,"E0036",65.4,11.8,6,1,1,67,1],[2.106,-0.28,0,"E0037",92.5,15.2,16,5,6,95,2],[0.154,-1.261,1,"E0038",94.6,11.7,6,1,2,88,0],[2.047,-0.047,0,"E0039",94.6,15.3,34,4,4,86,0],[2.547,0.221,0,"E0040",97.4,15.0,12,15,7,98,1],[-2.519,-0.631,3,"E0041",67.7,9.0,6,0,0,61,1],[-0.508,-1.741,1,"E0042",95.5,12.4,10,0,0,82,2],[-0.091,1.246,2,"E0043",68.6,14.2,22,12,0,68,1],[-3.109,0.798,3,"E0044",31.3,11.5,4,1,1,39,0],[-3.978,0.359,3,"E0045",44.4,8.7,5,0,0,30,0],[-0.164,1.674,2,"E0046",81.3,11.9,27,17,0,58,0],[2.205,0.156,0,"E0047",90.7,14.7,59,4,3,97,1],[-0.089,-1.252,1,"E0048",75.2,11.9,11,0,2,98,0],[0.363,-1.745,1,"E0049",89.0,15.2,12,0,1,86,2],[-0.242,-0.961,1,"E0050",90.9,13.3,8,2,0,81,2],[0.856,-2.136,1,"E0051",90.4,16.4,8,0,2,94,0],[-2.932,0.767,3,"E0052",29.7,11.9,8,1,0,52,1],[0.257,-0.253,1,"E0053",86.8,11.9,17,4,0,97,1],[1.592,-0.403,0,"E0054",96.9,15.9,11,7,2,87,1],[-0.669,-2.158,1,"E0055",100.0,10.6,5,0,0,95,1],[-2.956,0.05,3,"E0056",46.5,9.7,5,0,1,47,1],[0.068,1.738,2,"E0057",75.2,9.1,28,14,1,80,0],[-0.323,-0.461,1,"E0058",76.4,11.2,14,2,0,100,0],[1.212,0.28,0,"E0059",91.3,13.1,13,10,2,90,2],[1.086,-0.956,1,"E0060",100.0,13.3,13,2,2,91,0],[-0.229,-1.596,1,"E0061",86.6,13.7,2,1,2,83,1],[-0.176,-1.242,1,"E0062",85.9,12.6,4,1,2,84,0],[-0.735,-1.513,1,"E0063",94.9,11.0,0,3,2,83,2],[0.357,-1.429,1,"E0064",94.5,14.1,13,1,0,94,0],[0.506,-0.023,1,"E0065",75.2,17.2,19,5,0,78,1],[0.886,-0.514,1,"E0066",91.6,13.8,17,3,1,90,1],[-0.543,-0.426,1,"E0067",86.6,9.1,10,1,2,77,2],[-0.161,1.329,2,"E0068",57.6,12.5,27,5,2,69,2],[-0.963,1.102,2,"E0069",45.7,16.4,8,5,2,42,2],[0.67,0.746,2,"E0070",82.3,12.7,10,11,3,76,1],[-2.274,0.403,3,"E0071",53.5,10.5,11,1,0,57,1],[-0.461,1.399,2,"E0072",81.5,13.7,44,4,1,22,2],[0.068,-1.21,1,"E0073",95.1,12.3,8,2,0,97,2],[0.958,1.052,2,"E0074",81.2,15.8,51,11,0,72,0],[0.669,1.791,2,"E0075",69.9,11.0,44,15,1,89,1],[-0.769,1.228,2,"E0076",33.5,14.7,14,4,2,70,1],[2.425,0.059,0,"E0077",92.0,16.2,30,6,5,92,2],[-3.56,-0.09,3,"E0078",49.7,9.2,4,0,0,42,2],[2.177,0.838,0,"E0079",83.7,14.2,55,7,5,92,0],[-3.5,-0.13,3,"E0080",52.5,11.3,2,0,1,18,1],[0.845,2.155,2,"E0081",71.5,10.7,47,19,2,82,1],[0.091,-0.979,1,"E0082",90.9,12.2,11,2,0,98,0],[-3.251,-1.074,3,"E0083",56.3,8.0,1,0,0,75,2],[1.385,-0.014,0,"E0084",86.7,14.0,13,5,5,87,0],[2.272,0.199,0,"E0085",89.4,14.1,37,4,8,94,1],[-0.167,1.495,2,"E0086",82.5,9.4,21,18,0,79,0],[2.07,0.224,0,"E0087",94.1,15.6,46,6,2,88,0],[2.495,-0.431,0,"E0088",93.9,17.2,19,6,4,99,2],[1.252,0.304,0,"E0089",88.3,12.6,17,7,3,91,1],[-0.198,-1.478,1,"E0090",92.7,12.3,4,2,0,100,0],[0.412,1.572,2,"E0091",67.3,12.9,30,10,2,69,1],[2.595,-0.181,0,"E0092",88.9,16.9,22,6,6,100,1],[0.882,0.453,0,"E0093",91.5,12.5,7,13,3,80,2],[0.616,1.402,2,"E0094",86.3,10.3,31,14,1,80,0],[0.099,-0.859,1,"E0095",92.1,12.7,5,3,1,85,1],[0.586,-1.706,1,"E0096",95.5,13.1,17,0,1,97,0],[0.558,1.481,2,"E0097",84.1,8.6,33,11,2,84,0],[-2.629,-0.354,3,"E0098",53.2,10.6,7,0,0,59,0],[-0.545,-1.82,1,"E0099",93.5,12.3,3,1,0,94,1],[1.555,0.771,0,"E0100",88.6,14.8,39,11,1,84,1],[1.256,0.317,0,"E0101",90.7,12.1,18,6,4,87,1],[-1.44,0.682,3,"E0102",82.5,9.0,13,1,4,25,2],[1.246,-0.196,0,"E0103",92.0,12.9,22,3,3,89,1],[0.073,-0.397,1,"E0104",84.2,11.7,10,2,2,82,2],[-3.951,1.464,3,"E0105",40.0,9.9,5,2,0,12,0],[-0.203,-1.199,1,"E0106",94.5,12.0,11,1,0,88,1],[0.558,1.454,2,"E0107",87.9,13.0,46,15,0,65,0],[0.994,0.603,0,"E0108",89.9,10.7,18,8,3,89,0],[0.4,1.27,2,"E0109",86.2,11.9,25,12,1,65,2],[1.325,-0.522,0,"E0110",97.5,13.7,9,5,3,91,2],[0.06,-1.545,1,"E0111",94.1,12.5,13,0,1,85,1],[2.167,0.856,0,"E0112",93.2,12.1,42,11,4,100,0],[-2.272,-0.124,3,"E0113",68.3,9.8,9,0,1,40,2],[1.842,-0.036,0,"E0114",99.4,12.8,27,3,8,82,1],[-0.749,0.981,2,"E0115",66.7,7.7,16,3,3,76,2],[0.37,-1.191,1,"E0116",85.0,14.0,4,2,2,93,0],[1.168,-1.464,1,"E0117",94.4,16.2,37,0,1,86,1],[-3.358,-0.468,3,"E0118",65.7,10.9,0,2,0,36,2],[1.325,-0.458,0,"E0119",90.7,14.0,20,2,4,86,0],[0.143,1.725,2,"E0120",74.8,12.1,19,19,1,65,2],[-0.703,0.186,2,"E0121",56.1,17.7,2,5,3,46,2],[0.699,-0.973,1,"E0122",92.1,12.3,20,1,1,99,2],[0.485,-1.274,1,"E0123",94.3,12.6,11,1,1,96,1],[0.91,-0.418,0,"E0124",92.2,12.6,15,3,2,91,2],[2.492,-0.484,0,"E0125",98.8,15.5,18,5,6,100,0],[0.998,2.137,2,"E0126",67.2,14.0,101,13,1,70,0],[1.786,-0.107,0,"E0127",90.6,13.4,15,4,9,91,1],[-0.481,-1.55,1,"E0128",95.3,11.1,8,0,1,79,2],[1.746,-0.71,0,"E0129",91.7,15.3,18,2,5,91,1],[-3.713,0.152,3,"E0130",51.5,9.4,5,0,0,28,0],[1.95,-0.034,0,"E0131",95.3,15.8,24,6,3,85,0],[-0.408,-1.463,1,"E0132",93.5,12.0,16,0,0,83,0],[0.452,-1.53,1,"E0133",100.0,12.1,20,0,1,90,1],[2.048,0.302,0,"E0134",88.8,15.5,21,9,4,91,0],[2.521,0.069,0,"E0135",91.9,16.4,33,6,5,93,0],[1.164,-0.562,1,"E0136",92.1,15.0,15,4,1,92,0],[-3.625,-0.528,3,"E0137",63.8,8.6,2,0,0,37,0],[1.234,1.331,2,"E0138",81.0,13.3,27,14,3,76,1],[0.243,1.273,2,"E0139",79.8,10.3,14,17,1,84,1],[2.097,0.197,0,"E0140",86.4,14.7,41,4,5,94,1],[2.461,0.197,0,"E0141",96.2,15.7,29,7,6,87,1],[0.265,-0.638,1,"E0142",88.4,10.8,9,2,2,94,1],[2.491,-0.019,0,"E0143",92.6,15.2,20,7,7,100,0],[0.28,-0.839,1,"E0144",86.2,11.2,16,1,1,100,0],[-0.002,-0.769,1,"E0145",85.3,12.0,13,2,0,99,0],[0.258,0.345,2,"E0146",80.8,12.0,16,4,2,76,0],[-0.243,-1.176,1,"E0147",92.5,11.0,11,1,0,96,0],[0.741,-1.987,1,"E0148",87.7,15.9,12,0,1,99,0],[1.735,-0.333,0,"E0149",95.8,13.6,17,5,3,100,1],[2.069,0.001,0,"E0150",89.9,15.3,20,5,7,88,1],[0.88,0.328,0,"E0151",82.6,12.3,37,3,2,86,2],[1.079,-0.369,1,"E0152",94.4,13.9,25,3,1,87,0],[-0.597,1.384,2,"E0153",58.7,12.1,10,9,2,63,1],[1.294,-0.394,0,"E0154",89.8,14.6,21,4,1,97,2],[0.305,-0.497,1,"E0155",94.3,10.6,11,3,1,93,2],[-3.033,0.388,3,"E0156",56.5,7.8,3,1,1,44,1],[2.018,0.266,0,"E0157",94.3,13.7,28,7,4,94,0],[2.088,-0.297,0,"E0158",98.3,15.5,40,5,1,100,1],[-1.042,-2.07,1,"E0159",81.8,14.6,3,0,0,79,2],[0.291,-0.642,1,"E0160",86.9,11.2,9,2,2,94,1],[-0.813,2.331,2,"E0161",65.1,10.6,50,12,0,51,0],[0.643,0.091,1,"E0162",93.1,11.6,24,4,1,84,2],[-3.111,0.65,3,"E0163",64.9,7.7,8,1,0,33,1],[0.699,1.301,2,"E0164",91.3,12.2,20,19,1,68,2],[1.998,-0.108,0,"E0165",100.0,13.5,13,8,5,96,0],[1.804,0.463,0,"E0166",89.3,13.0,41,6,3,96,1],[1.152,1.056,2,"E0167",86.8,13.0,51,9,1,79,0],[1.453,-0.331,0,"E0168",92.5,14.7,9,8,2,97,0],[0.545,-0.931,1,"E0169",86.1,12.3,13,1,2,97,0],[0.128,1.767,2,"E0170",80.4,11.7,33,13,1,55,2],[-3.549,0.711,3,"E0171",48.7,7.6,5,1,0,42,0],[0.414,1.286,2,"E0172",86.1,9.5,38,9,1,79,2],[0.585,2.239,2,"E0173",73.7,11.4,132,14,0,75,1],[-0.17,0.774,2,"E0174",54.1,13.2,21,2,4,69,2],[-4.009,0.569,3,"E0175",53.6,9.8,1,2,0,16,0],[-1.449,1.955,2,"E0176",33.8,10.7,17,5,2,63,0],[-1.727,0.821,3,"E0177",99.0,7.7,8,4,1,22,0],[0.441,-0.529,1,"E0178",85.0,13.2,6,5,1,96,1],[-0.064,1.922,2,"E0179",78.7,8.3,36,13,1,72,1],[0.02,-0.927,1,"E0180",73.4,13.7,7,1,2,90,2],[1.476,-0.351,0,"E0181",99.0,14.7,15,7,1,93,2],[1.073,1.137,2,"E0182",80.7,13.0,27,12,2,81,1],[-0.162,-1.321,1,"E0183",88.6,14.4,5,1,1,75,0],[0.334,-0.795,1,"E0184",88.2,13.5,10,2,1,86,2],[-3.472,-0.127,3,"E0185",37.8,9.3,1,1,0,68,0],[0.134,0.617,2,"E0186",72.6,13.9,15,10,0,85,1],[-0.354,-1.622,1,"E0187",93.6,13.0,5,1,0,89,1],[-2.677,0.027,3,"E0188",42.5,10.4,2,1,1,63,0],[-0.092,-2.194,1,"E0189",88.7,14.6,4,0,1,90,0],[2.779,0.12,0,"E0190",100.0,16.1,34,9,4,96,1],[-0.166,-0.534,1,"E0191",84.0,13.5,10,3,0,83,0],[-0.515,-1.238,1,"E0192",90.1,13.0,4,2,0,84,1],[-3.105,0.021,3,"E0193",39.1,9.1,7,0,0,66,1],[-0.106,-0.998,1,"E0194",90.5,9.7,24,0,1,91,1],[-0.61,1.844,2,"E0195",77.7,11.8,16,22,0,50,0],[1.333,1.242,2,"E0196",72.2,15.8,49,9,2,74,0],[-0.394,-1.661,1,"E0197",90.8,12.4,7,0,1,81,1],[0.333,1.428,2,"E0198",59.8,15.2,16,16,1,74,0],[-2.192,0.029,3,"E0199",61.5,11.3,4,2,0,57,1],[-0.045,1.74,2,"E0200",68.7,11.4,31,11,1,67,0],[-0.613,-1.263,1,"E0201",84.5,14.0,6,1,0,78,1],[-3.076,-1.011,3,"E0202",58.6,11.8,0,1,0,56,1],[-3.164,0.283,3,"E0203",46.4,8.0,1,3,0,71,1],[-2.867,0.432,3,"E0204",64.6,8.4,4,2,0,45,0],[0.064,-1.371,1,"E0205",96.5,13.4,11,1,0,87,2],[0.842,1.113,2,"E0206",78.1,15.1,19,16,1,72,1],[-3.391,0.014,3,"E0207",33.8,8.9,5,0,0,67,0],[1.025,1.508,2,"E0208",77.4,15.4,24,18,2,62,0],[0.001,-1.697,1,"E0209",85.9,15.7,15,0,0,84,1],[-2.357,-0.13,3,"E0210",49.7,11.6,1,2,1,62,2],[1.937,-0.1,0,"E0211",97.5,14.2,15,6,6,88,0],[0.285,-1.915,1,"E0212",95.7,13.0,7,0,2,90,2],[0.258,2.27,2,"E0213",65.5,11.6,35,17,2,64,0],[2.502,0.143,0,"E0214",95.2,15.1,36,7,4,99,2],[0.226,1.8,2,"E0215",84.2,9.9,25,15,2,61,2],[0.295,0.918,2,"E0216",80.4,12.5,11,11,2,69,1],[0.133,-0.514,1,"E0217",92.7,10.6,9,3,1,91,2],[1.632,1.489,0,"E0218",84.9,12.7,40,13,5,76,0],[2.28,0.373,0,"E0219",83.6,14.9,29,7,6,100,1],[2.627,0.024,0,"E0220",92.3,16.1,48,5,4,99,0],[2.046,0.291,0,"E0221",86.9,13.5,36,5,5,100,2],[0.507,1.654,2,"E0222",79.5,12.0,22,21,1,72,2],[-3.987,-0.017,3,"E0223",52.5,7.8,0,2,0,47,1],[1.133,-0.307,1,"E0224",95.7,12.7,22,4,1,96,2],[0.638,-1.69,1,"E0225",98.2,14.7,12,1,0,99,1],[0.044,-0.837,1,"E0226",90.5,12.2,13,1,1,81,0],[0.723,1.303,2,"E0227",82.3,8.9,40,11,1,98,1],[1.478,0.205,0,"E0228",89.8,13.0,33,5,2,95,1],[0.769,-1.507,1,"E0229",95.7,14.2,19,0,2,84,0],[2.418,-0.038,0,"E0230",88.7,16.5,45,4,4,95,2],[2.129,0.349,0,"E0231",85.2,15.9,16,10,6,91,0],[1.704,-0.07,0,"E0232",93.8,13.9,23,5,3,93,0],[1.219,-0.194,0,"E0233",86.4,14.6,36,2,2,84,1],[1.081,1.82,2,"E0234",81.2,11.0,43,15,3,76,1],[1.925,-0.334,0,"E0235",93.5,15.5,18,4,5,88,2],[1.452,-0.505,0,"E0236",98.2,13.9,13,5,2,95,1],[-2.692,0.448,3,"E0237",53.1,9.4,8,1,0,53,2],[0.067,-0.8,1,"E0238",92.6,14.3,9,3,0,79,2],[0.972,1.105,2,"E0239",79.5,13.1,39,10,1,83,0],[-4.581,-0.757,3,"E0240",66.3,8.2,0,0,0,17,2],[2.266,0.211,0,"E0241",97.2,14.5,70,4,3,90,0],[2.14,-0.87,0,"E0242",94.2,16.9,19,3,3,99,2],[1.237,0.043,0,"E0243",93.9,13.0,18,6,2,89,1],[-0.471,-1.708,1,"E0244",88.9,14.1,10,0,0,79,0],[-3.358,-0.475,3,"E0245",65.1,9.6,3,0,0,34,1],[-3.33,1.273,3,"E0246",63.8,7.7,5,2,1,9,1],[2.403,0.676,0,"E0247",95.4,12.5,39,8,8,95,0],[0.147,-2.09,1,"E0248",100.0,16.6,2,2,0,85,1],[1.303,-1.1,0,"E0249",86.7,17.1,19,1,2,87,1],[-3.176,-1.758,3,"E0250",75.6,8.7,0,0,0,64,2],[-2.879,0.618,3,"E0251",52.2,8.9,3,3,0,56,1],[-0.617,-1.815,1,"E0252",81.4,14.5,7,0,0,85,1],[1.865,-0.277,0,"E0253",98.4,14.5,26,3,5,83,0],[-3.607,0.791,3,"E0254",57.6,7.9,3,2,0,29,1],[-2.585,0.473,3,"E0255",53.3,10.6,5,2,0,51,0],[-3.344,-0.273,3,"E0256",60.3,10.4,4,0,0,30,2],[-0.258,0.908,2,"E0257",74.1,11.5,7,10,2,69,2],[2.335,0.235,0,"E0258",84.3,17.1,39,8,2,100,1],[-0.676,-1.549,1,"E0259",85.8,12.3,6,0,1,78,0],[0.02,-1.091,1,"E0260",93.0,11.8,9,2,0,99,0],[0.551,1.752,2,"E0261",82.1,12.7,46,20,0,70,0],[-3.538,0.747,3,"E0262",56.6,10.6,1,4,0,20,0],[-3.276,0.192,3,"E0263",43.7,8.1,8,0,0,58,1],[1.869,0.017,0,"E0264",93.0,13.5,38,4,3,97,2],[-0.044,0.986,2,"E0265",74.6,14.9,27,8,0,59,2],[1.289,0.336,0,"E0266",90.9,12.2,14,9,3,93,1],[-0.236,-0.768,1,"E0267",89.0,13.2,18,1,0,75,1],[-2.523,0.497,3,"E0268",63.2,10.3,6,2,0,41,1],[2.632,0.295,0,"E0269",92.5,15.9,28,9,6,95,0],[1.117,-0.341,1,"E0270",94.7,14.7,26,5,0,94,2],[-3.427,0.375,3,"E0271",41.9,7.2,9,0,0,58,0],[0.245,-1.081,1,"E0272",92.5,13.9,11,1,1,78,0],[1.924,-0.513,0,"E0273",92.4,14.6,22,3,4,100,1],[-2.403,0.506,3,"E0274",45.3,11.3,6,1,1,48,0],[-4.202,-0.125,3,"E0275",60.5,8.0,2,0,0,20,1],[0.63,-1.418,1,"E0276",92.4,17.7,9,2,0,83,0],[0.429,1.005,2,"E0277",89.4,13.1,20,11,1,59,1],[2.451,-0.696,0,"E0278",100.0,15.8,25,3,5,98,0],[-3.813,0.669,3,"E0279",36.6,8.5,5,0,1,30,1],[-2.443,0.258,3,"E0280",68.7,7.8,9,1,0,55,0],[0.5,-0.954,1,"E0281",90.0,13.9,12,1,2,80,1],[-4.429,0.83,3,"E0282",51.2,6.7,7,0,0,11,2],[-4.086,0.5,3,"E0283",46.3,5.7,6,0,0,42,2],[-3.318,-1.083,3,"E0284",67.2,8.0,1,0,0,59,1],[2.266,-0.025,0,"E0285",96.2,16.2,23,7,4,88,1],[-0.992,2.024,2,"E0286",70.8,5.9,27,14,0,81,0],[1.006,-0.238,0,"E0287",84.5,14.8,15,5,1,93,0],[0.801,1.354,2,"E0288",83.2,12.9,32,14,1,72,2],[0.926,1.584,2,"E0289",73.0,13.1,54,12,1,80,2],[-0.972,0.337,2,"E0290",71.8,12.5,3,7,1,62,2],[-2.474,0.234,3,"E0291",66.8,9.7,8,1,0,44,2],[-3.283,1.054,3,"E0292",50.1,8.3,6,2,0,38,1],[2.636,0.243,0,"E0293",93.2,16.8,29,9,5,91,0],[-0.03,1.122,2,"E0294",84.9,9.6,13,13,1,76,1],[2.511,-0.298,0,"E0295",95.8,17.1,13,8,6,93,2],[-0.63,-2.08,1,"E0296",94.9,11.4,3,0,1,87,2],[1.808,-0.743,0,"E0297",95.6,16.4,21,3,2,92,0],[-2.81,-0.414,3,"E0298",54.2,13.8,5,0,0,32,2],[1.412,-1.097,0,"E0299",100.0,12.9,12,1,7,90,2],[-2.347,-1.301,3,"E0300",94.0,10.4,3,0,0,38,1],[0.396,-0.672,1,"E0301",87.8,12.3,22,1,1,89,1],[0.325,-1.761,1,"E0302",90.9,14.3,3,1,2,92,2],[1.368,1.759,2,"E0303",79.4,14.5,69,13,2,65,2],[-2.842,-0.446,3,"E0304",54.8,10.4,5,0,0,55,0],[1.225,0.126,0,"E0305",87.4,13.9,39,4,1,90,1],[2.671,0.241,0,"E0306",90.0,15.4,47,5,7,97,1],[2.108,0.116,0,"E0307",98.7,13.4,17,10,4,100,0],[-0.13,-0.919,1,"E0308",90.0,11.7,25,0,1,75,2],[0.35,-2.061,1,"E0309",96.4,13.5,6,0,2,91,1],[3.029,0.674,0,"E0310",93.7,15.5,80,7,7,93,2],[-2.572,0.81,3,"E0311",58.0,9.5,5,2,1,36,0],[0.828,1.053,2,"E0312",77.3,14.9,57,9,0,78,1],[2.335,0.056,0,"E0313",100.0,14.3,29,7,4,96,1],[-0.59,-1.474,1,"E0314",86.6,10.8,13,0,0,96,1],[0.821,-0.621,1,"E0315",98.9,13.0,16,2,2,79,0],[1.974,0.669,0,"E0316",91.8,13.9,43,10,2,94,1],[-3.676,0.861,3,"E0317",49.3,7.6,2,1,2,21,0],[-0.155,-1.262,1,"E0318",84.8,14.8,1,4,1,86,1],[0.554,2.095,2,"E0319",80.6,9.7,63,12,2,66,1],[0.381,-1.197,1,"E0320",92.0,13.3,20,0,2,77,0],[-2.372,1.488,3,"E0321",56.6,8.1,8,3,2,34,2],[-2.002,-0.397,3,"E0322",77.2,8.6,3,2,0,71,2],[-2.22,-0.212,3,"E0323",53.5,13.7,1,2,1,48,0],[0.286,-1.054,1,"E0324",94.5,13.1,12,2,0,94,1],[0.105,-1.586,1,"E0325",87.7,13.6,12,0,1,88,1],[0.004,2.012,2,"E0326",56.1,12.9,31,14,1,70,0],[0.642,-0.153,1,"E0327",92.0,11.8,17,3,2,83,1],[0.185,-1.68,1,"E0328",95.0,14.7,3,1,2,78,2],[2.072,-0.101,0,"E0329",97.2,15.4,18,8,3,93,1],[1.725,0.325,0,"E0330",93.1,13.4,40,6,2,93,1],[1.249,1.853,2,"E0331",76.3,11.4,53,17,2,88,2],[-2.612,0.648,3,"E0332",40.8,9.7,6,1,1,56,1],[-0.178,-1.301,1,"E0333",91.0,14.7,9,1,0,77,0],[0.034,2.144,2,"E0334",66.6,10.2,60,16,0,82,0],[-1.83,-0.36,3,"E0335",64.9,10.3,1,2,2,66,2],[-2.957,-0.412,3,"E0336",64.6,10.7,5,0,0,36,1],[1.733,0.673,0,"E0337",92.0,12.3,33,9,3,94,1],[-0.436,0.139,1,"E0338",80.3,12.1,17,2,1,62,0],[-3.345,0.144,3,"E0339",65.6,6.1,3,1,0,50,0],[1.685,0.463,0,"E0340",92.5,11.9,26,5,8,85,0],[0.027,1.07,2,"E0341",72.4,12.3,10,11,2,70,0],[-3.144,0.124,3,"E0342",60.2,12.1,3,1,0,21,0],[2.023,-0.268,0,"E0343",94.8,14.2,34,3,4,96,1],[2.363,0.205,0,"E0344",96.9,15.5,20,10,5,90,1],[0.698,0.65,0,"E0345",71.5,13.5,17,6,3,82,1],[-0.4,-1.148,1,"E0346",85.1,11.3,14,0,1,83,0],[1.769,0.055,0,"E0347",90.2,13.9,23,6,3,98,1],[-0.477,-0.393,1,"E0348",79.5,17.0,9,1,2,32,2],[-0.984,-2.224,1,"E0349",93.4,10.9,3,0,0,95,2],[1.77,-0.306,0,"E0350",98.6,15.9,15,7,2,87,2],[-4.405,0.698,3,"E0351",51.6,5.0,2,1,0,34,1],[-0.662,1.424,2,"E0352",70.1,9.7,11,18,0,82,0],[0.837,-1.233,1,"E0353",92.3,13.1,29,0,2,91,2],[-0.019,1.253,2,"E0354",57.4,12.7,15,11,1,86,2],[-0.411,0.747,2,"E0355",87.3,12.5,5,13,1,52,2],[0.527,1.261,2,"E0356",83.6,13.8,20,15,1,61,1],[1.736,0.848,0,"E0357",87.4,15.1,41,13,1,88,0],[0.535,-0.602,1,"E0358",91.0,13.4,8,4,1,89,1],[-0.82,1.641,2,"E0359",50.0,12.8,6,18,1,69,1],[0.702,0.966,2,"E0360",83.5,10.5,31,7,2,84,0],[2.526,-0.766,0,"E0361",95.7,17.3,23,3,5,97,1],[0.674,-1.383,1,"E0362",88.7,14.6,6,1,3,89,0],[-2.244,-0.474,3,"E0363",62.0,11.4,9,0,0,55,0],[0.881,2.064,2,"E0364",70.2,11.0,67,13,2,81,0],[1.068,-0.905,1,"E0365",78.4,15.9,26,1,1,100,2],[-1.823,2.038,3,"E0366",59.9,7.9,17,5,2,36,1],[-3.879,-0.022,3,"E0367",42.7,8.5,3,0,0,46,2],[-3.016,1.246,3,"E0368",37.4,10.3,9,2,0,43,1],[-0.287,-1.992,1,"E0369",100.0,12.3,9,0,0,89,1],[0.642,0.998,2,"E0370",92.9,12.1,15,11,3,59,0],[-2.072,-0.251,3,"E0371",61.4,10.7,3,1,1,59,0],[-3.645,-0.13,3,"E0372",57.4,7.8,1,1,0,48,2],[-0.587,2.175,2,"E0373",60.7,9.0,50,12,0,78,2],[1.876,0.419,0,"E0374",96.1,12.5,50,4,5,85,1],[-3.915,-0.538,3,"E0375",50.2,11.4,1,0,0,28,0],[0.146,-0.053,1,"E0376",84.8,13.7,15,5,0,81,1],[-2.479,1.95,3,"E0377",53.0,8.7,6,5,3,21,1],[-0.048,-0.322,1,"E0378",86.5,13.1,9,3,1,72,2],[2.135,-0.16,0,"E0379",92.6,14.4,22,5,5,100,0],[-3.043,0.287,3,"E0380",44.4,10.8,2,2,0,54,2],[2.929,0.436,0,"E0381",91.3,16.6,38,10,6,97,1],[0.416,-0.864,1,"E0382",94.8,14.7,17,2,0,81,0],[0.116,1.35,2,"E0383",65.3,11.9,58,7,0,86,0],[-1.625,-1.129,1,"E0384",88.3,10.3,8,0,0,61,1],[0.236,1.752,2,"E0385",73.5,10.8,20,16,2,71,2],[-3.28,-0.703,3,"E0386",54.0,9.4,2,0,0,58,0],[1.89,-0.168,0,"E0387",90.1,16.3,13,8,3,93,1],[2.262,0.529,0,"E0388",96.1,14.3,43,7,5,85,0],[0.488,-0.648,1,"E0389",92.0,12.0,11,2,2,87,1],[0.071,1.818,2,"E0390",77.0,11.3,30,11,2,53,2],[-0.323,-0.638,1,"E0391",85.2,11.4,20,1,0,87,1],[-4.251,-0.099,3,"E0392",33.9,10.7,0,1,0,42,1],[-0.162,1.258,2,"E0393",78.4,9.8,12,14,1,77,1],[2.006,0.023,0,"E0394",90.3,14.3,15,7,6,97,2],[0.132,1.551,2,"E0395",68.9,13.9,12,14,3,53,0],[-0.279,1.197,2,"E0396",78.1,10.7,18,13,0,77,0],[-0.126,-0.817,1,"E0397",87.0,11.6,19,1,0,93,1],[-0.127,-1.815,1,"E0398",78.8,14.7,11,0,0,100,2],[0.534,0.778,2,"E0399",87.5,12.2,30,5,2,64,1],[0.454,-1.058,1,"E0400",89.0,13.3,10,1,2,87,2],[-1.701,-0.849,1,"E0401",88.5,10.9,4,1,0,55,1],[-3.789,-0.452,3,"E0402",65.1,6.6,2,0,0,43,1],[0.559,-1.062,1,"E0403",90.2,13.6,15,1,1,91,1],[0.973,-0.879,1,"E0404",82.1,15.2,19,1,2,92,2],[0.156,-1.314,1,"E0405",89.9,13.8,2,2,3,82,1],[2.145,-0.101,0,"E0406",91.9,15.6,45,3,4,89,0],[0.895,1.719,2,"E0407",77.2,9.0,77,11,1,98,2],[-2.724,-0.266,3,"E0408",71.8,9.2,3,1,0,47,1],[-0.345,-0.845,1,"E0409",86.0,14.7,8,2,0,72,2],[-3.23,-1.217,3,"E0410",80.0,7.4,1,0,0,52,2],[0.435,-1.561,1,"E0411",88.8,15.1,11,1,0,100,1],[0.318,-1.845,1,"E0412",90.4,15.7,10,0,1,82,2],[1.803,-0.29,0,"E0413",95.2,14.1,24,4,3,96,0],[-0.815,2.084,2,"E0414",75.7,10.1,30,15,0,49,0],[-1.429,1.332,2,"E0415",75.1,8.7,8,8,1,48,0],[-0.096,1.8,2,"E0416",68.9,10.7,60,10,0,76,1],[0.425,1.55,2,"E0417",79.0,13.5,40,16,0,68,1],[-0.168,1.86,2,"E0418",67.9,9.0,9,21,3,77,1],[2.262,0.046,0,"E0419",100.0,14.3,43,4,5,87,1],[-0.952,1.6,2,"E0420",72.0,8.0,13,16,0,78,0],[1.102,0.197,0,"E0421",92.0,10.7,20,5,3,95,1],[-3.313,-0.24,3,"E0422",45.1,11.5,1,1,0,50,2],[-3.483,0.434,3,"E0423",37.7,9.8,3,1,0,50,0],[0.602,-0.458,1,"E0424",97.3,12.9,25,3,0,88,0],[1.909,0.178,0,"E0425",92.6,14.5,22,7,4,90,1],[-3.565,-0.948,3,"E0426",71.2,7.1,1,0,0,50,0],[2.438,0.512,0,"E0427",95.5,13.6,37,7,8,91,0],[0.103,1.383,2,"E0428",71.3,14.8,35,11,0,61,2],[1.709,-0.695,0,"E0429",94.1,15.7,14,3,4,89,0],[-0.514,1.049,2,"E0430",63.4,14.1,7,17,0,73,1],[-1.418,-1.903,1,"E0431",90.0,11.3,3,0,0,77,0],[-3.093,-0.467,3,"E0432",60.8,9.1,4,0,0,50,0],[-0.111,-0.465,1,"E0433",93.9,11.3,13,3,0,85,0],[-0.33,-1.214,1,"E0434",86.5,13.2,5,1,1,79,2],[-0.227,-1.751,1,"E0435",92.2,14.7,12,0,0,78,1],[1.519,-0.535,0,"E0436",89.4,16.9,16,5,1,93,1],[0.56,-0.829,1,"E0437",88.5,14.4,4,4,2,87,1],[2.062,-0.136,0,"E0438",98.6,14.6,30,6,2,98,0],[-0.479,-1.337,1,"E0439",81.8,13.2,16,0,0,85,0],[0.452,-1.241,1,"E0440",88.5,12.8,2,3,3,100,2],[-0.235,1.316,2,"E0441",84.4,11.4,21,9,1,50,1],[-0.926,0.291,2,"E0442",59.0,13.8,19,1,1,57,1],[-0.299,-1.234,1,"E0443",87.4,12.6,5,2,0,96,0],[2.132,0.388,0,"E0444",88.8,15.3,34,7,4,90,2],[2.355,-0.017,0,"E0445",98.0,15.1,31,6,4,94,1],[0.382,-1.064,1,"E0446",99.9,13.5,9,3,0,90,1],[1.81,0.076,0,"E0447",97.0,12.9,22,7,3,98,1],[-0.032,-1.446,1,"E0448",96.3,13.7,5,2,0,89,1],[0.662,-1.645,1,"E0449",87.3,13.4,11,0,3,98,2],[-0.215,1.837,2,"E0450",72.0,10.3,31,17,0,76,0],[0.492,1.561,2,"E0451",91.7,9.6,71,12,0,77,1],[2.034,-0.059,0,"E0452",95.9,15.5,18,7,4,88,1],[0.559,1.234,2,"E0453",59.4,14.9,20,10,2,78,1],[0.335,0.025,1,"E0454",82.4,13.4,16,6,0,91,1],[1.767,-0.24,0,"E0455",97.2,14.4,25,4,3,89,1],[-2.855,-0.995,3,"E0456",58.7,10.9,2,0,0,60,1],[1.165,-0.125,0,"E0457",92.3,12.4,21,4,2,94,1],[0.677,1.0,2,"E0458",72.5,15.0,45,9,0,81,1],[-0.762,-2.013,1,"E0459",91.2,13.1,5,0,0,83,1],[-1.235,1.153,2,"E0460",62.9,8.9,12,5,1,68,1],[0.316,0.927,2,"E0461",73.7,14.1,24,11,0,80,1],[0.611,-0.79,1,"E0462",92.4,12.5,14,1,3,82,0],[-0.968,-2.248,1,"E0463",97.8,11.5,3,0,0,86,2],[1.684,-0.208,0,"E0464",94.1,15.4,25,6,1,95,1],[-2.122,0.137,3,"E0465",63.0,12.6,5,2,0,45,0],[0.659,1.769,2,"E0466",81.8,13.6,54,19,0,66,2],[-0.267,-1.04,1,"E0467",90.6,14.2,12,1,0,72,1],[0.61,1.411,2,"E0468",91.2,9.7,30,15,1,78,0],[1.188,1.276,2,"E0469",84.1,15.4,47,12,1,64,2],[1.129,-0.941,0,"E0470",86.9,16.2,8,3,2,92,1],[1.227,1.462,2,"E0471",75.2,14.4,40,11,3,70,0],[2.386,-0.169,0,"E0472",99.2,15.5,47,3,5,86,0],[1.015,-0.398,0,"E0473",87.9,13.8,19,2,3,84,0],[-0.785,-0.837,1,"E0474",94.0,9.8,4,3,0,87,1],[1.689,0.558,0,"E0475",88.0,11.3,24,7,6,99,0],[-2.924,1.32,3,"E0476",53.2,7.1,13,2,0,45,1],[1.177,-0.669,0,"E0477",92.7,14.2,33,1,2,85,1],[0.338,1.161,2,"E0478",63.4,14.4,10,18,1,83,1],[-0.511,2.004,2,"E0479",68.3,6.8,16,15,2,79,2],[0.366,-1.031,1,"E0480",100.0,12.5,24,1,0,88,2],[0.039,0.878,2,"E0481",87.9,12.1,18,12,0,70,0],[-2.668,-0.619,3,"E0482",64.7,10.1,5,0,0,53,1],[-0.024,1.849,2,"E0483",67.9,9.4,26,15,1,83,0],[-0.008,-1.427,1,"E0484",100.0,12.1,10,1,0,91,0],[0.033,-1.651,1,"E0485",82.4,14.6,7,0,2,83,0],[1.632,-0.442,0,"E0486",84.5,15.0,9,4,7,95,0],[2.183,0.093,0,"E0487",98.8,14.8,69,4,2,90,0],[-0.404,1.646,2,"E0488",64.5,9.1,15,14,1,84,1],[0.571,-0.984,1,"E0489",93.8,13.6,10,2,1,89,0],[2.184,-0.384,0,"E0490",94.7,16.9,13,8,3,96,1],[0.751,-1.545,1,"E0491",91.1,15.2,9,1,1,96,0],[0.223,0.526,2,"E0492",80.8,11.7,9,8,2,79,2],[1.962,-0.2,0,"E0493",94.6,15.2,24,5,3,93,0],[-4.159,0.289,3,"E0494",45.0,8.1,1,1,0,38,1],[0.901,-0.663,0,"E0495",87.8,13.5,12,2,3,90,1],[-0.297,-0.957,1,"E0496",93.7,10.0,2,3,2,89,0],[0.846,-1.17,1,"E0497",92.1,16.1,16,2,0,94,1],[-0.629,0.536,2,"E0498",92.6,6.3,12,3,3,66,0],[0.897,-0.085,1,"E0499",93.4,13.1,18,8,0,99,1],[1.526,-0.239,1,"E0500",94.7,16.4,34,6,0,92,2],[0.394,-0.741,1,"E0501",90.8,12.8,12,1,3,75,1],[-2.299,0.537,3,"E0502",54.9,9.6,5,3,0,65,1],[-3.347,0.056,3,"E0503",55.9,6.6,1,2,0,66,1],[-0.465,-0.781,1,"E0504",81.5,11.8,14,1,0,89,2],[0.211,-1.104,1,"E0505",94.8,13.2,6,2,1,84,0],[1.56,1.458,0,"E0506",77.1,15.3,48,12,3,71,1],[1.142,0.291,0,"E0507",84.2,13.7,21,5,3,83,0],[2.027,-0.294,0,"E0508",92.1,15.6,11,7,5,96,0],[1.524,0.085,0,"E0509",84.2,15.7,11,9,3,90,2],[-3.034,-0.126,3,"E0510",59.5,8.3,4,0,1,42,1],[-0.136,-0.93,1,"E0511",87.5,13.4,6,3,0,90,2],[0.258,-2.234,1,"E0512",92.7,14.2,4,0,2,93,1],[2.469,-0.125,0,"E0513",98.5,16.3,45,4,4,87,2],[-3.812,0.472,3,"E0514",39.2,6.9,7,0,0,51,0],[1.416,0.063,0,"E0515",91.5,14.6,28,6,1,90,0],[2.212,-0.503,0,"E0516",98.2,14.7,30,3,4,99,2],[1.671,0.23,0,"E0517",85.4,15.2,11,12,3,95,0],[1.08,0.505,2,"E0518",92.7,13.8,35,10,0,87,1],[0.427,-0.827,1,"E0519",91.9,12.3,8,2,2,88,1],[2.163,1.131,0,"E0520",91.3,14.9,56,15,2,85,2],[-0.662,0.997,2,"E0521",68.0,13.3,18,7,0,61,2],[1.56,-1.067,0,"E0522",92.7,17.2,6,4,3,91,1],[0.08,0.882,2,"E0523",88.2,11.2,27,9,0,74,0],[-0.336,-0.903,1,"E0524",87.3,11.7,8,2,0,93,1],[-0.599,0.726,2,"E0525",82.0,9.8,9,11,0,80,1],[0.264,2.101,2,"E0526",68.1,9.8,32,16,2,77,1],[0.368,-1.174,1,"E0527",93.2,13.6,8,1,2,80,0],[2.004,-0.626,0,"E0528",98.4,17.0,6,10,3,94,2],[0.379,1.462,2,"E0529",54.9,13.4,14,15,2,88,1],[0.048,-1.027,1,"E0530",86.0,12.5,7,1,2,85,2],[-3.827,-1.34,3,"E0531",74.2,6.4,0,0,0,54,2],[0.115,1.88,2,"E0532",77.4,9.9,24,15,2,65,1],[0.346,1.986,2,"E0533",79.0,9.8,76,15,0,80,1],[0.238,-0.83,1,"E0534",92.2,10.9,12,1,2,88,1],[-3.381,0.522,3,"E0535",39.7,9.2,4,1,0,52,1],[2.446,0.538,0,"E0536",100.0,14.7,29,13,4,90,1],[-3.345,0.843,3,"E0537",44.7,8.4,2,2,1,40,0],[1.801,-0.708,0,"E0538",92.2,16.1,16,4,2,100,0],[-1.431,0.158,3,"E0539",75.2,8.8,7,2,1,65,1],[0.553,-1.387,1,"E0540",94.7,11.7,13,0,4,88,2],[2.04,-0.192,0,"E0541",98.0,14.3,23,5,4,94,0],[-0.087,-0.612,1,"E0542",84.9,12.2,10,3,0,95,1],[-2.66,-0.595,3,"E0543",57.0,9.5,5,0,0,67,1],[-0.23,-0.211,1,"E0544",90.7,8.3,42,1,0,93,2],[0.358,2.296,2,"E0545",67.2,12.3,57,16,1,63,0],[0.31,0.614,2,"E0546",80.0,10.3,33,3,2,81,2],[1.276,0.676,2,"E0547",92.3,12.1,29,11,1,93,0],[0.179,-0.317,1,"E0548",84.5,13.2,5,6,1,86,2],[1.818,0.213,0,"E0549",99.2,12.9,20,7,5,87,0],[-0.48,-2.074,1,"E0550",95.7,14.2,2,1,0,86,1],[-2.883,-0.134,3,"E0551",72.2,10.9,3,1,0,27,0],[0.148,2.12,2,"E0552",72.2,8.8,31,16,2,75,0],[-2.234,-0.755,3,"E0553",73.6,8.7,7,0,0,66,2],[1.492,-0.361,0,"E0554",91.9,12.6,24,2,5,94,0],[1.473,-1.231,1,"E0555",100.0,16.5,5,6,1,100,2],[1.913,-0.165,0,"E0556",92.7,13.7,23,4,5,97,0],[-3.154,-0.867,3,"E0557",69.5,9.4,2,0,0,45,2],[1.103,-0.616,0,"E0558",82.0,15.7,12,3,2,93,1],[0.007,1.402,2,"E0559",67.4,12.6,11,14,2,68,1],[0.687,-1.794,1,"E0560",97.8,16.6,6,1,1,82,2],[-2.369,2.053,3,"E0561",31.7,12.4,10,4,2,25,0],[1.557,0.177,0,"E0562",88.5,12.7,21,4,7,88,1],[0.825,-0.909,1,"E0563",87.4,15.1,22,2,0,100,1],[-0.244,-2.346,1,"E0564",98.1,12.4,2,0,2,88,1],[-0.607,-1.654,1,"E0565",89.5,11.7,10,0,0,90,1],[-0.638,-0.865,1,"E0566",83.4,12.3,6,2,0,85,0],[-0.063,-1.19,1,"E0567",98.1,12.1,13,1,0,86,2],[-2.915,-0.5,3,"E0568",52.4,12.2,4,0,0,45,1],[1.995,-0.232,0,"E0569",88.7,18.3,45,4,1,87,0],[1.243,0.448,0,"E0570",83.4,13.6,24,7,2,90,1],[-2.915,0.81,3,"E0571",46.0,7.5,6,2,0,65,1],[0.822,-0.343,1,"E0572",95.8,11.6,16,3,2,89,0],[-2.704,0.867,3,"E0573",51.8,9.5,14,1,0,43,0],[0.448,-0.399,1,"E0574",94.9,12.1,14,3,1,83,0],[-0.284,-2.457,1,"E0575",92.2,15.2,4,0,0,91,1],[-1.108,-1.043,1,"E0576",92.1,8.6,6,1,0,87,0],[0.355,1.599,2,"E0577",75.4,11.5,44,15,0,83,0],[0.365,2.052,2,"E0578",82.0,10.1,39,19,1,67,2],[0.879,1.176,2,"E0579",79.7,15.9,23,15,1,63,1],[-2.314,0.998,3,"E0580",58.3,6.9,6,3,1,59,1],[1.491,0.149,0,"E0581",92.4,12.8,21,6,3,93,0],[1.703,0.251,0,"E0582",97.9,12.1,26,6,4,91,0],[-0.207,-0.515,1,"E0583",92.2,11.7,16,2,0,80,0],[3.021,0.318,0,"E0584",97.3,16.1,35,9,8,94,2],[-0.454,-1.35,1,"E0585",84.5,11.4,17,0,0,95,0],[1.82,0.478,0,"E0586",92.3,14.2,26,11,2,93,2],[-0.737,-1.349,1,"E0587",87.3,11.6,5,1,0,90,2],[-0.174,2.151,2,"E0588",75.5,9.1,33,16,1,64,1],[1.649,-0.356,0,"E0589",97.0,14.7,15,5,3,89,0],[-3.837,0.828,3,"E0590",43.1,10.0,4,1,0,22,0],[2.823,-0.423,0,"E0591",96.0,16.0,36,3,8,100,1],[-0.992,1.664,2,"E0592",55.0,11.8,9,19,0,73,2],[1.303,0.145,0,"E0593",89.6,11.4,15,6,4,99,0],[0.625,1.782,2,"E0594",82.1,9.6,40,17,1,83,0],[0.231,1.958,2,"E0595",66.1,11.8,45,8,3,58,0],[-2.516,0.225,3,"E0596",58.7,8.6,4,2,0,66,1],[0.399,-0.731,1,"E0597",92.8,13.5,12,2,1,80,1],[2.294,0.566,0,"E0598",88.1,15.2,58,7,3,94,2],[0.492,1.218,2,"E0599",81.8,12.6,20,11,2,64,2],[-0.531,-1.499,1,"E0600",91.6,12.4,5,1,0,88,0]]};
+/* ---------- helpers ---------- */
+const NS = 'http://www.w3.org/2000/svg';
+const $ = id => document.getElementById(id);
+function h(tag, attrs, ...kids) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (k === 'class') e.className = v; else if (k === 'text') e.textContent = v; else e.setAttribute(k, v);
+  }
+  for (const c of kids.flat()) if (c != null) e.append(c.nodeType ? c : document.createTextNode(String(c)));
+  return e;
+}
+function s(tag, attrs, ...kids) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs || {})) { if (k === 'text') e.textContent = v; else e.setAttribute(k, v); }
+  for (const c of kids.flat()) if (c != null) e.append(c);
+  return e;
+}
+const fr = (n, d = 0) => Number(n).toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const sgn = (n, d = 1) => (n >= 0 ? '+' : '−') + fr(Math.abs(n), d);
+const rd = v => Math.round(v * 10) / 10;
+const cssv = n => getComputedStyle(document.querySelector('.km')).getPropertyValue(n).trim();
+const hex2 = x => { x = x.replace('#', ''); return [0, 2, 4].map(i => parseInt(x.slice(i, i + 2), 16)); };
+const mix = (a, b, t) => { const A = hex2(a), B = hex2(b); return '#' + A.map((v, i) => Math.round(v + (B[i] - v) * t).toString(16).padStart(2, '0')).join(''); };
+const lin = v => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+const lum = x => { const [r, g, b] = hex2(x); return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b); };
+const contrast = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+const textOn = bg => (contrast(bg, '#ffffff') >= contrast(bg, '#0b0b0b') ? '#ffffff' : '#0b0b0b');
+
+const SHAPES = ['circle', 'square', 'tri', 'diamond', 'triDown', 'hex'];
+function shapePath(sh, x, y, r) {
+  switch (sh) {
+    case 'square': { const q = r * 0.88; return `M${rd(x - q)} ${rd(y - q)}h${rd(2 * q)}v${rd(2 * q)}h${rd(-2 * q)}z`; }
+    case 'tri': { const q = r * 1.25; return `M${rd(x)} ${rd(y - q)}L${rd(x + q)} ${rd(y + q * 0.8)}L${rd(x - q)} ${rd(y + q * 0.8)}z`; }
+    case 'triDown': { const q = r * 1.25; return `M${rd(x)} ${rd(y + q)}L${rd(x + q)} ${rd(y - q * 0.8)}L${rd(x - q)} ${rd(y - q * 0.8)}z`; }
+    case 'diamond': { const q = r * 1.3; return `M${rd(x)} ${rd(y - q)}L${rd(x + q)} ${rd(y)}L${rd(x)} ${rd(y + q)}L${rd(x - q)} ${rd(y)}z`; }
+    case 'hex': { const q = r * 1.15; let d = ''; for (let i = 0; i < 6; i++) { const a = Math.PI / 6 + i * Math.PI / 3; d += (i ? 'L' : 'M') + rd(x + q * Math.cos(a)) + ' ' + rd(y + q * Math.sin(a)); } return d + 'z'; }
+    default: return `M${rd(x - r)} ${rd(y)}a${r} ${r} 0 1 0 ${rd(2 * r)} 0a${r} ${r} 0 1 0 ${rd(-2 * r)} 0z`;
+  }
+}
+function niceTicks(a, b, n) {
+  const raw = (b - a) / n, mag = Math.pow(10, Math.floor(Math.log10(raw))), f = raw / mag;
+  const step = (f < 1.5 ? 1 : f < 3 ? 2 : f < 7 ? 5 : 10) * mag, out = [];
+  for (let v = Math.ceil(a / step) * step; v <= b + 1e-9; v += step) out.push(Math.round(v * 1e6) / 1e6);
+  return out;
+}
+
+/* ---------- tooltip ---------- */
+const tip = $('km-tip');
+function showTip(nodes, x, y) {
+  tip.replaceChildren(...nodes); tip.classList.add('on');
+  const r = tip.getBoundingClientRect();
+  let left = x + 14, top = y + 14;
+  if (left + r.width > innerWidth - 8) left = x - r.width - 14;
+  if (top + r.height > innerHeight - 8) top = y - r.height - 14;
+  tip.style.left = Math.max(8, left) + 'px'; tip.style.top = Math.max(8, top) + 'px';
+}
+const hideTip = () => tip.classList.remove('on');
+const tipHead = (label, colorVar) => h('div', { class: 'th' }, h('span', { class: 'key', style: `background:${colorVar}` }), h('span', { text: label }));
+const tipRow = (value, label) => h('div', { class: 'r' }, h('b', { text: value }), h('span', { text: label }));
+
+/* ---------- K-means, from scratch ---------- */
+const mulberry32 = a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+const d2 = (a, b) => { let t = 0; for (let j = 0; j < a.length; j++) { const u = a[j] - b[j]; t += u * u; } return t; };
+function assign(X, C) {
+  const lab = new Array(X.length); let inertia = 0;
+  X.forEach((x, i) => { let b = 0, bd = Infinity; C.forEach((c, k) => { const d = d2(x, c); if (d < bd) { bd = d; b = k; } }); lab[i] = b; inertia += bd; });
+  return { lab, inertia };
+}
+function update(X, lab, C) {
+  const D = X[0].length, sm = C.map(() => new Array(D).fill(0)), n = new Array(C.length).fill(0);
+  X.forEach((x, i) => { n[lab[i]]++; x.forEach((v, j) => { sm[lab[i]][j] += v; }); });
+  return C.map((c, k) => (n[k] ? sm[k].map(v => v / n[k]) : c.slice()));
+}
+function runKM(X, C0) {
+  let C = C0.map(c => c.slice()), lab = null, it = 0, inertia = 0;
+  for (;;) {
+    const a = assign(X, C); inertia = a.inertia;
+    const same = lab && a.lab.every((v, i) => v === lab[i]);
+    lab = a.lab; if (same || it > 200) break;
+    C = update(X, lab, C); it++;
+  }
+  return { C, lab, inertia, it };
+}
+function randInit(X, k, rng) { const idx = []; while (idx.length < k) { const i = Math.floor(rng() * X.length); if (!idx.includes(i)) idx.push(i); } return idx.map(i => X[i]); }
+function ari(a, b) {
+  const ka = Math.max(...a) + 1, kb = Math.max(...b) + 1, M = Array.from({ length: ka }, () => new Array(kb).fill(0));
+  a.forEach((v, i) => M[v][b[i]]++);
+  const c2 = x => x * (x - 1) / 2, ra = new Array(ka).fill(0), rb = new Array(kb).fill(0); let sc = 0;
+  M.forEach((r, i) => r.forEach((v, j) => { sc += c2(v); ra[i] += v; rb[j] += v; }));
+  const sa = ra.reduce((t, v) => t + c2(v), 0), sb = rb.reduce((t, v) => t + c2(v), 0), n2 = c2(a.length), ex = sa * sb / n2, mx = (sa + sb) / 2;
+  return mx === ex ? 1 : (sc - ex) / (mx - ex);
+}
+function zscore(X) {
+  const D = X[0].length, n = X.length, m = new Array(D).fill(0), sd = new Array(D).fill(0);
+  X.forEach(x => x.forEach((v, j) => { m[j] += v / n; }));
+  X.forEach(x => x.forEach((v, j) => { sd[j] += (v - m[j]) ** 2 / n; }));
+  return X.map(x => x.map((v, j) => (v - m[j]) / Math.sqrt(sd[j])));
+}
+/* renumber clusters by decreasing mean attendance, so ids and colours match the Python analysis */
+function canon(lab) {
+  const k = Math.max(...lab) + 1, m = new Array(k).fill(0), c = new Array(k).fill(0);
+  RAW.forEach((x, i) => { m[lab[i]] += x[0]; c[lab[i]]++; });
+  const order = [...Array(k).keys()].sort((a, b) => m[b] / (c[b] || 1) - m[a] / (c[a] || 1)), map = {};
+  order.forEach((o, i) => { map[o] = i; });
+  return lab.map(v => map[v]);
+}
+
+/* ---------- data ---------- */
+const F = DATA.meta.features, N = DATA.meta.n;
+const P = DATA.points;                              // [pc1, pc2, python cluster, id, six features..., level]
+const RAW = P.map(p => p.slice(4, 4 + F.length));
+const PY = P.map(p => p[2]);
+const LEVELS = DATA.meta.levels;
+const SEG = DATA.segments;                          // Python k = 4, ordered by decreasing attendance
+const FEAT = {
+  attendance_pct: { short: 'Présence', unit: '%', long: 'Présence aux cours (%)', tipU: '% des cours suivis', d: 0 },
+  grade_avg: { short: 'Moyenne', unit: '/20', long: 'Moyenne générale (/20)', tipU: '/20 de moyenne', d: 1 },
+  logins_per_month: { short: 'Connexions', unit: '/mois', long: 'Connexions à la plateforme (par mois)', tipU: 'connexions / mois', d: 0 },
+  chatbot_per_month: { short: 'Chatbot', unit: '/mois', long: 'Questions au chatbot (par mois)', tipU: 'questions chatbot / mois', d: 0 },
+  events_per_semester: { short: 'Événements', unit: '/sem.', long: 'Événements suivis (par semestre)', tipU: 'événements / semestre', d: 0 },
+  on_time_pct: { short: 'Rendus à temps', unit: '%', long: 'Travaux rendus à temps (%)', tipU: '% rendus à temps', d: 0 }
+};
+const legendIcon = (c, size) => { const ic = s('svg', { viewBox: '0 0 16 16', 'aria-hidden': 'true' }); ic.append(s('path', { d: shapePath(SHAPES[c % 6], 8, 8, size || 5.5), fill: `var(--seg-${c % 6})` })); return ic; };
+
+/* ---------- tiles ---------- */
+(function tiles() {
+  const box = $('tiles'), sil = DATA.chosen.silhouette;
+  [['🎓', fr(N), 'Étudiants fictifs'], ['📊', String(F.length), 'Signaux d’engagement'], ['🧩', String(DATA.meta.k), 'Groupes (k)'], ['📐', fr(sil, 2), 'Silhouette']]
+    .forEach(([ic, v, l]) => box.append(h('div', { class: 'stat' }, h('div', { class: 'stat-icon', text: ic }), h('div', { class: 'stat-value', text: v }), h('div', { class: 'stat-label', text: l }))));
+  $('tiles-note').textContent = `Silhouette ${fr(sil, 2)} : séparation modérée, les groupes se chevauchent. Six signaux, niveau d’études mis de côté ; k = 4 est un choix de jugement, détaillé plus bas.`;
+})();
+
+/* ---------- data peek ---------- */
+(function peek() {
+  const rows = P.slice(0, 6);
+  const head = h('tr', {}, h('th', { text: 'Étudiant' }), ...F.map(f => h('th', { class: 'n', text: FEAT[f].short + ' ' + FEAT[f].unit })), h('th', { text: 'Niveau' }));
+  const body = rows.map(p => h('tr', {}, h('th', { text: p[3] }), ...F.map((f, j) => h('td', { class: 'n', text: fr(p[4 + j], FEAT[f].d) })), h('td', { text: LEVELS[p[4 + F.length]] })));
+  const t = h('table', {}, h('thead', {}, head), h('tbody', {}, body));
+  const fig = h('figure', { class: 'fig' }, h('div', { class: 'fig-head' }, h('div', {}, h('div', { class: 't', text: 'Six étudiants fictifs sur ' + N }), h('div', { class: 's', text: 'Une ligne par étudiant ; le niveau n’entre pas dans le calcul' }))), h('div', { class: 'tw' }, t));
+  $('peek').append(fig);
+})();
+
+/* ---------- live K-means ---------- */
+(function live() {
+  const LOG = new Set(DATA.meta.log_features.map(f => F.indexOf(f)));
+  const prep = on => (on ? zscore(RAW.map(r => r.map((v, j) => (LOG.has(j) ? Math.log1p(v) : v)))) : RAW.map(r => r.slice()));
+  const Z_ON = prep(true), Z_OFF = prep(false);
+  const S = { k: 4, prep: true, seed: 1 };
+  function compute() {
+    const X = S.prep ? Z_ON : Z_OFF, runs = [];
+    for (let t = 0; t < 10; t++) runs.push(runKM(X, randInit(X, S.k, mulberry32(S.seed * 1000 + t * 31 + S.k))));
+    const best = runs.reduce((a, b) => (b.inertia < a.inertia ? b : a));
+    const same = runs.filter(r => r.inertia <= best.inertia * 1.01).length;
+    const lab = canon(best.lab);
+    return { lab, inertia: best.inertia, same, ari: S.k === 4 ? ari(lab, PY) : null };
+  }
+  // scatter on the PCA plane
+  const xs = P.map(p => p[0]), ys = P.map(p => p[1]);
+  const xr = [Math.floor(Math.min(...xs)), Math.ceil(Math.max(...xs))], yr = [Math.floor(Math.min(...ys)), Math.ceil(Math.max(...ys))];
+  const W = 640, H = 420, Lm = 46, Rm = 14, Tm = 12, Bm = 46;
+  const X = v => Lm + (v - xr[0]) / (xr[1] - xr[0]) * (W - Lm - Rm), Y = v => H - Bm - (v - yr[0]) / (yr[1] - yr[0]) * (H - Bm - Tm);
+  const ex = DATA.pca.explained;
+  const svg = s('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Nuage de 600 étudiants fictifs projetés sur deux axes, colorés par groupe.' });
+  niceTicks(xr[0], xr[1], 8).forEach(v => { svg.append(s('line', { class: 'gl', x1: X(v), x2: X(v), y1: Tm, y2: H - Bm }), s('text', { class: 'tick', x: X(v), y: H - Bm + 15, 'text-anchor': 'middle', text: fr(v) })); });
+  niceTicks(yr[0], yr[1], 6).forEach(v => { svg.append(s('line', { class: 'gl', x1: Lm, x2: W - Rm, y1: Y(v), y2: Y(v) }), s('text', { class: 'tick', x: Lm - 7, y: Y(v) + 3.5, 'text-anchor': 'end', text: fr(v) })); });
+  svg.append(s('line', { class: 'ax', x1: Lm, x2: W - Rm, y1: H - Bm, y2: H - Bm }), s('line', { class: 'ax', x1: Lm, x2: Lm, y1: Tm, y2: H - Bm }));
+  svg.append(s('text', { class: 'axt', x: (Lm + W - Rm) / 2, y: H - 8, 'text-anchor': 'middle', text: `CP1 (${fr(ex[0] * 100)} % de la variance)` }));
+  svg.append(s('text', { class: 'axt', transform: `translate(12 ${(Tm + H - Bm) / 2}) rotate(-90)`, 'text-anchor': 'middle', text: `CP2 (${fr(ex[1] * 100)} %)` }));
+  const ptsG = s('g', { stroke: 'var(--surface)', 'stroke-width': '0.6' }), over = s('g');
+  svg.append(ptsG, over);
+  const ring = s('circle', { r: 8, fill: 'none', stroke: 'var(--ink)', 'stroke-width': '2', visibility: 'hidden', 'pointer-events': 'none' });
+  over.append(ring);
+  const els = P.map(() => { const e = s('path', {}); ptsG.append(e); return e; });
+  let cur = null, names = null;
+  const grpName = c => (names ? names[c] : 'Groupe ' + (c + 1));
+  svg.addEventListener('pointermove', e => {
+    const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(svg.getScreenCTM().inverse());
+    let best = -1, bd = 1e9;
+    P.forEach((q, i) => { const d = (X(q[0]) - p.x) ** 2 + (Y(q[1]) - p.y) ** 2; if (d < bd) { bd = d; best = i; } });
+    if (best >= 0 && bd <= 12 * 12 && cur) {
+      const q = P[best], c = cur.lab[best];
+      ring.setAttribute('cx', X(q[0])); ring.setAttribute('cy', Y(q[1])); ring.setAttribute('visibility', 'visible');
+      showTip([tipHead(`${q[3]} · ${grpName(c)}`, `var(--seg-${c % 6})`), ...F.map((f, j) => tipRow(fr(q[4 + j], FEAT[f].d), FEAT[f].tipU)), tipRow(LEVELS[q[4 + F.length]], 'niveau (hors calcul)')], e.clientX, e.clientY);
+    } else { ring.setAttribute('visibility', 'hidden'); hideTip(); }
+  });
+  svg.addEventListener('pointerleave', () => { ring.setAttribute('visibility', 'hidden'); hideTip(); });
+
+  // controls
+  const status = h('div', { class: 's', id: 'st-live', 'aria-live': 'polite' });
+  const kIn = h('input', { type: 'range', min: '2', max: '6', step: '1', value: '4', id: 'k-live' }), kVal = h('b', { text: '4' });
+  const chk = h('input', { type: 'checkbox', id: 'prep-live', checked: 'checked' });
+  const bMore = h('button', { class: 'btn btn-primary', type: 'button', text: 'Autres départs' }), bReset = h('button', { class: 'btn btn-secondary', type: 'button', text: 'Réinitialiser' });
+  const controls = h('div', { class: 'controls' }, h('div', { class: 'ctl' }, h('label', { for: 'k-live', text: 'Nombre de groupes (k)' }), kIn, kVal),
+    h('div', { class: 'ctl' }, chk, h('label', { for: 'prep-live', text: 'Passer au logarithme et standardiser' })), h('div', { class: 'ctl btns' }, bMore, bReset));
+  const vIn = h('b'), vSame = h('b'), vAri = h('b'), msg = h('p', { class: 'msg' }), elbowBox = h('div');
+  const stat = (l, n) => h('div', { class: 'kv' }, h('div', { class: 'kl', text: l }), h('div', { class: 'kb' }, n));
+  const side = h('div', {}, h('div', { class: 'km-stats' }, stat('Inertie', vIn), stat('Départs au même score', vSame)), h('div', { class: 'km-stats' }, stat('Accord avec Python (ARI)', vAri)), msg,
+    h('div', { class: 'ctitle', style: 'margin-top:14px', text: 'Inertie selon k (analyse Python)' }), h('div', { class: 'csub', text: 'Le point blanc est le k choisi.' }), elbowBox);
+  const legend = h('div', { class: 'legend' });
+  $('fig-live').append(h('figure', { class: 'fig' }, h('div', { class: 'fig-head' }, h('div', {}, h('div', { class: 't', text: 'K-means sur 600 étudiants fictifs' }), status)), controls,
+    h('div', { class: 'grid2' }, h('div', {}, svg, legend), side),
+    h('figcaption', { text: `Axe horizontal : CP1, l’engagement général (présence, notes, rendus, connexions et événements vont dans le même sens). Axe vertical : CP2, l’usage du numérique (chatbot, connexions) en haut contre la présence en bas. Ensemble, ${fr((ex[0] + ex[1]) * 100)} % de l’information.` })));
+
+  function elbow(k) {
+    const sc = DATA.scan, w = 290, ht = 190, l = 54, r = 12, t = 14, b = 34, top = Math.max(...sc.map(q => q.inertia)) * 1.05, kmin = sc[0].k, kmax = sc[sc.length - 1].k;
+    const XX = q => l + (q - kmin) / (kmax - kmin) * (w - l - r), YY = q => ht - b - q / top * (ht - b - t);
+    const g = s('svg', { viewBox: `0 0 ${w} ${ht}`, role: 'img', 'aria-label': 'Inertie selon k : ' + sc.map(q => `k=${q.k} : ${fr(q.inertia)}`).join(' ; ') });
+    niceTicks(0, top, 4).forEach(q => g.append(s('line', { class: 'gl', x1: l, x2: w - r, y1: YY(q), y2: YY(q) }), s('text', { class: 'tick', x: l - 6, y: YY(q) + 3.5, 'text-anchor': 'end', text: fr(q) })));
+    g.append(s('line', { class: 'ax', x1: l, x2: w - r, y1: ht - b, y2: ht - b }));
+    sc.forEach(q => g.append(s('text', { class: 'tick', x: XX(q.k), y: ht - b + 14, 'text-anchor': 'middle', text: q.k })));
+    g.append(s('text', { class: 'axt', x: (l + w - r) / 2, y: ht - 4, 'text-anchor': 'middle', text: 'k (nombre de groupes)' }));
+    g.append(s('path', { d: sc.map((q, i) => (i ? 'L' : 'M') + rd(XX(q.k)) + ' ' + rd(YY(q.inertia))).join(''), fill: 'none', stroke: 'var(--ink-2)', 'stroke-width': '2', 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
+    sc.forEach(q => g.append(s('circle', { cx: XX(q.k), cy: YY(q.inertia), r: q.k === k ? 6 : 4, fill: q.k === k ? 'var(--ink)' : 'var(--ink-2)', stroke: 'var(--surface)', 'stroke-width': '2' })));
+    return g;
+  }
+  function render() {
+    cur = compute();
+    names = S.k === 4 && cur.ari > 0.999 ? SEG.map(q => q.name) : null;
+    els.forEach((e, i) => { const c = cur.lab[i] % 6; e.setAttribute('d', shapePath(SHAPES[c], X(P[i][0]), Y(P[i][1]), 3.6)); e.setAttribute('fill', `var(--seg-${c})`); e.setAttribute('fill-opacity', '0.88'); });
+    const counts = new Array(S.k).fill(0); cur.lab.forEach(c => { counts[c]++; });
+    legend.replaceChildren(...counts.map((n, c) => h('div', { class: 'li' }, legendIcon(c), h('span', {}, h('b', { text: grpName(c) }), ` · ${fr(n)} étudiants`))));
+    kVal.textContent = String(S.k);
+    vIn.textContent = fr(cur.inertia); vSame.textContent = `${cur.same} sur 10`; vAri.textContent = cur.ari == null ? '–' : fr(cur.ari, 2);
+    elbowBox.replaceChildren(elbow(S.k));
+    status.textContent = `k = ${S.k} : meilleur de 10 départs, inertie ${fr(cur.inertia)}. ${cur.same} départs sur 10 ont atteint ce score.`;
+    let m = '';
+    if (!S.prep) m = 'Sans standardisation, la présence, les rendus et les connexions (grands nombres) dominent les distances : les événements et le chatbot comptent presque pour rien.';
+    else if (S.k === 4) m = cur.ari > 0.999 ? 'À k = 4, le K-means de cette page retrouve exactement la partition de l’analyse Python.' : 'Ce départ n’a pas retrouvé la partition de référence : essayez d’autres départs.';
+    else m = 'L’accord avec Python n’est calculé qu’à k = 4, le k de l’analyse de référence.';
+    if (!S.prep && S.k === 4) m += ' L’accord avec la partition de référence chute.';
+    if (S.prep && cur.same < 10) { const u = 10 - cur.same, pl = u > 1; m += ` ${u} départ${pl ? 's' : ''} sur 10 ${pl ? 'sont restés coincés' : 'est resté coincé'} dans un optimum local.`; }
+    msg.textContent = m;
+  }
+  kIn.addEventListener('input', () => { S.k = Number(kIn.value); render(); });
+  chk.addEventListener('change', () => { S.prep = chk.checked; render(); });
+  bMore.addEventListener('click', () => { S.seed++; render(); });
+  bReset.addEventListener('click', () => { S.k = 4; S.prep = true; S.seed = 1; kIn.value = '4'; chk.checked = true; render(); });
+  window.__live = { S, render, get cur() { return cur; }, PY };
+  render();
+})();
+
+/* ---------- reference profile heatmaps (Python, k = 4) ---------- */
+(function profile() {
+  const mid = cssv('--div-mid'), pos = cssv('--div-pos'), neg = cssv('--div-neg');
+  const col = z => { const t = Math.max(-1, Math.min(1, z / 1.5)); return t >= 0 ? mix(mid, pos, t) : mix(mid, neg, -t); };
+  const head = h('tr', {}, h('th', { text: 'Groupe' }), h('th', { class: 'n', text: 'Étudiants' }), ...F.map(f => h('th', { style: 'text-align:center', text: FEAT[f].short + ' ' + FEAT[f].unit })));
+  const rows = SEG.map(sg => {
+    const cells = F.map(f => {
+      const z = sg.z[f], bg = col(z), med = Math.round(sg.median[f] * 10 ** FEAT[f].d) / 10 ** FEAT[f].d;
+      const td = h('td', { class: 'c', style: `background:${bg};color:${textOn(bg)}`, title: `${sg.name} : médiane ${fr(sg.median[f], FEAT[f].d)} ${FEAT[f].unit}, moyenne ${fr(sg.mean[f], 1)}` }, h('b', { text: fr(med, FEAT[f].d) }), h('small', { text: sgn(z) + ' ET' }));
+      return td;
+    });
+    const sw = s('svg', { viewBox: '0 0 16 16', class: 'sw', 'aria-hidden': 'true', style: 'width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:8px' }); sw.append(s('path', { d: shapePath(SHAPES[sg.id], 8, 8, 5.5), fill: `var(--seg-${sg.id})` }));
+    return h('tr', {}, h('th', { class: 'rowh' }, sw, sg.name), h('td', { class: 'n', text: fr(sg.n) }), ...cells);
+  });
+  $('hm-profile').append(h('table', {}, h('thead', {}, head), h('tbody', {}, rows)),
+    h('div', { class: 'scale' }, h('span', { text: 'sous la moyenne' }), h('span', { class: 'bar', style: `background:linear-gradient(90deg,${neg},${mid},${pos})` }), h('span', { text: 'au-dessus de la moyenne (±1,5 ET ou plus aux extrémités)' })));
+  // level (kept out of the clustering)
+  const lo = cssv('--seq-lo'), hi = cssv('--seq-hi'), seq = v => mix(lo, hi, Math.min(1, v / 0.6));
+  const head2 = h('tr', {}, h('th', { text: 'Niveau d’études (hors calcul)' }), ...LEVELS.map(x => h('th', { style: 'text-align:center', text: x })));
+  const rows2 = SEG.map(sg => h('tr', {}, h('th', { class: 'rowh', text: sg.name }), ...LEVELS.map(x => { const v = sg.level[x], bg = seq(v); return h('td', { class: 'c', style: `background:${bg};color:${textOn(bg)}` }, h('b', { text: fr(v * 100) + ' %' })); })));
+  $('hm-level').append(h('table', {}, h('thead', {}, head2), h('tbody', {}, rows2)));
+  $('hm-profile').append(h('p', { class: 'scroll-hint', text: 'Le tableau défile horizontalement.' }));
+  const nAcc = SEG.find(q => q.name === 'À accompagner');
+  $('level-note').innerHTML = '';
+  $('level-note').append(h('b', { text: 'À retenir. ' }), `Dans ces données fictives, le niveau d’études ne distingue pas les groupes (par construction du générateur) : c’est le comportement qui les sépare. Le groupe « À accompagner » compte ${fr(nAcc.n)} étudiants (${fr(nAcc.share * 100)} %).`);
+})();
+
+/* ---------- cards ---------- */
+(function cards() {
+  const box = $('cards');
+  SEG.forEach(sg => {
+    const ic = s('svg', { viewBox: '0 0 16 16', 'aria-hidden': 'true' }); ic.append(s('path', { d: shapePath(SHAPES[sg.id], 8, 8, 5.5), fill: `var(--seg-${sg.id})` }));
+    const card = h('div', { class: 'card km-gcard' }, h('div', { class: 'card-icon' }, ic), h('div', { class: 'label', text: `${fr(sg.n)} étudiants · ${fr(sg.share * 100)} %` }),
+      h('div', { class: 'km-gname', text: sg.name }), h('div', { class: 'km-meta', text: `silhouette moyenne ${fr(sg.mean_silhouette, 2)}` }),
+      h('div', { class: 'km-gl', text: 'Profil' }), h('p', { text: sg.trait }), h('div', { class: 'km-gl', text: 'Action suggérée' }), h('p', { text: sg.action }));
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect(), cx = r.width / 2, cy = r.height / 2, x = e.clientX - r.left, y = e.clientY - r.top;
+      card.style.transform = `translateY(-7px) rotateX(${((y - cy) / cy) * -5}deg) rotateY(${((x - cx) / cx) * 5}deg)`;
+      card.style.setProperty('--mx', (x / r.width * 100) + '%'); card.style.setProperty('--my', (y / r.height * 100) + '%');
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    box.append(card);
+  });
+})();
+
+/* ---------- choice of k ---------- */
+(function chooseK() {
+  const sc = DATA.scan, K = DATA.meta.k, by = k => sc.find(q => q.k === k);
+  const defs = [['inertia', 'Inertie (méthode du coude)', 'Plus bas = mieux ; on cherche le coude', v => fr(v)], ['silhouette', 'Silhouette', 'Plus haut = mieux', v => fr(v, 2)], ['davies_bouldin', 'Davies–Bouldin', 'Plus bas = mieux', v => fr(v, 2)]];
+  const bestHigh = k => sc.reduce((a, b) => (b[k] > a[k] ? b : a)).k, bestLow = k => sc.reduce((a, b) => (b[k] < a[k] ? b : a)).k;
+  const box = $('k-charts');
+  defs.forEach(([key, title, sub, fmt]) => {
+    const w = 290, ht = 190, l = 46, r = 12, t = 26, b = 34, vals = sc.map(q => q[key]), lo = Math.min(...vals), hi = Math.max(...vals), pad = (hi - lo) * 0.15, a = lo - pad, z = hi + pad;
+    const XX = k => l + (k - sc[0].k) / (sc[sc.length - 1].k - sc[0].k) * (w - l - r), YY = v => ht - b - (v - a) / (z - a) * (ht - b - t);
+    const g = s('svg', { viewBox: `0 0 ${w} ${ht}`, role: 'img', 'aria-label': title + ' : ' + sc.map(q => `k=${q.k} : ${fmt(q[key])}`).join(' ; ') });
+    niceTicks(a, z, 3).forEach(v => g.append(s('line', { class: 'gl', x1: l, x2: w - r, y1: YY(v), y2: YY(v) }), s('text', { class: 'tick', x: l - 6, y: YY(v) + 3.5, 'text-anchor': 'end', text: key === 'inertia' ? fr(v) : fr(v, 2) })));
+    g.append(s('line', { class: 'ax', x1: l, x2: w - r, y1: ht - b, y2: ht - b }));
+    sc.forEach(q => g.append(s('text', { class: 'tick', x: XX(q.k), y: ht - b + 14, 'text-anchor': 'middle', text: q.k })));
+    g.append(s('text', { class: 'axt', x: (l + w - r) / 2, y: ht - 4, 'text-anchor': 'middle', text: 'k (nombre de groupes)' }));
+    g.append(s('line', { x1: XX(K), x2: XX(K), y1: t - 8, y2: ht - b, stroke: 'var(--ink-2)', 'stroke-width': '1', 'stroke-dasharray': '3 3' }));
+    g.append(s('text', { x: XX(K), y: t - 12, 'text-anchor': 'middle', style: 'font-size:10px;font-weight:650;fill:var(--ink)', text: `k=${K} retenu` }));
+    g.append(s('path', { d: sc.map((q, i) => (i ? 'L' : 'M') + rd(XX(q.k)) + ' ' + rd(YY(q[key]))).join(''), fill: 'none', stroke: 'var(--ink-2)', 'stroke-width': '2', 'stroke-linejoin': 'round' }));
+    sc.forEach(q => g.append(s('circle', { cx: XX(q.k), cy: YY(q[key]), r: q.k === K ? 5.5 : 3.6, fill: q.k === K ? 'var(--ink)' : 'var(--ink-2)', stroke: 'var(--surface)', 'stroke-width': '2' })));
+    box.append(h('div', {}, h('div', { class: 'ctitle', text: title }), h('div', { class: 'csub', text: sub }), g));
+  });
+  const st = DATA.stability, s3 = st['3'], s4 = st['4'], s5 = st['5'];
+  const d34 = 1 - by(4).inertia / by(3).inertia, d45 = 1 - by(5).inertia / by(4).inertia;
+  const kSil = bestHigh('silhouette');
+  let reading = `Lecture : l’inertie baisse de ${fr(d34 * 100)} % de k = 3 à k = 4, puis de ${fr(d45 * 100)} % seulement de k = 4 à k = 5 : le coude est à 4. `;
+  reading += kSil === 2 ? `La silhouette est la plus haute à k = 2 (${fr(by(2).silhouette, 2)}), mais deux groupes ne permettent pas de distinguer des actions différentes ; parmi les k à partir de 3, k = 4 est le meilleur (${fr(by(4).silhouette, 2)}, contre ${fr(by(3).silhouette, 2)} à k = 3 et ${fr(by(5).silhouette, 2)} à k = 5). ` : `La silhouette est maximale à k = ${kSil} (${fr(by(kSil).silhouette, 2)}) ; k = 4 fait ${fr(by(4).silhouette, 2)}. `;
+  const dbTwo = [...sc].sort((a, b) => a.davies_bouldin - b.davies_bouldin).slice(0, 2).map(q => q.k).sort((a, b) => a - b);
+  if (dbTwo.join() === '2,4') reading += 'Davies–Bouldin va dans le même sens : k = 2, puis k = 4. ';
+  reading += `Enfin, k = 4 est le plus stable : ${s4.init_runs_near_reference} départs aléatoires sur ${s4.runs} aboutissent à une partition quasi identique à la référence (ARI > 0,9), contre ${s3.init_runs_near_reference} à k = 3 et ${s5.init_runs_near_reference} à k = 5. J’ai retenu k = 4 ; c’est un choix de jugement.`;
+  $('k-reading').textContent = reading;
+  const head = h('tr', {}, h('th', { text: 'Groupes' }), h('th', { class: 'n', text: 'Départs proches de la référence (ARI > 0,9)' }), h('th', { class: 'n', text: 'Pire départ (ARI)' }), h('th', { class: 'n', text: 'Sur 80 % des données : médiane (ARI)' }), h('th', { class: 'n', text: 'Sur 80 % des données : pire (ARI)' }));
+  const row = (k, q) => h('tr', { class: k === K ? 'pick' : '' }, h('th', { text: 'k = ' + k }), h('td', { class: 'n', text: `${q.init_runs_near_reference} sur ${q.runs}` }), h('td', { class: 'n', text: fr(q.init_ari_min_med_max[0], 2) }), h('td', { class: 'n', text: fr(q.bootstrap_ari_min_med_max[1], 2) }), h('td', { class: 'n', text: fr(q.bootstrap_ari_min_med_max[0], 2) }));
+  $('stab').append(h('table', {}, h('thead', {}, head), h('tbody', {}, row(3, s3), row(4, s4), row(5, s5))));
+  $('stab-note').append(h('b', { text: 'À lire. ' }), `ARI = indice de Rand ajusté (1 = partition identique, 0 = hasard). Trente départs aléatoires et trente sous-échantillons de 80 % sont comparés à la référence (meilleur de 20 départs).`);
+})();
+
+})();
+</script>
   <script>
     window.difyChatbotConfig = { token: 'hQJFpb8aoAfzj5je', inputs: {}, systemVariables: {}, userVariables: {} }
   </script>
